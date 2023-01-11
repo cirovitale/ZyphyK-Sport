@@ -5,13 +5,19 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-  	<servlet-name>MiaServlet</servlet-name>
-  	<display-name>MiaServlet</display-name>
+  	<servlet-name>PopolamentoDBServlet</servlet-name>
+  	<display-name>PopolamentoDBServlet</display-name>
   	<description></description>
-  	<servlet-class>MiaServlet</servlet-class>
+  	<servlet-class>it.unisa.zyphyksport.control.PopolamentoDBServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>MiaServlet</servlet-name>
-  	<url-pattern>/MiaServlet</url-pattern>
+  	<servlet-name>PopolamentoDBServlet</servlet-name>
+  	<url-pattern>/PopolamentoDBServlet</url-pattern>
   </servlet-mapping>
+  <resource-ref>
+  	<description>Riferimento JNDI ad un data source</description>
+  	<res-ref-name>jdbc/zyphyk_sport</res-ref-name>
+  	<res-type>javax.sql.DataSource</res-type>
+  	<res-auth>Container</res-auth>
+  </resource-ref>
 </web-app>
