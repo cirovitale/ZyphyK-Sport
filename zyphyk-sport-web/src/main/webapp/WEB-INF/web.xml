@@ -4,4 +4,14 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>MiaServlet</servlet-name>
+  	<display-name>MiaServlet</display-name>
+  	<description></description>
+  	<servlet-class>MiaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>MiaServlet</servlet-name>
+  	<url-pattern>/MiaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
