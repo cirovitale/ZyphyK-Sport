@@ -98,7 +98,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				CartsContainsProdsBean bean = new CartsContainsProdsBean(0,0);
+				CartsContainsProdsBean bean = new CartsContainsProdsBean(0,null);
 				bean.setCartId(rs.getInt("CART_ID"));
 				bean.setProductId(rs.getString("PRODUCT_ID"));
 				array.add(bean);

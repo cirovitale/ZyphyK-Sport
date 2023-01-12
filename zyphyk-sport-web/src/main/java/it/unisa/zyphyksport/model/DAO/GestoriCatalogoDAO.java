@@ -29,7 +29,7 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 		
 		String insertSQL = "INSERT INTO " + GestoriCatalogoDAO.TABLE_NAME
 				+ " (USERNAME, NAME, USERNAME, EMAIL, PASS_WORD,"
-				+ "RAL) VALUES (?, ?, ?, ?, ?, ?)";
+				+ "RAL) VALUES (?, ?, ?, ?, MD5(?), ?)";
 		
 		try {
 			connection = ds.getConnection();
