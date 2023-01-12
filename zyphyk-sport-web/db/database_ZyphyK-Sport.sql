@@ -57,16 +57,18 @@ CREATE TABLE IF NOT EXISTS products(
 );
 
 CREATE TABLE IF NOT EXISTS sizes(
-	value int NOT NULL,
+	value int,
 	product_id varchar(5),
+    count int NOT NULL auto_increment,
 
-	PRIMARY KEY(value, product_id),
+	PRIMARY KEY(count),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS carts_contains_prods(
 	cart_id int NOT NULL,
 	product_id varchar(5) NOT NULL,
+    quantity int,
 
 	PRIMARY KEY(cart_id,product_id),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -86,12 +88,12 @@ CREATE TABLE IF NOT EXISTS manages_prods(
 CREATE TABLE IF NOT EXISTS orders(
 	id int NOT NULL,
 	cliente_username varchar(20) NOT NULL,
-	gest_ord_username varchar(20) NOT NULL,
+	gest_ord_username varchar(20),
 	date_time DATETIME NOT NULL,
 	shipping_address varchar(100) NOT NULL,
 	payment_method varchar(30) NOT NULL,
 	amount int NOT NULL DEFAULT 0,
-	sent boolean NOT NULL DEFAULT false,
+	sent boolean NOT NULL,
 
 	PRIMARY KEY(id),
 	FOREIGN KEY(cliente_username) REFERENCES clienti(username) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -101,6 +103,8 @@ CREATE TABLE IF NOT EXISTS orders(
 CREATE TABLE IF NOT EXISTS orders_contains_prods(
 	order_id int NOT NULL,
 	product_id varchar(5) NOT NULL,
+    quantity int,
+    
 	PRIMARY KEY(order_id,product_id),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY(order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
