@@ -12,6 +12,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import it.unisa.zyphyksport.model.DAO.CartsContainsProdsDAO;
+import it.unisa.zyphyksport.model.DAO.CartsDAO;
+import it.unisa.zyphyksport.model.DAO.ClientiDAO;
+import it.unisa.zyphyksport.model.DAO.GestoriCatalogoDAO;
+import it.unisa.zyphyksport.model.DAO.GestoriOrdiniDAO;
+import it.unisa.zyphyksport.model.DAO.ManagesProdsDAO;
+import it.unisa.zyphyksport.model.DAO.OrdersContainsProdsDAO;
+import it.unisa.zyphyksport.model.DAO.OrdersDAO;
+import it.unisa.zyphyksport.model.DAO.ProductsDAO;
+import it.unisa.zyphyksport.model.DAO.SizesDAO;
+
 /**
  * Servlet implementation class PopolamentoDBServlet
  */
@@ -33,75 +44,21 @@ public class PopolamentoDBServlet extends HttpServlet {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		
 		PrintWriter out = response.getWriter();
-        out.println("<p>" + ds + "</p>");
+		out.println("<p> Servlet di popolamento effettuata con successo. </p>");
+		
+		// Creazione DataSource necessari
+		GestoriCatalogoDAO gestCatDAO = new GestoriCatalogoDAO(ds);
+		GestoriOrdiniDAO gestOrdDAO = new GestoriOrdiniDAO(ds);
+        CartsDAO cartsDAO = new CartsDAO(ds);
+        ClientiDAO clientiDAO = new ClientiDAO(ds);
+        ProductsDAO productDAO = new ProductsDAO(ds);
+        OrdersDAO ordersDAO = new OrdersDAO(ds);
+        SizesDAO sizesDAO = new SizesDAO(ds);        
+        ManagesProdsDAO managesProdsDAO = new ManagesProdsDAO(ds);
+        CartsContainsProdsDAO cartsContainsProdsDAO = new CartsContainsProdsDAO(ds);
+        OrdersContainsProdsDAO ordersContainsProdsDAO = new OrdersContainsProdsDAO(ds);
         
-        Connection connection = null;
-
-        PreparedStatement preparedStmt = null;
-
-         
-
-        String insertSQL = "INSERT INTO " + "GESTORI_CATALOGO"
-
-        + " (USERNAME, NAME, SURNAME, EMAIL, PASS_WORD, RAL) VALUES (?, ?, ?, ?, ?, ?)";
-
-         
-
-        try {
-
-	        connection = ds.getConnection();
-	
-	        preparedStmt = connection.prepareStatement(insertSQL);
-	
-	        preparedStmt.setString(1, "PIPPO");
-	
-	        preparedStmt.setString(2, "GIUSEPPE");
-	
-	        preparedStmt.setString(3, "GUARRACINO");
-	
-	        preparedStmt.setString(4, "feofeodkewdwed@gmail.com");
-	
-	        preparedStmt.setString(5, "maidne2234");
-	
-	        preparedStmt.setInt(6, 2000);
-	
-	         
-	
-	        preparedStmt.executeUpdate();
-	
-	         
-	
-	        connection.setAutoCommit(false);
-	
-	        connection.commit();
-
-        } catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-
-        try {
-
-	        if (preparedStmt != null)
-	
-	        	preparedStmt.close();
-	
-	        } catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-	
-	        if (connection != null)
-				try {
-					connection.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	
-	        }
-
-        }
+        
 
 	}
 

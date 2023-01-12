@@ -9,8 +9,6 @@ import java.util.LinkedList;
 
 import javax.sql.DataSource;
 
-import it.unisa.gp.model.DAO.AbbonamentoDS;
-import it.unisa.gp.model.bean.AbbonamentoBean;
 import it.unisa.zyphyksport.model.bean.SizesBean;
 import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
 
