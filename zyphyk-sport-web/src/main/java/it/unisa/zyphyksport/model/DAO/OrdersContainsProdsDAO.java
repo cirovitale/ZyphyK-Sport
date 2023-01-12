@@ -106,7 +106,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, 0);
+				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, null);
 				orderContProd.setOrderId(rs.getInt("ORDER_ID"));
 				orderContProd.setProductId(rs.getString("PRODUCT_ID"));
 				ordersContProds.add(orderContProd);

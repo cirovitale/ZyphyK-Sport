@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -57,6 +58,58 @@ public class PopolamentoDBServlet extends HttpServlet {
         ManagesProdsDAO managesProdsDAO = new ManagesProdsDAO(ds);
         CartsContainsProdsDAO cartsContainsProdsDAO = new CartsContainsProdsDAO(ds);
         OrdersContainsProdsDAO ordersContainsProdsDAO = new OrdersContainsProdsDAO(ds);
+        
+        
+        
+        try {
+        	
+        	cartsDAO.doSave(0, 0);
+        	cartsDAO.doSave(1, 0);
+        	cartsDAO.doSave(2, 0);
+        	cartsDAO.doSave(3, 0);
+        	
+        	
+      
+        	cartsContainsProdsDAO.doSave(1, "ASD56");
+        	cartsContainsProdsDAO.doSave(1, "23AX1");
+        	cartsContainsProdsDAO.doSave(1, "ZZB35");
+        	cartsContainsProdsDAO.doSave(1, "111AQ");
+        	cartsContainsProdsDAO.doSave(2, "QEWER");
+        	cartsContainsProdsDAO.doSave(3, "23AX1");
+        	cartsContainsProdsDAO.doSave(3, "ASD56");
+
+        	
+        	
+        	
+			ordersDAO.doSave(0, null, null, LocalDateTime.now(),"Via Roma, 221" , "5333171120934758", 120, false);
+			ordersDAO.doSave(1, null, null, LocalDateTime.now(),"Via Casa Varone, 113" , "5333171121903456", 37, false);
+	        ordersDAO.doSave(2, null, null, LocalDateTime.now(),"Via Stabia, 36" , "6734536271823456", 99, true);
+	        ordersDAO.doSave(3, null, null, LocalDateTime.now(),"Via De Goti, 78" , "3324558912349076", 69, true);
+	        ordersDAO.doSave(4, null, null, LocalDateTime.now(),"Via Misano, 221" , "1234789467387462", 24, false);
+	        
+	        ordersContainsProdsDAO.doSave(0, "ASD56");
+	        ordersContainsProdsDAO.doSave(0, "23AX1");
+	        ordersContainsProdsDAO.doSave(0, "XXC01");
+	        ordersContainsProdsDAO.doSave(1, "3ASD7");
+	        ordersContainsProdsDAO.doSave(2, "3ASD7");
+	        ordersContainsProdsDAO.doSave(2, "X2341");
+	        ordersContainsProdsDAO.doSave(2, "QEWER");
+	        ordersContainsProdsDAO.doSave(3, "111AQ");
+	        ordersContainsProdsDAO.doSave(3, "0ASDA");
+	        ordersContainsProdsDAO.doSave(4, "ASD56");
+	        ordersContainsProdsDAO.doSave(4, "23AX1");
+	        ordersContainsProdsDAO.doSave(4, "QRW20");
+	        
+	        
+	        
+	        
+	        
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
         
         
 
