@@ -30,7 +30,7 @@ public class ClientiDAO implements ClientiInterf{
 		PreparedStatement preparedStmt = null;		
 		
 		String insertSQL = "INSERT INTO " + ClientiDAO.TABLE_NAME
-				+ " (USERNAME, CART_ID, NAME, SURNAME, EMAIL, PASS_WORD, BIRTH_DATE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (USERNAME, CART_ID, NAME, SURNAME, EMAIL, PASS_WORD, BIRTH_DATE) VALUES (?, ?, ?, ?, ?, MD5(?), ?)";
 		
 		try {
 			connection = ds.getConnection();
