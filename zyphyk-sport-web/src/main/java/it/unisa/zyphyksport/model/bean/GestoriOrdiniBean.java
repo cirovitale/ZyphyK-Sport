@@ -1,8 +1,9 @@
 package it.unisa.zyphyksport.model.bean;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class GestoriOrdiniBean {
+public class GestoriOrdiniBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private String username;
@@ -11,6 +12,7 @@ public class GestoriOrdiniBean {
 	private String email;
 	private String pass_word;
 	private int ral;
+	private final String RUOLO = "gestOrd";
 	
 	public GestoriOrdiniBean(String username, String name, String surname, String email, String pass_word, int ral) {
 		this.username = username;
@@ -23,6 +25,10 @@ public class GestoriOrdiniBean {
 
 	public String getUsername() {
 		return username;
+	}
+	
+	public String getRUOLO() {
+		return RUOLO;
 	}
 
 	public void setUsername(String username) {
@@ -92,8 +98,5 @@ public class GestoriOrdiniBean {
 		return Objects.equals(email, other.email) && Objects.equals(name, other.name)
 				&& Objects.equals(pass_word, other.pass_word) && ral == other.ral
 				&& Objects.equals(surname, other.surname) && Objects.equals(username, other.username);
-	}
-
-
-		
+	}	
 }

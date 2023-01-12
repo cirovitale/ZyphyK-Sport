@@ -16,6 +16,7 @@ public class ClientiBean implements Serializable{
 	private String email;
 	private String pass_word;
   	private LocalDateTime birthDate;
+  	private final String RUOLO = "cliente";
   	
 	public ClientiBean(String username, int cartId, String name, String surname, String email, String pass_word,
 			LocalDateTime birthDate) {
@@ -31,6 +32,10 @@ public class ClientiBean implements Serializable{
 	
 	public String getUsername() {
 		return username;
+	}
+	
+	public String getRUOLO() {
+		return RUOLO;
 	}
 	
 	public void setUsername(String username) {
@@ -88,18 +93,19 @@ public class ClientiBean implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Clienti [username=" + username + ", cartId=" + cartId + ", name=" + name + ", surname=" + surname
-				+ ", email=" + email + ", pass_word=" + pass_word + ", birthDate=" + birthDate + "]";
+		return "ClientiBean [username=" + username + ", cartId=" + cartId + ", name=" + name + ", surname=" + surname
+				+ ", email=" + email + ", pass_word=" + pass_word + ", birthDate=" + birthDate + ", RUOLO=" + RUOLO
+				+ "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(birthDate, cartId, email, name, pass_word, surname, username);
+		return Objects.hash(RUOLO, birthDate, cartId, email, name, pass_word, surname, username);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,9 +115,11 @@ public class ClientiBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ClientiBean other = (ClientiBean) obj;
-		return Objects.equals(birthDate, other.birthDate) && cartId == other.cartId
-				&& Objects.equals(email, other.email) && Objects.equals(name, other.name)
+		return Objects.equals(RUOLO, other.RUOLO) && Objects.equals(birthDate, other.birthDate)
+				&& cartId == other.cartId && Objects.equals(email, other.email) && Objects.equals(name, other.name)
 				&& Objects.equals(pass_word, other.pass_word) && Objects.equals(surname, other.surname)
 				&& Objects.equals(username, other.username);
 	}
+	
+	
 }

@@ -12,6 +12,7 @@ public class GestoriCatalogoBean implements Serializable{
 	private String email;
 	private String pass_word;
 	private int ral;
+	private final String RUOLO = "gestCat";
 
 	public GestoriCatalogoBean(String username, String name, String surname, String email, String pass_word, int ral) {
 		this.username = username;
@@ -20,6 +21,10 @@ public class GestoriCatalogoBean implements Serializable{
 		this.email = email;
 		this.pass_word = pass_word;
 		this.ral = ral;
+	}
+
+	public String getRUOLO() {
+		return RUOLO;
 	}
 
 	public String getUsername() {
