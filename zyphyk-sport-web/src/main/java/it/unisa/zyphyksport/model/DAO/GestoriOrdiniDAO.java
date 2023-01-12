@@ -30,7 +30,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + GestoriOrdiniDAO.TABLE_NAME
-				+ " (USERNAME, NAME, USERNAME, EMAIL, PASS_WORD,"
+				+ " (USERNAME, NAME, SURNAME, EMAIL, PASS_WORD,"
 				+ "RAL) VALUES (?, ?, ?, ?, MD5(?), ?)";
 		
 		try {

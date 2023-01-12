@@ -28,7 +28,7 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + GestoriCatalogoDAO.TABLE_NAME
-				+ " (USERNAME, NAME, USERNAME, EMAIL, PASS_WORD,"
+				+ " (USERNAME, NAME, SURNAME, EMAIL, PASS_WORD,"
 				+ "RAL) VALUES (?, ?, ?, ?, MD5(?), ?)";
 		
 		try {
