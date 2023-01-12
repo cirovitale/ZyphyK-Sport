@@ -29,7 +29,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + ManagesProdsDAO.TABLE_NAME
-				+ " (GEST_CAT_USERNAME, PRODUCT_ID, TIPOLOGIA) VALUES (?, ?, ?, ?, ?, ?)";
+				+ " (GEST_CAT_USERNAME, PRODUCT_ID, TIPOLOGIA) VALUES (?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
@@ -86,7 +86,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 
 		ManagesProdsBean managesProds = new ManagesProdsBean(null,null,0);
 
-		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE GEST_CAT_USERNAME = ? && WHERE PRODUCT_ID = ?";
+		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE GEST_CAT_USERNAME = ? AND WHERE PRODUCT_ID = ?";
 
 		try {
 			connection = ds.getConnection();

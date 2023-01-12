@@ -123,7 +123,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 
 		GestoriOrdiniBean gestOrd = new GestoriOrdiniBean(null,null,null,null,null,0);
 
-		String selectSQL = "SELECT * FROM " + GestoriOrdiniDAO.TABLE_NAME + " WHERE USESRNAME = ?";
+		String selectSQL = "SELECT * FROM " + GestoriOrdiniDAO.TABLE_NAME + " WHERE USERNAME = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -196,5 +196,5 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 		return array;
 	}
 
-	}
+}
 
