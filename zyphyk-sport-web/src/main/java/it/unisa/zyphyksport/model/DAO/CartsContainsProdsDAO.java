@@ -21,19 +21,21 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	}
 
 	@Override
-	public synchronized void doSave(int cartId, String productId) throws SQLException {
+	public synchronized void doSave(int cartId, String productId, int quantity) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + CartsContainsProdsDAO.TABLE_NAME
-				+ "(CART_ID, PRODUCT_ID) VALUES (?, ?)";
+				+ "(CART_ID, PRODUCT_ID, QUANTITY) VALUES (?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setInt(1, cartId);
 			preparedStmt.setString(2, productId);
+			preparedStmt.setInt(3, quantity);
+			
 
 			preparedStmt.executeUpdate();
 
@@ -49,6 +51,39 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 			}
 		}
 	}
+	
+
+	@Override
+	public void doUpdate(int cartId, String productId, int quantity) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStmt = null;
+		
+		String updateSQL = "UPDATE " + CartsContainsProdsDAO.TABLE_NAME
+				+ " SET QUANTITY = ?" + " WHERE CART_ID = ? AND PRODUCT_ID = ?";
+		
+		try {
+			connection = ds.getConnection();
+			preparedStmt = connection.prepareStatement(updateSQL);
+			preparedStmt.setInt(1, quantity);
+
+			preparedStmt.setInt(2, cartId);
+			preparedStmt.setString(3, productId);
+			preparedStmt.executeUpdate();
+
+			connection.setAutoCommit(false);
+			connection.commit();
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		
+	}
+	
 
 	@Override
 	public synchronized void doDelete(int cartId, String productId) throws SQLException {
@@ -98,9 +133,10 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				CartsContainsProdsBean bean = new CartsContainsProdsBean(0,null);
+				CartsContainsProdsBean bean = new CartsContainsProdsBean(0,null,0);
 				bean.setCartId(rs.getInt("CART_ID"));
 				bean.setProductId(rs.getString("PRODUCT_ID"));
+				bean.setQuantity(rs.getInt("QUANTITY"));
 				array.add(bean);
 			}
 
@@ -115,4 +151,5 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 		}
 		return array;
 	}
+
 }

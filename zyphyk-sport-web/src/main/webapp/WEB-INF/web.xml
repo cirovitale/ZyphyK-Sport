@@ -10,9 +10,19 @@
   	<description></description>
   	<servlet-class>it.unisa.zyphyksport.control.PopolamentoDBServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>Ex</servlet-name>
+  	<display-name>Ex</display-name>
+  	<description></description>
+  	<servlet-class>it.unisa.zyphyksport.control.Ex</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>PopolamentoDBServlet</servlet-name>
   	<url-pattern>/PopolamentoDBServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Ex</servlet-name>
+  	<url-pattern>/Ex</url-pattern>
   </servlet-mapping>
   <resource-ref>
   	<description>Riferimento JNDI ad un data source</description>

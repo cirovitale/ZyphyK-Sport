@@ -8,13 +8,15 @@ public class OrdersContainsProdsBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int orderId;
 	private String productId;
+	private int quantity;
 	
 	
 	
-	public OrdersContainsProdsBean(int orderId, String productId) {
+	public OrdersContainsProdsBean(int orderId, String productId, int quantity) {
 		super();
 		this.orderId = orderId;
 		this.productId = productId;
+		this.quantity = quantity;
 	}
 
 	public int getOrderId() {
@@ -33,14 +35,23 @@ public class OrdersContainsProdsBean implements Serializable{
 		this.productId = productId;
 	}
 
+	public int getQuantity() {
+		return orderId;
+	}
+	
+	public void setQuantity(int orderId) {
+		this.orderId = orderId;
+	}
+
 	@Override
 	public String toString() {
-		return "OrdersContainsProds [orderId=" + orderId + ", productId=" + productId + "]";
+		return "OrdersContainsProdsBean [orderId=" + orderId + ", productId=" + productId + ", quantity=" + quantity
+				+ "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(orderId, productId);
+		return Objects.hash(orderId, productId, quantity);
 	}
 
 	@Override
@@ -52,10 +63,7 @@ public class OrdersContainsProdsBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		OrdersContainsProdsBean other = (OrdersContainsProdsBean) obj;
-		return orderId == other.orderId && Objects.equals(productId, other.productId);
+		return orderId == other.orderId && Objects.equals(productId, other.productId) && quantity == other.quantity;
 	}
 
-	
-	
-	
 }

@@ -8,7 +8,7 @@ import it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean;
 
 public interface OrdersContainsProdsInterf {
 
-	public void doSave(int orderId, String productId) throws SQLException;
+	public void doSave(int orderId, String productId, int quantity) throws SQLException;
 	
 	public void doDelete(int orderId, String productId) throws SQLException;
 	

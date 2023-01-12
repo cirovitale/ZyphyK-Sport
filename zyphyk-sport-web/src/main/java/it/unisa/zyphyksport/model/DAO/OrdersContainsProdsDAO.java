@@ -28,12 +28,12 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	
 	
 	@Override
-	public synchronized void doSave(int orderId, String productId) throws SQLException {
+	public synchronized void doSave(int orderId, String productId, int quantity) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + OrdersContainsProdsDAO.TABLE_NAME
-				+ " (ORDER_ID, PRODUCT_ID) VALUES (?, ?)";
+				+ " (ORDER_ID, PRODUCT_ID, QUANTITY) VALUES (?, ?, ?)";
 		
 		try {
 			connection = ds.getConnection();
@@ -42,6 +42,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setInt(1, orderId);
 			preparedStmt.setString(2, productId);
+			preparedStmt.setInt(3, quantity);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -106,9 +107,10 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, null);
+				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, null,0);
 				orderContProd.setOrderId(rs.getInt("ORDER_ID"));
 				orderContProd.setProductId(rs.getString("PRODUCT_ID"));
+				orderContProd.setQuantity(rs.getInt("QUANTITY"));
 				ordersContProds.add(orderContProd);
 			}
 
