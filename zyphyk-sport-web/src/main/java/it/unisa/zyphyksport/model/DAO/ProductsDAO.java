@@ -27,7 +27,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 	
 	@Override
-	public void doSave(int id, String name, String sport, String brand, int price)
+	public void doSave(String id, String name, String sport, String brand, int price)
 			throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -40,7 +40,7 @@ public class ProductsDAO implements ProductsInterf{
 			
 			
 			preparedStmt = connection.prepareStatement(insertSQL);
-			preparedStmt.setInt(1, id);
+			preparedStmt.setString(1, id);
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, sport);
 			preparedStmt.setString(4, brand);
@@ -63,7 +63,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public void doUpdate(int id, String name, String sport, String brand, int price)
+	public void doUpdate(String id, String name, String sport, String brand, int price)
 			throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -79,7 +79,7 @@ public class ProductsDAO implements ProductsInterf{
 			preparedStmt.setString(3, brand);
 			preparedStmt.setInt(4, price);
 			
-			preparedStmt.setInt(5, id);
+			preparedStmt.setString(5, id);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -97,7 +97,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public void doDelete(int id) throws SQLException {
+	public void doDelete(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
@@ -108,7 +108,7 @@ public class ProductsDAO implements ProductsInterf{
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(updateSQL);
 			
-			preparedStmt.setInt(1, id);
+			preparedStmt.setString(1, id);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -126,22 +126,22 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public ProductsBean doRetrieveByKey(int id) throws SQLException {
+	public ProductsBean doRetrieveByKey(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		ProductsBean prodBean = new ProductsBean(0, null, null, null, 0);
+		ProductsBean prodBean = new ProductsBean(null, null, null, null, 0);
 
 		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(selectSQL);
-			preparedStmt.setInt(1, id);
+			preparedStmt.setString(1, id);
 			ResultSet rs = preparedStmt.executeQuery();
 
 			while (rs.next()) {
-				prodBean.setId(rs.getInt("ID"));
+				prodBean.setId(rs.getString("ID"));
 				prodBean.setName(rs.getString("NAME"));
 				prodBean.setSport(rs.getString("SPORT"));
 				prodBean.setBrand(rs.getString("BRAND"));
@@ -183,9 +183,9 @@ public class ProductsDAO implements ProductsInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				ProductsBean prodBean = new ProductsBean(0, null, null, null, 0);
+				ProductsBean prodBean = new ProductsBean(null, null, null, null, 0);
 				
-				prodBean.setId(rs.getInt("ID"));
+				prodBean.setId(rs.getString("ID"));
 				prodBean.setName(rs.getString("NAME"));
 				prodBean.setSport(rs.getString("SPORT"));
 				prodBean.setBrand(rs.getString("BRAND"));

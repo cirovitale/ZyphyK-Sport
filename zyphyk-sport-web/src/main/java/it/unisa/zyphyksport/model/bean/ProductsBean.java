@@ -7,14 +7,14 @@ public class ProductsBean implements Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private String id;
 	private String name;
 	private String sport;
 	private String brand;
 	private int price;
 	private boolean removed;
 	
-	public ProductsBean(int id, String name, String sport, String brand, int price) {
+	public ProductsBean(String id, String name, String sport, String brand, int price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -23,11 +23,11 @@ public class ProductsBean implements Serializable{
 		this.price = price;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
@@ -91,7 +91,7 @@ public class ProductsBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		ProductsBean other = (ProductsBean) obj;
-		return Objects.equals(brand, other.brand) && id == other.id && Objects.equals(name, other.name)
+		return Objects.equals(brand, other.brand) && Objects.equals(id, other.id) && Objects.equals(name, other.name)
 				&& price == other.price && removed == other.removed && Objects.equals(sport, other.sport);
 	}
 	

@@ -21,7 +21,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	}
 
 	@Override
-	public synchronized void doSave(int cartId, int productId) throws SQLException {
+	public synchronized void doSave(int cartId, String productId) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -33,7 +33,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setInt(1, cartId);
-			preparedStmt.setInt(2, productId);
+			preparedStmt.setString(2, productId);
 
 			preparedStmt.executeUpdate();
 
@@ -51,7 +51,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	}
 
 	@Override
-	public synchronized void doDelete(int cartId, int productId) throws SQLException {
+	public synchronized void doDelete(int cartId, String productId) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -62,7 +62,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setInt(1, cartId);
-			preparedStmt.setInt(2, productId);
+			preparedStmt.setString(2, productId);
 
 			preparedStmt.executeUpdate();
 		} finally {
@@ -100,7 +100,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 			while (rs.next()) {
 				CartsContainsProdsBean bean = new CartsContainsProdsBean(0,0);
 				bean.setCartId(rs.getInt("CART_ID"));
-				bean.setProductId(rs.getInt("PRODUCT_ID"));
+				bean.setProductId(rs.getString("PRODUCT_ID"));
 				array.add(bean);
 			}
 

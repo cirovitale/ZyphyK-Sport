@@ -7,11 +7,11 @@ public class OrdersContainsProdsBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private int orderId;
-	private int productId;
+	private String productId;
 	
 	
 	
-	public OrdersContainsProdsBean(int orderId, int productId) {
+	public OrdersContainsProdsBean(int orderId, String productId) {
 		super();
 		this.orderId = orderId;
 		this.productId = productId;
@@ -25,11 +25,11 @@ public class OrdersContainsProdsBean implements Serializable{
 		this.orderId = orderId;
 	}
 	
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 	
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -52,8 +52,10 @@ public class OrdersContainsProdsBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		OrdersContainsProdsBean other = (OrdersContainsProdsBean) obj;
-		return orderId == other.orderId && productId == other.productId;
+		return orderId == other.orderId && Objects.equals(productId, other.productId);
 	}
+
+	
 	
 	
 }

@@ -22,7 +22,7 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public synchronized void doSave(int productId, int value) throws SQLException {
+	public synchronized void doSave(String productId, int value) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -33,7 +33,7 @@ public class SizesDAO implements SizesInterf{
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
-			preparedStmt.setInt(1, productId);
+			preparedStmt.setString(1, productId);
 			preparedStmt.setInt(2, value);
 
 			preparedStmt.executeUpdate();
@@ -52,7 +52,7 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public synchronized void doDelete(int productId, int value) throws SQLException {
+	public synchronized void doDelete(String productId, int value) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -62,7 +62,7 @@ public class SizesDAO implements SizesInterf{
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
-			preparedStmt.setInt(1, productId);
+			preparedStmt.setString(1, productId);
 			preparedStmt.setInt(2, value);
 
 			preparedStmt.executeUpdate();
@@ -79,7 +79,7 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public Collection<SizesBean> doRetrieveByProductId(int productId, String order) throws SQLException {
+	public Collection<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -96,13 +96,13 @@ public class SizesDAO implements SizesInterf{
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(selectSQL);
-			preparedStmt.setInt(1, productId);
+			preparedStmt.setString(1, productId);
 
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				SizesBean bean = new SizesBean(0,0);
-				bean.setProductId(rs.getInt("PRODUCT_ID"));
+				SizesBean bean = new SizesBean(0,null);
+				bean.setProductId(rs.getString("PRODUCT_ID"));
 				bean.setValue(rs.getInt("VALUE"));
 				array.add(bean);
 			}
@@ -140,8 +140,8 @@ public class SizesDAO implements SizesInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				SizesBean bean = new SizesBean(0,0);
-				bean.setProductId(rs.getInt("PRODUCT_ID"));
+				SizesBean bean = new SizesBean(0,null);
+				bean.setProductId(rs.getString("PRODUCT_ID"));
 				bean.setValue(rs.getInt("VALUE"));
 				array.add(bean);
 			}

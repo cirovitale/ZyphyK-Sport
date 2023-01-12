@@ -9,9 +9,9 @@ public class SizesBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int value;
-	private int productId;
+	private String productId;
 	
-	public SizesBean(int value, int productId) {
+	public SizesBean(int value, String productId) {
 		super();
 		this.value = value;
 		this.productId = productId;
@@ -25,11 +25,11 @@ public class SizesBean implements Serializable{
 		this.value = value;
 	}
 	
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 	
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
@@ -37,12 +37,12 @@ public class SizesBean implements Serializable{
 	public String toString() {
 		return "SizesBean [value=" + value + ", productId=" + productId + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(productId, value);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,6 +52,8 @@ public class SizesBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		SizesBean other = (SizesBean) obj;
-		return productId == other.productId && value == other.value;
+		return Objects.equals(productId, other.productId) && value == other.value;
 	}
+	
+	
 }

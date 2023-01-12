@@ -9,9 +9,9 @@ public class CartsContainsProdsBean implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int cartId;
-	private int productId;
+	private String productId;
 	
-	public CartsContainsProdsBean(int cartId, int productId) {
+	public CartsContainsProdsBean(int cartId, String productId) {
 		super();
 		this.cartId = cartId;
 		this.productId = productId;
@@ -25,11 +25,11 @@ public class CartsContainsProdsBean implements Serializable{
 		this.cartId = cartId;
 	}
 	
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 	
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 	
@@ -37,12 +37,12 @@ public class CartsContainsProdsBean implements Serializable{
 	public String toString() {
 		return "CartsContainsProds [cartId=" + cartId + ", productId=" + productId + "]";
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(cartId, productId);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,6 +52,7 @@ public class CartsContainsProdsBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CartsContainsProdsBean other = (CartsContainsProdsBean) obj;
-		return cartId == other.cartId && productId == other.productId;
+		return cartId == other.cartId && Objects.equals(productId, other.productId);
 	}
+	
 }

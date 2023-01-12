@@ -28,7 +28,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	
 	
 	@Override
-	public synchronized void doSave(int orderId, int productId) throws SQLException {
+	public synchronized void doSave(int orderId, String productId) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
@@ -41,7 +41,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setInt(1, orderId);
-			preparedStmt.setInt(2, productId);
+			preparedStmt.setString(2, productId);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -59,7 +59,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	}
 
 	@Override
-	public synchronized void doDelete(int orderId, int productId) throws SQLException {
+	public synchronized void doDelete(int orderId, String productId) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
@@ -69,7 +69,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setInt(1, orderId);
-			preparedStmt.setInt(2, productId);
+			preparedStmt.setString(2, productId);
 
 			preparedStmt.executeUpdate();
 
@@ -108,7 +108,7 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			while (rs.next()) {
 				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, 0);
 				orderContProd.setOrderId(rs.getInt("ORDER_ID"));
-				orderContProd.setProductId(rs.getInt("PRODUCT_ID"));
+				orderContProd.setProductId(rs.getString("PRODUCT_ID"));
 				ordersContProds.add(orderContProd);
 			}
 

@@ -24,7 +24,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public synchronized void doSave(String gestCatUsername, int productId, int tipologia) throws SQLException {
+	public synchronized void doSave(String gestCatUsername, String productId, int tipologia) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
@@ -35,7 +35,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setString(1, gestCatUsername);
-			preparedStmt.setInt(2, productId);
+			preparedStmt.setString(2, productId);
 			preparedStmt.setInt(3, tipologia);
 
 			preparedStmt.executeUpdate();
@@ -55,7 +55,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public synchronized void doDelete(String gestCatUsername, int productId) throws SQLException {
+	public synchronized void doDelete(String gestCatUsername, String productId) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
@@ -65,7 +65,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setString(1, gestCatUsername);
-			preparedStmt.setInt(1, productId);
+			preparedStmt.setString(1, productId);
 
 		} finally {
 			try {
@@ -80,11 +80,11 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public synchronized ManagesProdsBean doRetrieveByKey(String gestCatUsername, int productId) throws SQLException {
+	public synchronized ManagesProdsBean doRetrieveByKey(String gestCatUsername, String productId) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		ManagesProdsBean managesProds = new ManagesProdsBean(null,0,0);
+		ManagesProdsBean managesProds = new ManagesProdsBean(null,null,0);
 
 		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE GEST_CAT_USERNAME = ? && WHERE PRODUCT_ID = ?";
 
@@ -92,13 +92,13 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(selectSQL);
 			preparedStmt.setString(1, gestCatUsername);
-			preparedStmt.setInt(2, productId);
+			preparedStmt.setString(2, productId);
 
 			ResultSet rs = preparedStmt.executeQuery();
 
 			while (rs.next()) {
 				managesProds.setGestCatUsername(rs.getString("GEST_CAT_USERNAME"));
-				managesProds.setProductId(rs.getInt("PRODUCT_ID"));
+				managesProds.setProductId(rs.getString("PRODUCT_ID"));
 			}
 
 		} finally {
@@ -115,7 +115,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public Collection<ManagesProdsBean> doRetrieveAll(String gestCatUsername, int productId) throws SQLException {
+	public Collection<ManagesProdsBean> doRetrieveAll(String gestCatUsername, String productId) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -135,9 +135,9 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 
 			ResultSet rs = preparedStmt.executeQuery();
 			while (rs.next()) {
-				ManagesProdsBean managesProds = new ManagesProdsBean(null,0,0);
+				ManagesProdsBean managesProds = new ManagesProdsBean(null,null,0);
 				managesProds.setGestCatUsername(rs.getString("GEST_CAT_USERNAME"));
-				managesProds.setProductId(rs.getInt("PRODUCT_ID"));
+				managesProds.setProductId(rs.getString("PRODUCT_ID"));
 
 				array.add(managesProds);
 			}

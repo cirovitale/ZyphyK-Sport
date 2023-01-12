@@ -6,10 +6,11 @@ public class ManagesProdsBean {
 	
 	private static final long serialVersionUID = 1L;
 	private String gestCatUsername;
-	private int productId;
+	private String productId;
+	// 0: aggiunta, 1: rimozione, 2: modifica
 	private int tipologia;
 	
-	public ManagesProdsBean(String gestCatUsername, int productId, int tipologia) {
+	public ManagesProdsBean(String gestCatUsername, String productId, int tipologia) {
 		super();
 		this.gestCatUsername = gestCatUsername;
 		this.productId = productId;
@@ -24,11 +25,11 @@ public class ManagesProdsBean {
 		this.gestCatUsername = gestCatUsername;
 	}
 
-	public int getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(int productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -49,7 +50,7 @@ public class ManagesProdsBean {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(gestCatUsername, productId, tipologia);
@@ -64,8 +65,9 @@ public class ManagesProdsBean {
 		if (getClass() != obj.getClass())
 			return false;
 		ManagesProdsBean other = (ManagesProdsBean) obj;
-		return Objects.equals(gestCatUsername, other.gestCatUsername) && productId == other.productId
+		return Objects.equals(gestCatUsername, other.gestCatUsername) && Objects.equals(productId, other.productId)
 				&& tipologia == other.tipologia;
 	}
+	
 	
 }
