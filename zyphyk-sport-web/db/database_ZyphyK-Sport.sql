@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS gestori_catalogo(
   	email varchar(50) NOT NULL,
   	pass_word varchar(50) NOT NULL,
   	ral int NOT NULL,
+  	roles varchar(8) DEFAULT 'gestCat',
 
 	PRIMARY KEY(username)
 ); 
@@ -20,6 +21,7 @@ CREATE TABLE IF NOT EXISTS gestori_ordini(
   	email varchar(50) NOT NULL,
   	pass_word varchar(50) NOT NULL,
   	ral int NOT NULL,
+  	roles varchar(8) DEFAULT 'gestOrd',
 
 	PRIMARY KEY(username)
 ); 
@@ -39,6 +41,7 @@ CREATE TABLE IF NOT EXISTS gestori_ordini(
   	email varchar(50) NOT NULL,
   	pass_word varchar(50) NOT NULL,
   	birth_date DATE NOT NULL,
+  	roles varchar(8) DEFAULT 'cliente',
 
 
 	PRIMARY KEY(username),
