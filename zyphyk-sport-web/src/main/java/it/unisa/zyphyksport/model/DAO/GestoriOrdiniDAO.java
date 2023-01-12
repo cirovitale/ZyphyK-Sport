@@ -31,7 +31,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 		
 		String insertSQL = "INSERT INTO " + GestoriOrdiniDAO.TABLE_NAME
 				+ " (USERNAME, NAME, USERNAME, EMAIL, PASS_WORD,"
-				+ "RAL) VALUES (?, ?, ?, ?, ?, ?)";
+				+ "RAL) VALUES (?, ?, ?, ?, MD5(?), ?)";
 		
 		try {
 			connection = ds.getConnection();
