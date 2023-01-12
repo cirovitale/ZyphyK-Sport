@@ -1,0 +1,35 @@
+@charset "ISO-8859-1";
+
+.icona{
+	font-size:0;
+	width:40px;
+	height:40px;
+}
+
+.user{
+	font-size:0;
+	width:35px;
+	height:35px;
+}
+
+
+.vertical{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+.page{
+	min-height:49.5vh;
+}
+
+
+.image-piccola{
+	transition: 0.25s;
+}
+
+.image-grande{
+	width: 550px!important;
+
+}

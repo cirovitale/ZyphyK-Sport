@@ -23,7 +23,6 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 		
 		this.ds = ds;
 		
-		System.out.println("Creazione DataSource...");
 	}
 	
 	

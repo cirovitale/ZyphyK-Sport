@@ -18,8 +18,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 	
 	public GestoriOrdiniDAO(DataSource ds) {
 		this.ds = ds;
-		
-		System.out.println("Creazione DataSource...");
+
 	}
 	
 

@@ -22,8 +22,7 @@ public class ProductsDAO implements ProductsInterf{
 	public ProductsDAO(DataSource ds) {
 		
 		this.ds = ds;
-		
-		System.out.println("Creazione DataSource...");
+
 	}
 	
 	@Override

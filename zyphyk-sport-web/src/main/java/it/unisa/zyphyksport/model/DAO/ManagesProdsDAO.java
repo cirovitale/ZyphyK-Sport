@@ -19,8 +19,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	
 	public ManagesProdsDAO(DataSource ds) {
 		this.ds = ds;
-		
-		System.out.println("Creazione DataSource...");
+
 	}
 
 	@Override

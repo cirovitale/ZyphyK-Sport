@@ -18,8 +18,6 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 	
 	public GestoriCatalogoDAO(DataSource ds) {
 		this.ds = ds;
-		
-		System.out.println("Creazione DataSource...");
 	}
 
 	@Override

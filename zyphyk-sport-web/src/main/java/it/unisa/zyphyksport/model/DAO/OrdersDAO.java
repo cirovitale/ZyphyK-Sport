@@ -24,8 +24,7 @@ public class OrdersDAO implements OrdersInterf{
 	public OrdersDAO(DataSource ds) {
 		
 		this.ds = ds;
-		
-		System.out.println("Creazione DataSource...");
+
 	}
 	
 	
