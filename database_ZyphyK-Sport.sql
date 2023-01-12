@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS products(
 
 CREATE TABLE IF NOT EXISTS sizes(
 	value int NOT NULL,
-	product_id varchar(5) NOT NULL,
+	product_id varchar(5),
 
 	PRIMARY KEY(value, product_id),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE
