@@ -110,44 +110,47 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        sizesDAO.doSave("3ASD7",42);
 	        sizesDAO.doSave("X2341",42);
 	        
-        	cartsContainsProdsDAO.doSave(1, "ASD56");
-        	cartsContainsProdsDAO.doSave(1, "23AX1");
-        	cartsContainsProdsDAO.doSave(1, "ZZB35");
-        	cartsContainsProdsDAO.doSave(1, "111AQ");
-        	cartsContainsProdsDAO.doSave(2, "QEWER");
-        	cartsContainsProdsDAO.doSave(3, "23AX1");
-        	cartsContainsProdsDAO.doSave(3, "ASD56");
+//        	cartsContainsProdsDAO.doSave(1, "ASD56", 1);
+//        	cartsContainsProdsDAO.doSave(1, "23AX1", 2);
+//        	cartsContainsProdsDAO.doSave(1, "ZZB35", 3);
+//        	cartsContainsProdsDAO.doSave(1, "111AQ", 1);
+//        	cartsContainsProdsDAO.doSave(2, "QEWER", 1);
+//        	cartsContainsProdsDAO.doSave(3, "23AX1", 2);
+//        	cartsContainsProdsDAO.doSave(3, "ASD56", 1);
         	
-        	managesProdsDAO.doSave("DarMoccia", "ASD56",0);
-        	managesProdsDAO.doSave("DarMoccia", "3ASD7",0);
-        	managesProdsDAO.doSave("DarMoccia", "ZZB35",0);
-        	managesProdsDAO.doSave("DarMoccia", "QRW20",0);
-        	managesProdsDAO.doSave("DarMoccia", "XXC01",0);
-        	managesProdsDAO.doSave("DarMoccia", "0ASDA",0);
+        	managesProdsDAO.doSave("DarMoccia", "ASD56", 0);
+        	managesProdsDAO.doSave("DarMoccia", "3ASD7", 0);
+        	managesProdsDAO.doSave("DarMoccia", "ZZB35", 0);
+        	managesProdsDAO.doSave("DarMoccia", "QRW20", 0);
+        	managesProdsDAO.doSave("DarMoccia", "XXC01", 0);
+        	managesProdsDAO.doSave("DarMoccia", "0ASDA", 0);
         	
-        	managesProdsDAO.doSave("MasVarriale", "23AX1",0);
-        	managesProdsDAO.doSave("MasVarriale", "X2341",0);
-        	managesProdsDAO.doSave("MasVarriale", "BFD32",0);
-        	managesProdsDAO.doSave("MasVarriale", "111AQ",0);       	
+        	managesProdsDAO.doSave("MasVarriale", "23AX1", 0);
+        	managesProdsDAO.doSave("MasVarriale", "X2341", 0);
+        	managesProdsDAO.doSave("MasVarriale", "BFD32", 0);
+        	managesProdsDAO.doSave("MasVarriale", "111AQ", 0);       	
 
 			ordersDAO.doSave(0, "daniPicci", null, LocalDateTime.now(),"Via Roma, 221" , "5333171120934758", 120, false);
 			ordersDAO.doSave(1, "marioRossi", null, LocalDateTime.now(),"Via Casa Varone, 113" , "5333171121903456", 37, false);
-	        ordersDAO.doSave(2, "daniPicci", "DarMoccia", LocalDateTime.now(),"Via Stabia, 36" , "6734536271823456", 99, true);
-	        ordersDAO.doSave(3, "peppeRoma", "MasVarriale", LocalDateTime.now(),"Via De Goti, 78" , "3324558912349076", 69, true);
+	        ordersDAO.doSave(2, "daniPicci", null, LocalDateTime.now(),"Via Stabia, 36" , "6734536271823456", 99, false);
+	        ordersDAO.doSave(3, "peppeRoma", null, LocalDateTime.now(),"Via De Goti, 78" , "3324558912349076", 69, false);
 	        ordersDAO.doSave(4, "angeloPorte", null, LocalDateTime.now(),"Via Misano, 221" , "1234789467387462", 24, false);
 	        
-	        ordersContainsProdsDAO.doSave(0, "ASD56");
-	        ordersContainsProdsDAO.doSave(0, "23AX1");
-	        ordersContainsProdsDAO.doSave(0, "XXC01");
-	        ordersContainsProdsDAO.doSave(1, "3ASD7");
-	        ordersContainsProdsDAO.doSave(2, "3ASD7");
-	        ordersContainsProdsDAO.doSave(2, "X2341");
-	        ordersContainsProdsDAO.doSave(2, "QEWER");
-	        ordersContainsProdsDAO.doSave(3, "111AQ");
-	        ordersContainsProdsDAO.doSave(3, "0ASDA");
-	        ordersContainsProdsDAO.doSave(4, "ASD56");
-	        ordersContainsProdsDAO.doSave(4, "23AX1");
-	        ordersContainsProdsDAO.doSave(4, "QRW20"); 
+	        ordersDAO.doUpdateSent(2, "DarMoccia");
+	        ordersDAO.doUpdateSent(3, "MasVarriale");
+	        
+//	        ordersContainsProdsDAO.doSave(0, "ASD56", 1);
+//	        ordersContainsProdsDAO.doSave(0, "23AX1", 2);
+//	        ordersContainsProdsDAO.doSave(0, "XXC01", 1);
+//	        ordersContainsProdsDAO.doSave(1, "3ASD7", 3);
+//	        ordersContainsProdsDAO.doSave(2, "3ASD7", 1);
+//	        ordersContainsProdsDAO.doSave(2, "X2341", 2);
+//	        ordersContainsProdsDAO.doSave(2, "QEWER", 1);
+//	        ordersContainsProdsDAO.doSave(3, "111AQ", 4);
+//	        ordersContainsProdsDAO.doSave(3, "0ASDA", 1);
+//	        ordersContainsProdsDAO.doSave(4, "ASD56", 2);
+//	        ordersContainsProdsDAO.doSave(4, "23AX1", 1);
+//	        ordersContainsProdsDAO.doSave(4, "QRW20", 1); 
         
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
