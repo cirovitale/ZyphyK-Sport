@@ -104,21 +104,44 @@ public class OrdersDAO implements OrdersInterf{
 	}
 
 	@Override
-	public synchronized void doDelete(int id) throws SQLException {
+	public synchronized void doUpdateSent(int id, String gestOrdUsername) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String updateSQL = "UPDATE " + OrdersDAO.TABLE_NAME
-				+ " SET SENT = TRUE" + " WHERE ID = ?";
+				+ " SET SENT = TRUE, GEST_ORD_USERNAME = ?" + " WHERE ID = ?";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(updateSQL);
-			preparedStmt.setInt(1, id);
+			preparedStmt.setString(1, gestOrdUsername);
+			preparedStmt.setInt(2, id);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
 			connection.commit();
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+	}
+	
+	public void doDelete(int id) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStmt = null;
+
+		String deleteSQL = "DELETE FROM " + OrdersDAO.TABLE_NAME + " WHERE ID = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStmt = connection.prepareStatement(deleteSQL);
+			preparedStmt.setInt(1, id);
+
 		} finally {
 			try {
 				if (preparedStmt != null)

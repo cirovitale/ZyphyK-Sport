@@ -12,6 +12,8 @@ public interface OrdersInterf {
 	
 	public void doUpdate(int id, LocalDateTime dateTime, String shippingAddress, String paymentMethod, int amount, boolean sent) throws SQLException;
 
+	public void doUpdateSent(int id, String gestOrdUsername) throws SQLException;
+	
 	public void doDelete(int id) throws SQLException;
 
 	public OrdersBean doRetrieveByKey(int id) throws SQLException;

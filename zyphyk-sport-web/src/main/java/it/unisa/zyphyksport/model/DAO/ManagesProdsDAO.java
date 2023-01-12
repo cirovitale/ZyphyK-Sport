@@ -65,7 +65,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setString(1, gestCatUsername);
-			preparedStmt.setString(1, productId);
+			preparedStmt.setString(2, productId);
 
 		} finally {
 			try {
