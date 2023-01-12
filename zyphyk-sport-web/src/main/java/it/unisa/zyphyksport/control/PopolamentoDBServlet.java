@@ -57,8 +57,58 @@ public class PopolamentoDBServlet extends HttpServlet {
         ManagesProdsDAO managesProdsDAO = new ManagesProdsDAO(ds);
         CartsContainsProdsDAO cartsContainsProdsDAO = new CartsContainsProdsDAO(ds);
         OrdersContainsProdsDAO ordersContainsProdsDAO = new OrdersContainsProdsDAO(ds);
+ 
+        try {
+        	gestCatDAO.doSave("DarMoccia", "Dario", "Moccia", "darMoccia@gmail.com", "paperino33", 1500);
+        	gestCatDAO.doSave("MasVarriale", "Massimo", "Varriale", "MasVar@gmail.com", "gestoreCat2", 1400);
         
+        	gestOrdDAO.doSave("LuBacco", "Luigi", "Bacco", "lbgames@gmail.com", "paperoga104", 1700); 
         
+        	managesProdsDAO.doSave("DarMoccia", "ASD56",0);
+        	managesProdsDAO.doSave("DarMoccia", "3ASD7",0);
+        	managesProdsDAO.doSave("DarMoccia", "ZZB35",0);
+        	managesProdsDAO.doSave("DarMoccia", "QRW20",0);
+        	managesProdsDAO.doSave("DarMoccia", "XXC01",0);
+        	managesProdsDAO.doSave("DarMoccia", "0ASDA",0);
+        	
+        	managesProdsDAO.doSave("MasVarriale", "23AX1",0);
+        	managesProdsDAO.doSave("MasVarriale", "X2341",0);
+        	managesProdsDAO.doSave("MasVarriale", "BFD32",0);
+        	managesProdsDAO.doSave("MasVarriale", "111AQ",0);
+        	
+	        sizesDAO.doSave("23AX1",36);
+	        sizesDAO.doSave("3ASD7",36);
+	        sizesDAO.doSave("XXC01",36);
+	        sizesDAO.doSave("BFD32",36);
+	        
+	        sizesDAO.doSave("ASD56",37);
+	        sizesDAO.doSave("23AX1",37);
+	        
+	        sizesDAO.doSave(null, 38);
+	        
+	        sizesDAO.doSave("23AX1",39);
+	        sizesDAO.doSave("3ASD7",39);
+	        sizesDAO.doSave("X2341",39);
+	        sizesDAO.doSave("ZZB35",39);
+	        sizesDAO.doSave("QRW20",39);
+	        
+	        sizesDAO.doSave("ASD56",40);
+	        sizesDAO.doSave("23AX1",40);
+	        sizesDAO.doSave("XXC01",40);
+	        sizesDAO.doSave("111AQ",40);        
+	        
+	        sizesDAO.doSave("ASD56",41);
+	        sizesDAO.doSave("X2341",41);
+	        sizesDAO.doSave("ZZB35",41);
+	        sizesDAO.doSave("QRW20",41); 
+	        
+	        sizesDAO.doSave("3ASD7",42);
+	        sizesDAO.doSave("X2341",42);
+        
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}         
 
 	}
 
