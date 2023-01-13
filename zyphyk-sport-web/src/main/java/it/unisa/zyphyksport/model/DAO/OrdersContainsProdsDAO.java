@@ -27,21 +27,35 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	
 	
 	@Override
-	public synchronized void doSave(int orderId, String productId, int quantity) throws SQLException {
+	public synchronized void doSave(int orderId, String productId, int quantity, int size) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
+		PreparedStatement preparedStmtProdotto = null;
 		
 		String insertSQL = "INSERT INTO " + OrdersContainsProdsDAO.TABLE_NAME
-				+ " (ORDER_ID, PRODUCT_ID, QUANTITY) VALUES (?, ?, ?)";
+				+ " (ORDER_ID, PRODUCT_ID, QUANTITY, SIZE, PRICE) VALUES (?, ?, ?, ?, ?)";
+		
+		String selectSQL = "SELECT PRICE FROM PRODUCTS WHERE ID = ?";
+		
+		
 		
 		try {
 			connection = ds.getConnection();
 			
+			preparedStmtProdotto = connection.prepareStatement(selectSQL);
+			preparedStmtProdotto.setString(1, productId);
+			ResultSet rs = preparedStmtProdotto.executeQuery();
+			int costo = 0;
+			if(rs.next()) {
+				costo = rs.getInt("PRICE");
+			}
 			
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setInt(1, orderId);
 			preparedStmt.setString(2, productId);
 			preparedStmt.setInt(3, quantity);
+			preparedStmt.setInt(4, size);
+			preparedStmt.setInt(5, costo);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -70,7 +84,6 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setInt(1, orderId);
 			preparedStmt.setString(2, productId);
-
 			preparedStmt.executeUpdate();
 
 		} finally {
@@ -106,10 +119,55 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, null,0);
+				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, null,0,0,0);
 				orderContProd.setOrderId(rs.getInt("ORDER_ID"));
 				orderContProd.setProductId(rs.getString("PRODUCT_ID"));
 				orderContProd.setQuantity(rs.getInt("QUANTITY"));
+				orderContProd.setSize(rs.getInt("SIZE"));
+				orderContProd.setPrice(rs.getInt("PRICE"));
+				ordersContProds.add(orderContProd);
+			}
+
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return ordersContProds;
+	}
+	
+	
+	public synchronized Collection<OrdersContainsProdsBean> doRetrieveAllProds(int orderId, String order) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStmt = null;
+
+		Collection<OrdersContainsProdsBean> ordersContProds = new LinkedList<OrdersContainsProdsBean>();
+
+		String selectSQL = "SELECT * FROM " + OrdersContainsProdsDAO.TABLE_NAME + " WHERE ORDER_ID = ?";
+		
+
+		if (order != null && !order.equals("")) {
+			selectSQL += " ORDER BY " + order;
+		}
+
+		try {
+			connection = ds.getConnection();
+			preparedStmt = connection.prepareStatement(selectSQL);
+			preparedStmt.setInt(1, orderId);
+
+			ResultSet rs = preparedStmt.executeQuery();
+			
+			while (rs.next()) {
+				OrdersContainsProdsBean orderContProd = new OrdersContainsProdsBean(0, null,0,0,0);
+				orderContProd.setOrderId(rs.getInt("ORDER_ID"));
+				orderContProd.setProductId(rs.getString("PRODUCT_ID"));
+				orderContProd.setQuantity(rs.getInt("QUANTITY"));
+				orderContProd.setSize(rs.getInt("SIZE"));
+				orderContProd.setPrice(rs.getInt("PRICE"));
 				ordersContProds.add(orderContProd);
 			}
 
