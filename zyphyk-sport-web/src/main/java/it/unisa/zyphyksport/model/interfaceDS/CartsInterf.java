@@ -7,7 +7,7 @@ import it.unisa.zyphyksport.model.bean.CartsBean;
 
 
 public interface CartsInterf {
-	public void doSave(int amount) throws SQLException;
+	public int doSave(int amount) throws SQLException;
 	
 	public void doUpdate(int id, int amount) throws SQLException;
 

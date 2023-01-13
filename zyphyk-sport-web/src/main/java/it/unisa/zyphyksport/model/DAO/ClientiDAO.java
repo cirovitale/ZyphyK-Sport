@@ -1,10 +1,12 @@
 package it.unisa.zyphyksport.model.DAO;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -25,7 +27,7 @@ public class ClientiDAO implements ClientiInterf{
 
 	@Override
 	public synchronized void doSave(String username, int cartId, String name, String surname, String email, String pass_word,
-			LocalDateTime birthDate) throws SQLException {
+			LocalDate birthDate) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;		
 		
@@ -42,7 +44,7 @@ public class ClientiDAO implements ClientiInterf{
 			preparedStmt.setString(4, surname);
 			preparedStmt.setString(5, email);
 			preparedStmt.setString(6, pass_word);
-			preparedStmt.setTimestamp(7, Timestamp.valueOf(LocalDateTime.now()));
+			preparedStmt.setDate(7, java.sql.Date.valueOf(birthDate));
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -60,7 +62,7 @@ public class ClientiDAO implements ClientiInterf{
 
 	@Override
 	public synchronized void doUpdate(String username, String name, String surname, String email, String pass_word,
-			LocalDateTime birthDate) throws SQLException {
+			LocalDate birthDate) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -75,7 +77,7 @@ public class ClientiDAO implements ClientiInterf{
 			preparedStmt.setString(2, surname);
 			preparedStmt.setString(3, email);
 			preparedStmt.setString(4, pass_word);
-			preparedStmt.setTimestamp(5, java.sql.Timestamp.valueOf(birthDate));
+			preparedStmt.setDate(5, java.sql.Date.valueOf(birthDate));
 			preparedStmt.setString(6, username);
 			preparedStmt.executeUpdate();
 
@@ -141,7 +143,8 @@ public class ClientiDAO implements ClientiInterf{
 				bean.setSurname(rs.getString("SURNAME"));
 				bean.setEmail(rs.getString("EMAIL"));
 				bean.setPass_word(rs.getString("PASS_WORD"));
-				bean.setBirthDate(rs.getTimestamp("BIRTH_DATE").toLocalDateTime());
+				Date date = rs.getDate("BIRTH_DATE"); 
+				bean.setBirthDate(date.toLocalDate());
 			}
 
 		} finally {
@@ -186,7 +189,8 @@ public class ClientiDAO implements ClientiInterf{
 				bean.setSurname(rs.getString("SURNAME"));
 				bean.setEmail(rs.getString("EMAIL"));
 				bean.setPass_word(rs.getString("PASS_WORD"));
-				bean.setBirthDate(rs.getTimestamp("BIRTH_DATE").toLocalDateTime());
+				Date date = rs.getDate("BIRTH_DATE"); 
+				bean.setBirthDate(date.toLocalDate());
 				
 				array.add(bean);
 			}

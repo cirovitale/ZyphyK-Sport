@@ -22,32 +22,45 @@ public class CartsDAO implements CartsInterf{
 	}
 
 	@Override
-	public synchronized void doSave(int amount) throws SQLException {
+	public synchronized int doSave(int amount) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
-		PreparedStatement preparedStmt = null;
+		PreparedStatement preparedStmt1 = null;
+		PreparedStatement preparedStmt2 = null;
 		
 		String insertSQL = "INSERT INTO " + CartsDAO.TABLE_NAME
 				+ " (AMOUNT) VALUES (?)";
 		
+		String selectSQL = "SELECT LAST_INSERT_ID()"; 
+		
+		int cartId = 0;
 		try {
 			connection = ds.getConnection();
-			preparedStmt = connection.prepareStatement(insertSQL);
-			preparedStmt.setInt(1, amount);
+			
+			preparedStmt1 = connection.prepareStatement(insertSQL);
+			preparedStmt1.setInt(1, amount);
 
-			preparedStmt.executeUpdate();
+			preparedStmt1.executeUpdate();
+			
+			preparedStmt2 = connection.prepareStatement(selectSQL);
+			ResultSet rs2 = preparedStmt2.executeQuery();
+			
+			if(rs2.next()) {
+				cartId = rs2.getInt("LAST_INSERT_ID()");
+			}
 
 			connection.setAutoCommit(false);
 			connection.commit();
 		} finally {
 			try {
-				if (preparedStmt != null)
-					preparedStmt.close();
+				if (preparedStmt1 != null)
+					preparedStmt1.close();
 			} finally {
 				if (connection != null)
 					connection.close();
 			}
 		}
+		return cartId;
 	}
 
 	@Override
@@ -78,6 +91,7 @@ public class CartsDAO implements CartsInterf{
 					connection.close();
 			}
 		}
+		
 	}
 
 	@Override

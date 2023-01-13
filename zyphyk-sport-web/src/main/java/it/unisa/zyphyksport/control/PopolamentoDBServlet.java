@@ -3,6 +3,7 @@ package it.unisa.zyphyksport.control;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
@@ -70,10 +71,10 @@ public class PopolamentoDBServlet extends HttpServlet {
 
         	
    	     // Creazione Clienti
-	        clientiDAO.doSave("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "passw1234", LocalDateTime.of(1996, 9, 6, 0, 0));
-	        clientiDAO.doSave("marioRossi", 2, "Mario", "Rossi", "mar-rossi@gmail.com", "cliente", LocalDateTime.of(1996, 6, 13, 0, 0));
-	        clientiDAO.doSave("peppeRoma", 3, "Giuseppe", "Roma", "g.rom1@gmail.com", "cliente", LocalDateTime.of(2001, 4, 25, 0, 0));
-	        clientiDAO.doSave("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDateTime.of(1978, 1, 7, 0, 0));
+	        clientiDAO.doSave("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "passw1234", LocalDate.of(1996, 9, 6));
+	        clientiDAO.doSave("marioRossi", 2, "Mario", "Rossi", "mar-rossi@gmail.com", "cliente", LocalDate.of(1996, 6, 13));
+	        clientiDAO.doSave("peppeRoma", 3, "Giuseppe", "Roma", "g.rom1@gmail.com", "cliente", LocalDate.of(2001, 4, 25));
+	        clientiDAO.doSave("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDate.of(1978, 1, 7));
         	
         	// Creazione Prodotti
 			productDAO.doSave("ASD56", "PRODUCT_1", "SPORT_1", "BRAND_1", 100);

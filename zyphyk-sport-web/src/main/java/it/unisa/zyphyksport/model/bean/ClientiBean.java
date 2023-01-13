@@ -1,7 +1,7 @@
 package it.unisa.zyphyksport.model.bean;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class ClientiBean implements Serializable{
@@ -15,11 +15,11 @@ public class ClientiBean implements Serializable{
 	private String surname;
 	private String email;
 	private String pass_word;
-  	private LocalDateTime birthDate;
+  	private LocalDate birthDate;
   	private final String RUOLO = "cliente";
   	
 	public ClientiBean(String username, int cartId, String name, String surname, String email, String pass_word,
-			LocalDateTime birthDate) {
+			LocalDate localDate) {
 		super();
 		this.username = username;
 		this.cartId = cartId;
@@ -27,7 +27,7 @@ public class ClientiBean implements Serializable{
 		this.surname = surname;
 		this.email = email;
 		this.pass_word = pass_word;
-		this.birthDate = birthDate;
+		this.birthDate = localDate;
 	}
 	
 	public String getUsername() {
@@ -82,11 +82,11 @@ public class ClientiBean implements Serializable{
 		this.pass_word = pass_word;
 	}
 	
-	public LocalDateTime getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 	
-	public void setBirthDate(LocalDateTime birthDate) {
+	public void setBirthDate(LocalDate birthDate) {
 		this.birthDate = birthDate;
 	}
 	
