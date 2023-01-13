@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import it.unisa.zyphyksport.model.DAO.CartsDAO;
 import it.unisa.zyphyksport.model.DAO.ClientiDAO;
@@ -74,6 +73,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("utente", clBean);
 				CartsInterf cart = new CartsDAO(ds);
 				request.getSession().setAttribute("carrello", cart.doRetrieveByKey(clBean.getCartId()));
+				request.getSession().setAttribute("responseCart", false);
 			} else if(ruolo.equals("gestCat")) {
 				GestoriCatalogoInterf catDS = new GestoriCatalogoDAO(ds);
 				catBean = catDS.doRetrieveByKey(username);

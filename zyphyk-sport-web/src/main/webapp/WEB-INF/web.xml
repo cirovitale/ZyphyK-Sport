@@ -11,10 +11,10 @@
   	<servlet-class>it.unisa.zyphyksport.control.PopolamentoDBServlet</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>Ex</servlet-name>
-  	<display-name>Ex</display-name>
+  	<servlet-name>GetProdsFromCartServlet</servlet-name>
+  	<display-name>GetProdsFromCartServlet</display-name>
   	<description></description>
-  	<servlet-class>it.unisa.zyphyksport.control.Ex</servlet-class>
+  	<servlet-class>it.unisa.zyphyksport.control.GetProdsFromCartServlet</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>LoginServlet</servlet-name>
@@ -28,13 +28,19 @@
   	<description></description>
   	<servlet-class>it.unisa.zyphyksport.control.SignUpServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<display-name>LogoutServlet</display-name>
+  	<description></description>
+  	<servlet-class>it.unisa.zyphyksport.control.LogoutServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>PopolamentoDBServlet</servlet-name>
   	<url-pattern>/PopolamentoDBServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>Ex</servlet-name>
-  	<url-pattern>/Ex</url-pattern>
+  	<servlet-name>GetProdsFromCartServlet</servlet-name>
+  	<url-pattern>/GetProdsFromCartServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
@@ -43,6 +49,10 @@
   <servlet-mapping>
   	<servlet-name>SignUpServlet</servlet-name>
   	<url-pattern>/SignUpServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LogoutServlet</servlet-name>
+  	<url-pattern>/LogoutServlet</url-pattern>
   </servlet-mapping>
   <resource-ref>
   	<description>Riferimento JNDI ad un data source</description>

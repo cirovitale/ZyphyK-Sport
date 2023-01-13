@@ -6,7 +6,7 @@
 
 
 		<ul class="nav nav-pills justify-content-center align-items-center text-center">
-			<li class="nav-item"><a href="index.jsp" class=""> <img src="img/logo/logoWhite.png" style="width: 15%"></a></li>
+			<li class="nav-item"><a href="index.jsp" class=""> <img src="img/logo/logoNomeTransparent.png" style="width: 12%"></a></li>
 			
 			<%
 				if(ruoloHeader == null){

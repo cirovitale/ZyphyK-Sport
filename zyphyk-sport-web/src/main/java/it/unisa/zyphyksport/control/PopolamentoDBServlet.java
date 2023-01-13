@@ -63,16 +63,17 @@ public class PopolamentoDBServlet extends HttpServlet {
         
         	gestOrdDAO.doSave("LuBacco", "Luigi", "Bacco", "lbgames@gmail.com", "paperoga104", 1700); 
  
-        	cartsDAO.doSave(0, 0);
-        	cartsDAO.doSave(1, 0);
-        	cartsDAO.doSave(2, 0);
-        	cartsDAO.doSave(3, 0);
+        	cartsDAO.doSave(100);
+        	cartsDAO.doSave(50);
+        	cartsDAO.doSave(150);
+        	cartsDAO.doSave(100);
 
+        	
    	     // Creazione Clienti
-	        clientiDAO.doSave("daniPicci", 0, "Daniele", "Piccirillo", "dani_san@gmail.com", "passw1234", LocalDateTime.of(1996, 9, 6, 0, 0));
-	        clientiDAO.doSave("marioRossi", 1, "Mario", "Rossi", "mar-rossi@gmail.com", "cliente", LocalDateTime.of(1996, 6, 13, 0, 0));
-	        clientiDAO.doSave("peppeRoma", 2, "Giuseppe", "Roma", "g.rom1@gmail.com", "cliente", LocalDateTime.of(2001, 4, 25, 0, 0));
-	        clientiDAO.doSave("angeloPorte", 3, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDateTime.of(1978, 1, 7, 0, 0));
+	        clientiDAO.doSave("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "passw1234", LocalDateTime.of(1996, 9, 6, 0, 0));
+	        clientiDAO.doSave("marioRossi", 2, "Mario", "Rossi", "mar-rossi@gmail.com", "cliente", LocalDateTime.of(1996, 6, 13, 0, 0));
+	        clientiDAO.doSave("peppeRoma", 3, "Giuseppe", "Roma", "g.rom1@gmail.com", "cliente", LocalDateTime.of(2001, 4, 25, 0, 0));
+	        clientiDAO.doSave("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDateTime.of(1978, 1, 7, 0, 0));
         	
         	// Creazione Prodotti
 			productDAO.doSave("ASD56", "PRODUCT_1", "SPORT_1", "BRAND_1", 100);
@@ -110,13 +111,13 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        sizesDAO.doSave("3ASD7",42);
 	        sizesDAO.doSave("X2341",42);
 	        
-        	cartsContainsProdsDAO.doSave(1, "ASD56", 1);
-        	cartsContainsProdsDAO.doSave(1, "23AX1", 2);
-        	cartsContainsProdsDAO.doSave(1, "ZZB35", 3);
-        	cartsContainsProdsDAO.doSave(1, "111AQ", 1);
-        	cartsContainsProdsDAO.doSave(2, "QEWER", 1);
-        	cartsContainsProdsDAO.doSave(3, "23AX1", 2);
-        	cartsContainsProdsDAO.doSave(3, "ASD56", 1);
+        	cartsContainsProdsDAO.doSave(1, "ASD56", 1, 39);
+        	cartsContainsProdsDAO.doSave(1, "23AX1", 2, 37);
+        	cartsContainsProdsDAO.doSave(1, "ZZB35", 3, 36);
+        	cartsContainsProdsDAO.doSave(1, "111AQ", 1, 39);
+        	cartsContainsProdsDAO.doSave(2, "QEWER", 1, 41);
+        	cartsContainsProdsDAO.doSave(3, "23AX1", 2, 36);
+        	cartsContainsProdsDAO.doSave(3, "ASD56", 1, 39);
         	
         	managesProdsDAO.doSave("DarMoccia", "ASD56", 0);
         	managesProdsDAO.doSave("DarMoccia", "3ASD7", 0);

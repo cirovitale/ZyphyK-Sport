@@ -11,14 +11,28 @@ public class CartsContainsProdsBean implements Serializable{
 	private int cartId;
 	private String productId;
 	private int quantity;
+	int size;
 	
-	public CartsContainsProdsBean(int cartId, String productId, int quantity) {
+	public CartsContainsProdsBean(int cartId, String productId, int quantity, int size) {
 		super();
 		this.cartId = cartId;
 		this.productId = productId;
 		this.quantity = quantity;
+		this.size = size;
 	}
 	
+	public int getSize() {
+		return size;
+	}
+
+
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
+
+
 	public int getCartId() {
 		return cartId;
 	}
@@ -42,15 +56,16 @@ public class CartsContainsProdsBean implements Serializable{
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "CartsContainsProdsBean [cartId=" + cartId + ", productId=" + productId + ", quantity=" + quantity + "]";
+		return "CartsContainsProdsBean [cartId=" + cartId + ", productId=" + productId + ", quantity=" + quantity
+				+ ", size=" + size + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(cartId, productId, quantity);
+		return Objects.hash(cartId, productId, quantity, size);
 	}
 
 	@Override
@@ -62,11 +77,7 @@ public class CartsContainsProdsBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		CartsContainsProdsBean other = (CartsContainsProdsBean) obj;
-		return cartId == other.cartId && Objects.equals(productId, other.productId) && quantity == other.quantity;
+		return cartId == other.cartId && Objects.equals(productId, other.productId) && quantity == other.quantity
+				&& size == other.size;
 	}
-
-	
-	
-	
-	
 }

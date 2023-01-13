@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS gestori_ordini(
 ); 
 
  CREATE TABLE IF NOT EXISTS carts(
-	id int NOT NULL,
+	id int auto_increment,
   	amount int DEFAULT 0,
 
 	PRIMARY KEY(id)
@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS carts_contains_prods(
 	cart_id int NOT NULL,
 	product_id varchar(5) NOT NULL,
     quantity int,
+    size int,
 
 	PRIMARY KEY(cart_id,product_id),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
