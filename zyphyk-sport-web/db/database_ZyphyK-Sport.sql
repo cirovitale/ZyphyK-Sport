@@ -72,9 +72,9 @@ CREATE TABLE IF NOT EXISTS carts_contains_prods(
 	cart_id int NOT NULL,
 	product_id varchar(5) NOT NULL,
     quantity int,
-    size int,
+    size int NOT NULL,
 
-	PRIMARY KEY(cart_id,product_id),
+	PRIMARY KEY(cart_id,product_id, size),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY(cart_id) REFERENCES carts(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
