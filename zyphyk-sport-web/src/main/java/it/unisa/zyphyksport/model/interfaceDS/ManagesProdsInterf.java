@@ -9,10 +9,10 @@ public interface ManagesProdsInterf {
 
 	public void doSave(String gestCatUsername, String productId, int tipologia) throws SQLException;
 
-	public void doDelete(String gestCatUsername, String productId) throws SQLException;
+	public void doDelete(int id) throws SQLException;
 	
-	public ManagesProdsBean doRetrieveByKey(String gestCatUsername, String productId) throws SQLException;
+	public ManagesProdsBean doRetrieveByKey(int id) throws SQLException;
 	
-	public Collection<ManagesProdsBean> doRetrieveAll(String gestCatUsername, String productId) throws SQLException;
+	public Collection<ManagesProdsBean> doRetrieveAll(String order) throws SQLException;
 	
 }

@@ -26,9 +26,12 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	public synchronized void doSave(String gestCatUsername, String productId, int tipologia) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
+		PreparedStatement preparedStmt2 = null;
 		
 		String insertSQL = "INSERT INTO " + ManagesProdsDAO.TABLE_NAME
 				+ " (GEST_CAT_USERNAME, PRODUCT_ID, TIPOLOGIA) VALUES (?, ?, ?)";
+		
+		String selectSQL = "SELECT LAST_INSERT_ID()"; 
 		
 		try {
 			connection = ds.getConnection();
@@ -38,6 +41,9 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 			preparedStmt.setInt(3, tipologia);
 
 			preparedStmt.executeUpdate();
+			
+			preparedStmt2 = connection.prepareStatement(selectSQL);
+			preparedStmt2.executeQuery();
 
 			connection.setAutoCommit(false);
 			connection.commit();
@@ -54,17 +60,16 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public synchronized void doDelete(String gestCatUsername, String productId) throws SQLException {
+	public synchronized void doDelete(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		String deleteSQL = "DELETE FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE GEST_CAT_USERNAME = ? && PRODUCT_ID = ?";
+		String deleteSQL = "DELETE FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
-			preparedStmt.setString(1, gestCatUsername);
-			preparedStmt.setString(2, productId);
+			preparedStmt.setInt(1, id);
 
 		} finally {
 			try {
@@ -79,25 +84,27 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public synchronized ManagesProdsBean doRetrieveByKey(String gestCatUsername, String productId) throws SQLException {
+	public synchronized ManagesProdsBean doRetrieveByKey(int id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		ManagesProdsBean managesProds = new ManagesProdsBean(null,null,0);
+		ManagesProdsBean managesProds = new ManagesProdsBean(0,null,null,0);
 
-		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE GEST_CAT_USERNAME = ? AND WHERE PRODUCT_ID = ?";
+		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME + " WHERE ID = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(selectSQL);
-			preparedStmt.setString(1, gestCatUsername);
-			preparedStmt.setString(2, productId);
+			preparedStmt.setInt(1, id);
+
 
 			ResultSet rs = preparedStmt.executeQuery();
 
 			while (rs.next()) {
+				managesProds.setId(rs.getInt("ID"));
 				managesProds.setGestCatUsername(rs.getString("GEST_CAT_USERNAME"));
 				managesProds.setProductId(rs.getString("PRODUCT_ID"));
+				managesProds.setTipologia(rs.getInt("TIPOLOGIA"));
 			}
 
 		} finally {
@@ -114,7 +121,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public Collection<ManagesProdsBean> doRetrieveAll(String gestCatUsername, String productId) throws SQLException {
+	public Collection<ManagesProdsBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -124,8 +131,8 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME;
 		
 
-		if (gestCatUsername != null && !gestCatUsername.equals("")) {
-			selectSQL += " ORDER BY " + gestCatUsername;
+		if (order != null && !order.equals("")) {
+			selectSQL += " ORDER BY " + order;
 		}
 
 		try {
@@ -134,9 +141,11 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 
 			ResultSet rs = preparedStmt.executeQuery();
 			while (rs.next()) {
-				ManagesProdsBean managesProds = new ManagesProdsBean(null,null,0);
+				ManagesProdsBean managesProds = new ManagesProdsBean(0,null,null,0);
+				managesProds.setId(rs.getInt("ID"));
 				managesProds.setGestCatUsername(rs.getString("GEST_CAT_USERNAME"));
 				managesProds.setProductId(rs.getString("PRODUCT_ID"));
+				managesProds.setTipologia(rs.getInt("TIPOLOGIA"));
 
 				array.add(managesProds);
 			}

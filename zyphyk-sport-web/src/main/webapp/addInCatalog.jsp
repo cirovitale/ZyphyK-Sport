@@ -5,18 +5,14 @@
     
  <%
 	String roles = (String) session.getAttribute("roles");
-/*
+
 	if(roles == null){
 		response.sendRedirect(request.getContextPath() + "/login-form.jsp");
-	} else if (roles.equals("admin") || roles.equals("assCl") || roles.equals("cliente")) {
-		response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
 	}
-*/
+	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 
 	ProductsInterf productsDAO = new ProductsDAO(ds);
-	Collection<ProductsBean> collVid = productsDAO.doRetrieveAll(null);
-	
 %> 
     
     

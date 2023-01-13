@@ -142,18 +142,18 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        ordersDAO.doUpdateSent(2, "LuBacco");
 	        ordersDAO.doUpdateSent(3, "LuBacco");
 	        
-	        ordersContainsProdsDAO.doSave(0, "ASD56", 1);
-	        ordersContainsProdsDAO.doSave(0, "23AX1", 2);
-	        ordersContainsProdsDAO.doSave(0, "XXC01", 1);
-	        ordersContainsProdsDAO.doSave(1, "3ASD7", 3);
-	        ordersContainsProdsDAO.doSave(2, "3ASD7", 1);
-	        ordersContainsProdsDAO.doSave(2, "X2341", 2);
-	        ordersContainsProdsDAO.doSave(2, "QEWER", 1);
-	        ordersContainsProdsDAO.doSave(3, "111AQ", 4);
-	        ordersContainsProdsDAO.doSave(3, "0ASDA", 1);
-	        ordersContainsProdsDAO.doSave(4, "ASD56", 2);
-	        ordersContainsProdsDAO.doSave(4, "23AX1", 1);
-	        ordersContainsProdsDAO.doSave(4, "QRW20", 1); 
+	        ordersContainsProdsDAO.doSave(0, "ASD56", 1, 39);
+	        ordersContainsProdsDAO.doSave(0, "23AX1", 2, 37);
+	        ordersContainsProdsDAO.doSave(0, "XXC01", 1, 36);
+	        ordersContainsProdsDAO.doSave(1, "3ASD7", 3, 39);
+	        ordersContainsProdsDAO.doSave(2, "3ASD7", 1, 41);
+	        ordersContainsProdsDAO.doSave(2, "X2341", 2, 36);
+	        ordersContainsProdsDAO.doSave(2, "QEWER", 1, 38);
+	        ordersContainsProdsDAO.doSave(3, "111AQ", 4, 38);
+	        ordersContainsProdsDAO.doSave(3, "0ASDA", 1, 41);
+	        ordersContainsProdsDAO.doSave(4, "ASD56", 2, 40);
+	        ordersContainsProdsDAO.doSave(4, "23AX1", 1, 37);
+	        ordersContainsProdsDAO.doSave(4, "QRW20", 1, 39); 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

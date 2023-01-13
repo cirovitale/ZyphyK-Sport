@@ -1,20 +1,24 @@
 package it.unisa.zyphyksport.model.bean;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class ManagesProdsBean {
+public class ManagesProdsBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private String gestCatUsername;
 	private String productId;
 	// 0: aggiunta, 1: rimozione, 2: modifica
 	private int tipologia;
+	private int id;
 	
-	public ManagesProdsBean(String gestCatUsername, String productId, int tipologia) {
+	public ManagesProdsBean(int id, String gestCatUsername, String productId, int tipologia) {
 		super();
+		this.id = id;
 		this.gestCatUsername = gestCatUsername;
 		this.productId = productId;
 		this.tipologia = tipologia;
+		this.id = id;
 	}
 
 	public String getGestCatUsername() {
@@ -40,20 +44,16 @@ public class ManagesProdsBean {
 	public void setTipologia(int tipologia) {
 		this.tipologia = tipologia;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "MangesProdsBean [gestCatUsername=" + gestCatUsername + ", productId=" + productId + ", tipologia="
-				+ tipologia + "]";
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+		return "ManagesProdsBean [gestCatUsername=" + gestCatUsername + ", productId=" + productId + ", tipologia="
+				+ tipologia + ", id=" + id + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gestCatUsername, productId, tipologia);
+		return Objects.hash(gestCatUsername, id, productId, tipologia);
 	}
 
 	@Override
@@ -65,9 +65,10 @@ public class ManagesProdsBean {
 		if (getClass() != obj.getClass())
 			return false;
 		ManagesProdsBean other = (ManagesProdsBean) obj;
-		return Objects.equals(gestCatUsername, other.gestCatUsername) && Objects.equals(productId, other.productId)
-				&& tipologia == other.tipologia;
+		return Objects.equals(gestCatUsername, other.gestCatUsername) && id == other.id
+				&& Objects.equals(productId, other.productId) && tipologia == other.tipologia;
 	}
+	
 	
 	
 }

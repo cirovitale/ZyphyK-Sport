@@ -235,5 +235,53 @@ public class OrdersDAO implements OrdersInterf{
 		}
 		return orders;
 	}
+	
+	
+	public synchronized Collection<OrdersBean> doRetrieveAllCliente(String username, String order) throws SQLException {
+		Connection connection = null;
+		PreparedStatement preparedStmt = null;
+
+		Collection<OrdersBean> orders = new LinkedList<OrdersBean>();
+
+		String selectSQL = "SELECT * FROM " + OrdersDAO.TABLE_NAME + " WHERE CLIENTE_USERNAME = ?";
+		
+				
+
+		if (order != null && !order.equals("")) {
+			selectSQL += " ORDER BY " + order;
+		}
+
+		try {
+			connection = ds.getConnection();
+			preparedStmt = connection.prepareStatement(selectSQL);
+			preparedStmt.setString(1, username);
+
+			ResultSet rs = preparedStmt.executeQuery();
+			
+			while (rs.next()) {
+				OrdersBean orderBean = new OrdersBean(0, null, null, null, null, null, 0);
+				
+				orderBean.setId(rs.getInt("ID"));
+				orderBean.setClienteUsername(rs.getString("CLIENTE_USERNAME"));
+				orderBean.setGestOrdUsername(rs.getString("GEST_ORD_USERNAME"));
+				orderBean.setDateTime(rs.getTimestamp("DATE_TIME").toLocalDateTime());
+				orderBean.setShippingAddress(rs.getString("SHIPPING_ADDRESS"));
+				orderBean.setPaymentMethod(rs.getString("PAYMENT_METHOD"));
+				orderBean.setAmount(rs.getInt("AMOUNT"));
+				orderBean.setSent(rs.getBoolean("SENT"));
+				orders.add(orderBean);
+			}
+
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return orders;
+	}
 
 }
