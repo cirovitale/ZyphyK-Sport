@@ -134,7 +134,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 			while (rs.next()) {
 				gestOrd.setUsername(rs.getString("USERNAME"));
 				gestOrd.setName(rs.getString("NAME"));
-				gestOrd.setUsername(rs.getString("SURNAME"));
+				gestOrd.setSurname(rs.getString("SURNAME"));
 				gestOrd.setEmail(rs.getString("EMAIL"));
 				gestOrd.setPass_word(rs.getString("PASS_WORD"));
 				gestOrd.setRal(rs.getInt("RAL"));
@@ -176,7 +176,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 				GestoriOrdiniBean gestOrd = new GestoriOrdiniBean(null,null,null,null,null,0);
 				gestOrd.setUsername(rs.getString("USERNAME"));
 				gestOrd.setName(rs.getString("NAME"));
-				gestOrd.setUsername(rs.getString("SURNAME"));
+				gestOrd.setSurname(rs.getString("SURNAME"));
 				gestOrd.setEmail(rs.getString("EMAIL"));
 				gestOrd.setPass_word(rs.getString("PASS_WORD"));
 				gestOrd.setRal(rs.getInt("RAL"));
