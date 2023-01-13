@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS manages_prods(
 
 	PRIMARY KEY(id),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY(gest_cat_username) REFERENCES gestorei_catalogo(username) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY(gest_cat_username) REFERENCES gestori_catalogo(username) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS orders(
