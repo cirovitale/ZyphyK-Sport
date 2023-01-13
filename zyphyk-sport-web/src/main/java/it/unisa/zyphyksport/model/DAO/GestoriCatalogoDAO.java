@@ -172,7 +172,7 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 				GestoriCatalogoBean gestCat = new GestoriCatalogoBean(null,null,null,null,null,0);
 				gestCat.setUsername(rs.getString("USERNAME"));
 				gestCat.setName(rs.getString("NAME"));
-				gestCat.setUsername(rs.getString("SURNAME"));
+				gestCat.setSurname(rs.getString("SURNAME"));
 				gestCat.setEmail(rs.getString("EMAIL"));
 				gestCat.setPass_word(rs.getString("PASS_WORD"));
 				gestCat.setRal(rs.getInt("RAL"));
