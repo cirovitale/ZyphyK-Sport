@@ -10,7 +10,7 @@ public interface CartsContainsProdsInterf {
 	
 	public void doUpdate(int cartId, String productId, int quantity, int size) throws SQLException;
 	
-	public void doDelete(int cartId, String productId) throws SQLException;
+	public void doDelete(int cartId, String productId, int size) throws SQLException;
 
 	public Collection<CartsContainsProdsBean> doRetrieveAll(String order) throws SQLException;
 	

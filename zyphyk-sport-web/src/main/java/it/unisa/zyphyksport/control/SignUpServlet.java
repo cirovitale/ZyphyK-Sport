@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,6 +21,7 @@ import it.unisa.zyphyksport.model.interfaceDS.ClientiInterf;
 /**
  * Servlet implementation class SignUpServlet
  */
+@WebServlet("/SignUpServlet")
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

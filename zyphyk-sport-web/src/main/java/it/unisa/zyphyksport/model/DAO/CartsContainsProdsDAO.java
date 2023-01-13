@@ -87,18 +87,19 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	
 
 	@Override
-	public synchronized void doDelete(int cartId, String productId) throws SQLException {
+	public synchronized void doDelete(int cartId, String productId, int size) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		String deleteSQL = "DELETE FROM " + CartsContainsProdsDAO.TABLE_NAME + " WHERE CART_ID = ? AND PRODUCT_ID = ?";
+		String deleteSQL = "DELETE FROM " + CartsContainsProdsDAO.TABLE_NAME + " WHERE CART_ID = ? AND PRODUCT_ID = ? AND SIZE = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setInt(1, cartId);
 			preparedStmt.setString(2, productId);
+			preparedStmt.setInt(3, size);
 
 			preparedStmt.executeUpdate();
 		} finally {
