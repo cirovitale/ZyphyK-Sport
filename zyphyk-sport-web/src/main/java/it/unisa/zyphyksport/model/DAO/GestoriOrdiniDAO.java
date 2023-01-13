@@ -174,13 +174,12 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 			ResultSet rs = preparedStmt.executeQuery();
 			while (rs.next()) {
 				GestoriOrdiniBean gestOrd = new GestoriOrdiniBean(null,null,null,null,null,0);
-				gestOrd.setUsername(rs.getString("CODICE_FISCALE"));
-				gestOrd.setName(rs.getString("NOME"));
-				gestOrd.setUsername(rs.getString("COGNOME"));
+				gestOrd.setUsername(rs.getString("USERNAME"));
+				gestOrd.setName(rs.getString("NAME"));
+				gestOrd.setUsername(rs.getString("SURNAME"));
 				gestOrd.setEmail(rs.getString("EMAIL"));
 				gestOrd.setPass_word(rs.getString("PASS_WORD"));
 				gestOrd.setRal(rs.getInt("RAL"));
-				array.add(gestOrd);
 			}
 
 		} finally {
