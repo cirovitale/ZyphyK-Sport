@@ -15,7 +15,5 @@ public interface GestoriOrdiniInterf {
 
 	public GestoriOrdiniBean doRetrieveByKey(String username) throws SQLException;
 	
-	//public GestoriCatalogoBean doRetrieveByKeyEmail(String email) throws SQLException;
-	
 	public Collection<GestoriOrdiniBean> doRetrieveAll(String username) throws SQLException;
 }

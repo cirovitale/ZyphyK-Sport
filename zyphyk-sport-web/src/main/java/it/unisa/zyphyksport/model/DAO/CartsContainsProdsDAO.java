@@ -54,21 +54,20 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	
 
 	@Override
-	public void doUpdate(int cartId, String productId, int quantity, int size) throws SQLException {
+	public void doUpdate(int cartId, String productId, int quantity) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String updateSQL = "UPDATE " + CartsContainsProdsDAO.TABLE_NAME
-				+ " SET QUANTITY = ?, SET SIZE = ?" + " WHERE CART_ID = ? AND PRODUCT_ID = ?";
+				+ " SET QUANTITY = ?" + " WHERE CART_ID = ? AND PRODUCT_ID = ?";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(updateSQL);
 			preparedStmt.setInt(1, quantity);
-			preparedStmt.setInt(2, size);
 
-			preparedStmt.setInt(3, cartId);
-			preparedStmt.setString(4, productId);
+			preparedStmt.setInt(2, cartId);
+			preparedStmt.setString(3, productId);
 			preparedStmt.executeUpdate();
 
 			connection.setAutoCommit(false);
@@ -198,5 +197,39 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 				return array;
 	}
 
+	public CartsContainsProdsBean doRetrieveByKey(int cartId, String productId, int size) throws SQLException{
+		Connection connection = null;
+		PreparedStatement preparedStmt = null;
+
+		CartsContainsProdsBean bean = new CartsContainsProdsBean(0,null,0,0);
+
+		String selectSQL = "SELECT * FROM " + CartsContainsProdsDAO.TABLE_NAME + " WHERE CART_ID = ? AND PRODUCT_ID = ? AND SIZE = ?";
+
+		try {
+			connection = ds.getConnection();
+			preparedStmt = connection.prepareStatement(selectSQL);
+			preparedStmt.setInt(1, cartId);
+			preparedStmt.setString(2, productId);
+			preparedStmt.setInt(3, size);
+
+			ResultSet rs = preparedStmt.executeQuery();
+
+			while (rs.next()) {
+				bean.setCartId(rs.getInt("CART_ID"));
+				bean.setProductId(rs.getString("PRODUCT_ID"));
+				bean.setQuantity(rs.getInt("QUANTITY"));
+				bean.setSize(rs.getInt("SIZE"));
+			}
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return bean;
+	}
 
 }

@@ -66,7 +66,7 @@ public class PopolamentoDBServlet extends HttpServlet {
         
         	gestOrdDAO.doSave("LuBacco", "Luigi", "Bacco", "lbgames@gmail.com", "paperoga104", 1700); 
  
-        	cartsDAO.doSave(100);
+        	cartsDAO.doSave(700);
         	cartsDAO.doSave(50);
         	cartsDAO.doSave(150);
         	cartsDAO.doSave(100);
