@@ -34,6 +34,18 @@
   	<description></description>
   	<servlet-class>it.unisa.zyphyksport.control.LogoutServlet</servlet-class>
   </servlet>
+<servlet>
+	<servlet-name>ModInCatServlet</servlet-name>
+	<display-name>ModInCatServlet</display-name>
+	<description></description>
+	<servlet-class>it.unisa.zyphyksport.control.ModInCatServlet</servlet-class>
+</servlet>
+<servlet>
+	<servlet-name>AddInCatalogServlet</servlet-name>
+	<display-name>AddInCatalogServlet</display-name>
+	<description></description>
+	<servlet-class>it.unisa.zyphyksport.control.AddInCatalogServlet</servlet-class>
+</servlet>
   <servlet-mapping>
   	<servlet-name>PopolamentoDBServlet</servlet-name>
   	<url-pattern>/PopolamentoDBServlet</url-pattern>
@@ -53,6 +65,14 @@
   <servlet-mapping>
   	<servlet-name>LogoutServlet</servlet-name>
   	<url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ModInCatServlet</servlet-name>
+  	<url-pattern>/ModInCatServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddInCatalogServlet</servlet-name>
+  	<url-pattern>/AddInCatalogServlet</url-pattern>
   </servlet-mapping>
   <resource-ref>
   	<description>Riferimento JNDI ad un data source</description>

@@ -26,7 +26,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 	
 	@Override
-	public void doSave(String id, String name, String sport, String brand, int price)
+	public synchronized void doSave(String id, String name, String sport, String brand, int price)
 			throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -62,7 +62,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public void doUpdate(String id, String name, String sport, String brand, int price)
+	public synchronized void doUpdate(String id, String name, String sport, String brand, int price)
 			throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -96,7 +96,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public void doDelete(String id) throws SQLException {
+	public synchronized void doDelete(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
@@ -125,7 +125,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public ProductsBean doRetrieveByKey(String id) throws SQLException {
+	public synchronized ProductsBean doRetrieveByKey(String id) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
@@ -161,7 +161,7 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public Collection<ProductsBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Collection<ProductsBean> doRetrieveAll(String order) throws SQLException {
 		
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
