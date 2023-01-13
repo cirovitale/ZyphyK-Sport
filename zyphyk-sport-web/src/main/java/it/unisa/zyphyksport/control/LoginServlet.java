@@ -64,7 +64,6 @@ public class LoginServlet extends HttpServlet {
 		String ruolo = null;
 		try {
 			ruolo = checkLogin(username, password);
-			
 			ClientiBean clBean = null;
 			GestoriCatalogoBean catBean = null;
 			GestoriOrdiniBean ordBean = null;
