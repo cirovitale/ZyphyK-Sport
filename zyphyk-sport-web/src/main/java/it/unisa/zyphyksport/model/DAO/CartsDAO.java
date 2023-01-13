@@ -22,19 +22,18 @@ public class CartsDAO implements CartsInterf{
 	}
 
 	@Override
-	public synchronized void doSave(int id, int amount) throws SQLException {
+	public synchronized void doSave(int amount) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + CartsDAO.TABLE_NAME
-				+ " (ID, AMOUNT) VALUES (?, ?)";
+				+ " (AMOUNT) VALUES (?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
-			preparedStmt.setInt(1, id);
-			preparedStmt.setInt(2, amount);
+			preparedStmt.setInt(1, amount);
 
 			preparedStmt.executeUpdate();
 
