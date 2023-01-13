@@ -83,10 +83,11 @@ CREATE TABLE IF NOT EXISTS manages_prods(
 	gest_cat_username varchar(20) NOT NULL,
 	product_id varchar(5) NOT NULL,
 	tipologia int NOT NULL,
+	id int AUTO_INCREMENT NOT NULL,
 
-	PRIMARY KEY(gest_cat_username,product_id),
+	PRIMARY KEY(id),
 	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY(gest_cat_username) REFERENCES gestori_catalogo(username) ON UPDATE CASCADE ON DELETE CASCADE
+	FOREIGN KEY(gest_cat_username) REFERENCES gestorei_catalogo(username) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS orders(
