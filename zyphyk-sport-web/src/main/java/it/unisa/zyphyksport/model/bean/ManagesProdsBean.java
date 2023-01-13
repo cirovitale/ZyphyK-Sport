@@ -14,17 +14,10 @@ public class ManagesProdsBean implements Serializable{
 	
 	public ManagesProdsBean(int id, String gestCatUsername, String productId, int tipologia) {
 		super();
+		this.id = id;
 		this.gestCatUsername = gestCatUsername;
 		this.productId = productId;
 		this.tipologia = tipologia;
-		this.id = id;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
 		this.id = id;
 	}
 

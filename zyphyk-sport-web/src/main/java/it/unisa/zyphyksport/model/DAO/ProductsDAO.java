@@ -190,6 +190,53 @@ public class ProductsDAO implements ProductsInterf{
 				prodBean.setBrand(rs.getString("BRAND"));
 				prodBean.setPrice(rs.getInt("PRICE"));
 				prodBean.setRemoved(rs.getBoolean("REMOVED"));
+				products.add(prodBean);
+			}
+
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (connection != null)
+					connection.close();
+			}
+		}
+		return products;
+	}
+
+
+	@Override
+	public synchronized Collection<ProductsBean> doRetrieveAllExists(String order) throws SQLException {
+		
+		Connection connection = null;
+		PreparedStatement preparedStmt = null;
+
+		Collection<ProductsBean> products = new LinkedList<ProductsBean>();
+
+		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + "WHERE ELIMINATO = 0";
+		
+
+		if (order != null && !order.equals("")) {
+			selectSQL += " ORDER BY " + order;
+		}
+
+		try {
+			connection = ds.getConnection();
+			preparedStmt = connection.prepareStatement(selectSQL);
+
+			ResultSet rs = preparedStmt.executeQuery();
+			
+			while (rs.next()) {
+				ProductsBean prodBean = new ProductsBean(null, null, null, null, 0);
+				
+				prodBean.setId(rs.getString("ID"));
+				prodBean.setName(rs.getString("NAME"));
+				prodBean.setSport(rs.getString("SPORT"));
+				prodBean.setBrand(rs.getString("BRAND"));
+				prodBean.setPrice(rs.getInt("PRICE"));
+				prodBean.setRemoved(rs.getBoolean("REMOVED"));
+				products.add(prodBean);
 			}
 
 		} finally {

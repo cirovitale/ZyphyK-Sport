@@ -16,5 +16,7 @@ public interface ProductsInterf {
 	public ProductsBean doRetrieveByKey(String id) throws SQLException;
 	
 	public Collection<ProductsBean> doRetrieveAll(String order) throws SQLException;
+
+	public Collection<ProductsBean> doRetrieveAllExists(String order) throws SQLException;
 	
 }
