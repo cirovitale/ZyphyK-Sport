@@ -5,9 +5,10 @@ import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,10 +16,12 @@ import javax.sql.DataSource;
 
 import java.security.MessageDigest;
 
+import it.unisa.zyphyksport.model.bean.ProductsBean;
 import it.unisa.zyphyksport.model.DAO.CartsDAO;
 import it.unisa.zyphyksport.model.DAO.ClientiDAO;
 import it.unisa.zyphyksport.model.DAO.GestoriCatalogoDAO;
 import it.unisa.zyphyksport.model.DAO.GestoriOrdiniDAO;
+import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 import it.unisa.zyphyksport.model.bean.ClientiBean;
 import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
 import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
@@ -30,6 +33,7 @@ import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
 /**
  * Servlet implementation class LoginServlet
  */
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -53,9 +57,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
-		//System.out.println(username);
 		String password = request.getParameter("password");
-		//System.out.println(password);
 		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		String redirectedPage;
@@ -74,6 +76,8 @@ public class LoginServlet extends HttpServlet {
 				CartsInterf cart = new CartsDAO(ds);
 				request.getSession().setAttribute("carrello", cart.doRetrieveByKey(clBean.getCartId()));
 				request.getSession().setAttribute("responseCart", false);
+				request.getSession().setAttribute("prodsCart", new ArrayList<ProductsBean>());
+				request.getSession().setAttribute("prodsContainsCart", new ArrayList<CartsContainsProdsBean>());
 			} else if(ruolo.equals("gestCat")) {
 				GestoriCatalogoInterf catDS = new GestoriCatalogoDAO(ds);
 				catBean = catDS.doRetrieveByKey(username);
