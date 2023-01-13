@@ -34,6 +34,12 @@
   	<description></description>
   	<servlet-class>it.unisa.zyphyksport.control.LogoutServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>RemFromCartServlet</servlet-name>
+  	<display-name>RemFromCartServlet</display-name>
+  	<description></description>
+  	<servlet-class>it.unisa.zyphyksport.control.RemFromCartServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>PopolamentoDBServlet</servlet-name>
   	<url-pattern>/PopolamentoDBServlet</url-pattern>
@@ -53,6 +59,10 @@
   <servlet-mapping>
   	<servlet-name>LogoutServlet</servlet-name>
   	<url-pattern>/LogoutServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemFromCartServlet</servlet-name>
+  	<url-pattern>/RemFromCartServlet</url-pattern>
   </servlet-mapping>
   <resource-ref>
   	<description>Riferimento JNDI ad un data source</description>
