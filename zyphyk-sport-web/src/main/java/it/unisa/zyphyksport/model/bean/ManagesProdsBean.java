@@ -10,6 +10,7 @@ public class ManagesProdsBean {
 	// 0: aggiunta, 1: rimozione, 2: modifica
 	private int tipologia;
 	
+	
 	public ManagesProdsBean(String gestCatUsername, String productId, int tipologia) {
 		super();
 		this.gestCatUsername = gestCatUsername;
