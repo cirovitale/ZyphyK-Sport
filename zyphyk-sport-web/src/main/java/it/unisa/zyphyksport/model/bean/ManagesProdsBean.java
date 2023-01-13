@@ -45,6 +45,14 @@ public class ManagesProdsBean implements Serializable{
 		this.tipologia = tipologia;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return "ManagesProdsBean [gestCatUsername=" + gestCatUsername + ", productId=" + productId + ", tipologia="
