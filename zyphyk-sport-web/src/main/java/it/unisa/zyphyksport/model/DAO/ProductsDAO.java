@@ -208,13 +208,13 @@ public class ProductsDAO implements ProductsInterf{
 
 	@Override
 	public synchronized Collection<ProductsBean> doRetrieveAllExists(String order) throws SQLException {
-		
+	
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
 		Collection<ProductsBean> products = new LinkedList<ProductsBean>();
 
-		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + "WHERE ELIMINATO = 0";
+		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + " WHERE REMOVED = FALSE";
 		
 
 		if (order != null && !order.equals("")) {
