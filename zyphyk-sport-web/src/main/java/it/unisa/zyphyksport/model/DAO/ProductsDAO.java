@@ -208,7 +208,7 @@ public class ProductsDAO implements ProductsInterf{
 
 	@Override
 	public synchronized Collection<ProductsBean> doRetrieveAllExists(String order) throws SQLException {
-	
+		
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
