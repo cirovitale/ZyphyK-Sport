@@ -18,7 +18,6 @@ public class ManagesProdsBean implements Serializable{
 		this.gestCatUsername = gestCatUsername;
 		this.productId = productId;
 		this.tipologia = tipologia;
-		this.id = id;
 	}
 
 	public String getGestCatUsername() {
@@ -76,7 +75,5 @@ public class ManagesProdsBean implements Serializable{
 		return Objects.equals(gestCatUsername, other.gestCatUsername) && id == other.id
 				&& Objects.equals(productId, other.productId) && tipologia == other.tipologia;
 	}
-	
-	
-	
+
 }
