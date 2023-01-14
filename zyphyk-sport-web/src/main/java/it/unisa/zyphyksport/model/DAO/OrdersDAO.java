@@ -29,29 +29,39 @@ public class OrdersDAO implements OrdersInterf{
 	
 	
 	@Override
-	public synchronized void doSave(int id, String clienteUsername, String gestOrdUsername, LocalDateTime dateTime, String shippingAddress,
+	public synchronized int doSave(String clienteUsername, String gestOrdUsername, LocalDateTime dateTime, String shippingAddress,
 			String paymentMethod, int amount, boolean sent) throws SQLException {
 		
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
+		PreparedStatement preparedStmt2 = null;
 		
 		String insertSQL = "INSERT INTO " + OrdersDAO.TABLE_NAME
-				+ " (ID, CLIENTE_USERNAME, GEST_ORD_USERNAME, DATE_TIME, SHIPPING_ADDRESS, PAYMENT_METHOD, AMOUNT, SENT) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				+ " (CLIENTE_USERNAME, GEST_ORD_USERNAME, DATE_TIME, SHIPPING_ADDRESS, PAYMENT_METHOD, AMOUNT, SENT) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
+		String selectSQL = "SELECT LAST_INSERT_ID()"; 
+		
+		int orderId = -1;
 		try {
 			connection = ds.getConnection();
 			
 			
 			preparedStmt = connection.prepareStatement(insertSQL);
-			preparedStmt.setInt(1, id);
-			preparedStmt.setString(2, clienteUsername);
-			preparedStmt.setString(3, gestOrdUsername);
-			preparedStmt.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
-			preparedStmt.setString(5, shippingAddress);
-			preparedStmt.setString(6, paymentMethod);
-			preparedStmt.setInt(7, amount);
-			preparedStmt.setBoolean(8, sent);
+			preparedStmt2 = connection.prepareStatement(selectSQL);
+			
+			preparedStmt.setString(1, clienteUsername);
+			preparedStmt.setString(2, gestOrdUsername);
+			preparedStmt.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+			preparedStmt.setString(4, shippingAddress);
+			preparedStmt.setString(5, paymentMethod);
+			preparedStmt.setInt(6, amount);
+			preparedStmt.setBoolean(7, sent);
 			preparedStmt.executeUpdate();
+			ResultSet rs = preparedStmt2.executeQuery();
+			
+			if(rs.next()) {
+				orderId = rs.getInt("LAST_INSERT_ID()");
+			}
 
 			connection.setAutoCommit(false);
 			connection.commit();
@@ -65,6 +75,7 @@ public class OrdersDAO implements OrdersInterf{
 					connection.close();
 			}
 		}
+		return orderId;
 	}
 
 	@Override

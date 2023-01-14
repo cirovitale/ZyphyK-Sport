@@ -20,6 +20,16 @@ public class ManagesProdsBean implements Serializable{
 		this.tipologia = tipologia;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getGestCatUsername() {
 		return gestCatUsername;
 	}
@@ -42,14 +52,6 @@ public class ManagesProdsBean implements Serializable{
 
 	public void setTipologia(int tipologia) {
 		this.tipologia = tipologia;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	@Override

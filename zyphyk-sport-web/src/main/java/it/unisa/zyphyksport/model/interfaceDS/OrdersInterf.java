@@ -8,7 +8,7 @@ import it.unisa.zyphyksport.model.bean.OrdersBean;
 
 public interface OrdersInterf {
 
-	public void doSave(int id, String clienteUsername, String gestOrdUsername, LocalDateTime dateTime, String shippingAddress, String paymentMethod, int amount, boolean sent) throws SQLException;
+	public int doSave(String clienteUsername, String gestOrdUsername, LocalDateTime dateTime, String shippingAddress, String paymentMethod, int amount, boolean sent) throws SQLException;
 	
 	public void doUpdate(int id, LocalDateTime dateTime, String shippingAddress, String paymentMethod, int amount, boolean sent) throws SQLException;
 
