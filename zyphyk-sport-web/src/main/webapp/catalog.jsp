@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
     import="javax.sql.DataSource, it.unisa.zyphyksport.model.bean.ProductsBean,	it.unisa.zyphyksport.model.interfaceDS.ProductsInterf, 
-    it.unisa.zyphyksport.model.DAO.ProductsDAO, java.util.*" %>
+    it.unisa.zyphyksport.model.DAO.ProductsDAO, it.unisa.zyphyksport.model.interfaceDS.SizesInterf, it.unisa.zyphyksport.model.DAO.SizesDAO, it.unisa.zyphyksport.model.bean.SizesBean, java.util.*" %>
     
  <%
 	String roles = (String) session.getAttribute("roles");
@@ -13,6 +13,7 @@
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	ProductsInterf productsDAO = new ProductsDAO(ds);
 	Collection<ProductsBean> colProd = productsDAO.doRetrieveAll(null);
+	
 %> 
 
 
@@ -49,7 +50,7 @@
 						<div class="card-body">
 							<h5 class="card-title"><%=prod.getName()%></h5>
 							<h6 class="price"> &euro; <%=prod.getPrice()%></h6>
-							<a href="AddToCartServlet?id=<%=prod.getId()%>" class="btn">
+							<a href="AddToCartServlet?id=<%=prod.getId()%>&size=<%=37%>" class="btn">
 								<img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona">	
 							</a>
 					</div>
