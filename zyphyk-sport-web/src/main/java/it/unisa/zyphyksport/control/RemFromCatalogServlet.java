@@ -52,7 +52,7 @@ public class RemFromCatalogServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		response.sendRedirect(request.getContextPath() + "/catalogoVidSup.jsp");
+		response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
 		
 	}
 

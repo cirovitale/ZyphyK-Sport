@@ -7,7 +7,9 @@
 <%
 String roles = (String) session.getAttribute("roles");
 
-if (roles.equals("gestCat")) {
+if(roles == null){
+	
+}else if (roles.equals("gestCat")) {
 	response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
 } else if (roles.equals("gestOrd")) {
 	response.sendRedirect(request.getContextPath() + "/orderManage.jsp");
@@ -82,18 +84,17 @@ Collection<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 
 			<div class="col-md-3 my-3">
 				<div class="card text-center w-100" style="width: 18rem;">
-					<form>
-						<input type="hidden" name="userId" value="<%=prod.getId()%>">
-						<!-- imagine -->
-					</form>
 					<div class="card-body">
-						<h5 class="card-title"><%=prod.getName()%></h5>
-						<h6 class="price">
-							&euro;
-							<%=prod.getPrice()%></h6>
-						<a href="AddToCartServlet?id=<%=prod.getId()%>" class="btn"> 
-						</a>
-					</div>
+						<a href="products.jsp?id=<%=prod.getId()%>">
+							<h5 class="card-title"><%=prod.getName()%></h5></a>
+							<h6 class="price">
+								&euro;
+								<%=prod.getPrice()%></h6>
+							<a href="AddToCartServlet?id=<%=prod.getId()%>&size=<%=37%>"
+								class="btn"> <img src="img\icon\shopping-cart.svg"
+								alt="add-to-cart" class="icona">
+							</a>
+						</div>
 				</div>
 			</div>
 			<%
@@ -114,7 +115,7 @@ Collection<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 						&egrave; sicuro?
 					</h6>
 					<p>
-						<strong><u>Certamente!</u></strong> Assolutamente! Lavoriamo con
+						<strong>Certamente!</strong> Assolutamente! Lavoriamo con
 						le migliori societ&agrave; di pagamento che garantiscono la tua
 						sicurezza. Tutte le informazioni di fatturazione sono memorizzate
 						sul nostro partner di elaborazione dei pagamenti.
@@ -123,25 +124,19 @@ Collection<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 
 				<div class="col-md-6 col-lg-4 mb-4">
 					<h6 class="mb-3 text-primary">
-						<i class="fas fa-pen-alt text-primary pe-2"></i> Posso ricevere
-						assistenza?
+						<i class="fas fa-pen-alt text-primary pe-2"></i> -------?
 					</h6>
 					<p>
-						<strong><u>Certo, &egrave; possibile!</u></strong> Tu puoi
-						contattare un operatore con un tickets nella sezione dedicata
-						sulla barra di navigazione, e spiegargli il problema. L'operatore
-						provveder&agrave; tempestivamente a risolverlo.
+						<strong><u>Certo, &egrave; possibile!</u></strong> ------
 					</p>
 				</div>
 
 				<div class="col-md-6 col-lg-4 mb-4">
 					<h6 class="mb-3 text-primary">
-						<i class="fas fa-user text-primary pe-2"></i> Come posso ottenere
-						il Platinum Pass?
+						<i class="fas fa-user text-primary pe-2"></i> -------?
 					</h6>
 					<p>
-						Acquistalo ora nella sezione Catalogo Abbonamenti > Platinum Pass.
-						Oppure <a href="prodottoAbb.jsp?id=Platinum Pass">clicca qui</a>.
+						-----.
 					</p>
 				</div>
 			</div>

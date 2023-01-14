@@ -16,7 +16,7 @@
 	ProductsInterf productsDAO = new ProductsDAO(ds);
 	SizesInterf sizesDAO = new SizesDAO(ds);	
 	
-	Collection<ProductsBean> collProd = productsDAO.doRetrieveAll(null);
+	Collection<ProductsBean> collProd = productsDAO.doRetrieveAllExists(null);
 	Collection<SizesBean> collSizes = null;
 %> 
 
@@ -32,13 +32,35 @@
 <script src="script/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+	<script>
+	
+		function submitForm() {
+			var checkboxes = document
+					.querySelectorAll('input[name^="sizesValue"]');
+			var atLeastOneChecked = false;
+	
+			for (var i = 0; i < checkboxes.length; i++) {
+				if (checkboxes[i].checked) {
+					atLeastOneChecked = true;
+					break;
+				}
+			}
+	
+			if (!atLeastOneChecked) {
+				alert("Almeno una taglia deve essere selezionata.");
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<%@ include file="../fragments/header.jsp"%>
 	<div id ="cont" class="container page">
 		<h2>Modifica in Catalogo</h2>
 		<br/>
 		
-			<form action="ModInCatalogServlet" method="post" enctype="multipart/form-data">
+			<form action="ModInCatalogServlet" method="post" enctype="multipart/form-data" onsubmit="return submitForm()">
 
 				<br/>
 
@@ -63,19 +85,19 @@
 
 				<div class='col-md-6 mb-3'>
 					<label for='nome-vid'>Sizes: </label> <br /> 
-					<label for="sizesValue36"> 36</label> <input type="checkbox" id="sizesValue" name="sizesValue36" value="36">	
+					<input type="checkbox" id="sizesValue" name="sizesValue36" value="36"><label for="sizesValue36">&nbsp36</label> 	
 					 
-					<label for="sizesValue37"> 37</label> <input type="checkbox" id="sizesValue" name="sizesValue37" value="37"> 
+					<input type="checkbox" id="sizesValue" name="sizesValue37" value="37"> <label for="sizesValue37">&nbsp37</label> 
 					 
-					<label for="sizesValue38"> 38</label> <input type="checkbox" id="sizesValue" name="sizesValue38" value="38"> 
+					<input type="checkbox" id="sizesValue" name="sizesValue38" value="38"> <label for="sizesValue38">&nbsp38</label> 
 					 
-					<label for="sizesValue39"> 39</label> <input type="checkbox" id="sizesValue" name="sizesValue39" value="39"> 
+					<input type="checkbox" id="sizesValue" name="sizesValue39" value="39"> <label for="sizesValue39">&nbsp39</label> 
 					 
-					<label for="sizesValue40"> 40</label> <input type="checkbox" id="sizesValue" name="sizesValue40" value="40"> 
+					<input type="checkbox" id="sizesValue" name="sizesValue40" value="40"><label for="sizesValue40">&nbsp40</label>  
 					
-					<label for="sizesValue41"> 41</label> <input type="checkbox" id="sizesValue" name="sizesValue41" value="41">
+					<input type="checkbox" id="sizesValue" name="sizesValue41" value="41"><label for="sizesValue41">&nbsp41</label> 
 					 
-					<label for="sizesValue42"> 42</label> <input type="checkbox" id="sizesValue" name="sizesValue42" value="42">
+					<input type="checkbox" id="sizesValue" name="sizesValue42" value="42"><label for="sizesValue42">&nbsp42</label> 
 					</div>
 
 				<div class='col-md-6 mb-3'>

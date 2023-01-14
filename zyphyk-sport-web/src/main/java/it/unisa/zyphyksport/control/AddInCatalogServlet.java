@@ -115,14 +115,14 @@ public class AddInCatalogServlet extends HttpServlet {
 			managesProdsDAO.doSave(gestCat.getUsername(), productId, 0);
 			//sizesDAO.doSave(productId, sizesValue);
 			for(int size: arlist){		
-					sizesDAO.doSave(productId, size);	
+				sizesDAO.doSave(productId, size);	
 			}			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-    	//response.sendRedirect(request.getContextPath() + "/prodottoVideog.jsp?id=" + productId);
+    	response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
 
       }
 }

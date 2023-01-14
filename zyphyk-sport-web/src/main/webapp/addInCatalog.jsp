@@ -30,22 +30,41 @@
 
 
 <body>
+	<script>
+		
+		function submitForm() {
+			var productId = document.getElementById("productId").value;
+			if (productId.length > 5) {
+				alert("lunghezza massima ID: 5 caratteri");
+				return false;
+			}
+
+			var checkboxes = document
+					.querySelectorAll('input[name^="sizesValue"]');
+			var atLeastOneChecked = false;
+
+			for (var i = 0; i < checkboxes.length; i++) {
+				if (checkboxes[i].checked) {
+					atLeastOneChecked = true;
+					break;
+				}
+			}
+
+			if (!atLeastOneChecked) {
+				alert("Almeno una taglia deve essere selezionata.");
+				return false;
+			}
+			
+			return true;
+		}
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<%@ include file="../fragments/header.jsp"%>
 	<div id ="cont" class="container page">
 		<h2>Aggiungi in Catalogo</h2>
 		<br/>
 		
-			<form action="AddInCatalogServlet" method="post" enctype="multipart/form-data">
-				<!--  
-				<div>
-					<label for="tipo">Tipologia:</label>
-					<select name="tipo" id="tipo" class=' col-md-6 mb-3 form-control '>
-						<option value="null" selected>-</option>
-						<option value="prodotto">Prodotto</option>
-					</select>
-				</div>
-				-->
+			<form action="AddInCatalogServlet" method="post" enctype="multipart/form-data" onsubmit="return submitForm()">
 				<br/>
 				
 				<!-- pagina -->
@@ -105,7 +124,7 @@
 					</select>						
 					</div>
 					<div class='col-md-6 mb-3'>
-						<label for='cod-vid'>Price: </label>
+						<label for='cod-vid'>Prezzo: </label>
 						<input type='text'class='form-control' id='price' name='price' maxlength='8'required>
 					</div>
 				</div>

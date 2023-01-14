@@ -6,13 +6,17 @@
  <%
 	String roles = (String) session.getAttribute("roles");
 
-	if(roles == null){
-		response.sendRedirect(request.getContextPath() + "/login.jsp");
+ 	if(roles == null || roles.equals("cliente")){
+		
+	} else if(roles.equals("gestCat")){
+		response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
+	} else if (roles.equals("gestOrd")) {
+		response.sendRedirect(request.getContextPath() + "/orderManage.jsp");
 	}
 	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	ProductsInterf productsDAO = new ProductsDAO(ds);
-	Collection<ProductsBean> colProd = productsDAO.doRetrieveAll(null);
+	Collection<ProductsBean> colProd = productsDAO.doRetrieveAllExists(null);
 	
 %> 
 
@@ -40,24 +44,27 @@
 			if(!colProd.isEmpty()){
 				for(ProductsBean prod: colProd){
 		%>
-				
+
 			<div class="col-md-3 my-3">
-				<div class="card text-center w-100" style="width: 18rem;">
-					<form>
-						 <input type="hidden" name="userId" value="<%=prod.getId()%>">
-					 
-					  <!-- imagine --> <a href="products.jsp?id=<%=prod.getId()%>"> Link alla pagina del prodotto </a>
-					</form>
+				
+					<div class="card text-center w-100" style="width: 18rem;">
+						<form>
+							<input type="hidden" name="userId" value="<%=prod.getId()%>">
+						</form>
 						<div class="card-body">
-							<h5 class="card-title"><%=prod.getName()%></h5>
-							<h6 class="price"> &euro; <%=prod.getPrice()%></h6>
-							<a href="AddToCartServlet?id=<%=prod.getId()%>&size=<%=37%>" class="btn">
-								<img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona">	
+						
+							<h5 class="card-title"><a href="products.jsp?id=<%=prod.getId()%>"><%=prod.getName()%></a></h5>
+							<h6 class="price">
+								&euro;
+								<%=prod.getPrice()%></h6>
+							<a href="AddToCartServlet?id=<%=prod.getId()%>&size=<%=37%>"
+								class="btn"> <img src="img\icon\shopping-cart.svg"
+								alt="add-to-cart" class="icona">
 							</a>
+						</div>
 					</div>
-				</div>
 			</div>
-		<%	
+			<%	
 				}
 			}
 		%>

@@ -95,50 +95,29 @@ public class ModInCatalogServlet extends HttpServlet {
 		SizesInterf sizesDAO = new SizesDAO(ds); //dobbiamo eliminare le taglie che non sono state scelte
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		try {
 			productsDAO.doUpdate(productId, nome, sport, brand, price);
 			managesProdsDAO.doSave(gestCat.getUsername(), productId, 2);
-			for(int size: arlist){		
-					sizesDAO.doSave(productId, size);	
-			}			
+			
+			for(int i = 36; i<43; i++) {
+				sizesDAO.doDelete(productId, i);
+			}
+			
+			if (arlist.size() == 0) {
+				productsDAO.doDelete(productId);
+			} else {
+				for(int size: arlist){
+					sizesDAO.doSave(productId, size);
+				}
+			}
+			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-    	//response.sendRedirect(request.getContextPath() + "/modInCatalog.jsp");
+    	response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
 
       }
 

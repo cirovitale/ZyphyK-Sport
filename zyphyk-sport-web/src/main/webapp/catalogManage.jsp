@@ -35,7 +35,7 @@
 				document.getElementById("pagina").innerHTML = this.responseText;
 			}
 		};
-		xhttp.open("POST","RemFromCatalogServlet?productId=" + productId,true);
+		xhttp.open("GET","RemFromCatalogServlet?productId=" + productId,true);
 		xhttp.send();
 	}
 </script>
@@ -70,6 +70,7 @@
 							<!-- imagine -->
 	
 						<div class="card-body">
+							
 							<h5 class="card-title"><%=prod.getName()%></h5>
 							<h6 class="price"> &euro; <%=prod.getPrice()%></h6>
 							<button type="button" class="btn border-dark" onclick='remOggetto("<%=prod.getId()%>")'>
