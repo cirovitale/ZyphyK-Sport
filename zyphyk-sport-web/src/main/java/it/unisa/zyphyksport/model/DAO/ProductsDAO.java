@@ -214,7 +214,7 @@ public class ProductsDAO implements ProductsInterf{
 
 		Collection<ProductsBean> products = new LinkedList<ProductsBean>();
 
-		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + "WHERE ELIMINATO = 0";
+		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + " WHERE REMOVED = FALSE";
 		
 
 		if (order != null && !order.equals("")) {
