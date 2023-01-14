@@ -47,7 +47,7 @@ public class GetProdsFromCartServlet extends HttpServlet {
 			CartsContainsProdsInterf cartContsProdDAO = new CartsContainsProdsDAO(ds);
 			ProductsInterf productDAO = new ProductsDAO(ds);
 			Collection<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
-			Collection<CartsContainsProdsBean> prodsContainsCartarray = new ArrayList<CartsContainsProdsBean>();
+			Collection<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
 	
 			
 			CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
@@ -59,14 +59,14 @@ public class GetProdsFromCartServlet extends HttpServlet {
 					ProductsBean product = productDAO.doRetrieveByKey(cartContProd.getProductId());
 					
 					prodsArray.add(product);
-					prodsContainsCartarray.add(cartContProd);
+					prodsContainsCartArray.add(cartContProd);
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.getSession().setAttribute("prodsCart", prodsArray);
-			request.getSession().setAttribute("prodsContainsCart", prodsContainsCartarray);
+			request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
 		}
 		
 		

@@ -15,18 +15,16 @@ import javax.sql.DataSource;
 
 import it.unisa.zyphyksport.model.DAO.CartsContainsProdsDAO;
 import it.unisa.zyphyksport.model.DAO.CartsDAO;
-import it.unisa.zyphyksport.model.DAO.GestoriOrdiniDAO;
 import it.unisa.zyphyksport.model.DAO.OrdersContainsProdsDAO;
 import it.unisa.zyphyksport.model.DAO.OrdersDAO;
 import it.unisa.zyphyksport.model.DAO.ProductsDAO;
 import it.unisa.zyphyksport.model.bean.CartsBean;
 import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 import it.unisa.zyphyksport.model.bean.ClientiBean;
-import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
 import it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean;
 import it.unisa.zyphyksport.model.bean.ProductsBean;
 import it.unisa.zyphyksport.model.interfaceDS.CartsContainsProdsInterf;
-import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
+import it.unisa.zyphyksport.model.interfaceDS.CartsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.OrdersContainsProdsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.OrdersInterf;
 import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
@@ -92,9 +90,12 @@ public class CheckOutServlet extends HttpServlet {
 				ProductsBean prod = productsDAO.doRetrieveByKey(cartContProdsBean.getProductId());
 				OrdersContainsProdsBean ordContProdsBean = new OrdersContainsProdsBean(orderId, cartContProdsBean.getProductId(), cartContProdsBean.getQuantity(), cartContProdsBean.getSize(), prod.getPrice());
 				ordContProdsArr.add(ordContProdsBean);	
+				
+				// DEBUG
 				System.out.println("prod: "+prod);
-				System.out.println("cartContProdsArr: "+cartContProdsArr);
-				System.out.println("ordContProdsBean: "+ordContProdsBean);
+				System.out.println("cartContProdsArr: "+cartContProdsBean);
+				System.out.println("ordContProdsBean: "+ordContProdsBean + "\n\n");
+				
 				orderContProdsDAO.doSave(orderId, ordContProdsBean.getProductId(), ordContProdsBean.getQuantity(), ordContProdsBean.getSize());
 				cartContProdsDAO.doDelete(cartContProdsBean.getCartId(), cartContProdsBean.getProductId(), cartContProdsBean.getSize());
 			}
@@ -105,8 +106,20 @@ public class CheckOutServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		CartsInterf cartsDAO = new CartsDAO(ds);
 		carrello.setAmount(0);
-		 
+		try {
+			cartsDAO.doUpdate(cliente.getCartId(), 0);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Collection<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
+		Collection<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
+		request.getSession().setAttribute("prodsCart", prodsArray);
+		request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
+		
 		request.getSession().setAttribute("orderId", orderId);
 		response.sendRedirect(request.getContextPath()+"/thankYouPage.jsp");
 		
