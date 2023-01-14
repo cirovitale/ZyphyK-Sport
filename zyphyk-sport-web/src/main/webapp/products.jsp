@@ -38,6 +38,34 @@
 
 <script src="script/jquery-3.6.0.min.js"></script>
 
+<script>
+
+	function getLocation(id){
+		
+		
+		var e = document.getElementById("size");
+		var value = e.value;
+		var text = e.options[e.selectedIndex].text;
+		console.log(id);
+		console.log(text);
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if (this.readyState == 4 && this.status == 200){
+				document.getElementById("pagina").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET","AddToCartServlet?id=" + id + "&size=" + text, true);
+		xhttp.send();
+		
+		
+	}
+
+
+
+
+
+</script>
+
 </head>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -84,7 +112,7 @@
 			</div>
 
                <br/>
-               <a href="AddToCartServlet?id=<%=prodBean.getId()%>" class="btn border-dark"> 
+               <a class="btn border-dark" onclick='getLocation("<%=prodBean.getId()%>")'>
                		<img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona"> Aggiungi al carrello
 			   </a>
 

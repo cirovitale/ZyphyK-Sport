@@ -60,6 +60,7 @@ public class AddToCartServlet extends HttpServlet {
 			int size = Integer.parseInt(request.getParameter("size"));
 			System.out.println(size);
 			CartsContainsProdsInterf cartsContProdsDS = new CartsContainsProdsDAO(ds);	
+		
 			
 
 			ProductsInterf productDS = new ProductsDAO(ds);
@@ -75,8 +76,28 @@ public class AddToCartServlet extends HttpServlet {
 			System.out.println(colProd);
 			Collection<CartsContainsProdsBean> colContainsProds = (Collection<CartsContainsProdsBean>) request.getSession().getAttribute("prodsContainsCart");
 			System.out.println(colContainsProds);
-			
-			if(!colProd.contains(productBean)) {
+			for(CartsContainsProdsBean cartContBean2 : colContainsProds ) {
+				if(cartContBean2.getProductId().equals(id)) {
+					if(cartContBean2.getSize() == size) {
+						try {
+							cartsContProdsDS.doUpdate(carrello.getId(), id, cartContBean2.getQuantity() + 1);
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						try {
+							cartsDS.doUpdate(carrello.getId(), carrello.getAmount() + productBean.getPrice());
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						carrello.setAmount(carrello.getAmount() + productBean.getPrice());
+						
+					}
+				}
+			}
+			/*
+			if(!colProd.contains(productBean) && size != ) {
 				subtotale = carrello.getAmount() + productBean.getPrice();
 				carrello.setAmount(subtotale);
 				colProd.add(productBean);
@@ -103,15 +124,17 @@ public class AddToCartServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}	
+			*/
 				
 		
-			
-			
 			response.sendRedirect(request.getContextPath() + "/cart.jsp");
+			
+			
 		}else {
 			response.sendRedirect(request.getContextPath() + "/login.jsp");
 		}
 		
+		response.sendRedirect(request.getContextPath() + "/cart.jsp");
 	}
 }
 
