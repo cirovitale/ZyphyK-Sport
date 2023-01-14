@@ -44,7 +44,8 @@
 				<div class="card text-center w-100" style="width: 18rem;">
 					<form>
 						 <input type="hidden" name="userId" value="<%=prod.getId()%>">
-					  <!-- imagine -->
+					 
+					  <!-- imagine --> <a href="products.jsp?id=<%=prod.getId()%>"> Link alla pagina del prodotto </a>
 					</form>
 						<div class="card-body">
 							<h5 class="card-title"><%=prod.getName()%></h5>
