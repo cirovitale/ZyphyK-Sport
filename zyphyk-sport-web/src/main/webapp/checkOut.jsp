@@ -11,8 +11,8 @@
 	
 
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-	CartsContainsProdsInterf cartContProdsDS = new CartsContainsProdsDAO(ds);
-	Collection<CartsContainsProdsBean> cartContProds =  cartContProdsDS.doRetrieveAllByCartId(carrello.getId(), null);
+	CartsContainsProdsInterf cartContProdsDAO = new CartsContainsProdsDAO(ds);
+	Collection<CartsContainsProdsBean> cartContProds =  cartContProdsDAO.doRetrieveAllByCartId(carrello.getId(), null);
 	ProductsInterf prodDS = new ProductsDAO(ds);
 	
 	
@@ -61,7 +61,7 @@
 						<div>
 							<h6 class="my-0"><%=product.getName() %></h6>
 							<small class="text-muted"></small>
-						</div> <span class="text-muted">&euro; <%=product.getPrice()%></span>
+						</div> <span class="text-muted">&euro; <%=product.getPrice()%> x <%= prod.getQuantity() %></span>
 					</li>
 				<%
 					}
@@ -84,28 +84,22 @@
 				
 
 				<div class="row">
-					<div class="form-outline mb-3">
+					<div class="form-outline mb-3 col">
 			 			<label class="form-label" for="via">Via</label>
 		     			<input id="via" type="text" name="via" class="form-control" placeholder="via" autofocus>
 					</div> 
-				</div>
-				
-				<div class="row">
-					<div class="form-outline mb-3">
+					<div class="form-outline mb-3 col-md-auto">
 			 			<label class="form-label" for="numCivico">Numero Civico</label>
 		     			<input id="numCivico" type="text" name="numCivico" class="form-control" placeholder="numero civico" autofocus>
 					</div> 
 				</div>
 				
 				<div class="row">
-					<div class="form-outline mb-3">
+					<div class="form-outline mb-3 col">
 			 			<label class="form-label" for="città">Città</label>
 		     			<input id="città" type="text" name="città" class="form-control" placeholder="città" autofocus>
 					</div> 
-				</div>
-				
-				<div class="row">
-					<div class="form-outline mb-3">
+					<div class="form-outline mb-3 col">
 			 			<label class="form-label" for="provincia">Provincia</label>
 		     			<input id="provincia" type="text" name="provincia" class="form-control" placeholder="provincia" autofocus>
 					</div> 
@@ -115,20 +109,6 @@
 				<hr class="mb-4">
 
 				<h4 class="mb-3">Pagamento</h4>
-
-				<div class="d-block my-3">
-					<div class="custom-control custom-radio">
-						<input id="credit" name="paymentMethod" type="radio"
-							class="custom-control-input" checked required> <label
-							class="custom-control-label" for="credit">Carta di
-							credito</label>
-					</div>
-					<div class="custom-control custom-radio">
-						<input id="debit" name="paymentMethod" type="radio"
-							class="custom-control-input" required> <label
-							class="custom-control-label" for="debit">Carta di debito</label>
-					</div>
-				</div>
 					
 				<div class="row">
 					<div class="col-md-6 mb-3">

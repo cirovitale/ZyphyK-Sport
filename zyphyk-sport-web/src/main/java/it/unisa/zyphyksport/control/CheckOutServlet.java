@@ -3,6 +3,7 @@ package it.unisa.zyphyksport.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.servlet.ServletException;
@@ -12,16 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import it.unisa.zyphyksport.model.DAO.CartsContainsProdsDAO;
 import it.unisa.zyphyksport.model.DAO.CartsDAO;
 import it.unisa.zyphyksport.model.DAO.GestoriOrdiniDAO;
 import it.unisa.zyphyksport.model.DAO.OrdersContainsProdsDAO;
 import it.unisa.zyphyksport.model.DAO.OrdersDAO;
+import it.unisa.zyphyksport.model.DAO.ProductsDAO;
 import it.unisa.zyphyksport.model.bean.CartsBean;
+import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 import it.unisa.zyphyksport.model.bean.ClientiBean;
 import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
+import it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean;
+import it.unisa.zyphyksport.model.bean.ProductsBean;
+import it.unisa.zyphyksport.model.interfaceDS.CartsContainsProdsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
 import it.unisa.zyphyksport.model.interfaceDS.OrdersContainsProdsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.OrdersInterf;
+import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
 
 /**
  * Servlet implementation class CheckOutServlet
@@ -49,57 +57,57 @@ public class CheckOutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ClientiBean cliente = (ClientiBean) request.getSession().getAttribute("utente");
-		CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
-		
-		Collection<VideogiocoBean> arrVid = carrello.getArrVidBean();
 		
 		String username = cliente.getUsername();
-		
 		
 		String via = request.getParameter("via");
 		String numCivico = request.getParameter("numCivico");
 		String citta = request.getParameter("città");
 		String provincia = request.getParameter("provincia");
-		String numCarta = (request.getParameter("cc-number"));
+		String shippingAddress = via + " " + numCivico + " " + citta + " " + provincia;
 		
-		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");		
-		OrdersContainsProdsInterf acqVidDS = new OrdersContainsProdsDAO(ds);
-		OrdersInterf ordDS = new OrdersDAO(ds);
-		GestoriOrdiniInterf gestOrdDS = new GestoriOrdiniDAO(ds);
-		Collection<GestoriOrdiniBean> gestBean = gestOrdDS.doRetrieveAll(username); 
+		String ccNumber = (request.getParameter("cc-number"));
+		String ccExpiration = (request.getParameter("cc-expiration"));
+		String ccCvv = (request.getParameter("cc-cvv"));
+		String paymentMethod = ccNumber + " " + ccExpiration + " " + ccCvv;
 		
-    	int min = 100000;
-		int max = 999999;
-    	int id = (int) (Math.random() * (max - min)) + min;
-  	
-    	
-    	try {
-    		ordDS.doSave(id,username, gestOrd, LocalDateTime.now(), via + ", " + numCivico + ", " citta + ", " + provincia, numCarta, carrello.getAmount(), false);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-    	    
-		for(VideogiocoBean vidBean : arrVid){
-			try {
-				acqVidDS.doSave(id,vidBean.getCodice());
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
 		
+		OrdersContainsProdsInterf orderContProdsDAO = new OrdersContainsProdsDAO(ds);
+		OrdersInterf orderDAO = new OrdersDAO(ds);
+		Collection<OrdersContainsProdsBean> ordContProdsArr = new ArrayList<OrdersContainsProdsBean>();
+		
+		
+		CartsContainsProdsInterf cartContProdsDAO = new CartsContainsProdsDAO(ds);
+		ProductsInterf productsDAO = new ProductsDAO(ds);
+		
+		int orderId = -1;
 		try {
-			acqDS.doUpdate(id);
+			orderId = orderDAO.doSave(username, null, LocalDateTime.now(), shippingAddress, paymentMethod, carrello.getAmount(), false);
+			
+			Collection<CartsContainsProdsBean> cartContProdsArr =  cartContProdsDAO.doRetrieveAllByCartId(carrello.getId(), null);
+			for(CartsContainsProdsBean cartContProdsBean: cartContProdsArr) {
+				ProductsBean prod = productsDAO.doRetrieveByKey(cartContProdsBean.getProductId());
+				OrdersContainsProdsBean ordContProdsBean = new OrdersContainsProdsBean(orderId, cartContProdsBean.getProductId(), cartContProdsBean.getQuantity(), cartContProdsBean.getSize(), prod.getPrice());
+				ordContProdsArr.add(ordContProdsBean);	
+				System.out.println("prod: "+prod);
+				System.out.println("cartContProdsArr: "+cartContProdsArr);
+				System.out.println("ordContProdsBean: "+ordContProdsBean);
+				orderContProdsDAO.doSave(orderId, ordContProdsBean.getProductId(), ordContProdsBean.getQuantity(), ordContProdsBean.getSize());
+				cartContProdsDAO.doDelete(cartContProdsBean.getCartId(), cartContProdsBean.getProductId(), cartContProdsBean.getSize());
+			}
+		
+		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		request.getSession().setAttribute("carrello", new CartsDAO(ds));
+		
+		carrello.setAmount(0);
 		 
-		request.getSession().setAttribute("idAcquisto", id);
+		request.getSession().setAttribute("orderId", orderId);
 		response.sendRedirect(request.getContextPath()+"/thankYouPage.jsp");
 		
 	}

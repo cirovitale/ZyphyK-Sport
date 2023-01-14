@@ -12,14 +12,13 @@
 	
 	if(roles == null) {
 		flag = false;
-	}else if(roles.equals("admin") || roles.equals("gestCat") || roles.equals("gestOrd")){
+	} else if (roles.equals("admin") || roles.equals("gestCat") || roles.equals("gestOrd")){
 		response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
-	}else if(roles.equals("cliente")){
+	} else if (roles.equals("cliente")){
 		flag = true;
 		products = (Collection<ProductsBean>) session.getAttribute("prodsCart");
 		prodsContainsCart = (Collection<CartsContainsProdsBean>) session.getAttribute("prodsContainsCart");
 	}
-	
 %>
 
 <html>

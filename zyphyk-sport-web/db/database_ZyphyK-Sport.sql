@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS manages_prods(
 );
 
 CREATE TABLE IF NOT EXISTS orders(
-	id int NOT NULL,
+	id int NOT NULL auto_increment,
 	cliente_username varchar(20) NOT NULL,
 	gest_ord_username varchar(20),
 	date_time DATETIME NOT NULL,
