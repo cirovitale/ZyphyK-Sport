@@ -7,7 +7,7 @@
 	String roles = (String) session.getAttribute("roles");
 
 	if(roles == null){
-		response.sendRedirect(request.getContextPath() + "/login-form.jsp");
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");

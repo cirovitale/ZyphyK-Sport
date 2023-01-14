@@ -8,15 +8,15 @@
 	String roles = (String) session.getAttribute("roles");
 
 	if(roles == null){
-		response.sendRedirect(request.getContextPath() + "/login-form.jsp");
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	}
 	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 
 	ProductsInterf productsDAO = new ProductsDAO(ds);
+	SizesInterf sizesDAO = new SizesDAO(ds);	
 	
 	Collection<ProductsBean> collProd = productsDAO.doRetrieveAll(null);
-	SizesInterf sizesDAO = new SizesDAO(ds);	
 	Collection<SizesBean> collSizes = null;
 %> 
 
@@ -58,8 +58,7 @@
 			<!-- pagina -->
 			<div class='row'>
 				<div class='col-md-6 mb-3'>
-					<label for='nome-vid'>Nome: </label> <input type='text'
-						class='form-control' id='nomeProd' name='nomeProd' required>
+					<label for='nome-vid'>Nome: </label> <input type='text' class='form-control' id='nomeProd' name='nomeProd' required>
 				</div>
 
 				<div class='col-md-6 mb-3'>
