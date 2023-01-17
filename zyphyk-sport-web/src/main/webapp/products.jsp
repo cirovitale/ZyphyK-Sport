@@ -57,6 +57,9 @@
 		xhttp.open("GET","AddToCartServlet?id=" + id + "&size=" + text, true);
 		xhttp.send();
 		
+		window.location.href = "/zyphyk-sport-web/cart.jsp"
+		
+		
 		
 	}
 
@@ -87,7 +90,7 @@
                    <div>
                        <ul style="list-style-type:none">
 							<li class="text-center">Categoria sportiva: <%= prodBean.getSport() %></li>
-							<li class="text-center">Brand: <%= prodBean.getName() %></li>
+							<li class="text-center">Brand: <%= prodBean.getBrand() %></li>
 						</ul>
 						<div id="sizeSel">
 							<label for="sizeSelect">Scegli tra le taglie disponibili:</label>
@@ -112,9 +115,8 @@
 			</div>
 
                <br/>
-               <a class="btn border-dark" onclick='getLocation("<%=prodBean.getId()%>")'>
-               		<img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona"> Aggiungi al carrello
-			   </a>
+               <button type="button" class="btn btn-sm btn-danger" onclick='getLocation("<%=prodBean.getId()%>")'><img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona">  Aggiungi al carrello</button>
+               		
 
 		</div><!-- end row -->	
 	
