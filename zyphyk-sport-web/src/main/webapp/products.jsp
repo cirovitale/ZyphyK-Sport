@@ -8,7 +8,9 @@
 	String roles = (String) session.getAttribute("roles");
 
 	if(roles == null){
-		response.sendRedirect(request.getContextPath() + "/login.jsp");
+		
+	} else if (roles.equals("gestCat") || roles.equals("gestCat")) {
+		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
 	
 	String id = (String) request.getParameter("id");
