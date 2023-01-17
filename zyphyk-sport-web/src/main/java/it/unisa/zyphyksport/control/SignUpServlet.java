@@ -3,7 +3,9 @@ package it.unisa.zyphyksport.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Collection;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,9 +64,24 @@ public class SignUpServlet extends HttpServlet {
 		CartsInterf cartDS = new CartsDAO(ds);
 		CartsBean cartBean = null;
 		ClientiBean clBean = null;
+		boolean exist = false;
+		Collection<ClientiBean> colClienti = null;
+		try {
+			colClienti = clDS.doRetrieveAll(null);
+			for(ClientiBean cliente : colClienti) {
+				String usernameServlet = cliente.getUsername().toLowerCase();
+				
+				if(usernameServlet.equals(username.toLowerCase())) {
+					exist = true;
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		int cartId = 0;
 		try {	
-			if(confPassword.equals(password)) {
+			if(confPassword.equals(password) && exist == false) {
 				cartId = cartDS.doSave(0);
 				clDS.doSave(username, cartId, nome, cognome, email, password, LocalDate.parse(data));
 				cartBean = cartDS.doRetrieveByKey(cartId);
@@ -75,14 +92,22 @@ public class SignUpServlet extends HttpServlet {
 				request.getSession().setAttribute("responseCart", false);
 				
 				redirectedPage = "/index.jsp";
+			}else {
+				redirectedPage = "/signUp.jsp";
 			}
 			
 		} catch (Exception e) {
 			request.getSession().setAttribute("roles", null);
 			redirectedPage = "/signUp.jsp";
 		}
+		if(exist == true) {
+			request.setAttribute("message", "true");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirectedPage);
+			dispatcher.forward(request, response);
+		}else {
+			response.sendRedirect(request.getContextPath() + redirectedPage);
+		}
 		
-		response.sendRedirect(request.getContextPath() + redirectedPage);
 	}
 
 }

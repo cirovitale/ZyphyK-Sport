@@ -10,6 +10,8 @@
 	} else {
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
+	String exist = (String) request.getAttribute("message");
+	request.removeAttribute("message");
 	
 %>
 
@@ -26,10 +28,28 @@
 <script>
 	
 	
-	function checkUsername(inputtxt) {
-		var regex = /[a-zA-Z0-9]{5,15}/;
+	function checkName(inputtxt) {
+		var nome = /^[A-Za-z]{3,}(\s[A-Za-z]{3,})*$/;
 		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex))
+		if (inputtxt.value.match(nome))
+			return true;
+	
+		return false;
+	}
+	
+	function checkSurname(inputtxt) {
+		var surname = /^[A-Za-z]{3,}(\s[A-Za-z]{3,})*$/;
+		console.log(inputtxt.value)
+		if (inputtxt.value.match(surname))
+			return true;
+
+		return false;
+	}
+	
+	function checkUsername(inputtxt) {
+		var username = /[a-zA-Z0-9]{5,15}/;
+		console.log(inputtxt.value)
+		if (inputtxt.value.match(username))
 			return true;
 
 		return false;
@@ -37,49 +57,29 @@
 	
 	
 	function checkEmail(inputtxt) {
-		var regex = /[a-zA-Z][a-zA-Z0-9\.]*@([a-zA-Z]+)\.[a-zA-Z]+/;
+		var email = /[a-zA-Z][a-zA-Z0-9\.]*@([a-zA-Z]+)\.[a-zA-Z]+/;
 		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex))
+		if (inputtxt.value.match(email))
 			return true;
 
 		return false;
 	}
-	
-	
-	function checkName(inputtxt) {
-		var regex = /^[A-Za-z]{3,}(\s[A-Za-z]{3,})*$/;
-		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex))
-			return true;
-
-		return false;
-	}
-	
-	
-	function checkSurname(inputtxt) {
-		var regex = /[a-zA-Z]{3,40}/;
-		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex))
-			return true;
-
-		return false;
-	}
-	
 	
 	function checkDataDiNascita(inputtxt) {
-		var regex = /^(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/](19|20)\d\d$/;
+		var data = /^\d{4}-\d{2}-\d{2}$/;
 		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex))
+		if (inputtxt.value.match(data))
 			return true;
 
 		return false;
 	}
 	
 	
-	function checkPassword(inputtxt, conferma) {
-		var regex = /^.{8,40}$/;
+	function checkPassword(inputtxt,conf) {
+		var passw = /^.{8,40}$/;
 		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex) && inputtxt.equals(conferma))
+		console.log(conf.value)
+		if (inputtxt.value.match(passw) && inputtxt.value.match(conf.value))
 			return true;
 
 		return false;
@@ -87,9 +87,9 @@
 	
 	
 	function checkConfPassword(inputtxt) {
-		var regex = /^.{8,40}$/;
+		var confPass = /^.{8,40}$/;
 		console.log(inputtxt.value)
-		if (inputtxt.value.match(regex))
+		if (inputtxt.value.match(confPass))
 			return true;
 
 		return false;
@@ -103,74 +103,68 @@
 		var name = document.getElementsByName("nome")[0];
 			if (!checkName(name)) {
 				valid = false;
-				console.log("Nome non valido");
+				alert("Nome non valido");
 				name.focus();
-			} else {
-				console.log("nome valido");
 			}
 
 		var surname = document.getElementsByName("cognome")[0];
 			if(!checkSurname(surname)) {
 				valid = false;
-				console.log("Cognome non valido");
+				alert("Cognome non valido");
 				surname.focus();
-			} else {
-				console.log("cognome valido");
 			}
 			
 		var username = document.getElementsByName("username")[0];
 			if (!checkUsername(username)) {
 				valid = false;
-				console.log("Username non valido");
-				name.focus();
-			} else {
-				console.log("Username valido");
+				alert("Username non valido");
+				username.focus();
 			}
 		
 		var data = document.getElementsByName("data")[0];
 	        if(!checkDataDiNascita(data)) {
 	            valid = false;
-	            console.log("Data di nascita non valida");
-	            pwd.focus();
-       		 } else {
- 				console.log("data di nascita valida");
- 			}
+	            alert("Data di nascita non valida");
+	            data.focus();
+       		 }
 			
 		var email = document.getElementsByName("email")[0];
 			if(!checkEmail(email)) {
 				valid = false;
-				console.log("Email non valida");
+				alert("Email non valida");
 				email.focus();
-			} else {
-				console.log("email valida");
 			}
 		
 		
-	        
+		var pwdConf = document.getElementsByName("conferma")[0];
 	    var pwd = document.getElementsByName("password")[0];
-	        if(!checkPassword(pwd)) {
+	        if(!checkPassword(pwd,pwdConf)) {
 	            valid = false;
-	            console.log("Password non valida oppure non coincide con 'conferma password'");
+	            alert("Password non valida oppure non coincide con 'conferma password'");
 	            pwd.focus();
-       		 } else {
- 				console.log("Password valida");
- 			}
+       		 }
 	        
 	    var pwdConf = document.getElementsByName("conferma")[0];
 	        if(!checkConfPassword(pwdConf)) {
 	            valid = false;
-	            console.log("Conferma Password non valida");
-	            pwd.focus();
-       		 } else {
- 				console.log("Conferma Password valida");
- 			}
+	            alert("Conferma Password non valida");
+	            pwdConf.focus();
+       		 }
 
 		return valid;
 
 	}
+	
+	
+	function execute(flag){
+		if(flag.match(true)){
+			alert("username già esistente");
+		}
+	}
+	
 </script>
 
-<body>
+<body onload = "execute('<%=exist%>')">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <%@ include file="../fragments/header.jsp" %>
 
