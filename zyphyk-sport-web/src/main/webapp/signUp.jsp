@@ -30,7 +30,6 @@
 	
 	function checkName(inputtxt) {
 		var nome = /^[A-Za-z]{3,}(\s[A-Za-z]{3,})*$/;
-		console.log(inputtxt.value)
 		if (inputtxt.value.match(nome))
 			return true;
 	
@@ -39,7 +38,6 @@
 	
 	function checkSurname(inputtxt) {
 		var surname = /^[A-Za-z]{3,}(\s[A-Za-z]{3,})*$/;
-		console.log(inputtxt.value)
 		if (inputtxt.value.match(surname))
 			return true;
 
@@ -48,7 +46,6 @@
 	
 	function checkUsername(inputtxt) {
 		var username = /[a-zA-Z0-9]{5,15}/;
-		console.log(inputtxt.value)
 		if (inputtxt.value.match(username))
 			return true;
 
@@ -58,7 +55,6 @@
 	
 	function checkEmail(inputtxt) {
 		var email = /[a-zA-Z][a-zA-Z0-9\.]*@([a-zA-Z]+)\.[a-zA-Z]+/;
-		console.log(inputtxt.value)
 		if (inputtxt.value.match(email))
 			return true;
 
@@ -67,7 +63,6 @@
 	
 	function checkDataDiNascita(inputtxt) {
 		var data = /^\d{4}-\d{2}-\d{2}$/;
-		console.log(inputtxt.value)
 		if (inputtxt.value.match(data))
 			return true;
 
@@ -77,8 +72,6 @@
 	
 	function checkPassword(inputtxt,conf) {
 		var passw = /^.{8,40}$/;
-		console.log(inputtxt.value)
-		console.log(conf.value)
 		if (inputtxt.value.match(passw) && inputtxt.value.match(conf.value))
 			return true;
 
@@ -88,7 +81,6 @@
 	
 	function checkConfPassword(inputtxt) {
 		var confPass = /^.{8,40}$/;
-		console.log(inputtxt.value)
 		if (inputtxt.value.match(confPass))
 			return true;
 
