@@ -14,7 +14,7 @@ it.unisa.zyphyksport.model.DAO.OrdersDAO, java.util.*" contentType="text/html; c
 	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	OrdersInterf ordersDAO = new OrdersDAO(ds);
-	Collection<OrdersBean> ordsArr = ordersDAO.doRetrieveAll(null);
+	Set<OrdersBean> ordsArr = ordersDAO.doRetrieveAll(null);
 %>
 
 
