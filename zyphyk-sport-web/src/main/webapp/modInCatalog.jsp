@@ -16,8 +16,8 @@
 	ProductsInterf productsDAO = new ProductsDAO(ds);
 	SizesInterf sizesDAO = new SizesDAO(ds);	
 	
-	Collection<ProductsBean> collProd = productsDAO.doRetrieveAllExists(null);
-	Collection<SizesBean> collSizes = null;
+	Set<ProductsBean> collProd = productsDAO.doRetrieveAllExists(null);
+	Set<SizesBean> collSizes = null;
 %> 
 
 <!DOCTYPE html>

@@ -25,8 +25,8 @@
 	
 	ProductsBean prodBean = productsDAO.doRetrieveByKey(id);
 	
-	Collection<ProductsBean> colProd = productsDAO.doRetrieveAllExists(null);
-	Collection<SizesBean> collSizes = sizesDAO.doRetrieveByProductId(id, null);	
+	Set<ProductsBean> colProd = productsDAO.doRetrieveAllExists(null);
+	Set<SizesBean> collSizes = sizesDAO.doRetrieveByProductId(id, null);	
 %> 
 <!DOCTYPE html>
 <html>

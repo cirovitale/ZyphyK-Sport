@@ -14,15 +14,11 @@
 	OrdersBean ordersBean = ordersDS.doRetrieveByKey(idOrder);
 	
 	ClientiBean cliente = (ClientiBean) session.getAttribute("utente");
-	
-	
-	
-	
+		
 	OrdersContainsProdsInterf ordContProdDS = new OrdersContainsProdsDAO(ds);
-	Collection<OrdersContainsProdsBean> prods = ordContProdDS.doRetrieveAllProds(ordersBean.getId(), null);
+	Set<OrdersContainsProdsBean> prods = ordContProdDS.doRetrieveAllProds(ordersBean.getId(), null);
 	
 	ProductsInterf prodDS = new ProductsDAO(ds);
-	
 		
 %>
 
