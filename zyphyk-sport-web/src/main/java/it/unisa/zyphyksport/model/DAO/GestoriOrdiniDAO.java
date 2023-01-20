@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -154,11 +154,11 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 	}
 
 	@Override
-	public synchronized Collection<GestoriOrdiniBean> doRetrieveAll(String username) throws SQLException {
+	public synchronized Set<GestoriOrdiniBean> doRetrieveAll(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<GestoriOrdiniBean> array = new LinkedList<GestoriOrdiniBean>();
+		Set<GestoriOrdiniBean> array = new HashSet<GestoriOrdiniBean>();
 
 		String selectSQL = "SELECT * FROM " + GestoriOrdiniDAO.TABLE_NAME;
 		

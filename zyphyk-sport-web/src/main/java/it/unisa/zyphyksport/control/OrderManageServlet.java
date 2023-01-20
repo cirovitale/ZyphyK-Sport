@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import it.unisa.zyphyksport.model.DAO.OrdersDAO;
-import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
 import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
 import it.unisa.zyphyksport.model.bean.OrdersBean;
 import it.unisa.zyphyksport.model.interfaceDS.OrdersInterf;

@@ -2,8 +2,7 @@ package it.unisa.zyphyksport.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -56,8 +55,8 @@ public class ModQuantityInCartServlet extends HttpServlet {
 			CartsContainsProdsInterf cartContsProdDAO = new CartsContainsProdsDAO(ds);
 			ProductsInterf productDAO = new ProductsDAO(ds);
 			CartsInterf cartDAO = new CartsDAO(ds);
-			Collection<ProductsBean> prodsArray = (Collection<ProductsBean>) request.getSession().getAttribute("prodsCart");
-			Collection<CartsContainsProdsBean> cartContainsProdsArray = (Collection<CartsContainsProdsBean>) request.getSession().getAttribute("prodsContainsCart");
+			Set<ProductsBean> prodsArray = (Set<ProductsBean>) request.getSession().getAttribute("prodsCart");
+			Set<CartsContainsProdsBean> cartContainsProdsArray = (Set<CartsContainsProdsBean>) request.getSession().getAttribute("prodsContainsCart");
 			
 			try {
 				CartsContainsProdsBean cartContMod = cartContsProdDAO.doRetrieveByKey(cartId, productId, size);

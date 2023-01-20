@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -84,10 +84,10 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("carrello", cart.doRetrieveByKey(clBean.getCartId()));
 				
 				
-				Collection<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
-				Collection<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
+				Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
+				Set<CartsContainsProdsBean> prodsContainsCartArray = new HashSet<CartsContainsProdsBean>();
 				try {
-					Collection<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(clBean.getCartId(), null);
+					Set<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(clBean.getCartId(), null);
 					for(CartsContainsProdsBean cartContProd: cartContsProdArr) {
 						ProductsBean product = productDAO.doRetrieveByKey(cartContProd.getProductId());
 						

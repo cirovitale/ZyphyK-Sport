@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -121,12 +121,12 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public Collection<ManagesProdsBean> doRetrieveAll(String order) throws SQLException {
+	public Set<ManagesProdsBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<ManagesProdsBean> array = new LinkedList<ManagesProdsBean>();
+		Set<ManagesProdsBean> array = new HashSet<ManagesProdsBean>();
 
 		String selectSQL = "SELECT * FROM " + ManagesProdsDAO.TABLE_NAME;
 		

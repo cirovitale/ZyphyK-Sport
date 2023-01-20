@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -99,11 +99,11 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	}
 
 	@Override
-	public synchronized Collection<OrdersContainsProdsBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<OrdersContainsProdsBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<OrdersContainsProdsBean> ordersContProds = new LinkedList<OrdersContainsProdsBean>();
+		Set<OrdersContainsProdsBean> ordersContProds = new HashSet<OrdersContainsProdsBean>();
 
 		String selectSQL = "SELECT * FROM " + OrdersContainsProdsDAO.TABLE_NAME;
 		
@@ -141,11 +141,11 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	}
 	
 	
-	public synchronized Collection<OrdersContainsProdsBean> doRetrieveAllProds(int orderId, String order) throws SQLException {
+	public synchronized Set<OrdersContainsProdsBean> doRetrieveAllProds(int orderId, String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<OrdersContainsProdsBean> ordersContProds = new LinkedList<OrdersContainsProdsBean>();
+		Set<OrdersContainsProdsBean> ordersContProds = new HashSet<OrdersContainsProdsBean>();
 
 		String selectSQL = "SELECT * FROM " + OrdersContainsProdsDAO.TABLE_NAME + " WHERE ORDER_ID = ?";
 		

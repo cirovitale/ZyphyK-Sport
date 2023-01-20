@@ -2,8 +2,8 @@ package it.unisa.zyphyksport.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,15 +46,15 @@ public class GetProdsFromCartServlet extends HttpServlet {
 			DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 			CartsContainsProdsInterf cartContsProdDAO = new CartsContainsProdsDAO(ds);
 			ProductsInterf productDAO = new ProductsDAO(ds);
-			Collection<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
-			Collection<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
+			Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
+			Set<CartsContainsProdsBean> prodsContainsCartArray = new HashSet<CartsContainsProdsBean>();
 	
 			
 			CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
 			int cartId = carrello.getId();
 			
 			try {
-				Collection<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(cartId, null);
+				Set<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(cartId, null);
 				for(CartsContainsProdsBean cartContProd: cartContsProdArr) {
 					ProductsBean product = productDAO.doRetrieveByKey(cartContProd.getProductId());
 					

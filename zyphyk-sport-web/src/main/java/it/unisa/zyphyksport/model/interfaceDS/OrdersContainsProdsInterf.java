@@ -1,7 +1,7 @@
 package it.unisa.zyphyksport.model.interfaceDS;
 
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.Set;
 
 import it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean;
 
@@ -12,7 +12,7 @@ public interface OrdersContainsProdsInterf {
 	
 	public void doDelete(int orderId, String productId) throws SQLException;
 	
-	public Collection<OrdersContainsProdsBean> doRetrieveAll(String order) throws SQLException;
+	public Set<OrdersContainsProdsBean> doRetrieveAll(String order) throws SQLException;
 	
-	public Collection<OrdersContainsProdsBean> doRetrieveAllProds(int orderId, String order) throws SQLException;
+	public Set<OrdersContainsProdsBean> doRetrieveAllProds(int orderId, String order) throws SQLException;
 }
