@@ -6,11 +6,14 @@
     
  <%
 	String roles = (String) session.getAttribute("roles");
+ 	Boolean responseCart = null;
 
 	if(roles == null){
 		
-	} else if (roles.equals("gestCat") || roles.equals("gestCat")) {
+	} else if (roles.equals("gestCat") || roles.equals("gestOrd")) {
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
+	}else{
+		responseCart = (Boolean) session.getAttribute("responseCart");
 	}
 	
 	String id = (String) request.getParameter("id");
@@ -50,6 +53,7 @@
 		var text = e.options[e.selectedIndex].text;
 		console.log(id);
 		console.log(text);
+		/*
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
 			if (this.readyState == 4 && this.status == 200){
@@ -58,10 +62,8 @@
 		};
 		xhttp.open("GET","AddToCartServlet?id=" + id + "&size=" + text, true);
 		xhttp.send();
-		
-		window.location.href = "/zyphyk-sport-web/cart.jsp"
-		
-		
+		*/
+		document.location.href="AddToCartServlet?id=" + id + "&size=" + text;
 		
 	}
 

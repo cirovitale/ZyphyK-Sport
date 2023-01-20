@@ -12,7 +12,7 @@
 	
 	if(roles == null) {
 		flag = false;
-	} else if (roles.equals("admin") || roles.equals("gestCat") || roles.equals("gestOrd")){
+	} else if (roles.equals("gestCat") || roles.equals("gestOrd")){
 		response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
 	} else if (roles.equals("cliente")){
 		flag = true;
@@ -30,7 +30,6 @@
 <link href="style/style.css" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="img/icon/favicon.png">
 </head>
-<body>
 <script src="script/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
@@ -63,7 +62,9 @@
 		xhttp.open("GET","ModQuantityInCartServlet?id=" + id + "&size=" + size + "&offset=" + offset, true);
 		xhttp.send();
 	}
+	
 </script>
+<body>
 <div id= "pagina">
 <%@ include file="fragments/header.jsp"%>
 <%

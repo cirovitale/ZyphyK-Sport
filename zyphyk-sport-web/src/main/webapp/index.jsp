@@ -90,10 +90,7 @@ Collection<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 							<h6 class="price">
 								&euro;
 								<%=prod.getPrice()%></h6>
-							<a href="AddToCartServlet?id=<%=prod.getId()%>&size=<%=37%>"
-								class="btn"> <img src="img\icon\shopping-cart.svg"
-								alt="add-to-cart" class="icona">
-							</a>
+
 						</div>
 				</div>
 			</div>

@@ -8,7 +8,6 @@
 <%
 	String roles = (String) session.getAttribute("roles");
 	ClientiBean cliente = (ClientiBean) session.getAttribute("utente");
-	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	OrdersDAO ordiniDS = new OrdersDAO(ds);
 	Collection<OrdersBean> colOrd= ordiniDS.doRetrieveAllCliente(cliente.getUsername(), "date_time");

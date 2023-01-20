@@ -67,9 +67,9 @@ public class PopolamentoDBServlet extends HttpServlet {
         	gestOrdDAO.doSave("LuBacco", "Luigi", "Bacco", "lbgames@gmail.com", "paperoga104", 1700); 
  
         	cartsDAO.doSave(700);
-        	cartsDAO.doSave(50);
-        	cartsDAO.doSave(150);
         	cartsDAO.doSave(100);
+        	cartsDAO.doSave(300);
+        	cartsDAO.doSave(0);
 
         	
    	     // Creazione Clienti
@@ -86,33 +86,39 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        productDAO.doSave("ZZB35", "PRODUCT_5", "SPORT_3", "BRAND_3", 100);
 	        productDAO.doSave("QRW20", "PRODUCT_6", "SPORT_3", "BRAND_1", 100);
 	        productDAO.doSave("XXC01", "PRODUCT_7", "SPORT_3", "BRAND_1", 100);
-	        productDAO.doSave("QEWER", "PRODUCT_7", "SPORT_2", "BRAND_1", 100);
-	        productDAO.doSave("BFD32", "PRODUCT_8", "SPORT_1", "BRAND_3", 100);
-	        productDAO.doSave("111AQ", "PRODUCT_9", "SPORT_2", "BRAND_2", 100);
-	        productDAO.doSave("0ASDA", "PRODUCT_10", "SPORT_2", "BRAND_2", 100);
+	        productDAO.doSave("QEWER", "PRODUCT_8", "SPORT_2", "BRAND_1", 100);
+	        productDAO.doSave("BFD32", "PRODUCT_9", "SPORT_1", "BRAND_3", 100);
+	        productDAO.doSave("111AQ", "PRODUCT_10", "SPORT_2", "BRAND_2", 100);
+	        productDAO.doSave("0ASDA", "PRODUCT_11", "SPORT_2", "BRAND_2", 100);
 
 	        sizesDAO.doSave("23AX1",36);
 	        sizesDAO.doSave("3ASD7",36);
 	        sizesDAO.doSave("XXC01",36);
 	        sizesDAO.doSave("BFD32",36);  
+	        sizesDAO.doSave("0ASDA",36);
 	        sizesDAO.doSave("ASD56",37);
 	        sizesDAO.doSave("23AX1",37);
-	        sizesDAO.doSave(null, 38); 
+	        sizesDAO.doSave("QEWER",38); 
+	        sizesDAO.doSave("0ASDA",38);
 	        sizesDAO.doSave("23AX1",39);
 	        sizesDAO.doSave("3ASD7",39);
 	        sizesDAO.doSave("X2341",39);
 	        sizesDAO.doSave("ZZB35",39);
-	        sizesDAO.doSave("QRW20",39);	        
+	        sizesDAO.doSave("QRW20",39);	
+	        sizesDAO.doSave("0ASDA",39);
 	        sizesDAO.doSave("ASD56",40);
 	        sizesDAO.doSave("23AX1",40);
 	        sizesDAO.doSave("XXC01",40);
-	        sizesDAO.doSave("111AQ",40);        	        
+	        sizesDAO.doSave("111AQ",40);      
+	        sizesDAO.doSave("QEWER",40);  
 	        sizesDAO.doSave("ASD56",41);
 	        sizesDAO.doSave("X2341",41);
 	        sizesDAO.doSave("ZZB35",41);
-	        sizesDAO.doSave("QRW20",41); 	        
+	        sizesDAO.doSave("QRW20",41); 	       
+	        sizesDAO.doSave("QEWER",41); 
 	        sizesDAO.doSave("3ASD7",42);
 	        sizesDAO.doSave("X2341",42);
+	        sizesDAO.doSave("0ASDA",42);
 	        
         	cartsContainsProdsDAO.doSave(1, "ASD56", 1, 39);
         	cartsContainsProdsDAO.doSave(1, "23AX1", 2, 37);
@@ -133,11 +139,11 @@ public class PopolamentoDBServlet extends HttpServlet {
         	managesProdsDAO.doSave("MasVarriale", "BFD32", 0);
         	managesProdsDAO.doSave("MasVarriale", "111AQ", 0);       	
 
-			ordersDAO.doSave("daniPicci", null, LocalDateTime.now(),"Via Roma, 221" , "5333171120934758", 120, false);
-			ordersDAO.doSave("marioRossi", null, LocalDateTime.now(),"Via Casa Varone, 113" , "5333171121903456", 37, false);
-	        ordersDAO.doSave("daniPicci", null, LocalDateTime.now(),"Via Stabia, 36" , "6734536271823456", 99, false);
-	        ordersDAO.doSave("peppeRoma", null, LocalDateTime.now(),"Via De Goti, 78" , "3324558912349076", 69, false);
-	        ordersDAO.doSave("angeloPorte", null, LocalDateTime.now(),"Via Misano, 221" , "1234789467387462", 24, false);
+			ordersDAO.doSave("daniPicci", null, LocalDateTime.now(),"Via Roma, 221" , "5333171120934758", 400, false);
+			ordersDAO.doSave("marioRossi", null, LocalDateTime.now(),"Via Casa Varone, 113" , "5333171121903456", 300, false);
+	        ordersDAO.doSave("daniPicci", null, LocalDateTime.now(),"Via Stabia, 36" , "6734536271823456", 400, false);
+	        ordersDAO.doSave("peppeRoma", null, LocalDateTime.now(),"Via De Goti, 78" , "3324558912349076", 500, false);
+	        ordersDAO.doSave("angeloPorte", null, LocalDateTime.now(),"Via Misano, 221" , "1234789467387462", 400, false);
 	        
 	        ordersDAO.doUpdateSent(2, "LuBacco");
 	        ordersDAO.doUpdateSent(3, "LuBacco");
