@@ -3,7 +3,7 @@ package it.unisa.zyphyksport.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Collection;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -65,7 +65,7 @@ public class SignUpServlet extends HttpServlet {
 		CartsBean cartBean = null;
 		ClientiBean clBean = null;
 		boolean exist = false;
-		Collection<ClientiBean> colClienti = null;
+		Set<ClientiBean> colClienti = null;
 		try {
 			colClienti = clDS.doRetrieveAll(null);
 			for(ClientiBean cliente : colClienti) {

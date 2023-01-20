@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -202,11 +202,11 @@ public class OrdersDAO implements OrdersInterf{
 	}
 
 	@Override
-	public synchronized Collection<OrdersBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<OrdersBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<OrdersBean> orders = new LinkedList<OrdersBean>();
+		Set<OrdersBean> orders = new HashSet<OrdersBean>();
 
 		String selectSQL = "SELECT * FROM " + OrdersDAO.TABLE_NAME;
 		
@@ -248,11 +248,11 @@ public class OrdersDAO implements OrdersInterf{
 	}
 	
 	
-	public synchronized Collection<OrdersBean> doRetrieveAllCliente(String username, String order) throws SQLException {
+	public synchronized Set<OrdersBean> doRetrieveAllCliente(String username, String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<OrdersBean> orders = new LinkedList<OrdersBean>();
+		Set<OrdersBean> orders = new HashSet<OrdersBean>();
 
 		String selectSQL = "SELECT * FROM " + OrdersDAO.TABLE_NAME + " WHERE CLIENTE_USERNAME = ?";
 		

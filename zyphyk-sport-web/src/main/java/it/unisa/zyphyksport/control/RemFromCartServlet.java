@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -53,8 +55,8 @@ public class RemFromCartServlet extends HttpServlet {
 			ProductsInterf productDAO = new ProductsDAO(ds);
 			CartsInterf cartDAO = new CartsDAO(ds);
 			int cartId = carrello.getId();
-			Collection<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
-			Collection<CartsContainsProdsBean> CartContainsProdsArray = new ArrayList<CartsContainsProdsBean>();
+			Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
+			Set<CartsContainsProdsBean> CartContainsProdsArray = new HashSet<CartsContainsProdsBean>();
 			
 			try {
 				CartsContainsProdsBean cartContRem = cartContsProdDAO.doRetrieveByKey(cartId, productId, size);
@@ -66,7 +68,7 @@ public class RemFromCartServlet extends HttpServlet {
 				
 				cartContsProdDAO.doDelete(carrello.getId(), productId, size);
 				
-				Collection<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(cartId, null);
+				Set<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(cartId, null);
 				for(CartsContainsProdsBean cartContProd: cartContsProdArr) {
 					ProductsBean product = productDAO.doRetrieveByKey(cartContProd.getProductId());
 					

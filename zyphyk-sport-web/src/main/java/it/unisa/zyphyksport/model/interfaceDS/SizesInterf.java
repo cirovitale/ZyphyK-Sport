@@ -1,10 +1,8 @@
 package it.unisa.zyphyksport.model.interfaceDS;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.Set;
 
-import it.unisa.zyphyksport.model.bean.ClientiBean;
 import it.unisa.zyphyksport.model.bean.SizesBean;
 
 public interface SizesInterf {
@@ -12,8 +10,8 @@ public interface SizesInterf {
 
 	public void doDelete(String productId, int value) throws SQLException;
 
-	public Collection<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException;
+	public Set<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException;
 	
-	public Collection<SizesBean> doRetrieveAll(String order) throws SQLException;
+	public Set<SizesBean> doRetrieveAll(String order) throws SQLException;
 	
 }

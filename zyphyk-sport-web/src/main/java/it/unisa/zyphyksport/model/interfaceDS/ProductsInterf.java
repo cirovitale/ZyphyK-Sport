@@ -1,7 +1,7 @@
 package it.unisa.zyphyksport.model.interfaceDS;
 
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.Set;
 
 import it.unisa.zyphyksport.model.bean.ProductsBean;
 
@@ -15,8 +15,8 @@ public interface ProductsInterf {
 
 	public ProductsBean doRetrieveByKey(String id) throws SQLException;
 	
-	public Collection<ProductsBean> doRetrieveAll(String order) throws SQLException;
+	public Set<ProductsBean> doRetrieveAll(String order) throws SQLException;
 
-	public Collection<ProductsBean> doRetrieveAllExists(String order) throws SQLException;
+	public Set<ProductsBean> doRetrieveAllExists(String order) throws SQLException;
 	
 }

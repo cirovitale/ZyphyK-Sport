@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -79,12 +79,12 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public Collection<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException {
+	public Set<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<SizesBean> array = new LinkedList<SizesBean>();
+		Set<SizesBean> array = new HashSet<SizesBean>();
 
 		String selectSQL = "SELECT * FROM " + SizesDAO.TABLE_NAME + " WHERE PRODUCT_ID = ?";
 		
@@ -119,12 +119,12 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public Collection<SizesBean> doRetrieveAll(String order) throws SQLException {
+	public Set<SizesBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<SizesBean> array = new LinkedList<SizesBean>();
+		Set<SizesBean> array = new HashSet<SizesBean>();
 
 		String selectSQL = "SELECT * FROM " + SizesDAO.TABLE_NAME;
 		

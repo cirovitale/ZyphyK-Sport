@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -161,12 +161,12 @@ public class ProductsDAO implements ProductsInterf{
 	}
 
 	@Override
-	public synchronized Collection<ProductsBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<ProductsBean> doRetrieveAll(String order) throws SQLException {
 		
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<ProductsBean> products = new LinkedList<ProductsBean>();
+		Set<ProductsBean> products = new HashSet<ProductsBean>();
 
 		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME;
 		
@@ -207,12 +207,12 @@ public class ProductsDAO implements ProductsInterf{
 
 
 	@Override
-	public synchronized Collection<ProductsBean> doRetrieveAllExists(String order) throws SQLException {
+	public synchronized Set<ProductsBean> doRetrieveAllExists(String order) throws SQLException {
 	
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<ProductsBean> products = new LinkedList<ProductsBean>();
+		Set<ProductsBean> products = new HashSet<ProductsBean>();
 
 		String selectSQL = "SELECT * FROM " + ProductsDAO.TABLE_NAME + " WHERE REMOVED = FALSE";
 		
