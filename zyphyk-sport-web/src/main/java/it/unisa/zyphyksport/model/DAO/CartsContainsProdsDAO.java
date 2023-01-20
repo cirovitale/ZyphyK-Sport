@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+
+import java.util.Set;
 
 import javax.sql.DataSource;
 import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
@@ -113,12 +114,12 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	}
 
 	@Override
-	public synchronized Collection<CartsContainsProdsBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<CartsContainsProdsBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<CartsContainsProdsBean> array = new LinkedList<CartsContainsProdsBean>();
+		Set<CartsContainsProdsBean> array = new HashSet<CartsContainsProdsBean>();
 
 		String selectSQL = "SELECT * FROM " + CartsContainsProdsDAO.TABLE_NAME;
 		
@@ -155,12 +156,12 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	}
 	
 	@Override
-	public Collection<CartsContainsProdsBean> doRetrieveAllByCartId(int id, String order) throws SQLException {
+	public Set<CartsContainsProdsBean> doRetrieveAllByCartId(int id, String order) throws SQLException {
 		// TODO Auto-generated method stub
 				Connection connection = null;
 				PreparedStatement preparedStmt = null;
 
-				Collection<CartsContainsProdsBean> array = new LinkedList<CartsContainsProdsBean>();
+				Set<CartsContainsProdsBean> array = new HashSet<CartsContainsProdsBean>();
 
 				String selectSQL = "SELECT * FROM " + CartsContainsProdsDAO.TABLE_NAME + " WHERE CART_ID = ?";
 				

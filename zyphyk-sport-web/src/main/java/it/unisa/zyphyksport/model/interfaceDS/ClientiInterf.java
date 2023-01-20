@@ -2,7 +2,7 @@ package it.unisa.zyphyksport.model.interfaceDS;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Collection;
+import java.util.Set;
 
 import it.unisa.zyphyksport.model.bean.ClientiBean;
 
@@ -15,6 +15,6 @@ public interface ClientiInterf {
 
 	public ClientiBean doRetrieveByKey(String username) throws SQLException;
 	
-	public Collection<ClientiBean> doRetrieveAll(String order) throws SQLException;
+	public Set<ClientiBean> doRetrieveAll(String order) throws SQLException;
 	
 }

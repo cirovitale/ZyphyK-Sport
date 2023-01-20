@@ -1,7 +1,7 @@
 package it.unisa.zyphyksport.model.interfaceDS;
 
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.Set;
 
 import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
 
@@ -17,6 +17,6 @@ public interface GestoriCatalogoInterf {
 	
 	//public GestoriCatalogoBean doRetrieveByKeyEmail(String email) throws SQLException;
 	
-	public Collection<GestoriCatalogoBean> doRetrieveAll(String username) throws SQLException;
+	public Set<GestoriCatalogoBean> doRetrieveAll(String username) throws SQLException;
 	
 }

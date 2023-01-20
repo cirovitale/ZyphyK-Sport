@@ -2,7 +2,8 @@ package it.unisa.zyphyksport.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,7 +64,7 @@ public class AddInCatalogServlet extends HttpServlet {
 		System.out.println(price);
 		
 
-		ArrayList<Integer> arlist = new ArrayList<Integer>( );
+		Set<Integer> arlist = new HashSet<Integer>( );
 		
 		if (request.getParameter("sizesValue36")!=null) {
 			int sizesValue36 = Integer.parseInt(request.getParameter("sizesValue36"));

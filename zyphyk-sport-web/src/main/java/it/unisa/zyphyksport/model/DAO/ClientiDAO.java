@@ -5,11 +5,9 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -160,12 +158,12 @@ public class ClientiDAO implements ClientiInterf{
 	}
 
 	@Override
-	public synchronized Collection<ClientiBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<ClientiBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<ClientiBean> array = new LinkedList<ClientiBean>();
+		Set<ClientiBean> array = new HashSet<ClientiBean>();
 
 		String selectSQL = "SELECT * FROM " + ClientiDAO.TABLE_NAME;
 		

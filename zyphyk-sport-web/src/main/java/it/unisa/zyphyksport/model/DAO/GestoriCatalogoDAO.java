@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.LinkedList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -150,11 +150,11 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 	}
 
 	@Override
-	public synchronized Collection<GestoriCatalogoBean> doRetrieveAll(String username) throws SQLException {
+	public synchronized Set<GestoriCatalogoBean> doRetrieveAll(String username) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		Collection<GestoriCatalogoBean> array = new LinkedList<GestoriCatalogoBean>();
+		Set<GestoriCatalogoBean> array = new HashSet<GestoriCatalogoBean>();
 
 		String selectSQL = "SELECT * FROM " + GestoriCatalogoDAO.TABLE_NAME;
 		

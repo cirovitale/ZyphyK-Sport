@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,7 +77,7 @@ public class CheckOutServlet extends HttpServlet {
 		
 		OrdersContainsProdsInterf orderContProdsDAO = new OrdersContainsProdsDAO(ds);
 		OrdersInterf orderDAO = new OrdersDAO(ds);
-		Collection<OrdersContainsProdsBean> ordContProdsArr = new ArrayList<OrdersContainsProdsBean>();
+		Set<OrdersContainsProdsBean> ordContProdsArr = new HashSet<OrdersContainsProdsBean>();
 		
 		
 		CartsContainsProdsInterf cartContProdsDAO = new CartsContainsProdsDAO(ds);
@@ -115,8 +117,8 @@ public class CheckOutServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		Collection<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
-		Collection<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
+		Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
+		Set<CartsContainsProdsBean> prodsContainsCartArray = new HashSet<CartsContainsProdsBean>();
 		request.getSession().setAttribute("prodsCart", prodsArray);
 		request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
 		
