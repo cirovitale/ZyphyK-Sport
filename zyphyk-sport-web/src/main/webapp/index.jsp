@@ -18,7 +18,7 @@ if(roles == null){
 DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 ProductsInterf prodDAO = new ProductsDAO(ds);
 
-Collection<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
+Set<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 %>
 <html>
 <head>

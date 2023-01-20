@@ -16,8 +16,8 @@
 		response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
 	} else if (roles.equals("cliente")){
 		flag = true;
-		products = (Collection<ProductsBean>) session.getAttribute("prodsCart");
-		prodsContainsCart = (Collection<CartsContainsProdsBean>) session.getAttribute("prodsContainsCart");
+		products = (Set<ProductsBean>) session.getAttribute("prodsCart");
+		prodsContainsCart = (Set<CartsContainsProdsBean>) session.getAttribute("prodsContainsCart");
 	}
 %>
 

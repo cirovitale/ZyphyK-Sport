@@ -11,7 +11,7 @@ CartsBean carrello = (CartsBean) session.getAttribute("carrello");
 
 DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 CartsContainsProdsInterf cartContProdsDAO = new CartsContainsProdsDAO(ds);
-Collection<CartsContainsProdsBean> cartContProds = cartContProdsDAO.doRetrieveAllByCartId(carrello.getId(), null);
+Set<CartsContainsProdsBean> cartContProds = cartContProdsDAO.doRetrieveAllByCartId(carrello.getId(), null);
 ProductsInterf prodDS = new ProductsDAO(ds);
 %>
 

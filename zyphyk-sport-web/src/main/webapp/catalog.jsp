@@ -16,7 +16,7 @@
 	
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	ProductsInterf productsDAO = new ProductsDAO(ds);
-	Collection<ProductsBean> colProd = productsDAO.doRetrieveAllExists(null);
+	Set<ProductsBean> colProd = productsDAO.doRetrieveAllExists(null);
 	
 %> 
 
