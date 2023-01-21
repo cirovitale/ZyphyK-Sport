@@ -66,9 +66,9 @@ public class PopolamentoDBServlet extends HttpServlet {
         
         	gestOrdDAO.doSave("LuBacco", "Luigi", "Bacco", "lbgames@gmail.com", "paperoga104", 1700); 
  
-        	cartsDAO.doSave(700);
-        	cartsDAO.doSave(100);
-        	cartsDAO.doSave(300);
+        	cartsDAO.doSave(386);
+        	cartsDAO.doSave(39);
+        	cartsDAO.doSave(179);
         	cartsDAO.doSave(0);
 
         	
@@ -79,33 +79,33 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        clientiDAO.doSave("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDate.of(1978, 1, 7));
         	
         	// Creazione Prodotti
-			productDAO.doSave("ASD56", "PRODUCT_1", "SPORT_1", "BRAND_1", 100);
-			productDAO.doSave("23AX1", "PRODUCT_2", "SPORT_2", "BRAND_2", 100);
-	        productDAO.doSave("3ASD7", "PRODUCT_3", "SPORT_2", "BRAND_2", 100);
-	        productDAO.doSave("X2341", "PRODUCT_4", "SPORT_1", "BRAND_2", 100);
-	        productDAO.doSave("ZZB35", "PRODUCT_5", "SPORT_3", "BRAND_3", 100);
-	        productDAO.doSave("QRW20", "PRODUCT_6", "SPORT_3", "BRAND_1", 100);
-	        productDAO.doSave("XXC01", "PRODUCT_7", "SPORT_3", "BRAND_1", 100);
-	        productDAO.doSave("QEWER", "PRODUCT_8", "SPORT_2", "BRAND_1", 100);
-	        productDAO.doSave("BFD32", "PRODUCT_9", "SPORT_1", "BRAND_3", 100);
-	        productDAO.doSave("111AQ", "PRODUCT_10", "SPORT_2", "BRAND_2", 100);
-	        productDAO.doSave("0ASDA", "PRODUCT_11", "SPORT_2", "BRAND_2", 100);
+			productDAO.doSave("ASD56", "Air Zoom Structure 24", "running", "nike", 59);
+			productDAO.doSave("23AX1", "Courtjam Control", "tennis", "adidas", 60);
+	        productDAO.doSave("3ASD7", "Nike Air Zoom Vapor Pro", "tennis", "nike", 84);
+	        productDAO.doSave("X2341", "Ultraboost 20", "running", "adidas", 99);
+	        productDAO.doSave("ZZB35", "KING 21", "calcetto", "puma", 39);
+	        productDAO.doSave("QRW20", "Air Zoom Pegasus", "calcetto", "nike", 69);
+	        productDAO.doSave("XXC01", "Samba", "calcetto", "adidas", 115);
+	        productDAO.doSave("QEWER", "NikeCourt Zoom Pro", "tennis", "nike", 39);
+	        productDAO.doSave("BFD32", "Electrify Nitro 2", "running", "puma", 75);
+	        productDAO.doSave("111AQ", "Courtflash Speed", "tennis", "adidas", 90);
+	        productDAO.doSave("0ASDA", "BREAKSHOT 3 CC", "tennis", "mizuno", 79);
 
 	        sizesDAO.doSave("23AX1",36);
 	        sizesDAO.doSave("3ASD7",36);
 	        sizesDAO.doSave("XXC01",36);
 	        sizesDAO.doSave("BFD32",36);  
-	        sizesDAO.doSave("0ASDA",36);
+	        //sizesDAO.doSave("0ASDA",36);
 	        sizesDAO.doSave("ASD56",37);
 	        sizesDAO.doSave("23AX1",37);
 	        sizesDAO.doSave("QEWER",38); 
-	        sizesDAO.doSave("0ASDA",38);
+	        //sizesDAO.doSave("0ASDA",38);
 	        sizesDAO.doSave("23AX1",39);
 	        sizesDAO.doSave("3ASD7",39);
 	        sizesDAO.doSave("X2341",39);
 	        sizesDAO.doSave("ZZB35",39);
 	        sizesDAO.doSave("QRW20",39);	
-	        sizesDAO.doSave("0ASDA",39);
+	        //sizesDAO.doSave("0ASDA",39);
 	        sizesDAO.doSave("ASD56",40);
 	        sizesDAO.doSave("23AX1",40);
 	        sizesDAO.doSave("XXC01",40);
@@ -118,7 +118,7 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        sizesDAO.doSave("QEWER",41); 
 	        sizesDAO.doSave("3ASD7",42);
 	        sizesDAO.doSave("X2341",42);
-	        sizesDAO.doSave("0ASDA",42);
+	        //sizesDAO.doSave("0ASDA",42);
 	        
         	cartsContainsProdsDAO.doSave(1, "ASD56", 1, 39);
         	cartsContainsProdsDAO.doSave(1, "23AX1", 2, 37);
@@ -139,11 +139,11 @@ public class PopolamentoDBServlet extends HttpServlet {
         	managesProdsDAO.doSave("MasVarriale", "BFD32", 0);
         	managesProdsDAO.doSave("MasVarriale", "111AQ", 0);       	
 
-			ordersDAO.doSave("daniPicci", null, LocalDateTime.now(),"Via Roma, 221" , "5333171120934758", 400, false);
-			ordersDAO.doSave("marioRossi", null, LocalDateTime.now(),"Via Casa Varone, 113" , "5333171121903456", 300, false);
-	        ordersDAO.doSave("daniPicci", null, LocalDateTime.now(),"Via Stabia, 36" , "6734536271823456", 400, false);
-	        ordersDAO.doSave("peppeRoma", null, LocalDateTime.now(),"Via De Goti, 78" , "3324558912349076", 500, false);
-	        ordersDAO.doSave("angeloPorte", null, LocalDateTime.now(),"Via Misano, 221" , "1234789467387462", 400, false);
+			ordersDAO.doSave("daniPicci", null, LocalDateTime.of(2022,11,23,12,45),"Via Roma, 221" , "5333171120934758", 294, false);
+			ordersDAO.doSave("marioRossi", null, LocalDateTime.of(2023,5,11,18,23),"Via Casa Varone, 113" , "5333171121903456", 252, false);
+	        ordersDAO.doSave("daniPicci", null, LocalDateTime.of(2022,1,30,22,47),"Via Stabia, 36" , "6734536271823456", 321, false);
+	        ordersDAO.doSave("peppeRoma", null, LocalDateTime.of(2022,9,23,21,34),"Via De Goti, 78" , "3324558912349076", 439, false);
+	        ordersDAO.doSave("angeloPorte", null, LocalDateTime.of(2023,1,12,19,8),"Via Misano, 221" , "1234789467387462", 247, false);
 	        
 	        ordersDAO.doUpdateSent(2, "LuBacco");
 	        ordersDAO.doUpdateSent(3, "LuBacco");

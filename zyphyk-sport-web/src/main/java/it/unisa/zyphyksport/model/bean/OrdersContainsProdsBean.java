@@ -42,11 +42,11 @@ public class OrdersContainsProdsBean implements Serializable{
 	}
 
 	public int getQuantity() {
-		return orderId;
+		return quantity;
 	}
 	
-	public void setQuantity(int orderId) {
-		this.orderId = orderId;
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 	
 	public int getSize() {

@@ -31,7 +31,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/icon/favicon.png">
 </head>
 <script src="script/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
 	function remOggetto(id, size){
 		var xhttp = new XMLHttpRequest();
@@ -66,6 +66,7 @@
 </script>
 <body>
 <div id= "pagina">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <%@ include file="fragments/header.jsp"%>
 <%
 	if(responseCart != null && responseCart == false) {

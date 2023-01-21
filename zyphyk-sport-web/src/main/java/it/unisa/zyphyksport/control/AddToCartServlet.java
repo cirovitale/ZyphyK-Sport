@@ -55,6 +55,7 @@ public class AddToCartServlet extends HttpServlet {
 			String id = request.getParameter("id");
 			//System.out.println(id);
 			int size = Integer.parseInt(request.getParameter("size"));
+			
 			//System.out.println(size);
 			CartsContainsProdsInterf cartsContProdsDS = new CartsContainsProdsDAO(ds);	
 		
@@ -73,6 +74,13 @@ public class AddToCartServlet extends HttpServlet {
 			//System.out.println(colProd);
 			Set<CartsContainsProdsBean> colContainsProds = (Set<CartsContainsProdsBean>) request.getSession().getAttribute("prodsContainsCart");
 			//System.out.println(colContainsProds);
+			if(size == 0) {
+				flag = true;
+				request.getSession().setAttribute("prodsCart", colProd);
+				request.getSession().setAttribute("prodsContainsCart", colContainsProds);
+				request.getSession().setAttribute("responseCart", false);
+				response.sendRedirect(request.getContextPath() + "/index.jsp");
+			}
 			
 			for(CartsContainsProdsBean cartContBean2 : colContainsProds) {
 				if(cartContBean2.getProductId().equals(id) && cartContBean2.getSize() == size && flag == false) {

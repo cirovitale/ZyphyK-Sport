@@ -28,9 +28,8 @@
  	<div class="container page">
  		<h2>Grazie per aver effettuato l'acquisto.</h2>
  		<br/>
- 		<p>Id acquisto: <%= id %> </p>
  		<p>Id acquisto: <%= order.getId() %> </p>
- 		<p><a href="myOrders.jsp">Visualizza tutti gli ordinhi</a> oppure <a href="index.jsp">torna alla home page</a></p>
+ 		<p><a href="myOrders.jsp">Visualizza tutti gli ordini</a> oppure <a href="index.jsp">torna alla home page</a></p>
  	</div>
  	<%@ include file="../fragments/footer.jsp" %>
 </body>

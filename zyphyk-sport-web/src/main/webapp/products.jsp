@@ -50,6 +50,7 @@
 		
 		var e = document.getElementById("size");
 		var value = e.value;
+		console.log(value);
 		var text = e.options[e.selectedIndex].text;
 		console.log(id);
 		console.log(text);
@@ -63,7 +64,7 @@
 		xhttp.open("GET","AddToCartServlet?id=" + id + "&size=" + text, true);
 		xhttp.send();
 		*/
-		document.location.href="AddToCartServlet?id=" + id + "&size=" + text;
+		document.location.href="AddToCartServlet?id=" + id + "&size=" + value;
 		
 	}
 
@@ -107,6 +108,10 @@
 								<option value="<%=size.getValue()%>"><%=size.getValue()%></option>
 								<%
 									}
+								}else{
+								%>
+								<option value="0">Prodotto non disponibile</option>
+								<%
 								}
 								%>
 							</select>

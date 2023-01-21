@@ -72,6 +72,7 @@ public class CheckOutServlet extends HttpServlet {
 		String ccExpiration = (request.getParameter("cc-expiration"));
 		String ccCvv = (request.getParameter("cc-cvv"));
 		String paymentMethod = ccNumber + " " + ccExpiration + " " + ccCvv;
+		System.out.println(paymentMethod);
 		
 		CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
 		
@@ -97,6 +98,8 @@ public class CheckOutServlet extends HttpServlet {
 				System.out.println("prod: "+prod);
 				System.out.println("cartContProdsArr: "+cartContProdsBean);
 				System.out.println("ordContProdsBean: "+ordContProdsBean + "\n\n");
+				System.out.println("quantità: "+ordContProdsBean.getQuantity() + "\n\n");
+				
 				
 				orderContProdsDAO.doSave(orderId, ordContProdsBean.getProductId(), ordContProdsBean.getQuantity(), ordContProdsBean.getSize());
 				cartContProdsDAO.doDelete(cartContProdsBean.getCartId(), cartContProdsBean.getProductId(), cartContProdsBean.getSize());
