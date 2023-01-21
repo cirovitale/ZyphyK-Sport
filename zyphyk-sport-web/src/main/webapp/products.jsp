@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="javax.sql.DataSource, it.unisa.zyphyksport.model.bean.ProductsBean, it.unisa.zyphyksport.model.bean.SizesBean,
+    import="javax.sql.DataSource,it.unisa.zyphyksport.model.bean.ProductsBean,it.unisa.zyphyksport.model.bean.SizesBean,
     it.unisa.zyphyksport.model.interfaceDS.ProductsInterf, it.unisa.zyphyksport.model.interfaceDS.SizesInterf, it.unisa.zyphyksport.model.interfaceDS.ClientiInterf,
     it.unisa.zyphyksport.model.DAO.ProductsDAO, it.unisa.zyphyksport.model.DAO.SizesDAO, it.unisa.zyphyksport.model.DAO.ClientiDAO, java.util.*" %>
     

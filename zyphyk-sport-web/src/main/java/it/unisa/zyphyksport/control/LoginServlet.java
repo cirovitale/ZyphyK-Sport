@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -84,8 +85,8 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("carrello", cart.doRetrieveByKey(clBean.getCartId()));
 				
 				
-				Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
-				Set<CartsContainsProdsBean> prodsContainsCartArray = new HashSet<CartsContainsProdsBean>();
+				Set<ProductsBean> prodsArray = new LinkedHashSet<ProductsBean>();
+				Set<CartsContainsProdsBean> prodsContainsCartArray = new LinkedHashSet<CartsContainsProdsBean>();
 				try {
 					Set<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(clBean.getCartId(), null);
 					for(CartsContainsProdsBean cartContProd: cartContsProdArr) {

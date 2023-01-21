@@ -1,5 +1,4 @@
-<%@ page import="javax.sql.DataSource,it.unisa.zyphyksport.model.bean.ClientiBean, it.unisa.zyphyksport.model.bean.GestoriOrdiniBean,
-	it.unisa.zyphyksport.model.bean.GestoriCatalogoBean, 
+<%@ page import="javax.sql.DataSource,it.unisa.zyphyksport.model.bean.ClientiBean,it.unisa.zyphyksport.model.bean.GestoriOrdiniBean,it.unisa.zyphyksport.model.bean.GestoriCatalogoBean, 
 	java.util.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 

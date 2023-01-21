@@ -1,5 +1,4 @@
-<%@ page language="java" import="javax.sql.DataSource, it.unisa.zyphyksport.model.DAO.OrdersDAO, it.unisa.zyphyksport.model.interfaceDS.OrdersInterf,
-	java.util.*, it.unisa.zyphyksport.model.bean.OrdersBean" contentType="text/html; charset=utf-8" 
+<%@ page language="java" import="javax.sql.DataSource,it.unisa.zyphyksport.model.DAO.OrdersDAO,it.unisa.zyphyksport.model.interfaceDS.OrdersInterf,java.util.*,it.unisa.zyphyksport.model.bean.OrdersBean" contentType="text/html; charset=utf-8" 
     pageEncoding="utf-8"%>
   
 <%

@@ -13,12 +13,18 @@ import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 import it.unisa.zyphyksport.model.interfaceDS.CartsContainsProdsInterf;
 
 public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
-	private static final String TABLE_NAME = "carts_contains_prods";
+	public static final String TABLE_NAME = "carts_contains_prods";
 	private DataSource ds = null;
+	private Connection conn = null;
 	
 	public CartsContainsProdsDAO(DataSource ds) {
 		super();
 		this.ds = ds;
+	}
+	
+	public CartsContainsProdsDAO(Connection conn) {
+		super();
+		this.conn = conn;
 	}
 
 	@Override
@@ -116,7 +122,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	@Override
 	public synchronized Set<CartsContainsProdsBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
-		Connection connection = null;
+		//Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
 		Set<CartsContainsProdsBean> array = new HashSet<CartsContainsProdsBean>();
@@ -129,8 +135,8 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 		}
 
 		try {
-			connection = ds.getConnection();
-			preparedStmt = connection.prepareStatement(selectSQL);
+			conn = ds.getConnection();
+			preparedStmt = conn.prepareStatement(selectSQL);
 
 			ResultSet rs = preparedStmt.executeQuery();
 			
@@ -148,8 +154,8 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 				if (preparedStmt != null)
 					preparedStmt.close();
 			} finally {
-				if (connection != null)
-					connection.close();
+				if (conn != null)
+					conn.close();
 			}
 		}
 		return array;

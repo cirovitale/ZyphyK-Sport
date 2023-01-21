@@ -93,11 +93,7 @@ public class AddToCartServlet extends HttpServlet {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					request.getSession().setAttribute("prodsCart", colProd);
-					request.getSession().setAttribute("prodsContainsCart", colContainsProds);
-					request.getSession().setAttribute("responseCart", false);
-					response.sendRedirect(request.getContextPath() + "/cart.jsp");
-				}	
+				}
 			}
 			if(flag == false){
 					System.out.println("nuovo prodotto");
@@ -117,8 +113,6 @@ public class AddToCartServlet extends HttpServlet {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-				
 			}
 		}
 			

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	import="javax.sql.DataSource, it.unisa.zyphyksport.model.DAO.OrdersDAO, it.unisa.zyphyksport.model.interfaceDS.OrdersInterf, it.unisa.zyphyksport.model.bean.OrdersBean,
-	it.unisa.zyphyksport.model.bean.ClientiBean, it.unisa.zyphyksport.model.DAO.OrdersContainsProdsDAO, it.unisa.zyphyksport.model.interfaceDS.OrdersContainsProdsInterf, it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean,
-	it.unisa.zyphyksport.model.DAO.ProductsDAO, it.unisa.zyphyksport.model.interfaceDS.ProductsInterf, it.unisa.zyphyksport.model.bean.ProductsBean,
+	import="javax.sql.DataSource,it.unisa.zyphyksport.model.DAO.OrdersDAO,it.unisa.zyphyksport.model.interfaceDS.OrdersInterf,it.unisa.zyphyksport.model.bean.OrdersBean,it.unisa.zyphyksport.model.bean.ClientiBean,it.unisa.zyphyksport.model.DAO.OrdersContainsProdsDAO,it.unisa.zyphyksport.model.interfaceDS.OrdersContainsProdsInterf,it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean,it.unisa.zyphyksport.model.DAO.ProductsDAO,it.unisa.zyphyksport.model.interfaceDS.ProductsInterf,it.unisa.zyphyksport.model.bean.ProductsBean,
 	
 	java.time.format.DateTimeFormatter,	java.time.LocalDateTime, java.util.*"
 	pageEncoding="utf-8"%>

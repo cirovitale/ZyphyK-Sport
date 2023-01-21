@@ -2,7 +2,7 @@ package it.unisa.zyphyksport.model.bean;
 
 import java.io.Serializable;
 import java.util.Objects;
-
+ 
 public class ProductsBean implements Serializable{
 
 	

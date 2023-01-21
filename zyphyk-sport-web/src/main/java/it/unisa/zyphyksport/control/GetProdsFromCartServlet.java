@@ -3,6 +3,7 @@ package it.unisa.zyphyksport.control;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -46,8 +47,8 @@ public class GetProdsFromCartServlet extends HttpServlet {
 			DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 			CartsContainsProdsInterf cartContsProdDAO = new CartsContainsProdsDAO(ds);
 			ProductsInterf productDAO = new ProductsDAO(ds);
-			Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
-			Set<CartsContainsProdsBean> prodsContainsCartArray = new HashSet<CartsContainsProdsBean>();
+			Set<ProductsBean> prodsArray = new LinkedHashSet<ProductsBean>();
+			Set<CartsContainsProdsBean> prodsContainsCartArray = new LinkedHashSet<CartsContainsProdsBean>();
 	
 			
 			CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");

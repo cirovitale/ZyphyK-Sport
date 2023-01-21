@@ -1,12 +1,12 @@
-<%@ page language="java" import="it.unisa.zyphyksport.model.bean.CartsBean, it.unisa.zyphyksport.model.bean.CartsContainsProdsBean, it.unisa.zyphyksport.model.bean.ProductsBean, java.util.*" contentType="text/html; charset=utf-8"
+<%@ page language="java" import="it.unisa.zyphyksport.model.bean.CartsBean,it.unisa.zyphyksport.model.bean.CartsContainsProdsBean,it.unisa.zyphyksport.model.bean.ProductsBean, java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 
 <%	
 	Boolean flag = false;
 	Boolean responseCart = (Boolean) session.getAttribute("responseCart");
-	Collection<ProductsBean> products = new ArrayList<ProductsBean>();
-	Collection<CartsContainsProdsBean> prodsContainsCart = new ArrayList<CartsContainsProdsBean>();
+	Set<ProductsBean> products = new LinkedHashSet<ProductsBean>();
+	Set<CartsContainsProdsBean> prodsContainsCart = new LinkedHashSet<CartsContainsProdsBean>();
 	CartsBean carrello = (CartsBean) session.getAttribute("carrello");
 	String roles = (String) session.getAttribute("roles");
 	

@@ -1,6 +1,5 @@
 <%@page
-	import="it.unisa.zyphyksport.model.interfaceDS.ProductsInterf, it.unisa.zyphyksport.model.DAO.ProductsDAO, java.util.*,
-	javax.sql.DataSource, it.unisa.zyphyksport.model.bean.ProductsBean"%>
+	import="it.unisa.zyphyksport.model.interfaceDS.ProductsInterf,it.unisa.zyphyksport.model.DAO.ProductsDAO,java.util.*,javax.sql.DataSource,it.unisa.zyphyksport.model.bean.ProductsBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>

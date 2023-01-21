@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -55,8 +56,8 @@ public class RemFromCartServlet extends HttpServlet {
 			ProductsInterf productDAO = new ProductsDAO(ds);
 			CartsInterf cartDAO = new CartsDAO(ds);
 			int cartId = carrello.getId();
-			Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
-			Set<CartsContainsProdsBean> CartContainsProdsArray = new HashSet<CartsContainsProdsBean>();
+			Set<ProductsBean> prodsArray = new LinkedHashSet<ProductsBean>();
+			Set<CartsContainsProdsBean> CartContainsProdsArray = new LinkedHashSet<CartsContainsProdsBean>();
 			
 			try {
 				CartsContainsProdsBean cartContRem = cartContsProdDAO.doRetrieveByKey(cartId, productId, size);
