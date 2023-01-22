@@ -22,10 +22,6 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 		this.ds = ds;
 	}
 	
-	public CartsContainsProdsDAO(Connection conn) {
-		super();
-		this.conn = conn;
-	}
 
 	@Override
 	public synchronized void doSave(int cartId, String productId, int quantity, int size) throws SQLException {

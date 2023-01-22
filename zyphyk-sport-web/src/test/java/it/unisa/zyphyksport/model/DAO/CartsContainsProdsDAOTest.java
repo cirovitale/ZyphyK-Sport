@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,7 +36,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    @Override
 	    protected DataSource getDataSource() {
 	        JdbcDataSource dataSource = new JdbcDataSource();
-	        dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:db/init/database_Zyphyk-Sport.sql'");
+	        dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:db/init/database_Zyphyk-Sport-Test.sql'");
 	        dataSource.setUser("sa");
 	        dataSource.setPassword("");
 	        return dataSource;
@@ -58,24 +59,49 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 
 	    @BeforeEach
 	    public void setUp() throws Exception {
-	        // setUp del padre serve a (1) chiamare il nostro getSetUpOperation, e (2) il nostro getDataSet() per inizializzare il DB
 	        super.setUp();
-	        CartsContainsProdsDAO = new CartsContainsProdsDAO(getDataSource().getConnection());
+	        CartsContainsProdsDAO = new CartsContainsProdsDAO(getDataSource());
 	    }
 
 	    @AfterEach
 	    public void tearDown() throws Exception {
-	        // tearDown del padre serve a chiamare il nostro getTearDownOperation
 	        super.tearDown();
 	    }
 
 	    @Test
-	    public void testGetAll() {
-	        // TODO
+	    public void testGetAll() throws SQLException {
+	    	CartsContainsProdsBean cart1 = new CartsContainsProdsBean(1, "ASD56", 1, 39);
+	        CartsContainsProdsBean cart2 = new CartsContainsProdsBean(1, "23AX1", 2, 37);
+	        CartsContainsProdsBean cart3 = new CartsContainsProdsBean(1, "ZZB35", 3, 36);
+	        CartsContainsProdsBean cart4 = new CartsContainsProdsBean(1, "111AQ", 1, 39);
+	        CartsContainsProdsBean cart5 = new CartsContainsProdsBean(2, "QEWER", 1, 41);
+	        CartsContainsProdsBean cart6 = new CartsContainsProdsBean(3, "23AX1", 2, 36);
+	        CartsContainsProdsBean cart7 = new CartsContainsProdsBean(3, "ASD56", 1, 39);
+	        Set<CartsContainsProdsBean> expectedCarts = new HashSet<>();
+	        expectedCarts.add(cart1);
+	        expectedCarts.add(cart2);
+	        expectedCarts.add(cart3);
+	        expectedCarts.add(cart4);
+	        expectedCarts.add(cart5);
+	        expectedCarts.add(cart6);
+	        expectedCarts.add(cart7);
+
+	        Set<CartsContainsProdsBean> actualCarts =  CartsContainsProdsDAO.doRetrieveAll(null);
+	        assertEquals(7, actualCarts.size());
+	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di SCAN recuperate non sono identiche a attese");
 	    }
 
 	    @Test
-	    public void testInsertScan() {
-	        // TODO
+	    public void testInsertCartsContainsProds() throws Exception{
+	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testInsertCartsContainsProds.xml"))
+	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
+
+	         
+	         CartsContainsProdsDAO.doSave(3,"ZZB35",3,41);
+
+	       
+	         ITable actualTable = getDataSet().getTable(CartsContainsProdsDAO.TABLE_NAME);
+	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
 	    }
 }

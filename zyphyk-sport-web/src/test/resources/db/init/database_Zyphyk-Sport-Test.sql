@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS products(
 	PRIMARY KEY(`id`)
 );
 CREATE TABLE IF NOT EXISTS sizes(
-	`value` int,
+	`valued` int,
 	`product_id` varchar(5),
     `count` int NOT NULL auto_increment,
 
