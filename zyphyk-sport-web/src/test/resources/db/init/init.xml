@@ -1,5 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
+	<SIZES product_id = '3ASD7' value = '39'></SIZES>
+	<SIZES product_id = 'X2341' value = '39'></SIZES>
+	<SIZES product_id = 'ZZB35' value = '39'></SIZES>
+	<SIZES product_id = 'QRW20' value = '39'></SIZES>
+	<SIZES product_id = 'ASD56' value = '40'></SIZES>
+	<SIZES product_id = '23AX1' value = '40'></SIZES>
+	<SIZES product_id = 'XXC01' value = '40'></SIZES>
+	<SIZES product_id = '111AQ' value = '40'></SIZES>
+	<SIZES product_id = 'QEWER' value = '40'></SIZES>
+	<SIZES product_id = 'ASD56' value = '41'></SIZES>
+	<SIZES product_id = 'X2341' value = '41'></SIZES>
+	<SIZES product_id = 'ZZB35' value = '41'></SIZES>
+	<SIZES product_id = 'QRW20' value = '41'></SIZES>
+	<SIZES product_id = 'QEWER' value = '41'></SIZES>
+	<SIZES product_id = '3ASD7' value = '42'></SIZES>
+	<SIZES product_id = 'X2341' value = '42'></SIZES>
 	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '23AX1' quantity = '2' size = '37'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ZZB35' quantity = '3' size = '36'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '111AQ' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '2' product_id = 'QEWER' quantity = '1' size = '41'></CARTS_CONTAINS_PRODS>
 	<CARTS_CONTAINS_PRODS cart_id = '3' product_id = '23AX1' quantity = '2' size = '36'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '3' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'ASD56' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = '3ASD7' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'ZZB35' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'QRW20' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'XXC01' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = '0ASDA' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '23AX1' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = 'X2341' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = 'BFD32' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '111AQ' tipologia = '0'></MANAGES_PRODS>
 </dataset>
