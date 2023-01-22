@@ -35,7 +35,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    @Override
 	    protected DataSource getDataSource() {
 	        JdbcDataSource dataSource = new JdbcDataSource();
-	        dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:db/database_Zyphyk-Sport.sql'");
+	        dataSource.setURL("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;init=runscript from 'classpath:db/init/database_Zyphyk-Sport.sql'");
 	        dataSource.setUser("sa");
 	        dataSource.setPassword("");
 	        return dataSource;
