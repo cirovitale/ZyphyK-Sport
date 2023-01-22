@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
-	<CARTS_CONTAINS_PRODS cart_id = '3' product_id = '23AX1' quantity = '2' size = '36'></CARTS_CONTAINS_PRODS>
 
 	<GESTORI_CATALOGO username = 'DarMoccia' name = 'Dario' surname = 'Moccia' email = 'darMoccia@gmail.com' pass_word = 'paperino33' ral ='1500'></GESTORI_CATALOGO>
 	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massimo' surname = 'Varriale' email = 'MasVar@gmail.com' pass_word = 'gestoreCat2' ral ='1400'></GESTORI_CATALOGO> 
@@ -29,12 +27,66 @@
    <PRODUCTS id = 'BFD32' name = 'Electrify Nitro 2' sport = 'running' brand = 'puma' price = '75'></PRODUCTS>
    <PRODUCTS id = '111AQ' name = 'Courtflash Speed' sport = 'tennis' brand = 'adidas' price = '90'></PRODUCTS>
    <PRODUCTS id = '0ASDA' name = 'BREAKSHOT 3 CC' sport = 'tennis' brand = 'mizuno' price = '79'></PRODUCTS>
-   
-   <SIZES product_id = '23AX1' count ='36'></SIZES>
-   <SIZES product_id = 'XXC01' count ='36'></SIZES>
-   <SIZES product_id = 'BFD32' count ='36'></SIZES>
-   <SIZES product_id = 'ASD56' count ='37'></SIZES>
-   <SIZES product_id = '23AX1' count ='37'></SIZES>  
-   <SIZES product_id = 'QEWER' count ='38'></SIZES>
-   <SIZES product_id = '23AX1' count ='39'></SIZES>  
+
+	<SIZES product_id='23AX1' count='36'></SIZES>
+	<SIZES product_id='XXC01' count='36'></SIZES>
+	<SIZES product_id='BFD32' count='36'></SIZES>
+	<SIZES product_id='ASD56' count='37'></SIZES>
+	<SIZES product_id='23AX1' count='37'></SIZES>
+	<SIZES product_id='QEWER' count='38'></SIZES>
+	<SIZES product_id='23AX1' count='39'></SIZES>
+	<SIZES product_id='3ASD7' value='39'></SIZES>
+	<SIZES product_id='X2341' value='39'></SIZES>
+	<SIZES product_id='ZZB35' value='39'></SIZES>
+	<SIZES product_id='QRW20' value='39'></SIZES>
+	<SIZES product_id='ASD56' value='40'></SIZES>
+	<SIZES product_id='23AX1' value='40'></SIZES>
+	<SIZES product_id='XXC01' value='40'></SIZES>
+	<SIZES product_id='111AQ' value='40'></SIZES>
+	<SIZES product_id='QEWER' value='40'></SIZES>
+	<SIZES product_id='ASD56' value='41'></SIZES>
+	<SIZES product_id='X2341' value='41'></SIZES>
+	<SIZES product_id='ZZB35' value='41'></SIZES>
+	<SIZES product_id='QRW20' value='41'></SIZES>
+	<SIZES product_id='QEWER' value='41'></SIZES>
+	<SIZES product_id='3ASD7' value='42'></SIZES>
+	<SIZES product_id='X2341' value='42'></SIZES>
+	
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '23AX1' quantity = '2' size = '37'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ZZB35' quantity = '3' size = '36'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '111AQ' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '2' product_id = 'QEWER' quantity = '1' size = '41'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '3' product_id = '23AX1' quantity = '2' size = '36'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '3' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>  
+
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'ASD56' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = '3ASD7' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'ZZB35' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'QRW20' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'XXC01' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = '0ASDA' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '23AX1' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = 'X2341' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = 'BFD32' tipologia = '0'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '111AQ' tipologia = '0'></MANAGES_PRODS>
+	
+	<ORDERS cliente_username = 'daniPicci' gest_ord_username = 'null' date_time = '2022-11-23 12:45:00' shipping_address = 'Via Roma 221 Salerno SA' payment_method = '5333171120934758 09/27 432' amount = '294' sent = 'false'></ORDERS>
+	<ORDERS cliente_username = 'marioRossi' gest_ord_username = 'LuBacco' date_time = '2023-05-11 18:23:00' shipping_address = 'Via Casa Varone 113 Eboli SA' payment_method = '5333171121903456 11/26 782' amount = '252' sent = 'true'></ORDERS>
+	<ORDERS cliente_username = 'daniPicci' gest_ord_username = 'LuBacco' date_time = '2022-01-30 22:47:00' shipping_address = 'Via Stabia 36 Pompei NA' payment_method = '6734536271823456 12/25 934' amount = '321' sent = 'true'></ORDERS>
+	<ORDERS cliente_username = 'peppeRoma' gest_ord_username = 'null' date_time = '2022-09-23 21:34:00' shipping_address = 'Via De Goti 78 Caserta CE' payment_method = '3324558912349076 04/26 278' amount = '439' sent = 'false'></ORDERS>
+	<ORDERS cliente_username = 'angeloPorte' gest_ord_username = 'null' date_time = '2023-01-12 19:08:00' shipping_address = 'Via Misano 221 Milano MI' payment_method = '1234789467387462 06/25 475' amount = '247' sent = 'false'></ORDERS>
+
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = '23AX1' quantity = '2' size = '37'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'XXC01' quantity = '1' size = '36'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '2' product_id = '3ASD7' quantity = '3' size = '39'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = '3ASD7' quantity = '1' size = '41'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'X2341' quantity = '2' size = '36'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'QEWER' quantity = '1' size = '38'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '111AQ' quantity = '4' size = '38'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '0ASDA' quantity = '1' size = '41'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'ASD56' quantity = '2' size = '40'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = '23AX1' quantity = '1' size = '37'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'QRW20' quantity = '1' size = '39'></ORDERS_CONTAINS_PRODS>
 </dataset>
