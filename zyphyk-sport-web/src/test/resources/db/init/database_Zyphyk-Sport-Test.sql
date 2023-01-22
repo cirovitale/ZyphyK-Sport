@@ -93,13 +93,13 @@ CREATE TABLE IF NOT EXISTS orders(
 	FOREIGN KEY(`gest_ord_username`) REFERENCES gestori_ordini(`username`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 CREATE TABLE IF NOT EXISTS orders_contains_prods(
-	order_id int NOT NULL,
-	product_id varchar(5) NOT NULL,
-    quantity int,
-    size int NOT NULL,
-    price int,
+	`order_id` int NOT NULL,
+	`product_id` varchar(5) NOT NULL,
+    `quantity` int,
+    `size` int NOT NULL,
+    `price` int,
     
-	PRIMARY KEY(order_id, product_id, size),
-	FOREIGN KEY(product_id) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY(order_id) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
+	PRIMARY KEY(`order_id`, `product_id`, `size`),
+	FOREIGN KEY(`product_id`) REFERENCES products(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY(`order_id`) REFERENCES orders(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
