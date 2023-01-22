@@ -60,8 +60,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    public void setUp() throws Exception {
 	        // setUp del padre serve a (1) chiamare il nostro getSetUpOperation, e (2) il nostro getDataSet() per inizializzare il DB
 	        super.setUp();
-	        connection = getConnection().getConnection();
-	        CartsContainsProdsDAO = new CartsContainsProdsDAO(connection);
+	        CartsContainsProdsDAO = new CartsContainsProdsDAO(getDataSource().getConnection());
 	    }
 
 	    @AfterEach

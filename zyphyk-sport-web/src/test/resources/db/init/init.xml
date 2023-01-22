@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-
 	<GESTORI_CATALOGO username = 'DarMoccia' name = 'Dario' surname = 'Moccia' email = 'darMoccia@gmail.com' pass_word = 'paperino33' ral ='1500'></GESTORI_CATALOGO>
 	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massimo' surname = 'Varriale' email = 'MasVar@gmail.com' pass_word = 'gestoreCat2' ral ='1400'></GESTORI_CATALOGO> 
 
