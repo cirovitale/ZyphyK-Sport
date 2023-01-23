@@ -26,7 +26,7 @@ import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 
 public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 
-	 private CartsContainsProdsDAO CartsContainsProdsDAO;
+	 private CartsContainsProdsDAO cartsContainsProdsDAO;
 
 	    @Override
 	    protected DataSource getDataSource() {
@@ -56,7 +56,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    public void setUp() throws Exception {
 	        super.setUp();
 	        getDataSet();
-	        CartsContainsProdsDAO = new CartsContainsProdsDAO(getDataSource());
+	        cartsContainsProdsDAO = new CartsContainsProdsDAO(getDataSource());
 	    }
 
 	    @AfterEach
@@ -65,7 +65,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    }
 
 	    @Test
-	    public void testdoRetrieveAll() throws SQLException {
+	    public void testDoRetrieveAll() throws SQLException {
 	    	CartsContainsProdsBean cart1 = new CartsContainsProdsBean(1, "ASD56", 1, 39);
 	        CartsContainsProdsBean cart2 = new CartsContainsProdsBean(1, "23AX1", 2, 37);
 	        CartsContainsProdsBean cart3 = new CartsContainsProdsBean(1, "ZZB35", 3, 36);
@@ -82,7 +82,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	        expectedCarts.add(cart6);
 	        expectedCarts.add(cart7);
 
-	        Set<CartsContainsProdsBean> actualCarts =  CartsContainsProdsDAO.doRetrieveAll(null);
+	        Set<CartsContainsProdsBean> actualCarts =  cartsContainsProdsDAO.doRetrieveAll(null);
 	        assertEquals(7, actualCarts.size());
 	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di CartsContainsProdsDAO recuperate non sono identiche alle attese");
 	    }
@@ -90,12 +90,12 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    @Test
 	    public void testDoSaveCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
-	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/CartsContainsProdsDAOTest/testInsertCartsContainsProds.xml"))
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/CartsContainsProdsDAOTest/testDoSaveCartsContainsProds.xml"))
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
-	         CartsContainsProdsDAO.doSave(4,"ZZB35",3,41);
-	         CartsContainsProdsDAO.doSave(4,"ASD56",2,37);
+	         cartsContainsProdsDAO.doSave(4,"ZZB35",3,41);
+	         cartsContainsProdsDAO.doSave(4,"ASD56",2,37);
 
 	         IDataSet databaseDataSet = getConnection().createDataSet();
 	         ITable actualTable = databaseDataSet.getTable(CartsContainsProdsDAO.TABLE_NAME);
@@ -109,8 +109,8 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
-	         CartsContainsProdsDAO.doDelete(3,"23AX1",36);
-	         CartsContainsProdsDAO.doDelete(3,"ASD56",39);
+	         cartsContainsProdsDAO.doDelete(3,"23AX1",36);
+	         cartsContainsProdsDAO.doDelete(3,"ASD56",39);
 
 	         IDataSet databaseDataSet = getConnection().createDataSet();
 	         ITable actualTable = databaseDataSet.getTable(CartsContainsProdsDAO.TABLE_NAME);
@@ -125,8 +125,8 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
-	         CartsContainsProdsDAO.doUpdate(1,"111AQ",4);
-	         CartsContainsProdsDAO.doUpdate(3,"ASD56",5);
+	         cartsContainsProdsDAO.doUpdate(1,"111AQ",4);
+	         cartsContainsProdsDAO.doUpdate(3,"ASD56",5);
 
 	         IDataSet databaseDataSet = getConnection().createDataSet();
 	         ITable actualTable = databaseDataSet.getTable(CartsContainsProdsDAO.TABLE_NAME);
@@ -145,19 +145,18 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	        expectedCarts.add(cart2);
 	        expectedCarts.add(cart3);
 	        expectedCarts.add(cart4);
-	        Set<CartsContainsProdsBean> actualCarts =  CartsContainsProdsDAO.doRetrieveAllByCartId(1,null);
+	        Set<CartsContainsProdsBean> actualCarts =  cartsContainsProdsDAO.doRetrieveAllByCartId(1,null);
 	        assertEquals(4, actualCarts.size());
 	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di CartsContainsProdsDAOTest recuperate non sono identiche alle attese");
 	    }
 	    
 	    
 	    @Test
-	    public void testdoRetrieveByKey() throws SQLException {
+	    public void testDoRetrieveByKey() throws SQLException {
 	    	CartsContainsProdsBean expectedCart = new CartsContainsProdsBean(1, "ASD56", 1, 39);
 
-	        CartsContainsProdsBean actualCarts =  CartsContainsProdsDAO.doRetrieveByKey(1,"ASD56",39);
+	        CartsContainsProdsBean actualCarts =  cartsContainsProdsDAO.doRetrieveByKey(1,"ASD56",39);
 	        assertEquals(expectedCart, actualCarts);
-	        //assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di SCAN recuperate non sono identiche a attese");
 	    }
 	    
 	    

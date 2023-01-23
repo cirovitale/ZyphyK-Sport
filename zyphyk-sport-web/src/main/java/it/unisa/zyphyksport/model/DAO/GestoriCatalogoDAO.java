@@ -1,5 +1,7 @@
 package it.unisa.zyphyksport.model.DAO;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +29,23 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 		
 		String insertSQL = "INSERT INTO " + GestoriCatalogoDAO.TABLE_NAME
 				+ " (USERNAME, NAME, SURNAME, EMAIL, PASS_WORD,"
-				+ "RAL) VALUES (?, ?, ?, ?, MD5(?), ?)";
+				+ "RAL) VALUES (?, ?, ?, ?, ?, ?)";
+		
+		String password = pass_word;
+        MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        StringBuilder sb = new StringBuilder();
+        for (byte b : digest) {
+            sb.append(String.format("%02x", b & 0xff));
+        }
+        String encryptedPassword = sb.toString();
 		
 		try {
 			connection = ds.getConnection();
@@ -36,7 +54,7 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, surname);
 			preparedStmt.setString(4, email);
-			preparedStmt.setString(5,pass_word);
+			preparedStmt.setString(5,encryptedPassword);
 			preparedStmt.setInt(6, ral);
 
 			preparedStmt.executeUpdate();
