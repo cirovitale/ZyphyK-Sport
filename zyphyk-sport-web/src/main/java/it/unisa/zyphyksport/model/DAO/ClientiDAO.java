@@ -1,5 +1,7 @@
 package it.unisa.zyphyksport.model.DAO;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -15,7 +17,7 @@ import it.unisa.zyphyksport.model.bean.ClientiBean;
 import it.unisa.zyphyksport.model.interfaceDS.ClientiInterf;
 
 public class ClientiDAO implements ClientiInterf{
-	private static final String TABLE_NAME = "clienti";
+	public static final String TABLE_NAME = "clienti";
 	private DataSource ds = null;
 	
 	public ClientiDAO(DataSource ds) {
@@ -30,7 +32,24 @@ public class ClientiDAO implements ClientiInterf{
 		PreparedStatement preparedStmt = null;		
 		
 		String insertSQL = "INSERT INTO " + ClientiDAO.TABLE_NAME
-				+ " (USERNAME, CART_ID, NAME, SURNAME, EMAIL, PASS_WORD, BIRTH_DATE) VALUES (?, ?, ?, ?, ?, MD5(?), ?)";
+				+ " (USERNAME, CART_ID, NAME, SURNAME, EMAIL, PASS_WORD, BIRTH_DATE) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		
+		String password = pass_word;
+        MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        StringBuilder sb = new StringBuilder();
+        for (byte b : digest) {
+            sb.append(String.format("%02x", b & 0xff));
+        }
+        String encryptedPassword = sb.toString();
+		
 		
 		try {
 			connection = ds.getConnection();
@@ -41,7 +60,7 @@ public class ClientiDAO implements ClientiInterf{
 			preparedStmt.setString(3, name);
 			preparedStmt.setString(4, surname);
 			preparedStmt.setString(5, email);
-			preparedStmt.setString(6, pass_word);
+			preparedStmt.setString(6, encryptedPassword);
 			preparedStmt.setDate(7, java.sql.Date.valueOf(birthDate));
 			preparedStmt.executeUpdate();
 
