@@ -58,30 +58,30 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 
 	@Override
 	public void doUpdate(int cartId, String productId, int quantity) throws SQLException {
-		Connection connection = null;
+		//Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String updateSQL = "UPDATE " + CartsContainsProdsDAO.TABLE_NAME
 				+ " SET QUANTITY = ?" + " WHERE CART_ID = ? AND PRODUCT_ID = ?";
 		
 		try {
-			connection = ds.getConnection();
-			preparedStmt = connection.prepareStatement(updateSQL);
+			conn = ds.getConnection();
+			preparedStmt = conn.prepareStatement(updateSQL);
 			preparedStmt.setInt(1, quantity);
 
 			preparedStmt.setInt(2, cartId);
 			preparedStmt.setString(3, productId);
 			preparedStmt.executeUpdate();
 
-			connection.setAutoCommit(false);
-			connection.commit();
+			conn.setAutoCommit(false);
+			conn.commit();
 		} finally {
 			try {
 				if (preparedStmt != null)
 					preparedStmt.close();
 			} finally {
-				if (connection != null)
-					connection.close();
+				if (conn != null)
+					conn.close();
 			}
 		}
 		

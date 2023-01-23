@@ -1,9 +1,9 @@
 package it.unisa.zyphyksport.model.DAO;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.sql.Connection;
+
+
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,9 +12,6 @@ import javax.sql.DataSource;
 
 import org.dbunit.Assertion;
 import org.dbunit.DataSourceBasedDBTestCase;
-import org.dbunit.DataSourceDatabaseTester;
-import org.dbunit.IDatabaseTester;
-import org.dbunit.JdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.SortedTable;
@@ -22,7 +19,6 @@ import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -30,9 +26,8 @@ import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 
 public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 
-	 private static IDatabaseTester tester;
 	 private CartsContainsProdsDAO CartsContainsProdsDAO;
-	 
+
 	    @Override
 	    protected DataSource getDataSource() {
 	        JdbcDataSource dataSource = new JdbcDataSource();
@@ -60,6 +55,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    @BeforeEach
 	    public void setUp() throws Exception {
 	        super.setUp();
+	        getDataSet();
 	        CartsContainsProdsDAO = new CartsContainsProdsDAO(getDataSource());
 	    }
 
@@ -69,7 +65,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    }
 
 	    @Test
-	    public void testGetAll() throws SQLException {
+	    public void testdoRetrieveAll() throws SQLException {
 	    	CartsContainsProdsBean cart1 = new CartsContainsProdsBean(1, "ASD56", 1, 39);
 	        CartsContainsProdsBean cart2 = new CartsContainsProdsBean(1, "23AX1", 2, 37);
 	        CartsContainsProdsBean cart3 = new CartsContainsProdsBean(1, "ZZB35", 3, 36);
@@ -92,16 +88,78 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    }
 
 	    @Test
-	    public void testInsertCartsContainsProds() throws Exception{
+	    public void testDoSaveCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
 	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testInsertCartsContainsProds.xml"))
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
-	         CartsContainsProdsDAO.doSave(3,"ZZB35",3,41);
+	         CartsContainsProdsDAO.doSave(4,"ZZB35",3,41);
+	         CartsContainsProdsDAO.doSave(4,"ASD56",2,37);
 
-	       
-	         ITable actualTable = getDataSet().getTable(CartsContainsProdsDAO.TABLE_NAME);
+	         IDataSet databaseDataSet = getConnection().createDataSet();
+	         ITable actualTable = databaseDataSet.getTable(CartsContainsProdsDAO.TABLE_NAME);
+	        
 	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
 	    }
+	    @Test
+	    public void testDoDeleteCartsContainsProds() throws Exception{
+	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testDoDeleteCartsContainsProds.xml"))
+	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
+
+	         
+	         CartsContainsProdsDAO.doDelete(3,"23AX1",36);
+	         CartsContainsProdsDAO.doDelete(3,"ASD56",39);
+
+	         IDataSet databaseDataSet = getConnection().createDataSet();
+	         ITable actualTable = databaseDataSet.getTable(CartsContainsProdsDAO.TABLE_NAME);
+	        
+	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
+	    }
+	    
+	    @Test
+	    public void testDoUpdateCartsContainsProds() throws Exception{
+	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testDoUpdateCartsContainsProds.xml"))
+	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
+
+	         
+	         CartsContainsProdsDAO.doUpdate(1,"111AQ",4);
+	         CartsContainsProdsDAO.doUpdate(3,"ASD56",5);
+
+	         IDataSet databaseDataSet = getConnection().createDataSet();
+	         ITable actualTable = databaseDataSet.getTable(CartsContainsProdsDAO.TABLE_NAME);
+	        
+	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
+	    }
+	    
+	    @Test
+	    public void testDoRetrieveAllByCartId() throws SQLException {
+	    	CartsContainsProdsBean cart1 = new CartsContainsProdsBean(1, "ASD56", 1, 39);
+	        CartsContainsProdsBean cart2 = new CartsContainsProdsBean(1, "23AX1", 2, 37);
+	        CartsContainsProdsBean cart3 = new CartsContainsProdsBean(1, "ZZB35", 3, 36);
+	        CartsContainsProdsBean cart4 = new CartsContainsProdsBean(1, "111AQ", 1, 39);
+	        Set<CartsContainsProdsBean> expectedCarts = new HashSet<>();
+	        expectedCarts.add(cart1);
+	        expectedCarts.add(cart2);
+	        expectedCarts.add(cart3);
+	        expectedCarts.add(cart4);
+	        Set<CartsContainsProdsBean> actualCarts =  CartsContainsProdsDAO.doRetrieveAllByCartId(1,null);
+	        assertEquals(4, actualCarts.size());
+	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di SCAN recuperate non sono identiche a attese");
+	    }
+	    
+	    
+	    @Test
+	    public void testdoRetrieveByKey() throws SQLException {
+	    	CartsContainsProdsBean expectedCart = new CartsContainsProdsBean(1, "ASD56", 1, 39);
+
+	        CartsContainsProdsBean actualCarts =  CartsContainsProdsDAO.doRetrieveByKey(1,"ASD56",39);
+	        assertEquals(expectedCart, actualCarts);
+	        //assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di SCAN recuperate non sono identiche a attese");
+	    }
+	    
+	    
+	    
 }

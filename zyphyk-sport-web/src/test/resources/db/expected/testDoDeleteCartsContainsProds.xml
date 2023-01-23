@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '23AX1' quantity = '2' size = '37'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ZZB35' quantity = '3' size = '36'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '111AQ' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
+	<CARTS_CONTAINS_PRODS cart_id = '2' product_id = 'QEWER' quantity = '1' size = '41'></CARTS_CONTAINS_PRODS>   
+</dataset>
