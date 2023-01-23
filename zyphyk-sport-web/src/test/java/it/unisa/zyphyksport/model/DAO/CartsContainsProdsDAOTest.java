@@ -32,7 +32,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 
 	 private static IDatabaseTester tester;
 	 private CartsContainsProdsDAO CartsContainsProdsDAO;
-	 private Connection connection;
+	 
 	    @Override
 	    protected DataSource getDataSource() {
 	        JdbcDataSource dataSource = new JdbcDataSource();
