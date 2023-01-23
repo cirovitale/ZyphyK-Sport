@@ -84,13 +84,13 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 
 	        Set<CartsContainsProdsBean> actualCarts =  CartsContainsProdsDAO.doRetrieveAll(null);
 	        assertEquals(7, actualCarts.size());
-	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di SCAN recuperate non sono identiche a attese");
+	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di CartsContainsProdsDAO recuperate non sono identiche alle attese");
 	    }
 
 	    @Test
 	    public void testDoSaveCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
-	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testInsertCartsContainsProds.xml"))
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/CartsContainsProdsDAOTest/testInsertCartsContainsProds.xml"))
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
@@ -105,7 +105,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    @Test
 	    public void testDoDeleteCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
-	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testDoDeleteCartsContainsProds.xml"))
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/CartsContainsProdsDAOTest/testDoDeleteCartsContainsProds.xml"))
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
@@ -121,7 +121,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    @Test
 	    public void testDoUpdateCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
-	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/testDoUpdateCartsContainsProds.xml"))
+	                 .build(CartsContainsProdsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/CartsContainsProdsDAOTest/testDoUpdateCartsContainsProds.xml"))
 	                 .getTable(CartsContainsProdsDAO.TABLE_NAME);
 
 	         
@@ -147,7 +147,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	        expectedCarts.add(cart4);
 	        Set<CartsContainsProdsBean> actualCarts =  CartsContainsProdsDAO.doRetrieveAllByCartId(1,null);
 	        assertEquals(4, actualCarts.size());
-	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di SCAN recuperate non sono identiche a attese");
+	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di CartsContainsProdsDAOTest recuperate non sono identiche alle attese");
 	    }
 	    
 	    
