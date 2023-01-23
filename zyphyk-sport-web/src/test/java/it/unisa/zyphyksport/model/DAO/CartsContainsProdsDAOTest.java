@@ -102,6 +102,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	        
 	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
 	    }
+	    
 	    @Test
 	    public void testDoDeleteCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
