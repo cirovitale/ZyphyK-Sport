@@ -77,7 +77,8 @@ CREATE TABLE IF NOT EXISTS manages_prods(
 	PRIMARY KEY(`id`),
 	FOREIGN KEY(`product_id`) REFERENCES products(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY(`gest_cat_username`) REFERENCES gestori_catalogo(`username`) ON UPDATE CASCADE ON DELETE CASCADE
-);
+);ALTER TABLE manages_prods ALTER COLUMN id RESTART WITH 11;
+
 CREATE TABLE IF NOT EXISTS orders(
 	`id` int NOT NULL auto_increment,
 	`cliente_username` varchar(20) NOT NULL,

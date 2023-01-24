@@ -14,7 +14,7 @@ import it.unisa.zyphyksport.model.bean.ManagesProdsBean;
 import it.unisa.zyphyksport.model.interfaceDS.ManagesProdsInterf;
 
 public class ManagesProdsDAO implements ManagesProdsInterf {
-	private static final String TABLE_NAME = "manages_prods";
+	public static final String TABLE_NAME = "manages_prods";
 	private DataSource ds = null;
 	
 	public ManagesProdsDAO(DataSource ds) {
@@ -26,12 +26,11 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	public synchronized void doSave(String gestCatUsername, String productId, int tipologia) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
-		PreparedStatement preparedStmt2 = null;
 		
 		String insertSQL = "INSERT INTO " + ManagesProdsDAO.TABLE_NAME
 				+ " (GEST_CAT_USERNAME, PRODUCT_ID, TIPOLOGIA) VALUES (?, ?, ?)";
 		
-		String selectSQL = "SELECT LAST_INSERT_ID()"; 
+		
 		
 		try {
 			connection = ds.getConnection();
@@ -42,8 +41,6 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 
 			preparedStmt.executeUpdate();
 			
-			preparedStmt2 = connection.prepareStatement(selectSQL);
-			preparedStmt2.executeQuery();
 
 			connection.setAutoCommit(false);
 			connection.commit();
@@ -70,6 +67,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setInt(1, id);
+			preparedStmt.executeUpdate();
 
 		} finally {
 			try {
