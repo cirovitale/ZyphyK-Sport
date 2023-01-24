@@ -15,17 +15,17 @@
   	<CLIENTI username='peppeRoma' cart_id='3' name='Giuseppe' surname='Roma' email='g.rom1@gmail.com' pass_word ='cliente' birth_date ='2001-04-25'></CLIENTI>     
     <CLIENTI username='angeloPorte' cart_id='4' name='Angelo' surname='Portelli' email='portelli_angelo@gmail.com' pass_word ='cliente' birth_date ='1978-01-07'></CLIENTI>     	
 
-	<PRODUCTS id = 'ASD56' name = 'Air Zoom Structure 24' sport = 'running' brand = 'nike' price = '59'></PRODUCTS>   	
-	<PRODUCTS id = '23AX1' name = 'Courtjam Control' sport = 'tennis' brand = 'adidas' price = '60'></PRODUCTS>  	
-	<PRODUCTS id = '3ASD7' name = 'Nike Air Zoom Vapor Pro' sport = 'tennis' brand = 'nike' price = '84'></PRODUCTS>  	
-	<PRODUCTS id = 'X2341' name = 'Ultraboost 20' sport = 'running' brand = 'adidas' price = '99'></PRODUCTS>  	
-	<PRODUCTS id = 'ZZB35' name = 'KING 21' sport = 'calcetto' brand = 'nike' price = '69'></PRODUCTS>
-	<PRODUCTS id = 'QRW20' name = 'Air Zoom Pegasus' sport = 'running' brand = 'adidas' price = '99'></PRODUCTS>  
-	<PRODUCTS id = 'XXC01' name = 'Samba' sport = 'calcetto' brand = 'adidas' price = '115'></PRODUCTS>
-	<PRODUCTS id = 'QEWER' name = 'NikeCourt Zoom Pro' sport = 'tennis' brand = 'nike' price = '39'></PRODUCTS>
-	<PRODUCTS id = 'BFD32' name = 'Electrify Nitro 2' sport = 'running' brand = 'puma' price = '75'></PRODUCTS>
-	<PRODUCTS id = '111AQ' name = 'Courtflash Speed' sport = 'tennis' brand = 'adidas' price = '90'></PRODUCTS>
-	<PRODUCTS id = '0ASDA' name = 'BREAKSHOT 3 CC' sport = 'tennis' brand = 'mizuno' price = '79'></PRODUCTS>
+	<PRODUCTS id = 'ASD56' name = 'Air Zoom Structure 24' sport = 'running' brand = 'nike' price = '59' removed = 'false'></PRODUCTS>   	
+	<PRODUCTS id = '23AX1' name = 'Courtjam Control' sport = 'tennis' brand = 'adidas' price = '60' removed = 'false'></PRODUCTS>  	
+	<PRODUCTS id = '3ASD7' name = 'Nike Air Zoom Vapor Pro' sport = 'tennis' brand = 'nike' price = '84' removed = 'false'></PRODUCTS>  	
+	<PRODUCTS id = 'X2341' name = 'Ultraboost 20' sport = 'running' brand = 'adidas' price = '99' removed = 'false'></PRODUCTS>  	
+	<PRODUCTS id = 'ZZB35' name = 'KING 21' sport = 'calcetto' brand = 'nike' price = '69' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = 'QRW20' name = 'Air Zoom Pegasus' sport = 'running' brand = 'adidas' price = '99' removed = 'false'></PRODUCTS>  
+	<PRODUCTS id = 'XXC01' name = 'Samba' sport = 'calcetto' brand = 'adidas' price = '115' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = 'QEWER' name = 'NikeCourt Zoom Pro' sport = 'tennis' brand = 'nike' price = '39' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = 'BFD32' name = 'Electrify Nitro 2' sport = 'running' brand = 'puma' price = '75' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = '111AQ' name = 'Courtflash Speed' sport = 'tennis' brand = 'adidas' price = '90' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = '0ASDA' name = 'BREAKSHOT 3 CC' sport = 'tennis' brand = 'mizuno' price = '79' removed = 'false'></PRODUCTS>
 
 	<SIZES product_id='23AX1' valued='36' count = '1'></SIZES>
 	<SIZES product_id='XXC01' valued='36' count = '2'></SIZES>
