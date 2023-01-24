@@ -10,11 +10,13 @@ public class SizesBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int value;
 	private String productId;
+	private int count;
 	
-	public SizesBean(int value, String productId) {
+	public SizesBean(int value, String productId, int count) {
 		super();
 		this.value = value;
 		this.productId = productId;
+		this.count = count;
 	}
 	
 	public int getValue() {
@@ -33,14 +35,17 @@ public class SizesBean implements Serializable{
 		this.productId = productId;
 	}
 	
-	@Override
-	public String toString() {
-		return "SizesBean [value=" + value + ", productId=" + productId + "]";
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(productId, value);
+		return Objects.hash(count, productId, value);
 	}
 
 	@Override
@@ -52,8 +57,14 @@ public class SizesBean implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		SizesBean other = (SizesBean) obj;
-		return Objects.equals(productId, other.productId) && value == other.value;
+		return count == other.count && Objects.equals(productId, other.productId) && value == other.value;
+	}
+
+	@Override
+	public String toString() {
+		return "SizesBean [value=" + value + ", productId=" + productId + ", count=" + count + "]";
 	}
 	
+
 	
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	
+	<SIZES product_id='23AX1' valued='36' count = '1'></SIZES>
 	<SIZES product_id='3ASD7' valued='36' count = '2'></SIZES>
 	<SIZES product_id='XXC01' valued='36' count = '3'></SIZES>
 	<SIZES product_id='BFD32' valued='36' count = '4'></SIZES>
@@ -11,7 +11,7 @@
 	<SIZES product_id='3ASD7' valued='39' count = '9'></SIZES>	
 	<SIZES product_id='X2341' valued='39' count = '10'></SIZES>	
 	<SIZES product_id='ZZB35' valued='39' count = '11'></SIZES>	
-
+	<SIZES product_id='QRW20' valued='39' count = '12'></SIZES>	
 	<SIZES product_id='ASD56' valued='40' count = '13'></SIZES>	
 	<SIZES product_id='23AX1' valued='40' count = '14'></SIZES>	
 	<SIZES product_id='XXC01' valued='40' count = '15'></SIZES>	
@@ -23,5 +23,5 @@
 	<SIZES product_id='QRW20' valued='41' count = '21'></SIZES>	
 	<SIZES product_id='QEWER' valued='41' count = '22'></SIZES>
 	<SIZES product_id='3ASD7' valued='42' count = '23'></SIZES>
-	<SIZES product_id='X2341' valued='42' count = '24'></SIZES>
+	
 </dataset>

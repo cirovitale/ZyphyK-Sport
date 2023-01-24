@@ -6,7 +6,7 @@ import java.util.Set;
 import it.unisa.zyphyksport.model.bean.SizesBean;
 
 public interface SizesInterf {
-	public void doSave(String productId, int value) throws SQLException;
+	public int doSave(String productId, int value) throws SQLException;
 
 	public void doDelete(String productId, int value) throws SQLException;
 

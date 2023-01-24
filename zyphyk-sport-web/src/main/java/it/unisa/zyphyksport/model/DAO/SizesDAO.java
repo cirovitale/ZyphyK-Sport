@@ -22,14 +22,18 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public synchronized void doSave(String productId, int valued) throws SQLException {
+	public synchronized int doSave(String productId, int valued) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
-		
+		PreparedStatement preparedStmt2 = null;
+
 		String insertSQL = "INSERT INTO " + SizesDAO.TABLE_NAME
 				+ " (PRODUCT_ID, VALUED) VALUES (?, ?)";
 		
+		String selectSQL = "SELECT MAX(COUNT) AS MAX FROM " + SizesDAO.TABLE_NAME;
+		
+		int count = 0;
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
@@ -37,6 +41,13 @@ public class SizesDAO implements SizesInterf{
 			preparedStmt.setInt(2, valued);
 
 			preparedStmt.executeUpdate();
+			
+			preparedStmt2 = connection.prepareStatement(selectSQL);
+			ResultSet rs2 = preparedStmt2.executeQuery();
+			
+			if(rs2.next()) {
+				count = rs2.getInt("MAX");
+			}
 
 			connection.setAutoCommit(false);
 			connection.commit();
@@ -49,6 +60,8 @@ public class SizesDAO implements SizesInterf{
 					connection.close();
 			}
 		}
+		
+		return count;
 	}
 
 	@Override
@@ -101,9 +114,10 @@ public class SizesDAO implements SizesInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				SizesBean bean = new SizesBean(0,null);
+				SizesBean bean = new SizesBean(0,null,0);
 				bean.setProductId(rs.getString("PRODUCT_ID"));
 				bean.setValue(rs.getInt("VALUED"));
+				bean.setCount(rs.getInt("COUNT"));
 				array.add(bean);
 			}
 		} finally {
@@ -140,9 +154,10 @@ public class SizesDAO implements SizesInterf{
 			ResultSet rs = preparedStmt.executeQuery();
 			
 			while (rs.next()) {
-				SizesBean bean = new SizesBean(0,null);
+				SizesBean bean = new SizesBean(0,null,0);
 				bean.setProductId(rs.getString("PRODUCT_ID"));
 				bean.setValue(rs.getInt("VALUED"));
+				bean.setCount(rs.getInt("COUNT"));
 				array.add(bean);
 			}
 		} finally {
