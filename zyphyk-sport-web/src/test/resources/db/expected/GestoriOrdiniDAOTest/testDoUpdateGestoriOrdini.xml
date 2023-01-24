@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<GESTORI_ORDINI username = 'LuBacco' name = 'Luigi' surname = 'Bacco' email = 'lbgames@gmail.com' pass_word = 'a8f8106e06274764c539025a80cfdcea' ral ='2000' roles = 'gestOrd'></GESTORI_ORDINI>
+</dataset>

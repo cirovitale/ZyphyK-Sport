@@ -14,7 +14,7 @@ import it.unisa.zyphyksport.model.interfaceDS.OrdersContainsProdsInterf;
 
 public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 
-	private static final String TABLE_NAME = "orders_contains_prods";
+	public static final String TABLE_NAME = "orders_contains_prods";
 	
 	private DataSource ds = null;
 	

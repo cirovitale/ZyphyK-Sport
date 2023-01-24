@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.sql.DataSource;
 
@@ -13,12 +15,11 @@ import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
 import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
 
 public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
-	private static final String TABLE_NAME = "gestori_ordini";
+	public static final String TABLE_NAME = "gestori_ordini";
 	private DataSource ds = null;
 	
 	public GestoriOrdiniDAO(DataSource ds) {
 		this.ds = ds;
-
 	}
 	
 
@@ -30,7 +31,29 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 		
 		String insertSQL = "INSERT INTO " + GestoriOrdiniDAO.TABLE_NAME
 				+ " (USERNAME, NAME, SURNAME, EMAIL, PASS_WORD,"
-				+ "RAL) VALUES (?, ?, ?, ?, MD5(?), ?)";
+				+ "RAL) VALUES (?, ?, ?, ?, ?, ?)";
+		
+	
+		
+		
+		        String password = pass_word;
+		        MessageDigest md = null;
+				try {
+					md = MessageDigest.getInstance("MD5");
+				} catch (NoSuchAlgorithmException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        md.update(password.getBytes());
+		        byte[] digest = md.digest();
+		        StringBuilder sb = new StringBuilder();
+		        for (byte b : digest) {
+		            sb.append(String.format("%02x", b & 0xff));
+		        }
+		        String encryptedPassword = sb.toString();
+		        //System.out.println("Encrypted password: " + encryptedPassword);
+		    
+		
 		
 		try {
 			connection = ds.getConnection();
@@ -39,7 +62,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 			preparedStmt.setString(2, name);
 			preparedStmt.setString(3, surname);
 			preparedStmt.setString(4, email);
-			preparedStmt.setString(5,pass_word);
+			preparedStmt.setString(5,encryptedPassword);
 			preparedStmt.setInt(6, ral);
 
 			preparedStmt.executeUpdate();
@@ -64,8 +87,25 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 		PreparedStatement preparedStmt = null;
 		
 		String updateSQL = "UPDATE " + GestoriOrdiniDAO.TABLE_NAME
-				+ " SET USERNAME = ?, NAME = ?, SURNAME = ?, EMAIL = ?, PASS_WORD = ?,"
+				+ " SET NAME = ?, SURNAME = ?, EMAIL = ?, PASS_WORD = ?,"
 				+ "RAL = ?" + " WHERE USERNAME = ?";
+		
+		String password = pass_word;
+        MessageDigest md = null;
+		try {
+			md = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        md.update(password.getBytes());
+        byte[] digest = md.digest();
+        StringBuilder sb = new StringBuilder();
+        for (byte b : digest) {
+            sb.append(String.format("%02x", b & 0xff));
+        }
+        String encryptedPassword = sb.toString();
+        
 		
 		try {
 			connection = ds.getConnection();
@@ -73,8 +113,9 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 			preparedStmt.setString(1, name);
 			preparedStmt.setString(2, surname);
 			preparedStmt.setString(3, email);
-			preparedStmt.setString(4, pass_word);
+			preparedStmt.setString(4, encryptedPassword);
 			preparedStmt.setInt(5, ral);
+			preparedStmt.setString(6, username);
 			
 			preparedStmt.executeUpdate();
 
@@ -103,6 +144,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setString(1, username);
+			preparedStmt.executeUpdate();
 
 		} finally {
 			try {
@@ -180,6 +222,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 				gestOrd.setEmail(rs.getString("EMAIL"));
 				gestOrd.setPass_word(rs.getString("PASS_WORD"));
 				gestOrd.setRal(rs.getInt("RAL"));
+				array.add(gestOrd);
 			}
 
 		} finally {
