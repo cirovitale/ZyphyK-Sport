@@ -66,6 +66,8 @@ public class ClientiDAO implements ClientiInterf{
 
 			connection.setAutoCommit(false);
 			connection.commit();
+		} catch (Exception e){
+			System.out.println(e);
 		} finally {
 			try {
 				if (preparedStmt != null)

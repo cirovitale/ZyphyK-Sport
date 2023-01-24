@@ -31,7 +31,7 @@ public class CartsDAO implements CartsInterf{
 		String insertSQL = "INSERT INTO " + CartsDAO.TABLE_NAME
 				+ " (AMOUNT) VALUES (?)";
 		
-		//String selectSQL = "SELECT LAST_INSERT_ID()"; 
+		String selectSQL = "SELECT MAX(ID) AS MAX FROM " + CartsDAO.TABLE_NAME; 
 		
 		int cartId = 0;
 		try {
@@ -42,14 +42,12 @@ public class CartsDAO implements CartsInterf{
 
 			preparedStmt1.executeUpdate();
 			
-//			preparedStmt2 = connection.prepareStatement(selectSQL);
-//			ResultSet rs2 = preparedStmt2.executeQuery();
+			preparedStmt2 = connection.prepareStatement(selectSQL);
+			ResultSet rs2 = preparedStmt2.executeQuery();
 			
-			System.out.println(preparedStmt1.getGeneratedKeys());
-			
-//			if(rs2.next()) {
-//				cartId = rs2.getInt("LAST_INSERT_ID()");
-//			}
+			if(rs2.next()) {
+				cartId = rs2.getInt("MAX");
+			}
 
 			connection.setAutoCommit(false);
 			connection.commit();
