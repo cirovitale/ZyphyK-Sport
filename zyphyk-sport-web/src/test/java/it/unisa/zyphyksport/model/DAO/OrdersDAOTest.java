@@ -64,15 +64,15 @@ public class OrdersDAOTest extends DataSourceBasedDBTestCase{
         super.tearDown();
     }
    
-    /*
+    
     @Test
-    public void testDoRetrieveAll() throws SQLException {
+    public void testDoRetrieveAllOrders() throws SQLException {
     	
-    	OrdersBean orders1 = new OrdersBean(1, "daniPicci", "", LocalDateTime.of(2022,11,23,12,45,0), "Via Roma 221 Salerno SA", "5333171120934758 09/27 432", 294);
+    	OrdersBean orders1 = new OrdersBean(1, "daniPicci", " ", LocalDateTime.of(2022,11,23,12,45,0), "Via Roma 221 Salerno SA", "5333171120934758 09/27 432", 294);
     	OrdersBean orders2 = new OrdersBean(2, "marioRossi", "LuBacco", LocalDateTime.of(2023,5,11,18,23,0), "Via Casa Varone 113 Eboli SA", "5333171121903456 11/26 782", 252);
     	OrdersBean orders3 = new OrdersBean(3, "daniPicci", "LuBacco", LocalDateTime.of(2022,1,30,22,47,0), "Via Stabia 36 Pompei NA", "6734536271823456 12/25 934", 321);
-    	OrdersBean orders4 = new OrdersBean(4, "peppeRoma", "", LocalDateTime.of(2022,9,23,21,34,0), "Via De Goti 78 Caserta CE", "3324558912349076 04/26 278", 439);
-    	OrdersBean orders5 = new OrdersBean(5, "angeloPorte", "", LocalDateTime.of(2023,1,12,19,8,0), "Via Misano 221 Milano MI", "1234789467387462 06/25 475", 247);
+    	OrdersBean orders4 = new OrdersBean(4, "peppeRoma", " ", LocalDateTime.of(2022,9,23,21,34,0), "Via De Goti 78 Caserta CE", "3324558912349076 04/26 278", 439);
+    	OrdersBean orders5 = new OrdersBean(5, "angeloPorte", " ", LocalDateTime.of(2023,1,12,19,8,0), "Via Misano 221 Milano MI", "1234789467387462 06/25 475", 247);
     	Set<OrdersBean> expectedOrders = new HashSet<>();
     	expectedOrders.add(orders1);
     	expectedOrders.add(orders2);
@@ -84,7 +84,7 @@ public class OrdersDAOTest extends DataSourceBasedDBTestCase{
         assertEquals(5, actualOrders.size());
         assertArrayEquals(expectedOrders.toArray(), actualOrders.toArray(), "Le tuple di OrdersDAO recuperate non sono identiche alle attese");
     }
-    */
+    
     
     /*
     @Test
@@ -125,7 +125,7 @@ public class OrdersDAOTest extends DataSourceBasedDBTestCase{
     
     /*
 	@Test
-	public void testDoRetrieveByKey() throws SQLException {
+	public void testDoRetrieveByKeyOrders() throws SQLException {
 		OrdersBean expectedOrds = new OrdersBean(1, "daniPicci", "", LocalDateTime.of(2022,11,23,12,45,0), "Via Roma 221 Salerno SA", "5333171120934758 09/27 432", 294);
 		
 		OrdersBean actualOrds =  ordersDAO.doRetrieveByKey(1);

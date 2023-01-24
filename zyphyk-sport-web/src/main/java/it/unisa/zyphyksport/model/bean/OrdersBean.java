@@ -20,8 +20,7 @@ public class OrdersBean implements Serializable{
 	
 	
 	
-	public OrdersBean(int id, String clienteUsername, String gestOrdUsername, LocalDateTime dateTime,
-			String shippingAddress, String paymentMethod, int amount) {
+	public OrdersBean(int id, String clienteUsername, String gestOrdUsername, LocalDateTime dateTime, String shippingAddress, String paymentMethod, int amount) {
 		super();
 		this.id = id;
 		this.clienteUsername = clienteUsername;
