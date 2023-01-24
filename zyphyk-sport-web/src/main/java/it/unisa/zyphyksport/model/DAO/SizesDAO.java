@@ -13,7 +13,7 @@ import it.unisa.zyphyksport.model.bean.SizesBean;
 import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
 
 public class SizesDAO implements SizesInterf{
-	private static final String TABLE_NAME = "sizes";
+	static final String TABLE_NAME = "sizes";
 	private DataSource ds = null;
 	
 	public SizesDAO(DataSource ds) {
@@ -22,19 +22,19 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public synchronized void doSave(String productId, int value) throws SQLException {
+	public synchronized void doSave(String productId, int valued) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + SizesDAO.TABLE_NAME
-				+ " (PRODUCT_ID, VALUE) VALUES (?, ?)";
+				+ " (PRODUCT_ID, VALUED) VALUES (?, ?)";
 		
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt.setString(1, productId);
-			preparedStmt.setInt(2, value);
+			preparedStmt.setInt(2, valued);
 
 			preparedStmt.executeUpdate();
 
@@ -52,18 +52,18 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public synchronized void doDelete(String productId, int value) throws SQLException {
+	public synchronized void doDelete(String productId, int valued) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		String deleteSQL = "DELETE FROM " + SizesDAO.TABLE_NAME + " WHERE PRODUCT_ID = ? AND VALUE = ?";
+		String deleteSQL = "DELETE FROM " + SizesDAO.TABLE_NAME + " WHERE PRODUCT_ID = ? AND VALUED = ?";
 
 		try {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setString(1, productId);
-			preparedStmt.setInt(2, value);
+			preparedStmt.setInt(2, valued);
 
 			preparedStmt.executeUpdate();
 
@@ -103,7 +103,7 @@ public class SizesDAO implements SizesInterf{
 			while (rs.next()) {
 				SizesBean bean = new SizesBean(0,null);
 				bean.setProductId(rs.getString("PRODUCT_ID"));
-				bean.setValue(rs.getInt("VALUE"));
+				bean.setValue(rs.getInt("VALUED"));
 				array.add(bean);
 			}
 		} finally {
@@ -142,7 +142,7 @@ public class SizesDAO implements SizesInterf{
 			while (rs.next()) {
 				SizesBean bean = new SizesBean(0,null);
 				bean.setProductId(rs.getString("PRODUCT_ID"));
-				bean.setValue(rs.getInt("VALUE"));
+				bean.setValue(rs.getInt("VALUED"));
 				array.add(bean);
 			}
 		} finally {
