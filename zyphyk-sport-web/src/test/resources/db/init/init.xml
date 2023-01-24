@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<GESTORI_CATALOGO username = 'DarMoccia' name = 'Dario' surname = 'Moccia' email = 'darMoccia@gmail.com' pass_word = 'paperino33' ral ='1500'></GESTORI_CATALOGO>
-	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massimo' surname = 'Varriale' email = 'MasVar@gmail.com' pass_word = 'gestoreCat2' ral ='1400'></GESTORI_CATALOGO> 
+	<GESTORI_CATALOGO username = 'DarMoccia' name = 'Dario' surname = 'Moccia' email = 'darMoccia@gmail.com' pass_word = '5fc35d28951c7bf323b8fff9885562ed' ral ='1500' roles = 'gestCat'></GESTORI_CATALOGO>
+	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massimo' surname = 'Varriale' email = 'MasVar@gmail.com' pass_word = '6537dc2c9654109f741cd01878c8f403' ral ='1400' roles = 'gestCat'></GESTORI_CATALOGO> 
 
-	<GESTORI_ORDINI username = 'LuBacco' name = 'Luigi' surname = 'Bacco' email = 'lbgames@gmail.com' pass_word = 'paperoga104' ral ='1700'></GESTORI_ORDINI>
+	<GESTORI_ORDINI username = 'LuBacco' name = 'Luigi' surname = 'Bacco' email = 'lbgames@gmail.com' pass_word = 'dd6c2b03adfe02e7ef9b1fd016581415' ral ='1700' roles = 'gestOrd'></GESTORI_ORDINI>
 
 	<CARTS id = '1' amount='386'></CARTS>
 	<CARTS id = '2' amount='39'></CARTS>
 	<CARTS id = '3' amount='179'></CARTS>
 	<CARTS id = '4' amount='0'></CARTS>
 	
-	<CLIENTI username='daniPicci' cart_id='1' name='Daniele' surname='Piccirillo' email='dani_san@gmail.com' pass_word ='passw1234' birth_date ='1996-09-06'></CLIENTI>
- 	<CLIENTI username='marioRossi' cart_id='2' name='Mario' surname='Rossi' email='mar-rossi@gmail.com' pass_word ='cliente' birth_date ='1996-06-13'></CLIENTI>
-  	<CLIENTI username='peppeRoma' cart_id='3' name='Giuseppe' surname='Roma' email='g.rom1@gmail.com' pass_word ='cliente' birth_date ='2001-04-25'></CLIENTI>     
-    <CLIENTI username='angeloPorte' cart_id='4' name='Angelo' surname='Portelli' email='portelli_angelo@gmail.com' pass_word ='cliente' birth_date ='1978-01-07'></CLIENTI>     	
+	<CLIENTI username='daniPicci' cart_id='1' name='Daniele' surname='Piccirillo' email='dani_san@gmail.com' pass_word ='194567ccf1a6ad5f751d618a4961719b' birth_date ='1996-09-06' roles = 'cliente'></CLIENTI>
+ 	<CLIENTI username='marioRossi' cart_id='2' name='Mario' surname='Rossi' email='mar-rossi@gmail.com' pass_word ='4983a0ab83ed86e0e7213c8783940193' birth_date ='1996-06-13' roles = 'cliente'></CLIENTI>
+  	<CLIENTI username='peppeRoma' cart_id='3' name='Giuseppe' surname='Roma' email='g.rom1@gmail.com' pass_word ='4983a0ab83ed86e0e7213c8783940193' birth_date ='2001-04-25' roles = 'cliente'></CLIENTI>     
+    <CLIENTI username='angeloPorte' cart_id='4' name='Angelo' surname='Portelli' email='portelli_angelo@gmail.com' pass_word ='4983a0ab83ed86e0e7213c8783940193' birth_date ='1978-01-07' roles = 'cliente'></CLIENTI>     	
 
 	<PRODUCTS id = 'ASD56' name = 'Air Zoom Structure 24' sport = 'running' brand = 'nike' price = '59' removed = 'false'></PRODUCTS>   	
 	<PRODUCTS id = '23AX1' name = 'Courtjam Control' sport = 'tennis' brand = 'adidas' price = '60' removed = 'false'></PRODUCTS>  	
@@ -76,16 +76,16 @@
 	<ORDERS id = '4' cliente_username = 'peppeRoma' date_time = '2022-09-23 21:34:00' shipping_address = 'Via De Goti 78 Caserta CE' payment_method = '3324558912349076 04/26 278' amount = '439' sent = 'false'></ORDERS>
 	<ORDERS id = '5' cliente_username = 'angeloPorte' date_time = '2023-01-12 19:08:00' shipping_address = 'Via Misano 221 Milano MI' payment_method = '1234789467387462 06/25 475' amount = '247' sent = 'false'></ORDERS>
 
-	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = '23AX1' quantity = '2' size = '37'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'XXC01' quantity = '1' size = '36'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '2' product_id = '3ASD7' quantity = '3' size = '39'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = '3ASD7' quantity = '1' size = '41'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'X2341' quantity = '2' size = '36'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'QEWER' quantity = '1' size = '38'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '111AQ' quantity = '4' size = '38'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '0ASDA' quantity = '1' size = '41'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'ASD56' quantity = '2' size = '40'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = '23AX1' quantity = '1' size = '37'></ORDERS_CONTAINS_PRODS>
-	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'QRW20' quantity = '1' size = '39'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'ASD56' quantity = '1' size = '39' price = '85'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = '23AX1' quantity = '2' size = '37' price = '99'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'XXC01' quantity = '1' size = '36' price = '74'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '2' product_id = '3ASD7' quantity = '3' size = '39' price = '82'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = '3ASD7' quantity = '1' size = '41' price = '45'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'X2341' quantity = '2' size = '36' price = '65'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'QEWER' quantity = '1' size = '38' price = '39'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '111AQ' quantity = '4' size = '38' price = '100'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '0ASDA' quantity = '1' size = '41' price = '74'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'ASD56' quantity = '2' size = '40' price = '59'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = '23AX1' quantity = '1' size = '37' price = '69'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'QRW20' quantity = '1' size = '39' price = '110'></ORDERS_CONTAINS_PRODS>
 </dataset>

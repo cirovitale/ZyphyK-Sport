@@ -13,7 +13,7 @@ import it.unisa.zyphyksport.model.bean.CartsBean;
 import it.unisa.zyphyksport.model.interfaceDS.CartsInterf;
 
 public class CartsDAO implements CartsInterf{
-	private static final String TABLE_NAME = "carts";
+	public static final String TABLE_NAME = "carts";
 	private DataSource ds = null;
 	
 	public CartsDAO(DataSource ds) {
@@ -31,7 +31,7 @@ public class CartsDAO implements CartsInterf{
 		String insertSQL = "INSERT INTO " + CartsDAO.TABLE_NAME
 				+ " (AMOUNT) VALUES (?)";
 		
-		String selectSQL = "SELECT LAST_INSERT_ID()"; 
+		//String selectSQL = "SELECT LAST_INSERT_ID()"; 
 		
 		int cartId = 0;
 		try {
@@ -42,12 +42,14 @@ public class CartsDAO implements CartsInterf{
 
 			preparedStmt1.executeUpdate();
 			
-			preparedStmt2 = connection.prepareStatement(selectSQL);
-			ResultSet rs2 = preparedStmt2.executeQuery();
+//			preparedStmt2 = connection.prepareStatement(selectSQL);
+//			ResultSet rs2 = preparedStmt2.executeQuery();
 			
-			if(rs2.next()) {
-				cartId = rs2.getInt("LAST_INSERT_ID()");
-			}
+			System.out.println(preparedStmt1.getGeneratedKeys());
+			
+//			if(rs2.next()) {
+//				cartId = rs2.getInt("LAST_INSERT_ID()");
+//			}
 
 			connection.setAutoCommit(false);
 			connection.commit();

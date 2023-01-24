@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'ASD56' quantity = '1' size = '39' price = '85'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = '23AX1' quantity = '2' size = '37' price = '99'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '1' product_id = 'XXC01' quantity = '1' size = '36' price = '74'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '2' product_id = '3ASD7' quantity = '3' size = '39' price = '82'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = '3ASD7' quantity = '1' size = '41' price = '45'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'X2341' quantity = '2' size = '36' price = '65'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '3' product_id = 'QEWER' quantity = '1' size = '38' price = '39'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '111AQ' quantity = '4' size = '38' price = '100'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '4' product_id = '0ASDA' quantity = '1' size = '41' price = '74'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'ASD56' quantity = '2' size = '40' price = '59'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = '23AX1' quantity = '1' size = '37' price = '69'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'QRW20' quantity = '1' size = '39' price = '110'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = '23AX1' quantity = '2' size = '38' price = '60'></ORDERS_CONTAINS_PRODS>
+	<ORDERS_CONTAINS_PRODS order_id = '5' product_id = 'QRW20' quantity = '3' size = '40' price = '99'></ORDERS_CONTAINS_PRODS>
+	
+</dataset>

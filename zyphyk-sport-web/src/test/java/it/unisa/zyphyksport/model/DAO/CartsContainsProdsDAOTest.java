@@ -65,7 +65,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    }
 
 	    @Test
-	    public void testDoRetrieveAll() throws SQLException {
+	    public void testDoRetrieveAllCartsContainsProds() throws SQLException {
 	    	CartsContainsProdsBean cart1 = new CartsContainsProdsBean(1, "ASD56", 1, 39);
 	        CartsContainsProdsBean cart2 = new CartsContainsProdsBean(1, "23AX1", 2, 37);
 	        CartsContainsProdsBean cart3 = new CartsContainsProdsBean(1, "ZZB35", 3, 36);
@@ -102,6 +102,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	        
 	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
 	    }
+	    
 	    @Test
 	    public void testDoDeleteCartsContainsProds() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
@@ -135,7 +136,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	    }
 	    
 	    @Test
-	    public void testDoRetrieveAllByCartId() throws SQLException {
+	    public void testDoRetrieveAllByCartIdCartsContainsProds() throws SQLException {
 	    	CartsContainsProdsBean cart1 = new CartsContainsProdsBean(1, "ASD56", 1, 39);
 	        CartsContainsProdsBean cart2 = new CartsContainsProdsBean(1, "23AX1", 2, 37);
 	        CartsContainsProdsBean cart3 = new CartsContainsProdsBean(1, "ZZB35", 3, 36);
@@ -147,7 +148,7 @@ public class CartsContainsProdsDAOTest extends DataSourceBasedDBTestCase{
 	        expectedCarts.add(cart4);
 	        Set<CartsContainsProdsBean> actualCarts =  cartsContainsProdsDAO.doRetrieveAllByCartId(1,null);
 	        assertEquals(4, actualCarts.size());
-	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di CartsContainsProdsDAOTest recuperate non sono identiche alle attese");
+	        assertArrayEquals(expectedCarts.toArray(), actualCarts.toArray(), "Le tuple di CartsContainsProdsDAO recuperate non sono identiche alle attese");
 	    }
 	    
 	    

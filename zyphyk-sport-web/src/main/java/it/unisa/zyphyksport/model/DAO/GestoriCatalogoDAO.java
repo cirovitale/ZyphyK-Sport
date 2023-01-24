@@ -15,7 +15,7 @@ import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
 import it.unisa.zyphyksport.model.interfaceDS.GestoriCatalogoInterf;
 
 public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
-	private static final String TABLE_NAME = "gestori_catalogo";
+	public static final String TABLE_NAME = "gestori_catalogo";
 	private DataSource ds = null;
 	
 	public GestoriCatalogoDAO(DataSource ds) {
@@ -74,13 +74,13 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 	}
 
 	@Override
-	public synchronized void doUpdate(GestoriCatalogoBean gestCat, String username, String name, String surname, String email,
+	public synchronized void doUpdate(String username, String name, String surname, String email,
 			String pass_word, int ral) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 		
 		String updateSQL = "UPDATE " + GestoriCatalogoDAO.TABLE_NAME
-				+ " SET USERNAME = ?, NAME = ?, SURNAME = ?, EMAIL = ?, PASS_WORD = ?,"
+				+ " SET NAME = ?, SURNAME = ?, EMAIL = ?, PASS_WORD = ?,"
 				+ "RAL = ?" + " WHERE USERNAME = ?";
 		
 		try {
@@ -91,6 +91,7 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 			preparedStmt.setString(3, email);
 			preparedStmt.setString(4, pass_word);
 			preparedStmt.setInt(5, ral);
+			preparedStmt.setString(6, username);
 			
 			preparedStmt.executeUpdate();
 
@@ -118,6 +119,8 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setString(1, username);
+			
+			preparedStmt.executeUpdate();
 
 		} finally {
 			try {
@@ -194,6 +197,8 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 				gestCat.setEmail(rs.getString("EMAIL"));
 				gestCat.setPass_word(rs.getString("PASS_WORD"));
 				gestCat.setRal(rs.getInt("RAL"));
+				
+				array.add(gestCat);
 			}
 
 		} finally {

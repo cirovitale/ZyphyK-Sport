@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<GESTORI_CATALOGO username = 'DarMoccia' name = 'Dario' surname = 'Moccia' email = 'darMoccia@gmail.com' pass_word = '5fc35d28951c7bf323b8fff9885562ed' ral ='1500' roles = 'gestCat'></GESTORI_CATALOGO>
+	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massy' surname = 'Varria' email = 'MasVar1@gmail.it' pass_word = '6537dc2c9654109f741cd01878c8f403' ral ='1900' roles = 'gestCat'></GESTORI_CATALOGO>
+</dataset>

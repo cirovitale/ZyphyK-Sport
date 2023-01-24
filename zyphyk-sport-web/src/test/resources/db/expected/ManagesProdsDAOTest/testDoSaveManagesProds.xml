@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'ASD56' tipologia = '0' id = '1'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = '3ASD7' tipologia = '0' id = '2'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'ZZB35' tipologia = '0' id = '3'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'QRW20' tipologia = '0' id = '4'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = 'XXC01' tipologia = '0' id = '5'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'DarMoccia' product_id = '0ASDA' tipologia = '0' id = '6'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '23AX1' tipologia = '0' id = '7'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = 'X2341' tipologia = '0' id = '8'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = 'BFD32' tipologia = '0' id = '9'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '111AQ' tipologia = '0' id = '10'></MANAGES_PRODS>
+	<MANAGES_PRODS gest_cat_username = 'MasVarriale' product_id = '0ASDA' tipologia = '0' id = '11'></MANAGES_PRODS>
+</dataset>
