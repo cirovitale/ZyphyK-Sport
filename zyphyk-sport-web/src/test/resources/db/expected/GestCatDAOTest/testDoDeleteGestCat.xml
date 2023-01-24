@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massimo' surname = 'Varriale' email = 'MasVar@gmail.com' pass_word = '6537dc2c9654109f741cd01878c8f403' ral ='1400' roles = 'gestCat'></GESTORI_CATALOGO>
+</dataset>

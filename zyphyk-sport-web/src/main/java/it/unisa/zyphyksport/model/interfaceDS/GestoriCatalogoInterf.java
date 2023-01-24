@@ -9,7 +9,7 @@ public interface GestoriCatalogoInterf {
 
 	public void doSave(String username, String name, String surname, String email, String pass_word, int ral) throws SQLException;
 	
-	public void doUpdate(GestoriCatalogoBean gestCat, String username, String name, String surname, String email, String pass_word, int ral) throws SQLException;
+	public void doUpdate(String username, String name, String surname, String email, String pass_word, int ral) throws SQLException;
 
 	public void doDelete(String username) throws SQLException;
 

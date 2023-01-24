@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS carts(
   	`amount` int DEFAULT 0,
 
 	PRIMARY KEY(`id`)
-); 
+);
 CREATE TABLE IF NOT EXISTS clienti(
 	`username` varchar(20) NOT NULL,
 	`cart_id` int NOT NULL,

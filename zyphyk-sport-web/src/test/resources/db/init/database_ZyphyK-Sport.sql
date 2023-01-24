@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS gestori_catalogo(
   	roles varchar(8) DEFAULT 'gestCat',
 
 	PRIMARY KEY(username)
-); 
+);
  
 CREATE TABLE IF NOT EXISTS gestori_ordini(
 	username varchar(20) NOT NULL,
