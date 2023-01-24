@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-	<GESTORI_ORDINI username = 'LuBacco' name = 'Luigi' surname = 'Bacco' email = 'lbgames@gmail.com' pass_word = 'paperoga104' ral ='1700' roles = 'gestOrd'></GESTORI_ORDINI>
+	<GESTORI_ORDINI username = 'LuBacco' name = 'Luigi' surname = 'Bacco' email = 'lbgames@gmail.com' pass_word = 'dd6c2b03adfe02e7ef9b1fd016581415' ral ='1700' roles = 'gestOrd'></GESTORI_ORDINI>
 	<GESTORI_ORDINI username = 'AldoD' name = 'Aldo' surname = 'DAntuono' email = 'aldodantuono@libero.it' pass_word = 'ffcfb4621e16c09d90563f0683eb4f44' ral ='2000' roles = 'gestOrd'></GESTORI_ORDINI>
 </dataset>

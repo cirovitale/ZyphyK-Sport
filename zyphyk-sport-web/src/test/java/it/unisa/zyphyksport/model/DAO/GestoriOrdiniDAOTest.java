@@ -67,7 +67,7 @@ public class GestoriOrdiniDAOTest extends DataSourceBasedDBTestCase{
     
     @Test
     public void testDoRetrieveAllGestioniOrdini() throws SQLException {
-    	GestoriOrdiniBean gestOrd1 = new GestoriOrdiniBean("LuBacco","Luigi","Bacco","lbgames@gmail.com","paperoga104",1700);
+    	GestoriOrdiniBean gestOrd1 = new GestoriOrdiniBean("LuBacco","Luigi","Bacco","lbgames@gmail.com","dd6c2b03adfe02e7ef9b1fd016581415",1700);
         Set<GestoriOrdiniBean> expectedgestOrd = new HashSet<>();
         expectedgestOrd.add(gestOrd1);
 
@@ -79,7 +79,7 @@ public class GestoriOrdiniDAOTest extends DataSourceBasedDBTestCase{
     
     @Test
     public void testDoRetrievebyKeyGestioniOrdini() throws SQLException {
-    	GestoriOrdiniBean expectedgestOrd = new GestoriOrdiniBean("LuBacco","Luigi","Bacco","lbgames@gmail.com","paperoga104",1700);
+    	GestoriOrdiniBean expectedgestOrd = new GestoriOrdiniBean("LuBacco","Luigi","Bacco","lbgames@gmail.com","dd6c2b03adfe02e7ef9b1fd016581415",1700);
         GestoriOrdiniBean actualgestOrd =  gestoriOrdiniDAO.doRetrieveByKey("LuBacco");
         assertEquals(expectedgestOrd, actualgestOrd);
         //assertArrayEquals(expectedgestOrd.toArray(), actualgestOrd.toArray(), "Le tuple di GestoriOrdiniDAO recuperate non sono identiche alle attese");
