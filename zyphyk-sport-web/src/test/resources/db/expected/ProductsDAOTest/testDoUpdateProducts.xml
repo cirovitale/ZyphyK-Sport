@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<PRODUCTS id = 'ASD56' name = 'Zephyr' sport = 'running' brand = 'adidas' price = '64' removed = 'false'></PRODUCTS>   	
+	
+	<PRODUCTS id = '23AX1' name = 'Courtjam Control' sport = 'tennis' brand = 'adidas' price = '60' removed = 'false'></PRODUCTS>  	
+	<PRODUCTS id = '3ASD7' name = 'Nike Air Zoom Vapor Pro' sport = 'tennis' brand = 'nike' price = '84' removed = 'false'></PRODUCTS>  	
+	<PRODUCTS id = 'X2341' name = 'Ultraboost 20' sport = 'running' brand = 'adidas' price = '99' removed = 'false'></PRODUCTS>  	
+	<PRODUCTS id = 'ZZB35' name = 'KING 21' sport = 'calcetto' brand = 'nike' price = '69' removed = 'false'></PRODUCTS>
+	
+	<PRODUCTS id = 'QRW20' name = 'Zaffiro' sport = 'running' brand = 'adidas' price = '100' removed = 'false'></PRODUCTS>  
+	
+	<PRODUCTS id = 'XXC01' name = 'Samba' sport = 'calcetto' brand = 'adidas' price = '115' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = 'QEWER' name = 'NikeCourt Zoom Pro' sport = 'tennis' brand = 'nike' price = '39' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = 'BFD32' name = 'Electrify Nitro 2' sport = 'running' brand = 'puma' price = '75' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = '111AQ' name = 'Courtflash Speed' sport = 'tennis' brand = 'adidas' price = '90' removed = 'false'></PRODUCTS>
+	<PRODUCTS id = '0ASDA' name = 'BREAKSHOT 3 CC' sport = 'tennis' brand = 'mizuno' price = '79' removed = 'false'></PRODUCTS>
+</dataset>

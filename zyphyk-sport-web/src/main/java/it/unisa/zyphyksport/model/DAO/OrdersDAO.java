@@ -16,11 +16,10 @@ import it.unisa.zyphyksport.model.interfaceDS.OrdersInterf;
 
 public class OrdersDAO implements OrdersInterf{
 
-	private static final String TABLE_NAME = "orders";
+	public static final String TABLE_NAME = "orders";
 	
 	private DataSource ds = null;
 	
-
 	public OrdersDAO(DataSource ds) {
 		
 		this.ds = ds;
@@ -39,12 +38,12 @@ public class OrdersDAO implements OrdersInterf{
 		String insertSQL = "INSERT INTO " + OrdersDAO.TABLE_NAME
 				+ " (CLIENTE_USERNAME, GEST_ORD_USERNAME, DATE_TIME, SHIPPING_ADDRESS, PAYMENT_METHOD, AMOUNT, SENT) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
-		String selectSQL = "SELECT LAST_INSERT_ID()"; 
+		String selectSQL = "SELECT MAX(ID) AS MAX FROM " + OrdersDAO.TABLE_NAME; 
+ 
 		
 		int orderId = -1;
 		try {
 			connection = ds.getConnection();
-			
 			
 			preparedStmt = connection.prepareStatement(insertSQL);
 			preparedStmt2 = connection.prepareStatement(selectSQL);
@@ -60,7 +59,7 @@ public class OrdersDAO implements OrdersInterf{
 			ResultSet rs = preparedStmt2.executeQuery();
 			
 			if(rs.next()) {
-				orderId = rs.getInt("LAST_INSERT_ID()");
+				orderId = rs.getInt("MAX");
 			}
 
 			connection.setAutoCommit(false);
@@ -78,40 +77,6 @@ public class OrdersDAO implements OrdersInterf{
 		return orderId;
 	}
 
-	@Override
-	public synchronized void doUpdate(int id, LocalDateTime dateTime, String shippingAddress, String paymentMethod, int amount, boolean sent)
-			throws SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStmt = null;
-		
-		String updateSQL = "UPDATE " + OrdersDAO.TABLE_NAME
-				+ " SET DATE_TIME = ?, SHIPPING_ADDRESS = ?, PAYMENT_METHOD = ?, AMOUNT = ?, SENT = ?" + " WHERE ID = ?";
-		
-		try {
-			connection = ds.getConnection();
-			preparedStmt = connection.prepareStatement(updateSQL);
-			preparedStmt.setTimestamp(1, java.sql.Timestamp.valueOf(dateTime));
-			preparedStmt.setString(2, shippingAddress);
-			preparedStmt.setString(3, paymentMethod);
-			preparedStmt.setInt(4, amount);
-			
-			preparedStmt.setBoolean(5, sent);
-			preparedStmt.setInt(6, id);
-			preparedStmt.executeUpdate();
-
-			connection.setAutoCommit(false);
-			connection.commit();
-		} finally {
-			try {
-				if (preparedStmt != null)
-					preparedStmt.close();
-			} finally {
-				if (connection != null)
-					connection.close();
-			}
-		}
-		
-	}
 
 	@Override
 	public synchronized void doUpdateSent(int id, String gestOrdUsername) throws SQLException {
@@ -151,7 +116,7 @@ public class OrdersDAO implements OrdersInterf{
 			connection = ds.getConnection();
 			preparedStmt = connection.prepareStatement(deleteSQL);
 			preparedStmt.setInt(1, id);
-
+			preparedStmt.executeUpdate();
 		} finally {
 			try {
 				if (preparedStmt != null)

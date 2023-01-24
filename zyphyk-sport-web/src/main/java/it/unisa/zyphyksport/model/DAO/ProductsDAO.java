@@ -14,7 +14,7 @@ import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
 
 public class ProductsDAO implements ProductsInterf{
 
-	private static final String TABLE_NAME = "products";
+	public static final String TABLE_NAME = "products";
 	
 	private DataSource ds = null;
 	

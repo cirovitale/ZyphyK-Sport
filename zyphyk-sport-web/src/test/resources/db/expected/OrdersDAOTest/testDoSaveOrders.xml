@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<ORDERS id = '1' cliente_username = 'daniPicci' date_time = '2022-11-23 12:45:00' shipping_address = 'Via Roma 221 Salerno SA' payment_method = '5333171120934758 09/27 432' amount = '294' sent = 'false'></ORDERS>
+	<ORDERS id = '2' cliente_username = 'marioRossi' gest_ord_username = 'LuBacco' date_time = '2023-05-11 18:23:00' shipping_address = 'Via Casa Varone 113 Eboli SA' payment_method = '5333171121903456 11/26 782' amount = '252' sent = 'true'></ORDERS>
+	<ORDERS id = '3' cliente_username = 'daniPicci' gest_ord_username = 'LuBacco' date_time = '2022-01-30 22:47:00' shipping_address = 'Via Stabia 36 Pompei NA' payment_method = '6734536271823456 12/25 934' amount = '321' sent = 'true'></ORDERS>
+	<ORDERS id = '4' cliente_username = 'peppeRoma' date_time = '2022-09-23 21:34:00' shipping_address = 'Via De Goti 78 Caserta CE' payment_method = '3324558912349076 04/26 278' amount = '439' sent = 'false'></ORDERS>
+	<ORDERS id = '5' cliente_username = 'angeloPorte' date_time = '2023-01-12 19:08:00' shipping_address = 'Via Misano 221 Milano MI' payment_method = '1234789467387462 06/25 475' amount = '247' sent = 'false'></ORDERS>
+</dataset>

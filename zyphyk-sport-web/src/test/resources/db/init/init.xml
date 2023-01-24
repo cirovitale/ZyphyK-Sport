@@ -28,28 +28,29 @@
 	<PRODUCTS id = '0ASDA' name = 'BREAKSHOT 3 CC' sport = 'tennis' brand = 'mizuno' price = '79' removed = 'false'></PRODUCTS>
 
 	<SIZES product_id='23AX1' valued='36' count = '1'></SIZES>
-	<SIZES product_id='XXC01' valued='36' count = '2'></SIZES>
-	<SIZES product_id='BFD32' valued='36' count = '3'></SIZES>
-	<SIZES product_id='ASD56' valued='37' count = '4'></SIZES>
-	<SIZES product_id='23AX1' valued='37' count = '5'></SIZES>
-	<SIZES product_id='QEWER' valued='38' count = '6'></SIZES>
-	<SIZES product_id='23AX1' valued='39' count = '7'></SIZES>
-	<SIZES product_id='3ASD7' valued='39' count = '8'></SIZES>
-	<SIZES product_id='X2341' valued='39' count = '9'></SIZES>
-	<SIZES product_id='ZZB35' valued='39' count = '10'></SIZES>
-	<SIZES product_id='QRW20' valued='39' count = '11'></SIZES>
-	<SIZES product_id='ASD56' valued='40' count = '12'></SIZES>
-	<SIZES product_id='23AX1' valued='40' count = '13'></SIZES>
-	<SIZES product_id='XXC01' valued='40' count = '14'></SIZES>
-	<SIZES product_id='111AQ' valued='40' count = '15'></SIZES>
-	<SIZES product_id='QEWER' valued='40' count = '16'></SIZES>
-	<SIZES product_id='ASD56' valued='41' count = '17'></SIZES>
-	<SIZES product_id='X2341' valued='41' count = '18'></SIZES>
-	<SIZES product_id='ZZB35' valued='41' count = '19'></SIZES>
-	<SIZES product_id='QRW20' valued='41' count = '20'></SIZES>
-	<SIZES product_id='QEWER' valued='41' count = '21'></SIZES>
-	<SIZES product_id='3ASD7' valued='42' count = '22'></SIZES>
-	<SIZES product_id='X2341' valued='42' count = '23'></SIZES>
+	<SIZES product_id='3ASD7' valued='36' count = '2'></SIZES>
+	<SIZES product_id='XXC01' valued='36' count = '3'></SIZES>
+	<SIZES product_id='BFD32' valued='36' count = '4'></SIZES>
+	<SIZES product_id='ASD56' valued='37' count = '5'></SIZES>	
+	<SIZES product_id='23AX1' valued='37' count = '6'></SIZES>	
+	<SIZES product_id='QEWER' valued='38' count = '7'></SIZES>	
+	<SIZES product_id='23AX1' valued='39' count = '8'></SIZES>	
+	<SIZES product_id='3ASD7' valued='39' count = '9'></SIZES>	
+	<SIZES product_id='X2341' valued='39' count = '10'></SIZES>	
+	<SIZES product_id='ZZB35' valued='39' count = '11'></SIZES>	
+	<SIZES product_id='QRW20' valued='39' count = '12'></SIZES>	
+	<SIZES product_id='ASD56' valued='40' count = '13'></SIZES>	
+	<SIZES product_id='23AX1' valued='40' count = '14'></SIZES>	
+	<SIZES product_id='XXC01' valued='40' count = '15'></SIZES>	
+	<SIZES product_id='111AQ' valued='40' count = '16'></SIZES>
+	<SIZES product_id='QEWER' valued='40' count = '17'></SIZES>	
+	<SIZES product_id='ASD56' valued='41' count = '18'></SIZES>	
+	<SIZES product_id='X2341' valued='41' count = '19'></SIZES>	
+	<SIZES product_id='ZZB35' valued='41' count = '20'></SIZES>	
+	<SIZES product_id='QRW20' valued='41' count = '21'></SIZES>	
+	<SIZES product_id='QEWER' valued='41' count = '22'></SIZES>
+	<SIZES product_id='3ASD7' valued='42' count = '23'></SIZES>
+	<SIZES product_id='X2341' valued='42' count = '24'></SIZES>
 	
 	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = 'ASD56' quantity = '1' size = '39'></CARTS_CONTAINS_PRODS>
 	<CARTS_CONTAINS_PRODS cart_id = '1' product_id = '23AX1' quantity = '2' size = '37'></CARTS_CONTAINS_PRODS>
