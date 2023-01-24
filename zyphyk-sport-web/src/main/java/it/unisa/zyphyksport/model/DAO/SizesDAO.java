@@ -28,7 +28,7 @@ public class SizesDAO implements SizesInterf{
 		PreparedStatement preparedStmt = null;
 		
 		String insertSQL = "INSERT INTO " + SizesDAO.TABLE_NAME
-				+ " (PRODUCT_ID, VALUE) VALUES (?, ?)";
+				+ " (PRODUCT_ID, VALUED) VALUES (?, ?)";
 		
 		try {
 			connection = ds.getConnection();
@@ -57,7 +57,7 @@ public class SizesDAO implements SizesInterf{
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
-		String deleteSQL = "DELETE FROM " + SizesDAO.TABLE_NAME + " WHERE PRODUCT_ID = ? AND VALUE = ?";
+		String deleteSQL = "DELETE FROM " + SizesDAO.TABLE_NAME + " WHERE PRODUCT_ID = ? AND VALUED = ?";
 
 		try {
 			connection = ds.getConnection();
@@ -103,7 +103,7 @@ public class SizesDAO implements SizesInterf{
 			while (rs.next()) {
 				SizesBean bean = new SizesBean(0,null);
 				bean.setProductId(rs.getString("PRODUCT_ID"));
-				bean.setValue(rs.getInt("VALUE"));
+				bean.setValue(rs.getInt("VALUED"));
 				array.add(bean);
 			}
 		} finally {
@@ -142,7 +142,7 @@ public class SizesDAO implements SizesInterf{
 			while (rs.next()) {
 				SizesBean bean = new SizesBean(0,null);
 				bean.setProductId(rs.getString("PRODUCT_ID"));
-				bean.setValue(rs.getInt("VALUE"));
+				bean.setValue(rs.getInt("VALUED"));
 				array.add(bean);
 			}
 		} finally {
