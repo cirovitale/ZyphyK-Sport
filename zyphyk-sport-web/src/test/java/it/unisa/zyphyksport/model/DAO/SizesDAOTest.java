@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import org.dbunit.Assertion;
 import org.dbunit.DataSourceBasedDBTestCase;
+import org.dbunit.dataset.Column;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.SortedTable;
@@ -64,7 +65,7 @@ public class SizesDAOTest extends DataSourceBasedDBTestCase{
 	    
 	    
 	    @Test
-	    public void testDoRetrieveAll() throws SQLException {
+	    public void testDoRetrieveAllSizes() throws SQLException {
     	
 	    	SizesBean size1 = new SizesBean(36, "23AX1",1);
 	    	SizesBean size2 = new SizesBean(36, "3ASD7",2);
@@ -128,37 +129,40 @@ public class SizesDAOTest extends DataSourceBasedDBTestCase{
 	        assertArrayEquals(expectedSizes.toArray(), actualSizes.toArray(), "Le tuple di SizesDAO recuperate non sono identiche alle attese"); 	
 	    }
 	    
-	    /*
+	    
 	    @Test
 	    public void testDoSaveSizes() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
 	                 .build(SizesDAOTest.class.getClassLoader().getResourceAsStream("db/expected/SizesDAOTest/testDoSaveSizes.xml"))
 	                 .getTable(SizesDAO.TABLE_NAME);
-	
+	    	 
 	    	 sizesDAO.doSave("X2341", 40);
+	    	 sizesDAO.doSave("3ASD7", 37);
+	    	 
 
 	         IDataSet databaseDataSet = getConnection().createDataSet();
 	         ITable actualTable = databaseDataSet.getTable(SizesDAO.TABLE_NAME);
 	         System.out.println(new SortedTable(expectedTable));
 	         System.out.println(new SortedTable(actualTable));
-	        
-	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
+	         String[] columnNames = {"count"};
+	         Assertion.assertEquals(new SortedTable(expectedTable, columnNames), new SortedTable(actualTable, columnNames));
 	    }
-	    */
+	    
 	    
 	    
 	    @Test
-	    public void testDoDelete() throws Exception{
+	    public void testDoDeleteSizes() throws Exception{
 	    	 ITable expectedTable = new FlatXmlDataSetBuilder()
 	                 .build(SizesDAOTest.class.getClassLoader().getResourceAsStream("db/expected/SizesDAOTest/testDoDeleteSizes.xml"))
 	                 .getTable(SizesDAO.TABLE_NAME);	    	
 	    
 	    	 sizesDAO.doDelete("X2341",42);
+	    	 sizesDAO.doDelete("111AQ",40);
 	    
 	         IDataSet databaseDataSet = getConnection().createDataSet();
 	         ITable actualTable = databaseDataSet.getTable(SizesDAO.TABLE_NAME);
-	        
-	         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
+	         String[] columnNames = {"count"};
+	         Assertion.assertEquals(new SortedTable(expectedTable, columnNames), new SortedTable(actualTable, columnNames));
 	    	    	 
 	    } 
 	    
