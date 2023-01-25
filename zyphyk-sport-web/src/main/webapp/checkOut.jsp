@@ -26,6 +26,138 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 <link rel="icon" type="image/png" sizes="32x32"
 	href="img/icon/favicon.png">
 </head>
+<script>
+	function checkVia(inputtxt) {
+		var via = /^[a-zA-Z ']{5,30}/;
+		if (inputtxt.value.match(via))
+			return true;
+	
+		return false;
+	}
+	
+	function checkNumCivico(inputtxt) {
+		var numCivico = /^[0-9]{1,3}/;
+		if (inputtxt.value.match(numCivico))
+			return true;
+	
+		return false;
+	}
+	
+	function checkCittà(inputtxt) {
+		var città = /^[a-zA-Z ']{3,30}/;
+		if (inputtxt.value.match(città))
+			return true;
+	
+		return false;
+	}
+	
+	function checkProvincia(inputtxt) {
+		var provincia = /^[a-zA-Z]{2}/;
+		if (inputtxt.value.match(provincia))
+			return true;
+	
+		return false;
+	}
+	
+	function checkTitolCarta(inputtxt) {
+		var titolCarta = /^[A-Za-z]{3,20}(\s[A-Za-z]{3,20})(\s[A-Za-z]{3,20})*$/;
+		if (inputtxt.value.match(titolCarta))
+			return true;
+	
+		return false;
+	}
+	
+	function checkNumCarta(inputtxt) {
+		var numCarta = /^[A-Z0-9]{16}/;
+		if (inputtxt.value.match(numCarta))
+			return true;
+	
+		return false;
+	}
+	
+	function checkCvv(inputtxt) {
+		var cvv = /^[0-9']{3}/;
+		if (inputtxt.value.match(cvv))
+			return true;
+	
+		return false;
+	}
+	
+	function checkDataScadenza(inputtxt) {
+		var dataScad = /^\d{4}-\d{2}$/;
+		if (inputtxt.value.match(dataScad))
+			return true;
+	
+		return false;
+	}
+	
+	
+	
+	
+	function validate(obj) {
+		var valid = true;
+		
+		var via = document.getElementsByName("via")[0];
+			if (!checkVia(via)) {
+				valid = false;
+				alert("Via non valida");
+				via.focus();
+			}
+	
+		var numCivico = document.getElementsByName("numCivico")[0];
+			if(!checkNumCivico(numCivico)) {
+				valid = false;
+				alert("Numero civico non valido");
+				numCivico.focus();
+			}
+		
+		var città = document.getElementsByName("città")[0];
+			if(!checkCittà(città)) {
+				valid = false;
+				alert("Città non valida");
+				città.focus();
+			}
+		
+		var provincia = document.getElementsByName("provincia")[0];
+			if(!checkProvincia(provincia)) {
+				valid = false;
+				alert("Provincia non valida");
+				provincia.focus();
+			}			
+			
+		var titolCarta = document.getElementsByName("cc-name")[0];
+			if(!checkTitolCarta(titolCarta)) {
+				valid = false;
+				alert("Titolare carta non valido");
+				titolCarta.focus();
+			}
+			
+		var numCarta = document.getElementsByName("cc-number")[0];
+			if(!checkNumCarta(numCarta)) {
+				valid = false;
+				alert("Numero carta non valido");
+				numCarta.focus();
+			}
+			
+		var cvv = document.getElementsByName("cc-cvv")[0];
+			if(!checkCvv(cvv)) {
+				valid = false;
+				alert("CVV non valido");
+				cvv.focus();
+			}
+			
+		var dataScadenza = document.getElementsByName("cc-expiration")[0];
+			if(!checkDataScadenza(expirationDate)) {
+				valid = false;
+				alert("Data scadenza non valida " + expirationDate.value + " " + isAfterToday(expirationDate));
+				dataScadenza.focus();
+			}
+			
+		
+	
+		return valid;
+	}
+</script>
 <body>
 
 
@@ -40,7 +172,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 		<br />
 		<br />
 
-		<form action="CheckOutServlet" method="post">
+		<form action="CheckOutServlet" method="post" onsubmit="return validate(this)">
 			<div class="row">
 				<div class="col-md-4 order-md-2 mb-4">
 					<h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -97,7 +229,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 						</div>
 						<div class="form-outline mb-3 col-md-auto">
 							<label class="form-label" for="numCivico">Numero Civico</label> <input
-								id="numCivico" type="text" name="numCivico" class="form-control"
+								id="numCivico" maxlength="3"type="text" name="numCivico" class="form-control"
 								placeholder="numero civico" autofocus>
 						</div>
 					</div>
@@ -136,8 +268,8 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 					<div class="row">
 						<div class="col-md-3 mb-3">
 							<label for="cc-expiration">Data di scadenza&#42;</label> <input
-								type="date" class="form-control" id="cc-expiration"
-								name="cc-expiration" placeholder="" required>
+								type="month" class="form-control" id="cc-expiration"
+								name="cc-expiration" placeholder="" value="2023-01" required>
 						</div>
 						<div class="col-md-3 mb-3">
 							<label for="cc-cvv">CVV&#42;</label> <input type="text"
