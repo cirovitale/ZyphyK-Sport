@@ -36,7 +36,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 	}
 	
 	function checkNumCivico(inputtxt) {
-		var numCivico = /^[0-9]{1,3}/;
+		var numCivico = /^[0-9]{1,3}$/;
 		if (inputtxt.value.match(numCivico))
 			return true;
 	
@@ -44,7 +44,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 	}
 	
 	function checkCittà(inputtxt) {
-		var città = /^[a-zA-Z ']{3,30}/;
+		var città = /^[a-zA-Z ']{3,30}$/;
 		if (inputtxt.value.match(città))
 			return true;
 	
@@ -52,7 +52,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 	}
 	
 	function checkProvincia(inputtxt) {
-		var provincia = /^[a-zA-Z]{2}/;
+		var provincia = /^[a-zA-Z]{2}$/;
 		if (inputtxt.value.match(provincia))
 			return true;
 	
@@ -68,7 +68,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 	}
 	
 	function checkNumCarta(inputtxt) {
-		var numCarta = /^[A-Z0-9]{16}/;
+		var numCarta = /^[0-9]{16}$/;
 		if (inputtxt.value.match(numCarta))
 			return true;
 	
@@ -76,7 +76,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 	}
 	
 	function checkCvv(inputtxt) {
-		var cvv = /^[0-9']{3}/;
+		var cvv = /^[0-9]{3}$/;
 		if (inputtxt.value.match(cvv))
 			return true;
 	
@@ -225,7 +225,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 
 					<div class="row">
 						<div class="form-outline mb-3 col">
-							<label class="form-label" for="via">Via</label> <input id="via"
+							<label class="form-label" for="via">Indirizzo (Via/Viale/Piazza)</label> <input id="via"
 								type="text" name="via" class="form-control" placeholder="via"
 								autofocus>
 						</div>
@@ -282,7 +282,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 					<hr class="mb-4">
 				</div>
 			</div>
-			<button class="btn btn-primary btn-block" type="submit">Procedi
+			<button class="btn btn-primary btn-block" type="submit" id="submit">Procedi
 				al pagamento</button>
 		</form>
 	</div>
