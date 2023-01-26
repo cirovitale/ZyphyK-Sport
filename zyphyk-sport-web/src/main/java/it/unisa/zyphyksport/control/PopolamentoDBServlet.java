@@ -79,17 +79,17 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        clientiDAO.doSave("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDate.of(1978, 1, 7));
         	
         	// Creazione Prodotti
-			productDAO.doSave("ASD56", "Air Zoom Structure 24", "running", "nike", 59);
+			productDAO.doSave("ASD56", "Air Zoom Structure", "running", "nike", 59);
 			productDAO.doSave("23AX1", "Courtjam Control", "tennis", "adidas", 60);
 	        productDAO.doSave("3ASD7", "Nike Air Zoom Vapor Pro", "tennis", "nike", 84);
-	        productDAO.doSave("X2341", "Ultraboost 20", "running", "adidas", 99);
-	        productDAO.doSave("ZZB35", "KING 21", "calcetto", "puma", 39);
+	        productDAO.doSave("X2341", "Ultraboost", "running", "adidas", 99);
+	        productDAO.doSave("ZZB35", "KING", "calcetto", "puma", 39);
 	        productDAO.doSave("QRW20", "Air Zoom Pegasus", "calcetto", "nike", 69);
 	        productDAO.doSave("XXC01", "Samba", "calcetto", "adidas", 115);
 	        productDAO.doSave("QEWER", "NikeCourt Zoom Pro", "tennis", "nike", 39);
-	        productDAO.doSave("BFD32", "Electrify Nitro 2", "running", "puma", 75);
+	        productDAO.doSave("BFD32", "Electrify Nitro", "running", "puma", 75);
 	        productDAO.doSave("111AQ", "Courtflash Speed", "tennis", "adidas", 90);
-	        productDAO.doSave("0ASDA", "BREAKSHOT 3 CC", "tennis", "mizuno", 79);
+	        productDAO.doSave("0ASDA", "BREAKSHOT CC", "tennis", "mizuno", 79);
 
 	        sizesDAO.doSave("23AX1",36);
 	        sizesDAO.doSave("3ASD7",36);

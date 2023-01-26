@@ -38,8 +38,8 @@
 		     <input id="password" type="password" name="password" class="form-control" placeholder="password">
 		    
 		</div>
-		<input type="submit" class="btn btn-primary btn-block mb-4" value="Login"/>
-	    <input type="reset" class="btn btn-danger btn-block mb-4" value="Reset"/>
+		<input type="submit" id="login" class="btn btn-primary btn-block mb-4" value="Login"/>
+	    <input type="reset" id="svuota" class="btn btn-danger btn-block mb-4" value="Reset"/>
 		
 		
 		
