@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,9 @@ import javax.sql.DataSource;
 import it.unisa.zyphyksport.model.DAO.ManagesProdsDAO;
 import it.unisa.zyphyksport.model.DAO.ProductsDAO;
 import it.unisa.zyphyksport.model.DAO.SizesDAO;
+import it.unisa.zyphyksport.model.bean.ClientiBean;
 import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
+import it.unisa.zyphyksport.model.bean.ProductsBean;
 import it.unisa.zyphyksport.model.interfaceDS.ManagesProdsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
@@ -53,19 +56,12 @@ public class AddInCatalogServlet extends HttpServlet {
 		String productId = null;
 
 		String nome = request.getParameter("nomeProd");
-		System.out.println(nome);
 		productId = request.getParameter("productId");
-		System.out.println(productId);
 		String sport = request.getParameter("sport");
-		System.out.println(sport);
 		String brand = request.getParameter("brand");
-		System.out.println(brand);
 		int price = Integer.parseInt(request.getParameter("price"));
-		System.out.println(price);
 		
-
 		Set<Integer> arlist = new HashSet<Integer>( );
-		
 		if (request.getParameter("sizesValue36")!=null) {
 			int sizesValue36 = Integer.parseInt(request.getParameter("sizesValue36"));
 			arlist.add(sizesValue36);	
@@ -103,21 +99,42 @@ public class AddInCatalogServlet extends HttpServlet {
 		System.out.println(path);
 		part.write(path);
 */
-		System.out.println(gestCat.getUsername());
 		
 		ProductsInterf productsDAO = new ProductsDAO(ds);
-		ManagesProdsInterf managesProdsDAO = new ManagesProdsDAO(ds);
-		
-
-		
+		ManagesProdsInterf managesProdsDAO = new ManagesProdsDAO(ds);		
 		SizesInterf sizesDAO = new SizesDAO(ds);
+
+		boolean exist = false;
+		Set<ProductsBean> colProducts = null;
 		try {
-			productsDAO.doSave(productId, nome, sport, brand, price);
-			managesProdsDAO.doSave(gestCat.getUsername(), productId, 0);
-			//sizesDAO.doSave(productId, sizesValue);
-			for(int size: arlist){		
-				sizesDAO.doSave(productId, size);	
-			}			
+			colProducts = productsDAO.doRetrieveAll(null);
+			for(ProductsBean prodotto : colProducts) {
+				String id = prodotto.getId();
+				
+				if(id.equals(productId)) {
+					exist = true;
+				}
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}		
+		
+		try {
+			if(exist==false) {
+				productsDAO.doSave(productId, nome, sport, brand, price);
+				managesProdsDAO.doSave(gestCat.getUsername(), productId, 0);
+				//sizesDAO.doSave(productId, sizesValue);
+				for(int size: arlist){		
+					sizesDAO.doSave(productId, size);	
+				}					
+			} else {
+				String redirectedPage = "/addInCatalog.jsp";
+				request.setAttribute("message", "true");
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirectedPage);
+				dispatcher.forward(request, response);
+			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
