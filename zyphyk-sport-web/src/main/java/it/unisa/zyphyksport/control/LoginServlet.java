@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,16 +68,84 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
-		String redirectedPage;
+		ClientiInterf clDS = new ClientiDAO(ds);
+		GestoriCatalogoInterf gestCatDS = new GestoriCatalogoDAO(ds);
+		GestoriOrdiniInterf gestOrdDS = new GestoriOrdiniDAO(ds);
+		String redirectedPage = null;
 		String ruolo = null;
+		try {
+			ruolo = checkLogin(username, password);
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		}
+		
+		boolean exist = false;		
+		
+		//controllo se l'username del cliente è nel database
+		Set<ClientiBean> colClienti = null;
+		try {
+			colClienti = clDS.doRetrieveAll(null);
+			for(ClientiBean cliente : colClienti) {
+				String usernameServlet = cliente.getUsername().toLowerCase();
+				if(usernameServlet.equals(username.toLowerCase()) ) {
+					if(ruolo!=null) {						
+						exist = true;
+					}
+				}
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		//controllo se l'username del gestore catalogo è nel database
+		Set<GestoriCatalogoBean> colGestCat = null;
+		try {
+			colGestCat = gestCatDS.doRetrieveAll(null);
+			for(GestoriCatalogoBean gestoreCat : colGestCat) {
+				String usernameServlet = gestoreCat.getUsername().toLowerCase();
+				
+				if(usernameServlet.equals(username.toLowerCase()) ) {					
+					if(ruolo!=null) {						
+						exist = true;
+					}
+				}
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		//controllo se l'username del gestore ordine è nel database
+		Set<GestoriOrdiniBean> colGestOrd = null;
+		try {
+			colGestOrd = gestOrdDS.doRetrieveAll(null);
+			for(GestoriOrdiniBean gestoreOrd : colGestOrd) {
+				String usernameServlet = gestoreOrd.getUsername().toLowerCase();
+				
+				if(usernameServlet.equals(username.toLowerCase()) ) {					
+					if(ruolo!=null) {
+						exist = true;						
+					}
+				}
+			}
+			
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		try {
 			ruolo = checkLogin(username, password);
 			ClientiBean clBean = null;
 			GestoriCatalogoBean catBean = null;
 			GestoriOrdiniBean ordBean = null;
 			
-			if(ruolo.equals("cliente")) {
-				ClientiInterf clDS = new ClientiDAO(ds);
+			if(ruolo.equals("cliente") && exist == true) {
+				
 				clBean = clDS.doRetrieveByKey(username);
 				request.getSession().setAttribute("utente", clBean);
 				CartsInterf cart = new CartsDAO(ds);
@@ -103,16 +172,22 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
 				request.getSession().setAttribute("responseCart", false);
 				
-			} else if(ruolo.equals("gestCat")) {
+			} else if(ruolo.equals("gestCat")  && exist == true) {
 				GestoriCatalogoInterf catDS = new GestoriCatalogoDAO(ds);
 				catBean = catDS.doRetrieveByKey(username);
 				request.getSession().setAttribute("utente", catBean);
-			} else if(ruolo.equals("gestOrd")) {
+			} else if(ruolo.equals("gestOrd")  && exist == true) {
 				GestoriOrdiniInterf ordDS = new GestoriOrdiniDAO(ds);
 				ordBean = ordDS.doRetrieveByKey(username);
 				request.getSession().setAttribute("utente", ordBean);
-			}
-			
+				
+			} else if(ruolo.equals(null)) {	//se la password non corrisponde
+				exist=false;
+				request.setAttribute("message", "true");
+				redirectedPage = "/index.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirectedPage);
+				dispatcher.forward(request, response);
+				}
 			
 			request.getSession().setAttribute("roles", ruolo);
 			redirectedPage = "/index.jsp";
@@ -121,7 +196,14 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("roles", null);
 			redirectedPage = "/login.jsp";
 		}
-		response.sendRedirect(request.getContextPath() + redirectedPage);
+		if(exist == false) {
+			request.setAttribute("message", "true");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirectedPage);
+			dispatcher.forward(request, response);
+		}else {
+			response.sendRedirect(request.getContextPath() + redirectedPage);
+		}		
+		
 	}
 
 	private String checkLogin(String username, String password) throws Exception {
@@ -212,7 +294,8 @@ public class LoginServlet extends HttpServlet {
 			return ruolo3;
 		}
 		else {
-			throw new Exception("Invalid login and password");
+			//throw new Exception("Invalid login and password");
+			return null; //se la pw non corrisponde
 		}
 				
 	}
