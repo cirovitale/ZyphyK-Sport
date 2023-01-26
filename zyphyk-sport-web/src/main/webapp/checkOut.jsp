@@ -85,12 +85,14 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 	
 	function checkDataScadenza(inputtxt) {
 		var dataScad = /^\d{4}-\d{2}$/;
-		if (inputtxt.value.match(dataScad))
+		var dateNow = Date.now();
+		var pickedDate = Date.parse(inputtxt.value);
+		
+		if (inputtxt.value.match(dataScad) && pickedDate > dateNow)
 			return true;
 	
 		return false;
 	}
-	
 	
 	
 	
@@ -147,9 +149,9 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 			}
 			
 		var dataScadenza = document.getElementsByName("cc-expiration")[0];
-			if(!checkDataScadenza(expirationDate)) {
+			if(!checkDataScadenza(dataScadenza)) {
 				valid = false;
-				alert("Data scadenza non valida " + expirationDate.value + " " + isAfterToday(expirationDate));
+				alert("Data scadenza carta non valida");
 				dataScadenza.focus();
 			}
 			
@@ -229,8 +231,8 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 						</div>
 						<div class="form-outline mb-3 col-md-auto">
 							<label class="form-label" for="numCivico">Numero Civico</label> <input
-								id="numCivico" maxlength="3"type="text" name="numCivico" class="form-control"
-								placeholder="numero civico" autofocus>
+								id="numCivico" type="text" name="numCivico" class="form-control"
+								placeholder="numero civico" maxlength="3" autofocus>
 						</div>
 					</div>
 
@@ -243,7 +245,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 						<div class="form-outline mb-3 col">
 							<label class="form-label" for="provincia">Provincia</label> <input
 								id="provincia" type="text" name="provincia" class="form-control"
-								placeholder="provincia" autofocus>
+								placeholder="provincia" maxlength="2" autofocus>
 						</div>
 					</div>
 

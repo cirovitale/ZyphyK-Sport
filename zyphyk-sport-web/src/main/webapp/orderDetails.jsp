@@ -79,7 +79,7 @@
 									style="color: #0D6EFD;"> <%=cliente.getName() + " " + cliente.getSurname() %>
 								</span></li>
 								<li class="text-muted"><b>Indirizzo di fatturazione:</b> <%=ordersBean.getShippingAddress() %></li>
-								<li class="text-muted"><b>Metodo di pagamento:</b> <%=ordersBean.getPaymentMethod() %></li>
+								<li class="text-muted"><b>Metodo di pagamento:</b> <%=ordersBean.getPaymentMethod().substring(0,4) %>**** <%=ordersBean.getPaymentMethod().substring(17,28) %></li>
 							</ul>
 						</div>
 						<div class="col-xl-4">
