@@ -27,16 +27,7 @@
 </head>
 <body>
 <script>
-	function remOggetto(productId){
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function(){
-			if (this.readyState == 4 && this.status == 200){
-				document.getElementById("pagina").innerHTML = this.responseText;
-			}
-		};
-		xhttp.open("GET","RemFromCatalogServlet?productId=" + productId,true);
-		xhttp.send();
-	}
+	
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -52,9 +43,6 @@
 				<a href="/zyphyk-sport-web/addInCatalog.jsp" class="btn border-dark">
 					<img src="img\icon\add.svg" alt="add-to-cart" class="icona"> Aggiungi Scarpe	
 				</a>
-				<a href="/zyphyk-sport-web/modInCatalog.jsp" class="btn border-dark"> 	
-					<img src="img\icon\pencil.svg" alt="mod-abb" class="icona">	Modifica Scarpe
-				</a>
 			</div>
 			
 			<div class="row">
@@ -69,11 +57,8 @@
 							<!-- imagine -->
 	
 						<div class="card-body">
-							
-							<h5 class="card-title"><%=prod.getName()%></h5>
+							<h5 class="card-title"><a href="products.jsp?id=<%=prod.getId()%>"><%=prod.getName()%></a></h5>
 							<h6 class="price"> &euro; <%=prod.getPrice()%></h6>
-							<button type="button" class="btn border-dark" onclick='remOggetto("<%=prod.getId()%>")'>
-							<img src="img\icon\trash.svg" alt="rem-product" class="icona"></button>
 						</div>
 					</div>
 				</div>

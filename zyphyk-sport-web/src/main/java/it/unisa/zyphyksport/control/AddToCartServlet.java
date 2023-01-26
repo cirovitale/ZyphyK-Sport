@@ -122,6 +122,8 @@ public class AddToCartServlet extends HttpServlet {
 						e.printStackTrace();
 					}
 			}
+		}else {
+			response.sendRedirect(request.getContextPath() + "/cart.jsp");
 		}
 			
 			

@@ -96,7 +96,7 @@
 				
 				<div class="row">
 					<div class="col-md-6 mb-3" >
-						<a href='addInCat.jsp' class='btn btn-primary'>Gestisci il catalogo</a>
+						<a href='catalogManage.jsp' class='btn btn-primary'>Gestisci il catalogo</a>
 					</div>
 				</div>
 			</div>

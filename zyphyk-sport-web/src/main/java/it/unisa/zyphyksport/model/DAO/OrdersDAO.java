@@ -35,12 +35,12 @@ public class OrdersDAO implements OrdersInterf{
 		PreparedStatement preparedStmt = null;
 		PreparedStatement preparedStmt2 = null;
 		
+		
 		String insertSQL = "INSERT INTO " + OrdersDAO.TABLE_NAME
 				+ " (CLIENTE_USERNAME, GEST_ORD_USERNAME, DATE_TIME, SHIPPING_ADDRESS, PAYMENT_METHOD, AMOUNT, SENT) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		
 		String selectSQL = "SELECT MAX(ID) AS MAX FROM " + OrdersDAO.TABLE_NAME; 
  
-		
 		int orderId = -1;
 		try {
 			connection = ds.getConnection();
@@ -50,7 +50,7 @@ public class OrdersDAO implements OrdersInterf{
 			
 			preparedStmt.setString(1, clienteUsername);
 			preparedStmt.setString(2, gestOrdUsername);
-			preparedStmt.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
+			preparedStmt.setTimestamp(3, Timestamp.valueOf(LocalDateTime.of(dateTime.toLocalDate(),dateTime.toLocalTime())));
 			preparedStmt.setString(4, shippingAddress);
 			preparedStmt.setString(5, paymentMethod);
 			preparedStmt.setInt(6, amount);
@@ -175,7 +175,9 @@ public class OrdersDAO implements OrdersInterf{
 
 		String selectSQL = "SELECT * FROM " + OrdersDAO.TABLE_NAME;
 		
-
+		
+		
+		
 		if (order != null && !order.equals("")) {
 			selectSQL += " ORDER BY " + order;
 		}

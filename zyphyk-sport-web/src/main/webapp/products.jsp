@@ -10,7 +10,7 @@
 
 	if(roles == null){
 		
-	} else if (roles.equals("gestCat") || roles.equals("gestOrd")) {
+	} else if (roles.equals("gestOrd")) {
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}else{
 		responseCart = (Boolean) session.getAttribute("responseCart");
@@ -45,15 +45,10 @@
 
 <script>
 
-	function getLocation(id){
-		
-		
-		var e = document.getElementById("size");
-		var value = e.value;
-		console.log(value);
-		var text = e.options[e.selectedIndex].text;
-		console.log(id);
-		console.log(text);
+
+
+
+	function remOggetto(productId){
 		/*
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
@@ -61,12 +56,33 @@
 				document.getElementById("pagina").innerHTML = this.responseText;
 			}
 		};
-		xhttp.open("GET","AddToCartServlet?id=" + id + "&size=" + text, true);
+		xhttp.open("GET","RemFromCatalogServlet?productId=" + productId,true);
 		xhttp.send();
 		*/
-		document.location.href="AddToCartServlet?id=" + id + "&size=" + value;
-		
+		document.location.href ="RemFromCatalogServlet?productId=" + productId;
 	}
+	
+	function getLocation(id){
+	
+			var e = document.getElementById("size");
+			var value = e.value;
+			console.log(value);
+			var text = e.options[e.selectedIndex].text;
+			console.log(id);
+			console.log(text);
+			/*
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function(){
+				if (this.readyState == 4 && this.status == 200){
+					document.getElementById("pagina").innerHTML = this.responseText;
+				}
+			};
+			xhttp.open("GET","AddToCartServlet?id=" + id + "&size=" + text, true);
+			xhttp.send();
+			*/
+			document.location.href="AddToCartServlet?id=" + id + "&size=" + value;
+			
+		}
 
 
 
@@ -124,8 +140,23 @@
 			</div>
 
                <br/>
-               <button type="button" class="btn btn-sm btn-danger" onclick='getLocation("<%=prodBean.getId()%>")'><img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona">  Aggiungi al carrello</button>
-               		
+               <%
+               		if(roles == null || roles.equals("cliente")){
+               %>
+               		<button type="button" class="btn btn-sm btn-danger" onclick='getLocation("<%=prodBean.getId()%>", "<%=roles%>")'><img src="img\icon\shopping-cart.svg" alt="add-to-cart" class="icona">  Aggiungi al carrello</button>
+               <%
+               		}else{
+               %>		
+               		<div class="col-md-6">
+	               		<button type="button" class="btn border-dark" onclick='remOggetto("<%=prodBean.getId()%>")'>
+								<img src="img\icon\trash.svg" alt="rem-product" class="icona">Rimuovi Scarpa</button>
+						<a href="/zyphyk-sport-web/modInCatalog.jsp?id=<%=prodBean.getId()%>" class="btn border-dark"> 	
+							<img src="img\icon\pencil.svg" alt="mod-abb" class="icona">	Modifica Scarpa
+						</a>
+					</div>
+			   <%
+			   		}
+			   %>
 
 		</div><!-- end row -->	
 	
