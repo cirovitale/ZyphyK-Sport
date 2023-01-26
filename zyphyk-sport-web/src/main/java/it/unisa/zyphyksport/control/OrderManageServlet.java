@@ -3,6 +3,7 @@ package it.unisa.zyphyksport.control;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,8 +44,18 @@ public class OrderManageServlet extends HttpServlet {
 		
 		try {
 			OrdersBean ordBean = ordDAO.doRetrieveByKey(orderId);
-			ordBean.setSent(true);
-			ordBean.setGestOrdUsername(gestOrd.getUsername());
+			boolean spedito = ordBean.isSent();
+			if (spedito!=true) {
+				ordBean.setSent(true);
+				ordBean.setGestOrdUsername(gestOrd.getUsername());				
+			} else {
+				request.setAttribute("message", "true");
+				String redirectedPage = "/orderManage.jsp";
+				RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirectedPage);
+				dispatcher.forward(request, response);				
+				
+			}
+			
 			
 			ordDAO.doUpdateSent(orderId, gestOrd.getUsername());
 		} catch (SQLException e) {

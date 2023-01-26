@@ -6,7 +6,7 @@
 	String roles = (String) session.getAttribute("roles");
 	
 	if(roles == null){
-		response.sendRedirect(request.getContextPath() + "/login-form.jsp");
+		response.sendRedirect(request.getContextPath() + "/login.jsp");
 	} else if (roles.equals("admin") || roles.equals("supVid") || roles.equals("cliente")) {
 	response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
 	}
@@ -14,6 +14,9 @@
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 	OrdersInterf ordersDAO = new OrdersDAO(ds);
 	Set<OrdersBean> ordsArr = ordersDAO.doRetrieveAll(null);
+	
+	String sent = (String) request.getAttribute("message");
+	request.removeAttribute("message");
 %>
 
 
@@ -27,7 +30,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="img/icon/favicon.png">
 <title>Gestione Ordini</title>
 </head>
-<body>
+
+<body onload = "execute('<%=sent%>')">
 <script src="script/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -42,6 +46,15 @@
 		xhttp.open("GET","OrderManageServlet?id=" + id,true);
 		xhttp.send();
 	}
+	
+	function execute(flag){
+		if(flag.match(true)){
+			window.location.href="orderManage.jsp";
+			alert("L'ordine è già stato inviato");
+		}
+	}	
+	
+	
 </script>
 
 
