@@ -150,7 +150,9 @@
 	
 	function execute(flag){
 		if(flag.match(true)){
+			window.location.href="signUp.jsp";
 			alert("username già esistente");
+			
 		}
 	}
 	
@@ -182,7 +184,7 @@
 			     	<input id="username" type="text" name="username" class="form-control" placeholder="username" required>    
 				</div>
 				<div class='col-md-6 mb-3'>	
-			     	<label for="data">Data*</label>
+			     	<label for="data">Data di nascita*</label>
 			     	<input id="data" type="date" name="data" class="form-control" placeholder="data" required> 
 			    </div>
 	   	   </div>

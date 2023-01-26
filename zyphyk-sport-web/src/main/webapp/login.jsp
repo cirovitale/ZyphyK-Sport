@@ -9,6 +9,9 @@
 	} else {
 		response.sendRedirect(request.getContextPath() + "/index.jsp");
 	}
+	
+	String exist = (String) request.getAttribute("message");
+	request.removeAttribute("message");
 %>
 <html>
 <head>
@@ -19,14 +22,26 @@
 <link href="style/style.css" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="img/icon/favicon.png">
 </head>
-<body>
+
+<script>
+
+	function execute(flag){
+		if(flag.match(true)){
+			window.location.href="login.jsp";
+			alert("L'username non risulta registrato o la password è errata");
+		}
+	}
+
+</script>
+
+<body onload = "execute('<%=exist%>')">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <%@ include file="../fragments/header.jsp" %> 
 
 <div class="col fixed-center d-flex justify-content-center align-items-center page">
 	
-	<form action="LoginServlet" method="post"> 
+	<form action="LoginServlet" method="post"  > 
 		<h2>Accedi</h2><br/>
 		<div class="form-outline mb-3">
 			 <label class="form-label" for="username">Username</label>

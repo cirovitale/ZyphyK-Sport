@@ -57,8 +57,6 @@ public class SignUpServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String confPassword = request.getParameter("conferma");
 		
-
-		
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		ClientiInterf clDS = new ClientiDAO(ds);
 		CartsInterf cartDS = new CartsDAO(ds);

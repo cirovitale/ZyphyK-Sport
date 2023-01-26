@@ -76,10 +76,10 @@
 						<div class="col-xl-8">
 							<ul class="list-unstyled">
 								<li class="text-muted "><b>Intestata a:</b> <span
-									style="color: #0D6EFD;"> <%=cliente.getName() + " " + cliente.getSurname() %>
+									style="color: #0D6EFD;"> <%=cliente.getName()%> <%=cliente.getSurname() %>
 								</span></li>
 								<li class="text-muted"><b>Indirizzo di fatturazione:</b> <%=ordersBean.getShippingAddress() %></li>
-								<li class="text-muted"><b>Metodo di pagamento:</b> <%=ordersBean.getPaymentMethod() %></li>
+								<li class="text-muted"><b>Metodo di pagamento:</b> <%=ordersBean.getPaymentMethod().substring(0,4) %>**** <%=ordersBean.getPaymentMethod().substring(17,ordersBean.getPaymentMethod().length()) %></li>
 							</ul>
 						</div>
 						<div class="col-xl-4">
