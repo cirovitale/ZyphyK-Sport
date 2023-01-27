@@ -53,11 +53,14 @@
 			
 				<div class="col-md-3 my-3">
 					<div class="card text-center w-100" style="width: 18rem;">
-							 
+						<form>
+							<input type="hidden" name="userId" value="<%=prod.getId()%>">
+							<a href="products.jsp?id=<%=prod.getId()%>"> <img class="card-img-top" src="ImageServlet?immagine=<%=prod.getId()%>_1.jpg" alt="Card image"> </a>
+						</form>
 							<!-- imagine -->
 	
 						<div class="card-body">
-							<h5 class="card-title"><a href="products.jsp?id=<%=prod.getId()%>"><%=prod.getName()%></a></h5>
+							<h5 class="card-title"><%=prod.getName()%></h5>
 							<h6 class="price"> &euro; <%=prod.getPrice()%></h6>
 						</div>
 					</div>
