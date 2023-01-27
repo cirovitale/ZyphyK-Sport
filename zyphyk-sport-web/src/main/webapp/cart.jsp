@@ -5,8 +5,8 @@
 <%	
 	Boolean flag = false;
 	Boolean responseCart = (Boolean) session.getAttribute("responseCart");
-	Set<ProductsBean> products = new LinkedHashSet<ProductsBean>();
-	Set<CartsContainsProdsBean> prodsContainsCart = new LinkedHashSet<CartsContainsProdsBean>();
+	List<ProductsBean> products = new ArrayList<ProductsBean>();
+	List<CartsContainsProdsBean> prodsContainsCart = new ArrayList<CartsContainsProdsBean>();
 	CartsBean carrello = (CartsBean) session.getAttribute("carrello");
 	String roles = (String) session.getAttribute("roles");
 	
@@ -16,8 +16,8 @@
 		response.sendRedirect(request.getContextPath() + "/errorPage.jsp");
 	} else if (roles.equals("cliente")){
 		flag = true;
-		products = (Set<ProductsBean>) session.getAttribute("prodsCart");
-		prodsContainsCart = (Set<CartsContainsProdsBean>) session.getAttribute("prodsContainsCart");
+		products = (ArrayList<ProductsBean>) session.getAttribute("prodsCart");
+		prodsContainsCart = (ArrayList<CartsContainsProdsBean>) session.getAttribute("prodsContainsCart");
 	}
 %>
 

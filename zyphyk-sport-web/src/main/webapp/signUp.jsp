@@ -71,7 +71,7 @@
 	
 	
 	function checkPassword(inputtxt,conf) {
-		var passw = /^.{8,40}$/;
+		var passw = /^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&? "]).*$/;
 		if (inputtxt.value.match(passw) && inputtxt.value.match(conf.value))
 			return true;
 
@@ -80,7 +80,7 @@
 	
 	
 	function checkConfPassword(inputtxt) {
-		var confPass = /^.{8,40}$/;
+		var confPass = /^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!#$%&? "]).*$/;
 		if (inputtxt.value.match(confPass))
 			return true;
 
@@ -208,8 +208,8 @@
 	   	   </div>
 	  	       	   
 	   	   
-	     <input type="submit" value="Registrati" class="btn btn-primary btn-block"/>
-	     <input type="reset" value="Reset" class="btn btn-danger btn-block"/>
+	     <input type="submit" value="Registrati" id="registrati" class="btn btn-primary btn-block"/>
+	     <input type="reset" value="Reset" id="reset" class="btn btn-danger btn-block"/>
 		
 		
 	</form>
