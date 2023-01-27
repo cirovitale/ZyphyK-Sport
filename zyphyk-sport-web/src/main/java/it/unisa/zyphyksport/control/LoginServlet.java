@@ -6,8 +6,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +29,8 @@ import it.unisa.zyphyksport.model.DAO.ClientiDAO;
 import it.unisa.zyphyksport.model.DAO.GestoriCatalogoDAO;
 import it.unisa.zyphyksport.model.DAO.GestoriOrdiniDAO;
 import it.unisa.zyphyksport.model.DAO.ProductsDAO;
+import it.unisa.zyphyksport.model.DAO.SizesDAO;
+import it.unisa.zyphyksport.model.bean.CartsBean;
 import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 import it.unisa.zyphyksport.model.bean.ClientiBean;
 import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
@@ -37,6 +41,7 @@ import it.unisa.zyphyksport.model.interfaceDS.ClientiInterf;
 import it.unisa.zyphyksport.model.interfaceDS.GestoriCatalogoInterf;
 import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
 import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
+import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
 
 /**
  * Servlet implementation class LoginServlet
@@ -145,29 +150,40 @@ public class LoginServlet extends HttpServlet {
 			GestoriOrdiniBean ordBean = null;
 			
 			if(ruolo.equals("cliente") && exist == true) {
+				int subtotale = 0;
 				
 				clBean = clDS.doRetrieveByKey(username);
 				request.getSession().setAttribute("utente", clBean);
 				CartsInterf cart = new CartsDAO(ds);
 				CartsContainsProdsInterf cartContsProdDAO = new CartsContainsProdsDAO(ds);
 				ProductsInterf productDAO = new ProductsDAO(ds);
-				request.getSession().setAttribute("carrello", cart.doRetrieveByKey(clBean.getCartId()));
+				SizesInterf sizes = new SizesDAO(ds); 
+				CartsBean cartBean = cart.doRetrieveByKey(clBean.getCartId());
+				//request.getSession().setAttribute("carrello", cartBean);
 				
 				
-				Set<ProductsBean> prodsArray = new LinkedHashSet<ProductsBean>();
-				Set<CartsContainsProdsBean> prodsContainsCartArray = new LinkedHashSet<CartsContainsProdsBean>();
+				List<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
+				List<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
 				try {
 					Set<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(clBean.getCartId(), null);
 					for(CartsContainsProdsBean cartContProd: cartContsProdArr) {
 						ProductsBean product = productDAO.doRetrieveByKey(cartContProd.getProductId());
-						
-						prodsArray.add(product);
-						prodsContainsCartArray.add(cartContProd);
+						if(product.isRemoved()) {
+							cartContsProdDAO.doDelete(clBean.getCartId(), cartContProd.getProductId(), cartContProd.getSize());
+							subtotale = cartBean.getAmount();
+							cart.doUpdate(clBean.getCartId(), subtotale - (product.getPrice() * cartContProd.getQuantity()));
+							cartBean = cart.doRetrieveByKey(clBean.getCartId());
+							sizes.doDelete(product.getId(), cartContProd.getSize());
+						}else {
+							prodsArray.add(product);
+							prodsContainsCartArray.add(cartContProd);
+						}
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				request.getSession().setAttribute("carrello", cartBean);
 				request.getSession().setAttribute("prodsCart", prodsArray);
 				request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
 				request.getSession().setAttribute("responseCart", false);

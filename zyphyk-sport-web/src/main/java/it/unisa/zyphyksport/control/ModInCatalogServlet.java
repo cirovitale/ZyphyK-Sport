@@ -117,7 +117,7 @@ public class ModInCatalogServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-    	response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
+		response.sendRedirect(request.getContextPath() + "/products.jsp?id=" + productId);
 
       }
 

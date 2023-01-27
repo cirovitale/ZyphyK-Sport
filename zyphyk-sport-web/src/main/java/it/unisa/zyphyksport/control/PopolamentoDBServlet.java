@@ -73,7 +73,7 @@ public class PopolamentoDBServlet extends HttpServlet {
 
         	
    	     // Creazione Clienti
-	        clientiDAO.doSave("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "passw1234", LocalDate.of(1996, 9, 6));
+	        clientiDAO.doSave("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "Passw1234!", LocalDate.of(1996, 9, 6));
 	        clientiDAO.doSave("marioRossi", 2, "Mario", "Rossi", "mar-rossi@gmail.com", "cliente", LocalDate.of(1996, 6, 13));
 	        clientiDAO.doSave("peppeRoma", 3, "Giuseppe", "Roma", "g.rom1@gmail.com", "cliente", LocalDate.of(2001, 4, 25));
 	        clientiDAO.doSave("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "cliente", LocalDate.of(1978, 1, 7));

@@ -83,14 +83,16 @@ Set<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 
 			<div class="col-md-3 my-3">
 				<div class="card text-center w-100" style="width: 18rem;">
+					<form>
+						<input type="hidden" name="userId" value="<%=prod.getId()%>">
+						<a href="products.jsp?id=<%=prod.getId()%>"> <img class="card-img-top" src="ImageServlet?immagine=<%=prod.getId()%>_1.jpg" alt="Card image"> </a>
+					</form>
 					<div class="card-body">
-						<a href="products.jsp?id=<%=prod.getId()%>">
-							<h5 class="card-title"><%=prod.getName()%></h5></a>
-							<h6 class="price">
-								&euro;
-								<%=prod.getPrice()%></h6>
+							<h5 class="card-title"><%= prod.getName() %></h5>
+							<h6 class="price">&euro;<%=prod.getPrice()%></h6>
+						
 
-						</div>
+					</div>
 				</div>
 			</div>
 			<%

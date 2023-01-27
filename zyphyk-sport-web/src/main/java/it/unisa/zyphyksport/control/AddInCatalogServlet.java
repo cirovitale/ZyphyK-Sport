@@ -1,5 +1,6 @@
 package it.unisa.zyphyksport.control;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -11,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 
 import it.unisa.zyphyksport.model.DAO.ManagesProdsDAO;
@@ -60,7 +62,15 @@ public class AddInCatalogServlet extends HttpServlet {
 		String sport = request.getParameter("sport");
 		String brand = request.getParameter("brand");
 		int price = Integer.parseInt(request.getParameter("price"));
-		
+
+		Part part = request.getPart("inputImage");
+        String fileName = productId+"_1.jpg";
+        System.out.println(fileName);
+        
+        String path = getServletContext().getRealPath("/"+"img"+"/prod"+File.separator+fileName);
+        System.out.println(path);
+        part.write(path);
+
 		Set<Integer> arlist = new HashSet<Integer>( );
 		if (request.getParameter("sizesValue36")!=null) {
 			int sizesValue36 = Integer.parseInt(request.getParameter("sizesValue36"));
@@ -140,7 +150,7 @@ public class AddInCatalogServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-    	response.sendRedirect(request.getContextPath() + "/catalogManage.jsp");
+    	response.sendRedirect(request.getContextPath() + "/products.jsp?id=" + productId);
 
       }
 }

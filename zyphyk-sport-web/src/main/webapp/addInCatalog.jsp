@@ -184,7 +184,13 @@
 						<label for='price'>Costo: </label>
 						<input type='text'class='form-control' id='price' name='price' maxlength='8'required>
 					</div>
+					<div class='col-md-6 mb-3'>
+						<label for='inputImage'>Immagine della scarpa:</label>
+						<input type='file' class='form-control' id='inputImage' name='inputImage' accept='image/*' required>
+					</div>
 				</div>
+				
+				
 				<input id="submit" type="submit" value="Aggiungi" class="btn btn-primary btn-block">
 				
 

@@ -2,8 +2,8 @@ package it.unisa.zyphyksport.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -70,9 +70,9 @@ public class AddToCartServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			Set<ProductsBean> colProd = (Set<ProductsBean>) request.getSession().getAttribute("prodsCart");
+			List<ProductsBean> colProd = (ArrayList<ProductsBean>) request.getSession().getAttribute("prodsCart");
 			//System.out.println(colProd);
-			Set<CartsContainsProdsBean> colContainsProds = (Set<CartsContainsProdsBean>) request.getSession().getAttribute("prodsContainsCart");
+			List<CartsContainsProdsBean> colContainsProds = (ArrayList<CartsContainsProdsBean>) request.getSession().getAttribute("prodsContainsCart");
 			//System.out.println(colContainsProds);
 			if(size == 0) {
 				flag = true;

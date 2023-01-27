@@ -2,8 +2,10 @@ package it.unisa.zyphyksport.control;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -14,12 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import it.unisa.zyphyksport.model.DAO.CartsContainsProdsDAO;
+import it.unisa.zyphyksport.model.DAO.CartsDAO;
 import it.unisa.zyphyksport.model.DAO.ProductsDAO;
+import it.unisa.zyphyksport.model.DAO.SizesDAO;
 import it.unisa.zyphyksport.model.bean.CartsBean;
 import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
 import it.unisa.zyphyksport.model.bean.ProductsBean;
 import it.unisa.zyphyksport.model.interfaceDS.CartsContainsProdsInterf;
+import it.unisa.zyphyksport.model.interfaceDS.CartsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
+import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
 
 /**
  * Servlet implementation class GetProdsFromCart
@@ -41,14 +47,16 @@ public class GetProdsFromCartServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ruolo = (String) request.getSession().getAttribute("roles");
-		
+		int subtotale = 0;
 		
 		if(ruolo.equals("cliente")) {
 			DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 			CartsContainsProdsInterf cartContsProdDAO = new CartsContainsProdsDAO(ds);
 			ProductsInterf productDAO = new ProductsDAO(ds);
-			Set<ProductsBean> prodsArray = new LinkedHashSet<ProductsBean>();
-			Set<CartsContainsProdsBean> prodsContainsCartArray = new LinkedHashSet<CartsContainsProdsBean>();
+			CartsInterf cartsDAO = new CartsDAO(ds);
+			SizesInterf sizes = new SizesDAO(ds);
+			List<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
+			List<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
 	
 			
 			CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
@@ -58,14 +66,29 @@ public class GetProdsFromCartServlet extends HttpServlet {
 				Set<CartsContainsProdsBean> cartContsProdArr = cartContsProdDAO.doRetrieveAllByCartId(cartId, null);
 				for(CartsContainsProdsBean cartContProd: cartContsProdArr) {
 					ProductsBean product = productDAO.doRetrieveByKey(cartContProd.getProductId());
+					/*
+					if(product.isRemoved()) {
+						cartContsProdDAO.doDelete(cartId, cartContProd.getProductId(), cartContProd.getSize());
+					*/
+					if(product.isRemoved()) {
+						cartContsProdDAO.doDelete(cartId, cartContProd.getProductId(), cartContProd.getSize());
+						subtotale = carrello.getAmount();
+						cartsDAO.doUpdate(cartId, subtotale - (product.getPrice() * cartContProd.getQuantity()));
+						carrello = cartsDAO.doRetrieveByKey(cartId);
+						sizes.doDelete(product.getId(), cartContProd.getSize());
+					}else {
+						prodsArray.add(product);
+						prodsContainsCartArray.add(cartContProd);
+					}
 					
-					prodsArray.add(product);
-					prodsContainsCartArray.add(cartContProd);
+					
+					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.getSession().setAttribute("carrello", carrello);
 			request.getSession().setAttribute("prodsCart", prodsArray);
 			request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
 		}
