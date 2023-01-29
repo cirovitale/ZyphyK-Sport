@@ -45,7 +45,7 @@
 	}
 	
 	function checkUsername(inputtxt) {
-		var username = /[a-zA-Z0-9]{5,15}/;
+		var username = /^[a-zA-Z0-9]{5,15}$/;
 		if (inputtxt.value.match(username))
 			return true;
 
@@ -127,21 +127,22 @@
 				email.focus();
 			}
 		
-		
+		var flag = false;
 		var pwdConf = document.getElementsByName("conferma")[0];
 	    var pwd = document.getElementsByName("password")[0];
-	        if(!checkPassword(pwd,pwdConf)) {
+		    if(!checkConfPassword(pwdConf)) {
+	            valid = false;
+	            alert("Conferma Password non valida");
+	            pwdConf.focus();
+	            flag = true;
+	   		 }
+	        if(!checkPassword(pwd,pwdConf) && flag == false) {
 	            valid = false;
 	            alert("Password non valida oppure non coincide con 'conferma password'");
 	            pwd.focus();
        		 }
 	        
-	    var pwdConf = document.getElementsByName("conferma")[0];
-	        if(!checkConfPassword(pwdConf)) {
-	            valid = false;
-	            alert("Conferma Password non valida");
-	            pwdConf.focus();
-       		 }
+	        
 
 		return valid;
 
@@ -185,14 +186,14 @@
 				</div>
 				<div class='col-md-6 mb-3'>	
 			     	<label for="data">Data di nascita*</label>
-			     	<input id="data" type="date" name="data" class="form-control" placeholder="data" required> 
+			     	<input id="data" type="date" name="data" class="form-control" placeholder="data"> 
 			    </div>
 	   	   </div>
 	   	   
 			<div class='row'>
 				<div class='col-md-6 mb-3'>		
 			     	<label for="email">Email*</label>
-			     	<input id="email" type="email" name="email" class="form-control" placeholder="email" required>   
+			     	<input id="email" type="email" name="email" class="form-control" placeholder="email">   
 				</div>
 				<div class='col-md-6 mb-3'>	
 			     	<label for="password">Password*</label>
@@ -208,7 +209,7 @@
 	   	   </div>
 	  	       	   
 	   	   
-	     <input type="submit" value="Registrati" id="registrati" class="btn btn-primary btn-block"/>
+	     <input type="submit" value="Registrati" id="submit" class="btn btn-primary btn-block"/>
 	     <input type="reset" value="Reset" id="reset" class="btn btn-danger btn-block"/>
 		
 		

@@ -103,15 +103,6 @@ public class AddInCatalogServlet extends HttpServlet {
 			int sizesValue42 = Integer.parseInt(request.getParameter("sizesValue42"));
 			arlist.add(sizesValue42);
 		}
-/*
-		Part part = request.getPart("inputImage");
-		String fileName = codVid+"_1.jpg";
-		System.out.println(fileName);
-
-		String path = getServletContext().getRealPath("/"+"img"+"/videog"+File.separator+fileName);
-		System.out.println(path);
-		part.write(path);
-*/
 		
 		ProductsInterf productsDAO = new ProductsDAO(ds);
 		ManagesProdsInterf managesProdsDAO = new ManagesProdsDAO(ds);
