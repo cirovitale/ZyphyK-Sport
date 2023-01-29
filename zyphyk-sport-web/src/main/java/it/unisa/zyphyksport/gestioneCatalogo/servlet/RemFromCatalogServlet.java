@@ -1,4 +1,4 @@
-package it.unisa.zyphyksport.control;
+package it.unisa.zyphyksport.gestioneCatalogo.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
-import it.unisa.zyphyksport.model.DAO.ManagesProdsDAO;
-import it.unisa.zyphyksport.model.DAO.ProductsDAO;
-import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
-import it.unisa.zyphyksport.model.interfaceDS.ManagesProdsInterf;
-import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
+import it.unisa.zyphyksport.gestioneCatalogo.DAO.ManagesProdsDAO;
+import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
+import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ManagesProdsInterf;
+import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ProductsInterf;
+import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
+
 
 /**
  * Servlet implementation class RemoveFromCatalogServlet

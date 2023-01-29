@@ -1,4 +1,4 @@
-package it.unisa.zyphyksport.control;
+package it.unisa.zyphyksport.gestioneUtente.servlet;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -7,8 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -20,28 +18,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
+import it.unisa.zyphyksport.gestioneCatalogo.DAO.SizesDAO;
+import it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean;
+import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ProductsInterf;
+import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.SizesInterf;
+import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
+import it.unisa.zyphyksport.gestioneUtente.DAO.GestoriCatalogoDAO;
+import it.unisa.zyphyksport.gestioneUtente.DAO.GestoriOrdiniDAO;
+import it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean;
+import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
+import it.unisa.zyphyksport.gestioneUtente.bean.GestoriOrdiniBean;
+import it.unisa.zyphyksport.gestioneUtente.interfaceDS.ClientiInterf;
+import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriCatalogoInterf;
+import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriOrdiniInterf;
+import it.unisa.zyphyksport.gestioneVendite.DAO.CartsContainsProdsDAO;
+import it.unisa.zyphyksport.gestioneVendite.DAO.CartsDAO;
+import it.unisa.zyphyksport.gestioneVendite.bean.CartsBean;
+import it.unisa.zyphyksport.gestioneVendite.bean.CartsContainsProdsBean;
+import it.unisa.zyphyksport.gestioneVendite.interfaceDS.CartsContainsProdsInterf;
+import it.unisa.zyphyksport.gestioneVendite.interfaceDS.CartsInterf;
+
 import java.security.MessageDigest;
 
-import it.unisa.zyphyksport.model.bean.ProductsBean;
-import it.unisa.zyphyksport.model.DAO.CartsContainsProdsDAO;
-import it.unisa.zyphyksport.model.DAO.CartsDAO;
-import it.unisa.zyphyksport.model.DAO.ClientiDAO;
-import it.unisa.zyphyksport.model.DAO.GestoriCatalogoDAO;
-import it.unisa.zyphyksport.model.DAO.GestoriOrdiniDAO;
-import it.unisa.zyphyksport.model.DAO.ProductsDAO;
-import it.unisa.zyphyksport.model.DAO.SizesDAO;
-import it.unisa.zyphyksport.model.bean.CartsBean;
-import it.unisa.zyphyksport.model.bean.CartsContainsProdsBean;
-import it.unisa.zyphyksport.model.bean.ClientiBean;
-import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
-import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
-import it.unisa.zyphyksport.model.interfaceDS.CartsContainsProdsInterf;
-import it.unisa.zyphyksport.model.interfaceDS.CartsInterf;
-import it.unisa.zyphyksport.model.interfaceDS.ClientiInterf;
-import it.unisa.zyphyksport.model.interfaceDS.GestoriCatalogoInterf;
-import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
-import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
-import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
 
 /**
  * Servlet implementation class LoginServlet

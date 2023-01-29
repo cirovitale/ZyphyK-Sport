@@ -22,7 +22,6 @@ import it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean;
 import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ManagesProdsInterf;
 import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ProductsInterf;
 import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.SizesInterf;
-import it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean;
 import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
 
 /**
