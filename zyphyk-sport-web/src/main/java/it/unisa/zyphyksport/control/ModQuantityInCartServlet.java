@@ -71,7 +71,7 @@ public class ModQuantityInCartServlet extends HttpServlet {
 						} else {
 							cartContProd.setQuantity(cartContProd.getQuantity() + offset);
 							cartContsProdDAO.doUpdate(cartId, productId, cartContMod.getQuantity() + offset);
-							cartDAO.doUpdate(cartId, ((int)carrello.getAmount() + (int)prodMod.getPrice()  * offset));
+							cartDAO.doUpdate(cartId, ((int) carrello.getAmount() + (int) prodMod.getPrice()  * offset));
 							carrello.setAmount(carrello.getAmount() + prodMod.getPrice() * offset);
 						}
 					}

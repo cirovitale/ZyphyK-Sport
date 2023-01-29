@@ -28,7 +28,7 @@
 	function execute(flag){
 		if(flag.match(true)){
 			window.location.href="login.jsp";
-			alert("L'username non risulta registrato o la password è errata");
+			alert("username non registrato o password errata");
 		}
 	}
 
@@ -53,7 +53,7 @@
 		     <input id="password" type="password" name="password" class="form-control" placeholder="password">
 		    
 		</div>
-		<input type="submit" id="login" class="btn btn-primary btn-block mb-4" value="Login"/>
+		<input type="submit" id="submit" class="btn btn-primary btn-block mb-4" value="Login"/>
 	    <input type="reset" id="svuota" class="btn btn-danger btn-block mb-4" value="Reset"/>
 		
 		

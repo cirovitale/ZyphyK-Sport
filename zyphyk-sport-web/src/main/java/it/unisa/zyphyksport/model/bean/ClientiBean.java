@@ -18,6 +18,12 @@ public class ClientiBean implements Serializable{
   	private LocalDate birthDate;
   	private final String RUOLO = "cliente";
   	
+  	
+  	
+	public ClientiBean() {
+		super();
+	}
+
 	public ClientiBean(String username, int cartId, String name, String surname, String email, String pass_word,
 			LocalDate localDate) {
 		super();

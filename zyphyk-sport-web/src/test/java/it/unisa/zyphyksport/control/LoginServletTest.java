@@ -1,32 +1,74 @@
 package it.unisa.zyphyksport.control;
 
 import static org.junit.Assert.assertEquals;
-
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.servlet.ServletException;
+import javax.servlet.GenericServlet;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import org.junit.Test;
-import org.mockito.Mockito;
+import org.mockito.Mock;
+
+import it.unisa.zyphyksport.model.bean.ClientiBean;
+import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
+import it.unisa.zyphyksport.model.bean.GestoriOrdiniBean;
+import it.unisa.zyphyksport.model.interfaceDS.ClientiInterf;
+import it.unisa.zyphyksport.model.interfaceDS.GestoriCatalogoInterf;
+import it.unisa.zyphyksport.model.interfaceDS.GestoriOrdiniInterf;
 
 public class LoginServletTest {
-
+	@Mock
+	private ServletContext servletContext;
+	
 	@Test
-	public void testDoPost() throws ServletException, IOException{
-		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
-		HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
-		// eventuali altri mock
-		Mockito.when(request.getParameter("username"))
-		.thenReturn("Emanuele");
-		Mockito.when(request.getParameter("password"))
-		.thenReturn("12345");
-		LoginServlet serv = new LoginServlet();
-		serv.doPost(request, response);
-		assertEquals(response.getHeader("Location"),"index.jsp");
+	public void testDoPost() throws Exception {
+		// Setup
+		ServletContext servletContext = mock(ServletContext.class);
+		DataSource ds = mock(DataSource.class);
+		GenericServlet genericServlet = mock(GenericServlet.class);
+		when(genericServlet.getServletContext()).thenReturn(servletContext);
+		when(servletContext.getAttribute("DataSource")).thenReturn(ds);
+		HttpServletRequest request = mock(HttpServletRequest.class);
+		HttpServletResponse response = mock(HttpServletResponse.class);
 		
+		ClientiInterf clDS = mock(ClientiInterf.class);
+		GestoriCatalogoInterf gestCatDS = mock(GestoriCatalogoInterf.class);
+		GestoriOrdiniInterf gestOrdDS = mock(GestoriOrdiniInterf.class);
+		Set<ClientiBean> colClienti = new HashSet<>();
+		ClientiBean cliente = new ClientiBean();
+		cliente.setUsername("username");
+		colClienti.add(cliente);
+		Set<GestoriCatalogoBean> colGestCat = new HashSet<>();
+		Set<GestoriOrdiniBean> colGestOrd = new HashSet<>();
+		
+		when(request.getParameter("username")).thenReturn("username");
+		when(request.getParameter("password")).thenReturn("password");
+
+		when(servletContext.getAttribute("DataSource")).thenReturn(ds);
+		
+		when(clDS.doRetrieveAll(null)).thenReturn(colClienti);
+		when(gestCatDS.doRetrieveAll(null)).thenReturn(colGestCat);
+		when(gestOrdDS.doRetrieveAll(null)).thenReturn(colGestOrd);
+		
+		//when(checkLogin("username", "password")).thenReturn("ruolo");
+		
+		// Test
+		LoginServlet servlet = new LoginServlet();
+		servlet.doPost(request, response);
+
+		// Verify
+		verify(ds).getConnection();
+		verify(clDS, times(1)).doRetrieveAll(null);
+		verify(gestCatDS, times(1)).doRetrieveAll(null);
+		verify(gestOrdDS, times(1)).doRetrieveAll(null);
 	}
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,6 +16,7 @@ import it.unisa.zyphyksport.model.DAO.ManagesProdsDAO;
 import it.unisa.zyphyksport.model.DAO.ProductsDAO;
 import it.unisa.zyphyksport.model.DAO.SizesDAO;
 import it.unisa.zyphyksport.model.bean.GestoriCatalogoBean;
+import it.unisa.zyphyksport.model.bean.ProductsBean;
 import it.unisa.zyphyksport.model.interfaceDS.ManagesProdsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.ProductsInterf;
 import it.unisa.zyphyksport.model.interfaceDS.SizesInterf;
@@ -48,77 +50,92 @@ public class ModInCatalogServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		GestoriCatalogoBean gestCat = (GestoriCatalogoBean) request.getSession().getAttribute("utente");
-		
-		String productId = null;
-
-		String nome = request.getParameter("nomeProd");
-		productId = request.getParameter("prodSelect");
-		System.out.println(productId);
-		String sport = request.getParameter("sport");
-		String brand = request.getParameter("brand");
-		int price = Integer.parseInt(request.getParameter("price"));
-
-		ArrayList<Integer> arlist = new ArrayList<Integer>( );
-		
-		if (request.getParameter("sizesValue36")!=null) {
-			int sizesValue36 = Integer.parseInt(request.getParameter("sizesValue36"));
-			arlist.add(sizesValue36);	
-		}
-		if (request.getParameter("sizesValue37")!=null) {
-			int sizesValue37 = Integer.parseInt(request.getParameter("sizesValue37"));
-			arlist.add(sizesValue37);
-		}
-		if (request.getParameter("sizesValue38")!=null) {
-			int sizesValue38 = Integer.parseInt(request.getParameter("sizesValue38"));
-			arlist.add(sizesValue38);
-		}
-		if (request.getParameter("sizesValue39")!=null) {
-			int sizesValue39 = Integer.parseInt(request.getParameter("sizesValue39"));
-			arlist.add(sizesValue39);
-		}		
-		if (request.getParameter("sizesValue40")!=null) {
-			int sizesValue40 = Integer.parseInt(request.getParameter("sizesValue40"));
-			arlist.add(sizesValue40);
-		}
-		if (request.getParameter("sizesValue41")!=null) {
-			int sizesValue41 = Integer.parseInt(request.getParameter("sizesValue41"));
-			arlist.add(sizesValue41);
-		}
-		if (request.getParameter("sizesValue42")!=null) {
-			int sizesValue42 = Integer.parseInt(request.getParameter("sizesValue42"));
-			arlist.add(sizesValue42);
-		}
-		
 		ProductsInterf productsDAO = new ProductsDAO(ds);
-		ManagesProdsInterf managesProdsDAO = new ManagesProdsDAO(ds);
-		
-		SizesInterf sizesDAO = new SizesDAO(ds); //dobbiamo eliminare le taglie che non sono state scelte
 		
 		
+		String productId = request.getParameter("prodSelect");
+		ProductsBean prodBean = null;
 		try {
-			productsDAO.doUpdate(productId, nome, sport, brand, price);
-			managesProdsDAO.doSave(gestCat.getUsername(), productId, 2);
-			
-			for(int i = 36; i<43; i++) {
-				sizesDAO.doDelete(productId, i);
-			}
-			
-			if (arlist.size() == 0) {
-				productsDAO.doDelete(productId);
-			} else {
-				for(int size: arlist){
-					sizesDAO.doSave(productId, size);
-				}
-			}
-			
-
-		} catch (SQLException e) {
+			prodBean =  productsDAO.doRetrieveByKey(productId);
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
+		
+		if(productId == null || (prodBean.getId() == null || prodBean.isRemoved())) {
+			String redirectedPage = "/modInCatalog.jsp";
+			request.setAttribute("message", "true");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(redirectedPage);
+			dispatcher.forward(request, response);
+		} else {
+			String nome = request.getParameter("nomeProd");
+			
+			System.out.println(productId);
+			String sport = request.getParameter("sport");
+			String brand = request.getParameter("brand");
+			int price = Integer.parseInt(request.getParameter("price"));
 
-		response.sendRedirect(request.getContextPath() + "/products.jsp?id=" + productId);
+			ArrayList<Integer> arlist = new ArrayList<Integer>( );
+			
+			if (request.getParameter("sizesValue36")!=null) {
+				int sizesValue36 = Integer.parseInt(request.getParameter("sizesValue36"));
+				arlist.add(sizesValue36);	
+			}
+			if (request.getParameter("sizesValue37")!=null) {
+				int sizesValue37 = Integer.parseInt(request.getParameter("sizesValue37"));
+				arlist.add(sizesValue37);
+			}
+			if (request.getParameter("sizesValue38")!=null) {
+				int sizesValue38 = Integer.parseInt(request.getParameter("sizesValue38"));
+				arlist.add(sizesValue38);
+			}
+			if (request.getParameter("sizesValue39")!=null) {
+				int sizesValue39 = Integer.parseInt(request.getParameter("sizesValue39"));
+				arlist.add(sizesValue39);
+			}		
+			if (request.getParameter("sizesValue40")!=null) {
+				int sizesValue40 = Integer.parseInt(request.getParameter("sizesValue40"));
+				arlist.add(sizesValue40);
+			}
+			if (request.getParameter("sizesValue41")!=null) {
+				int sizesValue41 = Integer.parseInt(request.getParameter("sizesValue41"));
+				arlist.add(sizesValue41);
+			}
+			if (request.getParameter("sizesValue42")!=null) {
+				int sizesValue42 = Integer.parseInt(request.getParameter("sizesValue42"));
+				arlist.add(sizesValue42);
+			}
+			
+			
+			ManagesProdsInterf managesProdsDAO = new ManagesProdsDAO(ds);
+			
+			SizesInterf sizesDAO = new SizesDAO(ds); //dobbiamo eliminare le taglie che non sono state scelte
+			
+			
+			try {
+				productsDAO.doUpdate(productId, nome, sport, brand, price);
+				managesProdsDAO.doSave(gestCat.getUsername(), productId, 2);
+				
+				for(int i = 36; i<43; i++) {
+					sizesDAO.doDelete(productId, i);
+				}
+				
+				if (arlist.size() == 0) {
+					productsDAO.doDelete(productId);
+				} else {
+					for(int size: arlist){
+						sizesDAO.doSave(productId, size);
+					}
+				}
+				
 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			response.sendRedirect(request.getContextPath() + "/products.jsp?id=" + productId);
+		}
       }
 
 }

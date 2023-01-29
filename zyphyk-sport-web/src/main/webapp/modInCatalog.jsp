@@ -17,6 +17,9 @@
 	ProductsBean prodBean = productsDAO.doRetrieveByKey(id);
 	
 	Set<ProductsBean> collProd = productsDAO.doRetrieveAllExists(null);
+
+	String exist = (String) request.getAttribute("message");
+	request.removeAttribute("message");
 %> 
 
 <!DOCTYPE html>
@@ -30,7 +33,7 @@
 <link href="style/style.css" rel="stylesheet">
 <script src="script/jquery-3.6.0.min.js"></script>
 </head>
-<body>
+<body onload = "execute('<%=exist%>')">
 	<script>
 	
 	function checkSizes() {
@@ -88,6 +91,14 @@
 
 			return valid;
 		}
+		
+		function execute(flag){
+			if(flag.match(true)){
+				window.location.href="modInCatalog.jsp";
+				alert("prodotto non presente nel catalogo");
+				
+			}
+		}
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 	<%@ include file="../fragments/header.jsp"%>
@@ -112,7 +123,7 @@
 				<div class='col-md-6 mb-3'>
 					<label for='sizesValue'>Sizes: </label> <br /> 
 					<input type="checkbox" id="sizesValue" name="sizesValue36" value="36"><label for="sizesValue36">&nbsp36</label> 	
-					 
+					
 					<input type="checkbox" id="sizesValue" name="sizesValue37" value="37"> <label for="sizesValue37">&nbsp37</label> 
 					 
 					<input type="checkbox" id="sizesValue" name="sizesValue38" value="38"> <label for="sizesValue38">&nbsp38</label> 
