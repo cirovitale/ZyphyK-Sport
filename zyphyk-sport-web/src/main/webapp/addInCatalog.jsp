@@ -13,6 +13,9 @@
 	DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 
 	ProductsInterf productsDAO = new ProductsDAO(ds);
+	
+	String exist = (String) request.getAttribute("message");
+	request.removeAttribute("message");
 %> 
     
     
@@ -28,8 +31,17 @@
 <script src="script/jquery-3.6.0.min.js"></script>
 </head>
 
+<script>
+	function execute(flag){
+		if(flag.match(true)){
+			window.location.href="addInCatalog.jsp";
+			alert("codice Scarpa già esistente");
+			
+		}
+	}
+</script>
 
-<body>
+<body onload = "execute('<%=exist%>')">
 	<script>
 	
 	function checkSizes() {
