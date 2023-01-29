@@ -21,7 +21,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean;
 import it.unisa.zyphyksport.gestioneVendite.DAO.OrdersDAO;
 import it.unisa.zyphyksport.gestioneVendite.bean.OrdersBean;
 

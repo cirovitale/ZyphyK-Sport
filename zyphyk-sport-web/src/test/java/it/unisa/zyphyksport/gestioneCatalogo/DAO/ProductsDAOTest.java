@@ -20,7 +20,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
 import it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean;
 
 public class ProductsDAOTest extends DataSourceBasedDBTestCase {
@@ -105,7 +104,7 @@ public class ProductsDAOTest extends DataSourceBasedDBTestCase {
     	productsDAO.doSave("66TTQ", "BREAKFast", "running", "adidas", 100);    	
     
         IDataSet databaseDataSet = getConnection().createDataSet();
-        ITable actualTable = databaseDataSet.getTable(productsDAO.TABLE_NAME);
+        ITable actualTable = databaseDataSet.getTable(ProductsDAO.TABLE_NAME);
 
         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
     }
@@ -119,7 +118,7 @@ public class ProductsDAOTest extends DataSourceBasedDBTestCase {
    	 productsDAO.doDelete("23AX1");
    	 productsDAO.doDelete("ZZB35");
      IDataSet databaseDataSet = getConnection().createDataSet();
-     ITable actualTable = databaseDataSet.getTable(productsDAO.TABLE_NAME);
+     ITable actualTable = databaseDataSet.getTable(ProductsDAO.TABLE_NAME);
     
      Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
 
@@ -135,7 +134,7 @@ public class ProductsDAOTest extends DataSourceBasedDBTestCase {
        	productsDAO.doUpdate("QRW20", "Zaffiro", "running", "adidas", 100);
        	
         IDataSet databaseDataSet = getConnection().createDataSet();
-        ITable actualTable = databaseDataSet.getTable(productsDAO.TABLE_NAME);
+        ITable actualTable = databaseDataSet.getTable(ProductsDAO.TABLE_NAME);
        
         Assertion.assertEquals(new SortedTable(expectedTable), new SortedTable(actualTable));
     }

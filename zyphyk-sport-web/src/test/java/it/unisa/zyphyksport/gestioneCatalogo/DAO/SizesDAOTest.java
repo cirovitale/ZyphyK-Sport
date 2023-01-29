@@ -10,7 +10,6 @@ import javax.sql.DataSource;
 
 import org.dbunit.Assertion;
 import org.dbunit.DataSourceBasedDBTestCase;
-import org.dbunit.dataset.Column;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.SortedTable;
@@ -21,9 +20,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import it.unisa.zyphyksport.gestioneCatalogo.DAO.SizesDAO;
 import it.unisa.zyphyksport.gestioneCatalogo.bean.SizesBean;
-import it.unisa.zyphyksport.gestioneVendite.bean.CartsContainsProdsBean;
 
 public class SizesDAOTest extends DataSourceBasedDBTestCase{
 	
