@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	import="javax.sql.DataSource,it.unisa.zyphyksport.model.DAO.OrdersDAO,it.unisa.zyphyksport.model.interfaceDS.OrdersInterf,it.unisa.zyphyksport.model.bean.OrdersBean,it.unisa.zyphyksport.model.bean.ClientiBean,it.unisa.zyphyksport.model.DAO.OrdersContainsProdsDAO,it.unisa.zyphyksport.model.interfaceDS.OrdersContainsProdsInterf,it.unisa.zyphyksport.model.bean.OrdersContainsProdsBean,it.unisa.zyphyksport.model.DAO.ProductsDAO,it.unisa.zyphyksport.model.interfaceDS.ProductsInterf,it.unisa.zyphyksport.model.bean.ProductsBean,
+	import="javax.sql.DataSource,it.unisa.zyphyksport.gestioneVendite.DAO.OrdersDAO,it.unisa.zyphyksport.gestioneVendite.interfaceDS.OrdersInterf,it.unisa.zyphyksport.gestioneVendite.bean.OrdersBean,it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean,it.unisa.zyphyksport.gestioneVendite.DAO.OrdersContainsProdsDAO,it.unisa.zyphyksport.gestioneVendite.interfaceDS.OrdersContainsProdsInterf,it.unisa.zyphyksport.gestioneVendite.bean.OrdersContainsProdsBean,it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO,it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ProductsInterf,it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean,
 	
 	java.time.format.DateTimeFormatter,	java.time.LocalDateTime, java.util.*"
 	pageEncoding="utf-8"%>

@@ -1,4 +1,4 @@
-<%@ page language="java" import="it.unisa.zyphyksport.model.bean.CartsBean,it.unisa.zyphyksport.model.bean.CartsContainsProdsBean,it.unisa.zyphyksport.model.bean.ProductsBean, java.util.*" contentType="text/html; charset=utf-8"
+<%@ page language="java" import="it.unisa.zyphyksport.gestioneVendite.bean.CartsBean,it.unisa.zyphyksport.gestioneVendite.bean.CartsContainsProdsBean,it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean, java.util.*" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 

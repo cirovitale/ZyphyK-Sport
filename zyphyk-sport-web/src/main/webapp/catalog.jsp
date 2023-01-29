@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="javax.sql.DataSource,it.unisa.zyphyksport.model.bean.ProductsBean,it.unisa.zyphyksport.model.interfaceDS.ProductsInterf,it.unisa.zyphyksport.model.DAO.ProductsDAO,it.unisa.zyphyksport.model.interfaceDS.SizesInterf,it.unisa.zyphyksport.model.DAO.SizesDAO,it.unisa.zyphyksport.model.bean.SizesBean, java.util.*" %>
+    import="javax.sql.DataSource,it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean,it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ProductsInterf,it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO,it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.SizesInterf,it.unisa.zyphyksport.gestioneCatalogo.DAO.SizesDAO,it.unisa.zyphyksport.gestioneCatalogo.bean.SizesBean, java.util.*" %>
     
  <%
 	String roles = (String) session.getAttribute("roles");
