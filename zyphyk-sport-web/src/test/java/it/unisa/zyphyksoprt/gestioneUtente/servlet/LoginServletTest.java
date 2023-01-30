@@ -94,8 +94,8 @@ public class LoginServletTest {
 		ClientiDAO clDS = mock(ClientiDAO.class);
 		ClientiBean cliente = mock(ClientiBean.class);
 		Set<ClientiBean> colClienti = (Set<ClientiBean>) mock(Set.class);
-		Set<GestoriCatalogoBean> colGestCat = new HashSet<>();
-		Set<GestoriOrdiniBean> colGestOrd = new HashSet<>();
+		Set<GestoriCatalogoBean> colGestCat = (Set<GestoriCatalogoBean>) mock(Set.class);
+		Set<GestoriOrdiniBean> colGestOrd = (Set<GestoriOrdiniBean>) mock(Set.class);
 		
 		when(request.getParameter("username")).thenReturn("daniPicci");
 		when(request.getParameter("password")).thenReturn("password");
@@ -126,7 +126,7 @@ public class LoginServletTest {
 		when(preparedStmt3.executeQuery()).thenReturn(rs3);
 		
 		when(clDS.doRetrieveAll(null)).thenReturn(colClienti);
-		String checkSQL4 = "SELECT * FROM " + ClientiDAO.TABLE_NAME;;
+		String checkSQL4 = "SELECT * FROM " + ClientiDAO.TABLE_NAME;
 		when(conn.prepareStatement(checkSQL4)).thenReturn(preparedStmt4);
 		when(preparedStmt4.executeQuery()).thenReturn(rs4);
 		
