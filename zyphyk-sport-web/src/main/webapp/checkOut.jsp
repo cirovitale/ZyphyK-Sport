@@ -284,6 +284,7 @@ ProductsInterf prodDS = new ProductsDAO(ds);
 			</div>
 			<button class="btn btn-primary btn-block" type="submit" id="submit">Procedi
 				al pagamento</button>
+			<a href="cart.jsp" class="btn btn-danger btn-block">Annulla acquisto</a> 
 		</form>
 	</div>
 	<%@ include file="../fragments/footer.jsp"%>

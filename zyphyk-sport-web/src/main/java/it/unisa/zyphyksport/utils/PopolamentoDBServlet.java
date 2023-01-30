@@ -90,23 +90,19 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        productDAO.doSave("QEWER", "NikeCourt Zoom Pro", "tennis", "nike", 39);
 	        productDAO.doSave("BFD32", "Electrify Nitro", "running", "puma", 75);
 	        productDAO.doSave("111AQ", "Courtflash Speed", "tennis", "adidas", 90);
-	        productDAO.doSave("0ASDA", "BREAKSHOT CC", "tennis", "mizuno", 79);
 
 	        sizesDAO.doSave("23AX1",36);
 	        sizesDAO.doSave("3ASD7",36);
 	        sizesDAO.doSave("XXC01",36);
 	        sizesDAO.doSave("BFD32",36);  
-	        //sizesDAO.doSave("0ASDA",36);
 	        sizesDAO.doSave("ASD56",37);
 	        sizesDAO.doSave("23AX1",37);
 	        sizesDAO.doSave("QEWER",38); 
-	        //sizesDAO.doSave("0ASDA",38);
 	        sizesDAO.doSave("23AX1",39);
 	        sizesDAO.doSave("3ASD7",39);
 	        sizesDAO.doSave("X2341",39);
 	        sizesDAO.doSave("ZZB35",39);
 	        sizesDAO.doSave("QRW20",39);	
-	        //sizesDAO.doSave("0ASDA",39);
 	        sizesDAO.doSave("ASD56",40);
 	        sizesDAO.doSave("23AX1",40);
 	        sizesDAO.doSave("XXC01",40);
@@ -119,7 +115,6 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        sizesDAO.doSave("QEWER",41); 
 	        sizesDAO.doSave("3ASD7",42);
 	        sizesDAO.doSave("X2341",42);
-	        //sizesDAO.doSave("0ASDA",42);
 	        
         	cartsContainsProdsDAO.doSave(1, "ASD56", 1, 39);
         	cartsContainsProdsDAO.doSave(1, "23AX1", 2, 37);
@@ -134,7 +129,6 @@ public class PopolamentoDBServlet extends HttpServlet {
         	managesProdsDAO.doSave("DarMoccia", "ZZB35", 0);
         	managesProdsDAO.doSave("DarMoccia", "QRW20", 0);
         	managesProdsDAO.doSave("DarMoccia", "XXC01", 0);
-        	managesProdsDAO.doSave("DarMoccia", "0ASDA", 0);
         	managesProdsDAO.doSave("MasVarriale", "23AX1", 0);
         	managesProdsDAO.doSave("MasVarriale", "X2341", 0);
         	managesProdsDAO.doSave("MasVarriale", "BFD32", 0);
@@ -157,7 +151,6 @@ public class PopolamentoDBServlet extends HttpServlet {
 	        ordersContainsProdsDAO.doSave(3, "X2341", 2, 36);
 	        ordersContainsProdsDAO.doSave(3, "QEWER", 1, 38);
 	        ordersContainsProdsDAO.doSave(4, "111AQ", 4, 38);
-	        ordersContainsProdsDAO.doSave(4, "0ASDA", 1, 41);
 	        ordersContainsProdsDAO.doSave(5, "ASD56", 2, 40);
 	        ordersContainsProdsDAO.doSave(5, "23AX1", 1, 37);
 	        ordersContainsProdsDAO.doSave(5, "QRW20", 1, 39); 

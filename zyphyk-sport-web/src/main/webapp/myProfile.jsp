@@ -57,12 +57,6 @@
 				<div class="col-md-6 mb-3"> Data Nascita: <%=clBean.getBirthDate() %> </div>
 				<div class="col-md-6 mb-3"> Email: <%=clBean.getEmail() %> </div>
 				
-				<div class="row">
-					<div>
-						<a href='myOrders.jsp' class='btn btn-primary'>Visualizza tutti gli ordini</a> <br/><br/>
-					</div>
-				</div>
-				
 			</div>
 		<%
 			} else if(roles.equals("gestOrd")) {
@@ -75,13 +69,6 @@
 				<div class="col-md-6 mb-3"> Retribuzione annuale: <%=gestOrdBean.getRal()%> </div>
 				<div class="col-md-6 mb-3"> Email: <%=gestOrdBean.getEmail() %> </div>
 				
-				<div class="row">
-					
-					<div class="col-md-6 mb-3" >
-						<a href='gestTick.jsp' class='btn btn-primary'>Gestisci ordini</a> <br/><br/>
-					</div>
-					
-				</div>
 			</div>
 		<%
 			} else if(roles.equals("gestCat")) {
@@ -94,11 +81,6 @@
 				<div class="col-md-6 mb-3"> Retribuzione annuale: <%=gestCatBean.getRal() %> </div>
 				<div class="col-md-6 mb-3"> Email: <%=gestCatBean.getEmail() %> </div>
 				
-				<div class="row">
-					<div class="col-md-6 mb-3" >
-						<a href='catalogManage.jsp' class='btn btn-primary'>Gestisci il catalogo</a>
-					</div>
-				</div>
 			</div>
 		<%
 			}
