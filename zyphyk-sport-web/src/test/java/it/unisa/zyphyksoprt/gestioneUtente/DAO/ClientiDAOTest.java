@@ -110,7 +110,7 @@ public class ClientiDAOTest extends DataSourceBasedDBTestCase{
     
     @Test
     public void testDoRetrieveByKeyClienti() throws SQLException {
-    	ClientiBean expectedCliente = new ClientiBean("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "194567ccf1a6ad5f751d618a4961719b", LocalDate.of(1996, 9, 6));
+    	ClientiBean expectedCliente = new ClientiBean("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "c4d36d73822976f8c01be88bc44680c9", LocalDate.of(1996, 9, 6));
 
     	ClientiBean actualCliente =  clientiDAO.doRetrieveByKey("daniPicci");
         assertEquals(expectedCliente, actualCliente);
@@ -118,7 +118,7 @@ public class ClientiDAOTest extends DataSourceBasedDBTestCase{
     
     @Test
     public void testDoRetrieveAllClienti() throws SQLException {
-    	ClientiBean cliente1 = new ClientiBean("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "194567ccf1a6ad5f751d618a4961719b", LocalDate.of(1996, 9, 6));
+    	ClientiBean cliente1 = new ClientiBean("daniPicci", 1, "Daniele", "Piccirillo", "dani_san@gmail.com", "c4d36d73822976f8c01be88bc44680c9", LocalDate.of(1996, 9, 6));
     	ClientiBean cliente2 = new ClientiBean("marioRossi", 2, "Mario", "Rossi", "mar-rossi@gmail.com", "4983a0ab83ed86e0e7213c8783940193", LocalDate.of(1996, 6, 13));
     	ClientiBean cliente3 = new ClientiBean("peppeRoma", 3, "Giuseppe", "Roma", "g.rom1@gmail.com", "4983a0ab83ed86e0e7213c8783940193", LocalDate.of(2001, 4, 25));
     	ClientiBean cliente4 = new ClientiBean("angeloPorte", 4, "Angelo", "Portelli", "portelli_angelo@gmail.com", "4983a0ab83ed86e0e7213c8783940193", LocalDate.of(1978, 1, 7));
