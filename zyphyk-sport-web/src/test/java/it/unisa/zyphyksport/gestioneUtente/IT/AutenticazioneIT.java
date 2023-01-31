@@ -5,14 +5,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
-import java.sql.SQLException;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -47,7 +41,7 @@ public class AutenticazioneIT extends DataSourceBasedDBTestCase{
 	}
 	
 	@Test
-	public void testAutenticazioneIT() {
+	public void testAutenticazioneIT() throws IOException {
 		// datasource
 		DataSource ds = null;
 		try {
@@ -57,7 +51,6 @@ public class AutenticazioneIT extends DataSourceBasedDBTestCase{
 			e.printStackTrace();
 		}
 		
-		ClientiInterf clDAO = new ClientiDAO(ds);
 		
 		
 		
@@ -85,7 +78,7 @@ public class AutenticazioneIT extends DataSourceBasedDBTestCase{
 		when(servletContext.getAttribute("DataSource")).thenReturn(ds);
 		when(request.getSession()).thenReturn(session);
 		when(servletContext.getRequestDispatcher("/login.jsp")).thenReturn(dispatcher);
-		
+		when(request.getContextPath()).thenReturn("http://localhost/zyphyk-sport-web");
         
         
         // test
@@ -101,7 +94,9 @@ public class AutenticazioneIT extends DataSourceBasedDBTestCase{
         
         
         //verify(session).getAttribute("roles");
-        assertEquals(session.getAttribute("roles"), "cliente");
+        verify(response).sendRedirect("http://localhost/zyphyk-sport-web/index.jsp");
+        verify(session).setAttribute("roles", "cliente");
+       
         // verify
         //assertEquals(clBean.getPass_word(), encryptedPassword);
         

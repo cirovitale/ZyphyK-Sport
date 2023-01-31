@@ -79,7 +79,6 @@ public class LoginServlet extends HttpServlet {
 		String ruolo = null;
 		try {
 			ruolo = checkLogin(username, password);
-			System.out.println(ruolo);
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
@@ -145,7 +144,6 @@ public class LoginServlet extends HttpServlet {
 		
 		try {
 			ruolo = checkLogin(username, password);
-			System.out.println(ruolo);
 			
 			ClientiBean clBean = null;
 			GestoriCatalogoBean catBean = null;
@@ -161,6 +159,7 @@ public class LoginServlet extends HttpServlet {
 				ProductsInterf productDAO = new ProductsDAO(ds);
 				SizesInterf sizes = new SizesDAO(ds); 
 				CartsBean cartBean = cart.doRetrieveByKey(clBean.getCartId());
+				
 				//request.getSession().setAttribute("carrello", cartBean);
 				
 				
