@@ -38,7 +38,8 @@ public class OrderManageServletTest {
 		Connection conn = Mockito.mock(Connection.class);
 		
 		GestoriOrdiniBean gestOrdBean = Mockito.mock(GestoriOrdiniBean.class);
-		OrdersBean ordBean = Mockito.mock(OrdersBean.class);			OrdersInterf ordersDAO = Mockito.mock(OrdersInterf.class);
+		OrdersBean ordBean = Mockito.mock(OrdersBean.class);			
+		OrdersInterf ordersDAO = Mockito.mock(OrdersInterf.class);
 		
 		OrderManageServlet ordManage = new OrderManageServlet(){
 			/**
