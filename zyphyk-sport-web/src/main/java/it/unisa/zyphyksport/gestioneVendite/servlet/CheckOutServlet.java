@@ -3,8 +3,9 @@ package it.unisa.zyphyksport.gestioneVendite.servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -71,7 +72,6 @@ public class CheckOutServlet extends HttpServlet {
 		String ccExpiration = (request.getParameter("cc-expiration"));
 		String ccCvv = (request.getParameter("cc-cvv"));
 		String paymentMethod = ccNumber + " " + ccExpiration + " " + ccCvv;
-		System.out.println(paymentMethod);
 		
 		CartsBean carrello = (CartsBean) request.getSession().getAttribute("carrello");
 		
@@ -87,7 +87,7 @@ public class CheckOutServlet extends HttpServlet {
 		try {
 			orderId = orderDAO.doSave(username, null, LocalDateTime.now(), shippingAddress, paymentMethod, carrello.getAmount(), false);
 			
-			Collection<CartsContainsProdsBean> cartContProdsArr =  cartContProdsDAO.doRetrieveAllByCartId(carrello.getId(), null);
+			Set<CartsContainsProdsBean> cartContProdsArr =  cartContProdsDAO.doRetrieveAllByCartId(carrello.getId(), null);
 			for(CartsContainsProdsBean cartContProdsBean: cartContProdsArr) {
 				ProductsBean prod = productsDAO.doRetrieveByKey(cartContProdsBean.getProductId());
 				OrdersContainsProdsBean ordContProdsBean = new OrdersContainsProdsBean(orderId, cartContProdsBean.getProductId(), cartContProdsBean.getQuantity(), cartContProdsBean.getSize(), prod.getPrice());
@@ -119,8 +119,8 @@ public class CheckOutServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		Set<ProductsBean> prodsArray = new HashSet<ProductsBean>();
-		Set<CartsContainsProdsBean> prodsContainsCartArray = new HashSet<CartsContainsProdsBean>();
+		List<ProductsBean> prodsArray = new ArrayList<ProductsBean>();
+		List<CartsContainsProdsBean> prodsContainsCartArray = new ArrayList<CartsContainsProdsBean>();
 		request.getSession().setAttribute("prodsCart", prodsArray);
 		request.getSession().setAttribute("prodsContainsCart", prodsContainsCartArray);
 		

@@ -63,9 +63,6 @@ public class SignUpServletTest {
 		when(request.getParameter("conferma")).thenReturn("Ciaoitalia!");
 		
 		ClientiDAO clDS = mock(ClientiDAO.class);
-		GestoriCatalogoInterf gestCatDS = mock(GestoriCatalogoInterf.class);
-		GestoriOrdiniInterf gestOrdDS = mock(GestoriOrdiniInterf.class);
-		ClientiBean cliente = mock(ClientiBean.class);
 		
 		Set<ClientiBean> colClienti = (Set<ClientiBean>) mock(Set.class);
 		Set<GestoriCatalogoBean> colGestCat = (Set<GestoriCatalogoBean>) mock(Set.class);

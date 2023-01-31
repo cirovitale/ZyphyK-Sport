@@ -83,7 +83,6 @@ public class AddToCartServlet extends HttpServlet {
 			
 			for(CartsContainsProdsBean cartContBean2 : colContainsProds) {
 				if(cartContBean2.getProductId().equals(id) && cartContBean2.getSize() == size && flag == false) {
-					System.out.println("prodotto con stessa taglia");
 					flag = true;
 					subtotale = carrello.getAmount() + productBean.getPrice();
 					carrello.setAmount(subtotale);
@@ -103,7 +102,6 @@ public class AddToCartServlet extends HttpServlet {
 				}
 			}
 			if(flag == false){
-					System.out.println("nuovo prodotto");
 					subtotale = carrello.getAmount() + productBean.getPrice();
 					carrello.setAmount(subtotale);
 					colProd.add(productBean);
