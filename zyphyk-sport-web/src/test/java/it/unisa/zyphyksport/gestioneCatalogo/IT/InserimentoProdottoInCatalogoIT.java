@@ -3,9 +3,7 @@ package it.unisa.zyphyksport.gestioneCatalogo.IT;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,14 +21,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
-import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAOTest;
 import it.unisa.zyphyksport.gestioneCatalogo.servlet.AddInCatalogServlet;
-import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
 import it.unisa.zyphyksport.gestioneUtente.DAO.GestoriCatalogoDAO;
-import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
-import it.unisa.zyphyksport.gestioneUtente.interfaceDS.ClientiInterf;
 import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriCatalogoInterf;
-import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
 
 public class InserimentoProdottoInCatalogoIT extends DataSourceBasedDBTestCase{
 	
@@ -90,8 +83,6 @@ public class InserimentoProdottoInCatalogoIT extends DataSourceBasedDBTestCase{
 		GestoriCatalogoInterf gestCatDAO = new GestoriCatalogoDAO(ds);
 		when(session.getAttribute("utente")).thenReturn(gestCatDAO.doRetrieveByKey("DarMoccia"));
 		when(request.getPart("inputImage")).thenReturn(part);
-		
-		ClientiInterf clientiDAO = new ClientiDAO(ds);
 		
 		when(request.getParameter("sizesValue36")).thenReturn("36");
 		when(request.getParameter("sizesValue37")).thenReturn("37");

@@ -2,23 +2,16 @@ package it.unisa.zyphyksoprt.gestioneUtente.servlet;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.servlet.GenericServlet;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -74,6 +67,11 @@ public class LoginServletTest {
 		RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
 		
 		LoginServlet login = new LoginServlet(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public ServletContext getServletContext() {
 				return servletContext;
 			}

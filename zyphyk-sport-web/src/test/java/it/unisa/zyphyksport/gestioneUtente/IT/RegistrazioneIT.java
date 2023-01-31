@@ -24,10 +24,7 @@ import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
-import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAOTest;
 import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
-import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
 import it.unisa.zyphyksport.gestioneUtente.servlet.SignUpServlet;
 
 public class RegistrazioneIT extends DataSourceBasedDBTestCase{
@@ -68,6 +65,11 @@ public class RegistrazioneIT extends DataSourceBasedDBTestCase{
 		
 		//qui mettere i request rispettivi delle servlet testate
 		SignUpServlet signUp = new SignUpServlet(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public ServletContext getServletContext() {
 				return servletContext;
 			}

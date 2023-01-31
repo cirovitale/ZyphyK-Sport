@@ -1,6 +1,5 @@
 package it.unisa.zyphyksport.gestioneUtente.IT;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -22,8 +21,6 @@ import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
-import it.unisa.zyphyksport.gestioneUtente.interfaceDS.ClientiInterf;
 import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
 
 public class AutenticazioneIT extends DataSourceBasedDBTestCase{
@@ -67,6 +64,11 @@ public class AutenticazioneIT extends DataSourceBasedDBTestCase{
 		// context
 		final ServletContext servletContext = Mockito.mock(ServletContext.class);
 		LoginServlet login = new LoginServlet(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public ServletContext getServletContext() {
 				return servletContext;
 			}

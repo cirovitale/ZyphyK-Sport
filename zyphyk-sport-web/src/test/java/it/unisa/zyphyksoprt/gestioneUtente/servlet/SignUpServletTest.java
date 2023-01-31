@@ -27,8 +27,6 @@ import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
 import it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean;
 import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
 import it.unisa.zyphyksport.gestioneUtente.bean.GestoriOrdiniBean;
-import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriCatalogoInterf;
-import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriOrdiniInterf;
 import it.unisa.zyphyksport.gestioneUtente.servlet.SignUpServlet;
 
 public class SignUpServletTest {
@@ -43,9 +41,13 @@ public class SignUpServletTest {
 		Connection conn = Mockito.mock(Connection.class);
 		PreparedStatement preparedStmt1 = Mockito.mock(PreparedStatement.class);
 		ResultSet rs1 = Mockito.mock(ResultSet.class);
-		RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
 		
 		SignUpServlet signUp = new SignUpServlet(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public ServletContext getServletContext() {
 				return servletContext;
 			}

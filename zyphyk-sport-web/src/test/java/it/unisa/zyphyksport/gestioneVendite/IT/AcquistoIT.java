@@ -17,16 +17,12 @@ import javax.sql.DataSource;
 
 import org.dbunit.DataSourceBasedDBTestCase;
 import org.dbunit.dataset.IDataSet;
-import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean;
-import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
 import it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean;
-import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
 import it.unisa.zyphyksport.gestioneVendite.DAO.CartsDAO;
 import it.unisa.zyphyksport.gestioneVendite.DAO.OrdersDAO;
 import it.unisa.zyphyksport.gestioneVendite.bean.CartsBean;
@@ -87,6 +83,11 @@ public class AcquistoIT extends DataSourceBasedDBTestCase{
 		// context
 		final ServletContext servletContext = Mockito.mock(ServletContext.class);
 		CheckOutServlet checkout = new CheckOutServlet(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			public ServletContext getServletContext() {
 				return servletContext;
 			}
@@ -110,9 +111,6 @@ public class AcquistoIT extends DataSourceBasedDBTestCase{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		 
-		IDataSet databaseDataSet = getConnection().createDataSet();
-		ITable actualTable = databaseDataSet.getTable(ClientiDAO.TABLE_NAME);
 		
 		OrdersInterf ordersDAO = new OrdersDAO(ds);
 		Set<OrdersBean> actualOrders =  ordersDAO.doRetrieveAll(null);

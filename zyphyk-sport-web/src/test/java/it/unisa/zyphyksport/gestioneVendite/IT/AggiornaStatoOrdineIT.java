@@ -4,10 +4,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +20,9 @@ import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import it.unisa.zyphyksport.gestioneUtente.bean.GestoriOrdiniBean;
-import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
-import it.unisa.zyphyksport.gestioneVendite.bean.OrdersBean;
+import it.unisa.zyphyksport.gestioneUtente.DAO.GestoriOrdiniDAO;
+import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriOrdiniInterf;
+import it.unisa.zyphyksport.gestioneVendite.DAO.OrdersDAO;
 import it.unisa.zyphyksport.gestioneVendite.interfaceDS.OrdersInterf;
 import it.unisa.zyphyksport.gestioneVendite.servlet.OrderManageServlet;
 
@@ -45,59 +43,62 @@ public class AggiornaStatoOrdineIT extends DataSourceBasedDBTestCase{
 	
 	
 	@Test
-	public void testAggiornaStatoOrdineIT() throws IOException {
+	public void testAggiornaStatoOrdineIT() throws IOException, SQLException {
 		// datasource
-				DataSource ds = null;
-				try {
-					ds = getDataSource();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				
-				
-				
-				// mock
-				//request e response
-				HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
-				HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
-				HttpSession session = Mockito.mock(HttpSession.class);
-				RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
-				
-				GestoriOrdiniBean gestOrdBean = Mockito.mock(GestoriOrdiniBean.class);
-				OrdersBean ordBean = Mockito.mock(OrdersBean.class);			
-				OrdersInterf ordersDAO = Mockito.mock(OrdersInterf.class);				
-				//qui mettere i request rispettivi delle servlet testate
-				when(request.getSession()).thenReturn(session);
-				
-				// context
-				final ServletContext servletContext = Mockito.mock(ServletContext.class);
-				OrderManageServlet ordManage = new OrderManageServlet(){
-					public ServletContext getServletContext() {
-						return servletContext;
-					}
-	
-				};
+		DataSource ds = null;
+		try {
+			ds = getDataSource();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		// mock
+		//request e response
+		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
+		HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
+		HttpSession session = Mockito.mock(HttpSession.class);
+					
+		OrdersInterf ordersDAO = new OrdersDAO(ds);
+		GestoriOrdiniInterf gestOrdDAO = new GestoriOrdiniDAO(ds);			
+		//qui mettere i request rispettivi delle servlet testate
+		when(request.getSession()).thenReturn(session);
+		
+		// context
+		final ServletContext servletContext = Mockito.mock(ServletContext.class);
+		OrderManageServlet ordManage = new OrderManageServlet(){
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
-				when(request.getSession()).thenReturn(session);	
-				when(servletContext.getAttribute("DataSource")).thenReturn(ds);
-				when(request.getParameter("id")).thenReturn("1");
-				when(session.getAttribute("utente")).thenReturn(gestOrdBean);
+			public ServletContext getServletContext() {
+				return servletContext;
+			}
 
-		        // test
-		        try {
-		        	ordManage.doGet(request, response);
-				} catch (ServletException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-		        
-		        //verify(response).sendRedirect("http://localhost/zyphyk-sport-web/orderManage.jsp");
-		        verify(request).setAttribute("message", "true");
-	
+		};
+
+		when(request.getSession()).thenReturn(session);	
+		when(servletContext.getAttribute("DataSource")).thenReturn(ds);
+		when(request.getParameter("id")).thenReturn("1");
+		when(session.getAttribute("utente")).thenReturn(gestOrdDAO.doRetrieveByKey("LuBacco"));	
+		when(request.getContextPath()).thenReturn("http://localhost/zyphyk-sport-web");
+		
+		// test
+        try {
+        	ordManage.doGet(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        assertEquals(true, ordersDAO.doRetrieveByKey(1).isSent());
+        verify(response).sendRedirect("http://localhost/zyphyk-sport-web/orderManage.jsp");	
 	}
 }
