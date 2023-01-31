@@ -106,7 +106,7 @@ public class OrdersDAO implements OrdersInterf{
 		}
 	}
 	
-	public void doDelete(int id) throws SQLException{
+	public synchronized void doDelete(int id) throws SQLException{
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
