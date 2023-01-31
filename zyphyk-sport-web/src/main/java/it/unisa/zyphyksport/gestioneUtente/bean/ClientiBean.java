@@ -20,9 +20,7 @@ public class ClientiBean implements Serializable{
   	
   	
   	
-	public ClientiBean() {
-		super();
-	}
+	
 
 	public ClientiBean(String username, int cartId, String name, String surname, String email, String pass_word,
 			LocalDate birthDate) {
