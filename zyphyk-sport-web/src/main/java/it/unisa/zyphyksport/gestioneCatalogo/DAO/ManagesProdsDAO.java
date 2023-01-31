@@ -118,7 +118,7 @@ public class ManagesProdsDAO implements ManagesProdsInterf {
 	}
 
 	@Override
-	public Set<ManagesProdsBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<ManagesProdsBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;

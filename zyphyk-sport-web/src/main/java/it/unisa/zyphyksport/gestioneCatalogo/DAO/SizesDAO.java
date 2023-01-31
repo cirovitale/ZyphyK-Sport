@@ -92,7 +92,7 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public Set<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException {
+	public synchronized Set<SizesBean> doRetrieveByProductId(String productId, String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
@@ -133,7 +133,7 @@ public class SizesDAO implements SizesInterf{
 	}
 
 	@Override
-	public Set<SizesBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized Set<SizesBean> doRetrieveAll(String order) throws SQLException {
 		// TODO Auto-generated method stub
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
