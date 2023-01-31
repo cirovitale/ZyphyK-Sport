@@ -2,9 +2,9 @@ package it.unisa.zyphyksport.gestioneVendite.IT;
 
 import org.junit.Test;
 
-public class AcquistoIT {
+public class AggiornaStatoOrdineIT {
 	@Test
-	public void testAcquistoIT() {
+	public void testAggiornaStatoOrdineIT() {
 		
 	}
 }

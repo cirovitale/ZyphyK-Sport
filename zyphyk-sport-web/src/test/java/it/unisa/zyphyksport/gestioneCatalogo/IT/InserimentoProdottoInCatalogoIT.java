@@ -1,5 +1,10 @@
 package it.unisa.zyphyksport.gestioneCatalogo.IT;
 
-public class InserimentoProdottoInCatalogoIT {
+import org.junit.Test;
 
+public class InserimentoProdottoInCatalogoIT {
+	@Test
+	public void testInserimentoProdottoInCatalogoIT() {
+		
+	}
 }
