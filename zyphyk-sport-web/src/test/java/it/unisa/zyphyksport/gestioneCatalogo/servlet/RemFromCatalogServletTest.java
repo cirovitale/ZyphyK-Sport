@@ -26,7 +26,7 @@ public class RemFromCatalogServletTest {
 	private ServletContext servletContext;
 	
 	@Test
-	public void testDoPostAddInCatalog() throws Exception {
+	public void testDoGetRemFromCatalog() throws Exception {
 		// inizializzazione - mock
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 		HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
@@ -75,7 +75,7 @@ public class RemFromCatalogServletTest {
 		when(request.getContextPath()).thenReturn("http://localhost/zyphyk-sport-web");
 		
 		// test
-		remFromCat.doPost(request, response);
+		remFromCat.doGet(request, response);
 		
 		// verify
 		verify(response).sendRedirect("http://localhost/zyphyk-sport-web/catalogManage.jsp");

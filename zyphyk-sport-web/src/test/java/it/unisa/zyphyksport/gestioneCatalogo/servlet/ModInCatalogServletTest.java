@@ -28,7 +28,7 @@ public class ModInCatalogServletTest {
 	private ServletContext servletContext;
 	
 	@Test
-	public void testDoPostAddInCatalog() throws Exception {
+	public void testDoPostModInCatalog() throws Exception {
 		// inizializzazione - mock
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 		HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
