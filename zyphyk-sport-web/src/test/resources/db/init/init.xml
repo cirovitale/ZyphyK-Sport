@@ -10,7 +10,7 @@
 	<CARTS id = '3' amount='179'></CARTS>
 	<CARTS id = '4' amount='0'></CARTS>
 	
-	<CLIENTI username='daniPicci' cart_id='1' name='Daniele' surname='Piccirillo' email='dani_san@gmail.com' pass_word ='194567ccf1a6ad5f751d618a4961719b' birth_date ='1996-09-06' roles = 'cliente'></CLIENTI>
+	<CLIENTI username='daniPicci' cart_id='1' name='Daniele' surname='Piccirillo' email='dani_san@gmail.com' pass_word ='c4d36d73822976f8c01be88bc44680c9' birth_date ='1996-09-06' roles = 'cliente'></CLIENTI>
  	<CLIENTI username='marioRossi' cart_id='2' name='Mario' surname='Rossi' email='mar-rossi@gmail.com' pass_word ='4983a0ab83ed86e0e7213c8783940193' birth_date ='1996-06-13' roles = 'cliente'></CLIENTI>
   	<CLIENTI username='peppeRoma' cart_id='3' name='Giuseppe' surname='Roma' email='g.rom1@gmail.com' pass_word ='4983a0ab83ed86e0e7213c8783940193' birth_date ='2001-04-25' roles = 'cliente'></CLIENTI>     
     <CLIENTI username='angeloPorte' cart_id='4' name='Angelo' surname='Portelli' email='portelli_angelo@gmail.com' pass_word ='4983a0ab83ed86e0e7213c8783940193' birth_date ='1978-01-07' roles = 'cliente'></CLIENTI>     	
