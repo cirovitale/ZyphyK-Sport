@@ -112,7 +112,7 @@ public class ModificaProdottoInCatalogoIT extends DataSourceBasedDBTestCase{
 		
 		
 		ITable expectedTable = new FlatXmlDataSetBuilder()
-    			.build(ProductsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/IT/testModificaProdottoInCatalogoIT.xml"))
+    			.build(ModificaProdottoInCatalogoIT.class.getClassLoader().getResourceAsStream("db/expected/IT/testModificaProdottoInCatalogoIT.xml"))
     			.getTable(ProductsDAO.TABLE_NAME);
 		
 		IDataSet databaseDataSet = getConnection().createDataSet();

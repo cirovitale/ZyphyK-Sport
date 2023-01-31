@@ -109,7 +109,7 @@ public class InserimentoProdottoInCatalogoIT extends DataSourceBasedDBTestCase{
 		
 		addInCat.doPost(request, response);
 		ITable expectedTable = new FlatXmlDataSetBuilder()
-    			.build(ProductsDAOTest.class.getClassLoader().getResourceAsStream("db/expected/IT/testInserimentoProdottoInCatalogoIT.xml"))
+    			.build(InserimentoProdottoInCatalogoIT.class.getClassLoader().getResourceAsStream("db/expected/IT/testInserimentoProdottoInCatalogoIT.xml"))
     			.getTable(ProductsDAO.TABLE_NAME);
 		
 		IDataSet databaseDataSet = getConnection().createDataSet();
