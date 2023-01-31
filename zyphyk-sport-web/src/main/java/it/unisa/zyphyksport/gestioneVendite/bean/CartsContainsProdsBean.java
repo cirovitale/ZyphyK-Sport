@@ -11,7 +11,7 @@ public class CartsContainsProdsBean implements Serializable{
 	private int cartId;
 	private String productId;
 	private int quantity;
-	int size;
+	private int size;
 	
 	public CartsContainsProdsBean(int cartId, String productId, int quantity, int size) {
 		super();

@@ -22,7 +22,7 @@ public class LogoutServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 
 		request.getSession().removeAttribute("roles");

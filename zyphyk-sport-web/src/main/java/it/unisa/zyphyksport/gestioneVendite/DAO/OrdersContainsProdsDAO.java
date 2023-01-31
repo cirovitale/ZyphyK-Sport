@@ -17,12 +17,9 @@ public class OrdersContainsProdsDAO implements OrdersContainsProdsInterf{
 	public static final String TABLE_NAME = "orders_contains_prods";
 	
 	private DataSource ds = null;
-	
 
 	public OrdersContainsProdsDAO(DataSource ds) {
-		
 		this.ds = ds;
-		
 	}
 	
 	
