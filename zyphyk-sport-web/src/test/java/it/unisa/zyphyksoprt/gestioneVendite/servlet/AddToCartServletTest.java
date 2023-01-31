@@ -1,6 +1,8 @@
 package it.unisa.zyphyksoprt.gestioneVendite.servlet;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
@@ -11,9 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +26,7 @@ import org.mockito.Mockito;
 
 import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
 import it.unisa.zyphyksport.gestioneCatalogo.bean.ProductsBean;
-import it.unisa.zyphyksport.gestioneUtente.DAO.ClientiDAO;
-import it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean;
-import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
-import it.unisa.zyphyksport.gestioneUtente.servlet.SignUpServlet;
+
 import it.unisa.zyphyksport.gestioneVendite.DAO.CartsContainsProdsDAO;
 import it.unisa.zyphyksport.gestioneVendite.DAO.CartsDAO;
 import it.unisa.zyphyksport.gestioneVendite.bean.CartsBean;
@@ -54,7 +51,6 @@ public class AddToCartServletTest {
 		ResultSet rs3 = Mockito.mock(ResultSet.class);
 		PreparedStatement preparedStmt4 = Mockito.mock(PreparedStatement.class);
 		ResultSet rs4 = Mockito.mock(ResultSet.class);
-		RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
 		
 		
 		ProductsDAO prods = mock(ProductsDAO.class);
@@ -62,6 +58,7 @@ public class AddToCartServletTest {
 		CartsDAO carts = mock(CartsDAO.class);
 		CartsBean cartBean = Mockito.mock(CartsBean.class);
 		CartsContainsProdsBean contProds = mock(CartsContainsProdsBean.class);
+		CartsContainsProdsDAO cartContProds = mock(CartsContainsProdsDAO.class);
 		List<ProductsBean> colProd = (List<ProductsBean>) mock(ArrayList.class);
 		List<CartsContainsProdsBean> colContainsProds = (List<CartsContainsProdsBean>) mock(ArrayList.class); 
 		Iterator iterator = Mockito.mock(Iterator.class);
@@ -108,12 +105,21 @@ public class AddToCartServletTest {
 		when(conn.prepareStatement(checkSQL3)).thenReturn(preparedStmt3);
 		when(preparedStmt3.executeQuery()).thenReturn(rs3);
 		
-		String checkSQL4 = "INSERT INTO " + CartsContainsProdsDAO.TABLE_NAME
-				+ "(CART_ID, PRODUCT_ID, QUANTITY, SIZE) VALUES (?, ?, ?, ?)";
+		when(cartContProds.doRetrieveByKey(0,null,0)).thenReturn(contProds);
+		String checkSQL4 = "SELECT * FROM " + CartsContainsProdsDAO.TABLE_NAME + " WHERE CART_ID = ? AND PRODUCT_ID = ? AND SIZE = ?";
 		when(conn.prepareStatement(checkSQL4)).thenReturn(preparedStmt4);
 		when(preparedStmt4.executeQuery()).thenReturn(rs4);
 		
 		addToCart.doGet(request, response);
+		
+		verify(request).getParameter("id");
+		verify(request).getParameter("size");
+		verify(session).getAttribute("roles");
+		assertEquals("0", request.getParameter("id"));
+		assertEquals("46", request.getParameter("size"));
+		assertEquals("cliente", session.getAttribute("roles"));
+		
+		
 		
 		
 	}
