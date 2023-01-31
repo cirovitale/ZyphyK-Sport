@@ -35,17 +35,14 @@ import it.unisa.zyphyksport.gestioneUtente.DAO.GestoriOrdiniDAO;
 import it.unisa.zyphyksport.gestioneUtente.bean.ClientiBean;
 import it.unisa.zyphyksport.gestioneUtente.bean.GestoriCatalogoBean;
 import it.unisa.zyphyksport.gestioneUtente.bean.GestoriOrdiniBean;
-import it.unisa.zyphyksport.gestioneUtente.interfaceDS.ClientiInterf;
 import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriCatalogoInterf;
 import it.unisa.zyphyksport.gestioneUtente.interfaceDS.GestoriOrdiniInterf;
 import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
-import it.unisa.zyphyksport.utils.MainContext;
 
 
 public class LoginServletTest {
 	@Mock
 	private ServletContext servletContext;
-	private ServletConfig servletConfig;
 	
 	@Before
 	public void setUp() {
@@ -54,7 +51,7 @@ public class LoginServletTest {
 	
 	
 	@Test
-	public void testDoPost() throws Exception {
+	public void testDoPostLogin() throws Exception {
 		// Setup
 		HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 		HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
@@ -97,7 +94,7 @@ public class LoginServletTest {
 		Set<GestoriOrdiniBean> colGestOrd = (Set<GestoriOrdiniBean>) mock(Set.class);
 		
 		when(request.getParameter("username")).thenReturn("daniPicci");
-		when(request.getParameter("password")).thenReturn("password");
+		when(request.getParameter("password")).thenReturn("Passw1234!");
 
 		when(servletContext.getAttribute("DataSource")).thenReturn(ds);
 		when(ds.getConnection()).thenReturn(conn);
@@ -148,7 +145,9 @@ public class LoginServletTest {
 		// Verify
 		
 		verify(request).getParameter("username");
+		verify(request).getParameter("password");
 		assertEquals("daniPicci", request.getParameter("username"));
+		assertEquals("Passw1234!", request.getParameter("password"));
 		//verify(session).setAttribute("roles", ruolo);
 	}
 }
