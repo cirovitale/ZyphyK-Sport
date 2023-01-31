@@ -84,11 +84,8 @@ public class SignUpServlet extends HttpServlet {
 				System.out.println(cartId);
 				clDS.doSave(username, cartId, nome, cognome, email, password, LocalDate.parse(data));
 				
-				System.out.println("due");
 				clBean = clDS.doRetrieveByKey(username);
-				System.out.println("due");
 				cartBean = cartDS.doRetrieveByKey(cartId);
-				System.out.println("tre");
 				
 				request.getSession().setAttribute("utente", clBean);
 				request.getSession().setAttribute("roles", "cliente");
