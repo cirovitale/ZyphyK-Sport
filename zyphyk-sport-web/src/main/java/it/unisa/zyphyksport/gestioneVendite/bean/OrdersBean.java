@@ -15,7 +15,7 @@ public class OrdersBean implements Serializable{
 	private String shippingAddress;
 	private String paymentMethod;
 	private int amount;
-	private boolean sent;
+	private boolean sent = false;
 	
 	
 	

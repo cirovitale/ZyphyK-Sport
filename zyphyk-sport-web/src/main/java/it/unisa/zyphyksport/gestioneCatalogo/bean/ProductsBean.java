@@ -12,7 +12,7 @@ public class ProductsBean implements Serializable{
 	private String sport;
 	private String brand;
 	private int price;
-	private boolean removed;
+	private boolean removed = false;
 	
 	public ProductsBean(String id, String name, String sport, String brand, int price) {
 		super();

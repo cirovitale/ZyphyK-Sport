@@ -13,7 +13,7 @@ import it.unisa.zyphyksport.gestioneCatalogo.bean.SizesBean;
 import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.SizesInterf;
 
 public class SizesDAO implements SizesInterf{
-	static final String TABLE_NAME = "sizes";
+	public static final String TABLE_NAME = "sizes";
 	private DataSource ds = null;
 	
 	public SizesDAO(DataSource ds) {

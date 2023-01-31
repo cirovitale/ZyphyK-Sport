@@ -41,7 +41,6 @@ public class RemFromCatalogServlet extends HttpServlet {
 		GestoriCatalogoBean gestCat = (GestoriCatalogoBean) request.getSession().getAttribute("utente");
 		
 		String productId = request.getParameter("productId");
-		System.out.println(productId);
 			
 		ProductsInterf productsDAO = new ProductsDAO(ds);
 		ManagesProdsInterf managesProdsDAO = new ManagesProdsDAO(ds);

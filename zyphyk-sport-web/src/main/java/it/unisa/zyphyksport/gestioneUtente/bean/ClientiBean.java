@@ -25,7 +25,7 @@ public class ClientiBean implements Serializable{
 	}
 
 	public ClientiBean(String username, int cartId, String name, String surname, String email, String pass_word,
-			LocalDate localDate) {
+			LocalDate birthDate) {
 		super();
 		this.username = username;
 		this.cartId = cartId;
@@ -33,7 +33,7 @@ public class ClientiBean implements Serializable{
 		this.surname = surname;
 		this.email = email;
 		this.pass_word = pass_word;
-		this.birthDate = localDate;
+		this.birthDate = birthDate;
 	}
 	
 	public String getUsername() {

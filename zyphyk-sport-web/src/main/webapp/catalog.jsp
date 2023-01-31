@@ -38,7 +38,7 @@
 			<h2>Catalogo Scarpe</h2>
 			<br/>
 		</div>
-		<div class="row">
+		<div class="row my-3">
 		<%
 			if(!colProd.isEmpty()){
 				for(ProductsBean prod: colProd){
@@ -52,7 +52,7 @@
 						<a href="products.jsp?id=<%=prod.getId()%>"> <img class="card-img-top" src="ImageServlet?immagine=<%=prod.getId()%>_1.jpg" alt="Card image"> </a>
 					</form>
 						<div class="card-body">
-							<h5 class="card-title"><%=prod.getName()%></h5>
+							<h5 class="card-title card-responsive"><%=prod.getName()%></h5>
 							<h6 class="price">
 								&euro;
 								<%=prod.getPrice()%></h6>

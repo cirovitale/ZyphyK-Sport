@@ -159,7 +159,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 	}
 	
 	@Override
-	public Set<CartsContainsProdsBean> doRetrieveAllByCartId(int id, String order) throws SQLException {
+	public synchronized Set<CartsContainsProdsBean> doRetrieveAllByCartId(int cartId, String order) throws SQLException {
 		// TODO Auto-generated method stub
 				Connection connection = null;
 				PreparedStatement preparedStmt = null;
@@ -176,7 +176,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 				try {
 					connection = ds.getConnection();
 					preparedStmt = connection.prepareStatement(selectSQL);
-					preparedStmt.setInt(1, id);
+					preparedStmt.setInt(1, cartId);
 					
 					ResultSet rs = preparedStmt.executeQuery();
 					
@@ -201,7 +201,7 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 				return array;
 	}
 
-	public CartsContainsProdsBean doRetrieveByKey(int cartId, String productId, int size) throws SQLException{
+	public synchronized CartsContainsProdsBean doRetrieveByKey(int cartId, String productId, int size) throws SQLException{
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 

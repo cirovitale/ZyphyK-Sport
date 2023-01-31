@@ -4,7 +4,6 @@
 	<GESTORI_CATALOGO username = 'MasVarriale' name = 'Massimo' surname = 'Varriale' email = 'MasVar@gmail.com' pass_word = '6537dc2c9654109f741cd01878c8f403' ral ='1400' roles = 'gestCat'></GESTORI_CATALOGO> 
 
 	<GESTORI_ORDINI username = 'LuBacco' name = 'Luigi' surname = 'Bacco' email = 'lbgames@gmail.com' pass_word = 'dd6c2b03adfe02e7ef9b1fd016581415' ral ='1700' roles = 'gestOrd'></GESTORI_ORDINI>
-	
 
 	<CARTS id = '1' amount='386'></CARTS>
 	<CARTS id = '2' amount='39'></CARTS>

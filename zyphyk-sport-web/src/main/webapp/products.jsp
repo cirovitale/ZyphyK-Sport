@@ -151,11 +151,11 @@
                		}else{
                %>		
                		<div class="col-md-6">
-	               		<button type="button" class="btn border-dark" onclick='remOggetto("<%=prodBean.getId()%>")'>
+	               		<button type="button" class="btn btn-danger" onclick='remOggetto("<%=prodBean.getId()%>")'>
 								<img src="img\icon\trash.svg" alt="rem-product" class="icona">Rimuovi Scarpa</button>
 					
 					
-						<a href="/zyphyk-sport-web/modInCatalog.jsp?id=<%=prodBean.getId()%>" class="btn border-dark"> 	
+						<a href="/zyphyk-sport-web/modInCatalog.jsp?id=<%=prodBean.getId()%>" class="btn btn-primary"> 	
 							<img src="img\icon\pencil.svg" alt="mod-abb" class="icona">	Modifica Scarpa
 						</a>
 					</div>

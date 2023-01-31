@@ -40,7 +40,7 @@ public class AddToCartServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String ruolo = (String) request.getSession().getAttribute("roles");
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
@@ -83,7 +83,6 @@ public class AddToCartServlet extends HttpServlet {
 			
 			for(CartsContainsProdsBean cartContBean2 : colContainsProds) {
 				if(cartContBean2.getProductId().equals(id) && cartContBean2.getSize() == size && flag == false) {
-					System.out.println("prodotto con stessa taglia");
 					flag = true;
 					subtotale = carrello.getAmount() + productBean.getPrice();
 					carrello.setAmount(subtotale);
@@ -103,7 +102,6 @@ public class AddToCartServlet extends HttpServlet {
 				}
 			}
 			if(flag == false){
-					System.out.println("nuovo prodotto");
 					subtotale = carrello.getAmount() + productBean.getPrice();
 					carrello.setAmount(subtotale);
 					colProd.add(productBean);
@@ -124,58 +122,6 @@ public class AddToCartServlet extends HttpServlet {
 		}else {
 			response.sendRedirect(request.getContextPath() + "/cart.jsp");
 		}
-			
-			
-			/*
-				
-				if(!colProd.contains(productBean)) {
-					subtotale = carrello.getAmount() + productBean.getPrice();
-					carrello.setAmount(subtotale);
-					colProd.add(productBean);
-					System.out.println(colProd);
-						
-					try {
-						cartsDS.doUpdate(carrello.getId(), subtotale);
-						cartsContProdsDS.doSave(carrello.getId(), productBean.getId(), 1, size);
-						cartContBean = cartsContProdsDS.doRetrieveByKey(carrello.getId(),productBean.getId(), size);
-						System.out.println(cartContBean);
-						colContainsProds.add(cartContBean);
-						System.out.println(colContainsProds);
-						
-						
-						
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}else {
-					subtotale = carrello.getAmount() + productBean.getPrice();
-					carrello.setAmount(subtotale);
-					try {
-						cartsDS.doUpdate(carrello.getId(), subtotale);
-						cartContBean = cartsContProdsDS.doRetrieveByKey(carrello.getId(),productBean.getId(), size);
-						cartsContProdsDS.doUpdate(carrello.getId(), productBean.getId(), cartContBean.getQuantity() + 1);
-						cartContBean = cartsContProdsDS.doRetrieveByKey(carrello.getId(),productBean.getId(), size);
-						System.out.println(cartContBean);
-						colContainsProds.add(cartContBean);
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				}	
-			request.getSession().setAttribute("prodsCart", colProd);
-			request.getSession().setAttribute("prodsContainsCart", colContainsProds);	
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/cart.jsp");
-			
-			dispatcher.forward(request, response);
-		}else {
-			response.sendRedirect(request.getContextPath() + "/login.jsp");
-		}
-		*/
-		
-		
-		
-		
 	}
 
 	/**

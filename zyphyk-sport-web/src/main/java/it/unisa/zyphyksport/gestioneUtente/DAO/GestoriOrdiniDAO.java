@@ -196,7 +196,7 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 	}
 
 	@Override
-	public synchronized Set<GestoriOrdiniBean> doRetrieveAll(String username) throws SQLException {
+	public synchronized Set<GestoriOrdiniBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
@@ -205,8 +205,8 @@ public class GestoriOrdiniDAO implements GestoriOrdiniInterf {
 		String selectSQL = "SELECT * FROM " + GestoriOrdiniDAO.TABLE_NAME;
 		
 
-		if (username != null && !username.equals("")) {
-			selectSQL += " ORDER BY " + username;
+		if (order != null && !order.equals("")) {
+			selectSQL += " ORDER BY " + order;
 		}
 
 		try {

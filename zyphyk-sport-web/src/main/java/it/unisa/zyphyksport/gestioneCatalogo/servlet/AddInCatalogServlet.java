@@ -64,13 +64,12 @@ public class AddInCatalogServlet extends HttpServlet {
 
 		Part part = request.getPart("inputImage");
         String fileName = productId+"_1.jpg";
-        System.out.println(fileName);
         
         String path = getServletContext().getRealPath("/"+"img"+"/prod"+File.separator+fileName);
-        System.out.println(path);
+        
         part.write(path);
 
-		Set<Integer> arlist = new HashSet<Integer>( );
+		Set<Integer> arlist = new HashSet<Integer>();
 		if (request.getParameter("sizesValue36")!=null) {
 			int sizesValue36 = Integer.parseInt(request.getParameter("sizesValue36"));
 			arlist.add(sizesValue36);	

@@ -171,7 +171,7 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 	}
 
 	@Override
-	public synchronized Set<GestoriCatalogoBean> doRetrieveAll(String username) throws SQLException {
+	public synchronized Set<GestoriCatalogoBean> doRetrieveAll(String order) throws SQLException {
 		Connection connection = null;
 		PreparedStatement preparedStmt = null;
 
@@ -180,8 +180,8 @@ public class GestoriCatalogoDAO implements GestoriCatalogoInterf {
 		String selectSQL = "SELECT * FROM " + GestoriCatalogoDAO.TABLE_NAME;
 		
 
-		if (username != null && !username.equals("")) {
-			selectSQL += " ORDER BY " + username;
+		if (order != null && !order.equals("")) {
+			selectSQL += " ORDER BY " + order;
 		}
 
 		try {

@@ -46,7 +46,7 @@ public class SignUpServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String redirectedPage = null;
 		
 		String nome = request.getParameter("nome");
@@ -84,11 +84,8 @@ public class SignUpServlet extends HttpServlet {
 				System.out.println(cartId);
 				clDS.doSave(username, cartId, nome, cognome, email, password, LocalDate.parse(data));
 				
-				System.out.println("due");
 				clBean = clDS.doRetrieveByKey(username);
-				System.out.println("due");
 				cartBean = cartDS.doRetrieveByKey(cartId);
-				System.out.println("tre");
 				
 				request.getSession().setAttribute("utente", clBean);
 				request.getSession().setAttribute("roles", "cliente");
