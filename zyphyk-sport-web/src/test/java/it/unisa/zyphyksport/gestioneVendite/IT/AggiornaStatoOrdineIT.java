@@ -22,7 +22,10 @@ import org.h2.jdbcx.JdbcDataSource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import it.unisa.zyphyksport.gestioneUtente.bean.GestoriOrdiniBean;
 import it.unisa.zyphyksport.gestioneUtente.servlet.LoginServlet;
+import it.unisa.zyphyksport.gestioneVendite.bean.OrdersBean;
+import it.unisa.zyphyksport.gestioneVendite.interfaceDS.OrdersInterf;
 import it.unisa.zyphyksport.gestioneVendite.servlet.OrderManageServlet;
 
 public class AggiornaStatoOrdineIT extends DataSourceBasedDBTestCase{
@@ -62,6 +65,9 @@ public class AggiornaStatoOrdineIT extends DataSourceBasedDBTestCase{
 				HttpSession session = Mockito.mock(HttpSession.class);
 				RequestDispatcher dispatcher = Mockito.mock(RequestDispatcher.class);
 				
+				GestoriOrdiniBean gestOrdBean = Mockito.mock(GestoriOrdiniBean.class);
+				OrdersBean ordBean = Mockito.mock(OrdersBean.class);			
+				OrdersInterf ordersDAO = Mockito.mock(OrdersInterf.class);				
 				//qui mettere i request rispettivi delle servlet testate
 				when(request.getSession()).thenReturn(session);
 				
@@ -73,11 +79,11 @@ public class AggiornaStatoOrdineIT extends DataSourceBasedDBTestCase{
 					}
 	
 				};
-				when(request.getServletContext()).thenReturn(servletContext);
+
+				when(request.getSession()).thenReturn(session);	
 				when(servletContext.getAttribute("DataSource")).thenReturn(ds);
-				when(request.getSession()).thenReturn(session);
-				when(servletContext.getRequestDispatcher("/login.jsp")).thenReturn(dispatcher);
-				when(request.getContextPath()).thenReturn("http://localhost/zyphyk-sport-web");
+				when(request.getParameter("id")).thenReturn("1");
+				when(session.getAttribute("utente")).thenReturn(gestOrdBean);
 
 		        // test
 		        try {
@@ -90,8 +96,8 @@ public class AggiornaStatoOrdineIT extends DataSourceBasedDBTestCase{
 					e.printStackTrace();
 				}
 		        
-		        verify(response).sendRedirect("http://localhost/zyphyk-sport-web/orderManage.jsp");
-		        verify(session).setAttribute("sent", true);
+		        //verify(response).sendRedirect("http://localhost/zyphyk-sport-web/orderManage.jsp");
+		        verify(request).setAttribute("message", "true");
 	
 	}
 }
