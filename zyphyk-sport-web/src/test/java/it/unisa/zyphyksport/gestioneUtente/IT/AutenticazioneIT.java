@@ -93,14 +93,7 @@ public class AutenticazioneIT extends DataSourceBasedDBTestCase{
 		}
         
         
-        //verify(session).getAttribute("roles");
         verify(response).sendRedirect("http://localhost/zyphyk-sport-web/index.jsp");
         verify(session).setAttribute("roles", "cliente");
-       
-        // verify
-        //assertEquals(clBean.getPass_word(), encryptedPassword);
-        
-        // aggiungere anche controlli dei vari setAttribute: roles, utente, ecc.
-        
 	}
 }
