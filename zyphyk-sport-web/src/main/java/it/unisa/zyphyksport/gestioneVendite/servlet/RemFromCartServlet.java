@@ -41,7 +41,7 @@ public class RemFromCartServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ruolo = (String) request.getSession().getAttribute("roles");
 		DataSource ds = (DataSource) getServletContext().getAttribute("DataSource");
 		

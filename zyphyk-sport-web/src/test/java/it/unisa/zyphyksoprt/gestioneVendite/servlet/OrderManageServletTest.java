@@ -1,6 +1,5 @@
 package it.unisa.zyphyksoprt.gestioneVendite.servlet;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -20,13 +19,10 @@ import javax.sql.DataSource;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import it.unisa.zyphyksport.gestioneCatalogo.DAO.ProductsDAO;
-import it.unisa.zyphyksport.gestioneCatalogo.interfaceDS.ProductsInterf;
 import it.unisa.zyphyksport.gestioneUtente.bean.GestoriOrdiniBean;
 import it.unisa.zyphyksport.gestioneVendite.DAO.OrdersDAO;
 import it.unisa.zyphyksport.gestioneVendite.bean.OrdersBean;
 import it.unisa.zyphyksport.gestioneVendite.interfaceDS.OrdersInterf;
-import it.unisa.zyphyksport.gestioneVendite.servlet.AddToCartServlet;
 import it.unisa.zyphyksport.gestioneVendite.servlet.OrderManageServlet;
 
 public class OrderManageServletTest {
@@ -42,9 +38,7 @@ public class OrderManageServletTest {
 		Connection conn = Mockito.mock(Connection.class);
 		
 		GestoriOrdiniBean gestOrdBean = Mockito.mock(GestoriOrdiniBean.class);
-		OrdersBean ordBean = Mockito.mock(OrdersBean.class);	
-		OrdersDAO ordersDS = Mockito.mock(OrdersDAO.class);
-		OrdersInterf ordersDAO = Mockito.mock(OrdersInterf.class);
+		OrdersBean ordBean = Mockito.mock(OrdersBean.class);			OrdersInterf ordersDAO = Mockito.mock(OrdersInterf.class);
 		
 		OrderManageServlet ordManage = new OrderManageServlet(){
 			/**
