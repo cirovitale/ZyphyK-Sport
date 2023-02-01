@@ -55,3 +55,4 @@ La documentazione del progetto include i seguenti documenti (disponibili nella d
 - Test Execution Report
 - Test Regression Report
 
+I diagrams presenti nei documenti sono riportati nella directory "deliverables/diagrams".
