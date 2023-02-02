@@ -39,37 +39,32 @@ Set<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 	<%@ include file="../fragments/header.jsp"%>
 	<div class="container page">
 		<h3 class="text-center mb-4 pb-2">Zyphyk Sport</h3>
-		<br />
-		<p>slider prodotti.................</p>
-		<div id="carouselExampleIndicators" class="carousel slide"
-			data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleIndicators" data-slide-to="0"
-					class="active"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img class="d-block w-100"src="..." alt="First slide">
-				</div>
-				<div class="carousel-item">
-					<img class="d-block w-100" src="..." alt="Second slide">
-				</div>
-				<div class="carousel-item">
-					<img class="d-block w-100" src="..." alt="Third slide">
-				</div>
-			</div>
-			<a class="carousel-control-prev" href="#carouselExampleIndicators"
-				role="button" data-slide="prev"> <span
-				class="carousel-control-prev-icon" aria-hidden="true"></span> <span
-				class="sr-only">Previous</span>
-			</a> <a class="carousel-control-next" href="#carouselExampleIndicators"
-				role="button" data-slide="next"> <span
-				class="carousel-control-next-icon" aria-hidden="true"></span> <span
-				class="sr-only">Next</span>
-			</a>
-		</div>
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="img\slider\SLIDER1.png" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img\slider\SLIDER2.png" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="img\slider\SLIDER3.png" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Precedente</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Successivo</span>
+  </a>
+</div>
 		<hr class="mb-4">
 		<div class="row">
 			<h3 class="text-center mb-4 pb-2">Alcuni nostri prodotti...</h3>
@@ -122,19 +117,20 @@ Set<ProductsBean> prodsArr = prodDAO.doRetrieveAllExists(null);
 
 				<div class="col-md-6 col-lg-4 mb-4">
 					<h6 class="mb-3 text-primary">
-						<i class="fas fa-pen-alt text-primary pe-2"></i> -------?
+						<i class="fas fa-pen-alt text-primary pe-2"></i> Come posso effettuare un acquisto su questo sito?
 					</h6>
 					<p>
-						<strong><u>Certo, &egrave; possibile!</u></strong> ------
+						Per effettuare un acquisto basta seguire i seguenti passaggi: scegliere il prodotto desiderato, aggiungerlo al carrello, 
+						procedere alla cassa e inserire i dettagli della spedizione e del pagamento.
 					</p>
 				</div>
 
 				<div class="col-md-6 col-lg-4 mb-4">
 					<h6 class="mb-3 text-primary">
-						<i class="fas fa-user text-primary pe-2"></i> -------?
+						<i class="fas fa-user text-primary pe-2"></i> Quanto tempo ci vuole per ricevere il mio ordine?
 					</h6>
 					<p>
-						-----.
+						 Il tempo di consegna dipende dalla destinazione, dal metodo di consegna scelto e dalla disponibilità dei prodotti.
 					</p>
 				</div>
 			</div>

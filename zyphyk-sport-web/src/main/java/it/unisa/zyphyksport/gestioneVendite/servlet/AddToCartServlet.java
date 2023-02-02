@@ -82,14 +82,16 @@ public class AddToCartServlet extends HttpServlet {
 			}
 			
 			for(CartsContainsProdsBean cartContBean2 : colContainsProds) {
+				
 				if(cartContBean2.getProductId().equals(id) && cartContBean2.getSize() == size && flag == false) {
+					System.out.println("entrato dentro");
 					flag = true;
 					subtotale = carrello.getAmount() + productBean.getPrice();
 					carrello.setAmount(subtotale);
 					try {
 						cartsDS.doUpdate(carrello.getId(), subtotale);
 						cartContBean2.setQuantity(cartContBean2.getQuantity() + 1);
-						cartsContProdsDS.doUpdate(carrello.getId(), productBean.getId(), cartContBean2.getQuantity());
+						cartsContProdsDS.doUpdateSize(carrello.getId(), productBean.getId(), cartContBean2.getQuantity(), cartContBean2.getSize());
 						
 						request.getSession().setAttribute("prodsCart", colProd);
 						request.getSession().setAttribute("prodsContainsCart", colContainsProds);
@@ -102,6 +104,7 @@ public class AddToCartServlet extends HttpServlet {
 				}
 			}
 			if(flag == false){
+					System.out.println("entrato");
 					subtotale = carrello.getAmount() + productBean.getPrice();
 					carrello.setAmount(subtotale);
 					colProd.add(productBean);

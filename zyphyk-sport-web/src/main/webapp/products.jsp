@@ -156,7 +156,7 @@
 					
 					
 						<a href="/zyphyk-sport-web/modInCatalog.jsp?id=<%=prodBean.getId()%>" class="btn btn-primary"> 	
-							<img src="img\icon\pencil.svg" alt="mod-abb" class="icona">	Modifica Scarpa
+							<img src="img\icon\pencil1.png" alt="mod-abb" class="icona">	Modifica Scarpa
 						</a>
 					</div>
 					

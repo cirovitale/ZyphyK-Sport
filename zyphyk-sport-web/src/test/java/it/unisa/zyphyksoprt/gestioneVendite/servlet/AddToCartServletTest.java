@@ -98,6 +98,7 @@ public class AddToCartServletTest {
 		when(session.getAttribute("prodsCart")).thenReturn(colProd);
 		when(colContainsProds.iterator()).thenReturn(iterator);
 		when(iterator.hasNext()).thenReturn(false);
+		when(request.getContextPath()).thenReturn("http://localhost/zyphyk-sport-web");
 		
 		String checkSQL2 = "UPDATE " + CartsDAO.TABLE_NAME
 				+ " SET AMOUNT = ?" + " WHERE ID = ?";
@@ -122,6 +123,7 @@ public class AddToCartServletTest {
 		assertEquals("5", request.getParameter("id"));
 		assertEquals("39", request.getParameter("size"));
 		assertEquals("cliente", session.getAttribute("roles"));
+		verify(response).sendRedirect("http://localhost/zyphyk-sport-web/cart.jsp");
 		
 		
 		

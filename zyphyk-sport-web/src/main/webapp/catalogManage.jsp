@@ -41,8 +41,8 @@
 			</div>
 			<div style="text-align:center">
 				<a href="/zyphyk-sport-web/addInCatalog.jsp" class="btn btn-primary border-blue">
-					<img src="img\icon\add.svg" alt="add-to-cart" class="icona"> Aggiungi Scarpe	
-				</a>
+					<img src="img\icon\add1.png" alt="add-to-cart" class="icona"> Aggiungi Scarpe	
+				</a> 
 			</div>
 			
 			<div class="row">

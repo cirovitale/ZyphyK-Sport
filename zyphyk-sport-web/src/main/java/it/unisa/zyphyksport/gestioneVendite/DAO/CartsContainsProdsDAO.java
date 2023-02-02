@@ -88,6 +88,37 @@ public class CartsContainsProdsDAO implements CartsContainsProdsInterf{
 		
 	}
 	
+	public synchronized void doUpdateSize(int cartId, String productId, int quantity, int size) throws SQLException {
+		//Connection connection = null;
+		PreparedStatement preparedStmt = null;
+		
+		String updateSQL = "UPDATE " + CartsContainsProdsDAO.TABLE_NAME
+				+ " SET QUANTITY = ?" + " WHERE CART_ID = ? AND PRODUCT_ID = ? AND SIZE = ?";
+		
+		try {
+			conn = ds.getConnection();
+			preparedStmt = conn.prepareStatement(updateSQL);
+			preparedStmt.setInt(1, quantity);
+
+			preparedStmt.setInt(2, cartId);
+			preparedStmt.setString(3, productId);
+			preparedStmt.setInt(4, size);
+			preparedStmt.executeUpdate();
+
+			conn.setAutoCommit(false);
+			conn.commit();
+		} finally {
+			try {
+				if (preparedStmt != null)
+					preparedStmt.close();
+			} finally {
+				if (conn != null)
+					conn.close();
+			}
+		}
+		
+	}
+	
 
 	@Override
 	public synchronized void doDelete(int cartId, String productId, int size) throws SQLException {
